@@ -1,0 +1,50 @@
+---
+title: "CLG Authorship experiments"
+author: "Erwan Moreau"
+date: "1/23/2022"
+output: html_document
+---
+
+```{r setup, include=FALSE}
+knitr::opts_chunk$set(echo = TRUE)
+```
+
+## Rmd
+
+This document was generated from an [R Markdown](https://rmarkdown.rstudio.com/) source file. The source file is provided in the repository, allowing full reproducibility of the experiments presented in the paper. It can be executed through the RStudio interface ("knit" button) or as follows:
+
+```
+rmarkdown::render('01.Rmd')
+```
+
+- Naturally the document can also be read as a regular documentation.
+- **Important:** this Rmd document includes [bash chunks](https://bookdown.org/yihui/rmarkdown/language-engines.html). In order for these to work, the environment must have been configured as explained in [Requirements](#requirements) below.
+
+The `.Rmd` source document can be configured by modifying the following lines:
+
+```{r myoptions}
+# TODO
+```
+
+
+## Requirements
+
+## Software components
+
+The experiments below require the [clg-authorship](https://erwanm.github.io/clg-authorship-analytics/) software to be installed as well as all its dependencies.  A detailed [installation guide](https://erwanm.github.io/clg-authorship-analytics/#Installation) can be found in the [documentation](https://erwanm.github.io/clg-authorship-analytics/).
+
+## Data; the Diachronic Corpus for Literary Style Analysis (DCLSA)
+
+These experiments require the CLSA corpus which can be found [here](https://www.scss.tcd.ie/disciplines/intelligent_systems/clg/clg_web/DCLSA/). The code chunks below assume that the dataset has been extracted in the `data` directory, for example as follows:
+
+```
+cd data
+wget https://scss.tcd.ie/clg/DCLSA/DCLSA.tar.gz
+tar xfz DCLSA.tar.gz
+```
+
+
+```{bash testing}
+echo "If the DCLSA data is available, a list of 10 files (e.g. 'data/gb/1851-tsa-lilfawwrt') should be listed below:"
+ls data/*/* | head
+```
