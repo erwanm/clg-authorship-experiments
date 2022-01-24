@@ -9,6 +9,13 @@ output: html_document
 knitr::opts_chunk$set(echo = TRUE)
 ```
 
+
+# Introduction
+
+## Overview
+
+**TODO**
+
 ## Rmd
 
 This document was generated from an [R Markdown](https://rmarkdown.rstudio.com/) source file. The source file is provided in the repository, allowing full reproducibility of the experiments presented in the paper. It can be executed through the RStudio interface ("knit" button) or as follows:
@@ -23,17 +30,28 @@ rmarkdown::render('01.Rmd')
 The `.Rmd` source document can be configured by modifying the following lines:
 
 ```{r myoptions}
-# TODO
+packages.path <- 'packages'
+Sys.setenv(CLG_AUTHORSHIP_PACKAGES_PATH = packages.path)
 ```
+
+* The `packages.path` variable indicates the location of the dependencies (see [software requirements](software-components) below). For the sake of simplicity it is assumed that all the packages are in the same directory (as recommended in the installation instructions, see below). 
+* In Rmd every bash chunk are executed in an independent session, this is why the path for the packages must be initialized. This is used in turn to initialize the environment with the script `session-setup.sh`, which must be present in the same directory for executing the Rmd source file. This is not needed when executing commands manually, as long as the environment has been configured once (see below).
 
 
 ## Requirements
 
 ## Software components
 
-The experiments below require the [clg-authorship](https://erwanm.github.io/clg-authorship-analytics/) software to be installed as well as all its dependencies.  A detailed [installation guide](https://erwanm.github.io/clg-authorship-analytics/#Installation) can be found in the [documentation](https://erwanm.github.io/clg-authorship-analytics/).
+The experiments below require the [clg-authorship-analytics](https://erwanm.github.io/clg-authorship-analytics/) software to be installed as well as all its dependencies.  A detailed [installation guide](https://erwanm.github.io/clg-authorship-analytics/#Installation) can be found in the [documentation](https://erwanm.github.io/clg-authorship-analytics/).
 
-## Data; the Diachronic Corpus for Literary Style Analysis (DCLSA)
+The following is a quick test to check that the software is properly installed and configured. It should show the first line of the inline help message for `verif-author.pl`. 
+
+```{bash testing.software}
+source session-setup.sh
+verif-author.pl -h | head -n 3
+```
+
+## Data: Diachronic Corpus for Literary Style Analysis (DCLSA)
 
 These experiments require the CLSA corpus which can be found [here](https://www.scss.tcd.ie/disciplines/intelligent_systems/clg/clg_web/DCLSA/). The code chunks below assume that the dataset has been extracted in the `data` directory, for example as follows:
 
@@ -44,7 +62,51 @@ tar xfz DCLSA.tar.gz
 ```
 
 
-```{bash testing}
+```{bash testing.data}
 echo "If the DCLSA data is available, a list of 10 files (e.g. 'data/gb/1851-tsa-lilfawwrt') should be listed below:"
 ls data/*/* | head
 ```
+
+- This document assumes that the CLSA data is found in the directory `./data`. If this is not the case it is advised to create a symbolic link for convenience.
+- The `data` directory must be writable because the program uses cached intermediate files whenever possible for efficiency reasons
+
+# Simple examples
+
+## Basic strategy
+
+The simplest way to use the system is to specify the strategy and its parameters directly on the command line. In the following we compare Mark Twain's "The Adventures of Tom Sawyer" and "The Adventures of Huckleberry Finn" (the last two arguments).
+
+```{bash basic.1}
+source session-setup.sh
+verif-author.pl -s "strategy=basic;obsType.CHAR.CCC.lc1.sl0.mf3=1" data/gb/1876-mt-taots data/gb/1884-mt-taohf 2>/dev/null
+```
+
+* The `obsType` parameter represents charaters (`CHAR`) trigrams (`CCC`) with lowercase, no sentence limit and minimum frequency 3. See the [CLGTextTools documentation](https://erwanm.github.io/CLGTextTools/#Definitions) for details about observation types.
+* The default similarity measure *minmax* is used.
+* The `2>/dev/null` is used temporarily to mask the numerous warnings (due to not providing values for various parameters).
+* The output is a single similarity value: the minmax on the char trigrams frequencies between the two input texts.
+
+A better and more convenient way is to provide the parameters in a [config file](https://erwanm.github.io/clg-authorship-analytics/#ConfigurationFile). The same result as above can be obtained as follows:
+
+```{bash basic.2}
+source session-setup.sh
+verif-author.pl configs/basic.2.conf data/gb/1876-mt-taots data/gb/1884-mt-taohf
+```
+
+The content of the config file is:
+
+```{bash basic.3}
+cat configs/basic.2.conf
+```
+
+The `simMeasure` option for the `basic` strategy indicates which similarity measure to use.
+
+In this particular case the three general options at the end are not really relevant and are provided only to avoid the warning messages:
+
+* The [`formatting` parameter](https://erwanm.github.io/CLGTextTools/#CLGTextTools%2FObsCollection.pm%2FextractObsFromText(%24self%2C%20%24filePrefix)) is used to interpret sentences or paragraphs as separate units. This may be useful in conjunction with the `sl` (sentence limit) part of the observations types if some formatting is present in the input files.
+** `0` (or undef or empty string): no formatting at all
+**  `singleLineBreak`: line breaks as separator for meaningful units (e.g. sentences)
+**  `doubleLineBreak`:   mpty lines (i.e. at least two consecutive line breaks) as separator for meaningful units (e.g. paragraphs).
+* The [`wordTokenization` parameter](https://erwanm.github.io/CLGTextTools/#CLGTextTools%2FObsCollection.pm%2FextractObsFromText(%24self%2C%20%24filePrefix)) indicates whether the input text should be tokenized (value 1) or not (0). This is relevant only for *words* observations types.
+* The [`multipleProbeAggregate` parameter](https://erwanm.github.io/clg-authorship-analytics/#CLGAuthorshipAnalytics%2FVerification%2FBasic.pm%2Fnew(%24class%2C%20%24params)) specifies which method should be used to aggregate the similarity scores if there are more than one probe doc on either side (or both): `random`, `median`,  or `arithm`, `geom`, `harmo` mean.
+** If "random" (default), then a default doc is picked among the list (disadvantage: same input can give different results). ** Otherwise the similarity is computed between all pairs (cartesian product NxM), and the values are aggregated according to the parameter (disadvantage: NxM longer).
