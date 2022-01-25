@@ -74,6 +74,8 @@ ls data/*/* | head
 
 ## Basic strategy
 
+### Example using only command line arguments
+
 The simplest way to use the system is to specify the strategy and its parameters directly on the command line. In the following we compare Mark Twain's "The Adventures of Tom Sawyer" and "The Adventures of Huckleberry Finn" (the last two arguments).
 
 ```{bash basic.1}
@@ -86,12 +88,9 @@ verif-author.pl -s "strategy=basic;obsType.CHAR.CCC.lc1.sl0.mf3=1" data/gb/1876-
 * The `2>/dev/null` is used temporarily to mask the numerous warnings (due to not providing values for various parameters).
 * The output is a single similarity value: the minmax on the char trigrams frequencies between the two input texts.
 
-A better and more convenient way is to provide the parameters in a [config file](https://erwanm.github.io/clg-authorship-analytics/#ConfigurationFile). The same result as above can be obtained as follows:
+### Example using a configuration file
 
-```{bash basic.2}
-source session-setup.sh
-verif-author.pl configs/basic.2.conf data/gb/1876-mt-taots data/gb/1884-mt-taohf
-```
+A better and more convenient way is to provide the parameters in a [config file](https://erwanm.github.io/clg-authorship-analytics/#ConfigurationFile). 
 
 The content of the config file is:
 
@@ -99,9 +98,7 @@ The content of the config file is:
 cat configs/basic.2.conf
 ```
 
-The `simMeasure` option for the `basic` strategy indicates which similarity measure to use.
-
-In this particular case the three general options at the end are not really relevant and are provided only to avoid the warning messages:
+The `simMeasure` option for the `basic` strategy indicates which similarity measure to use. In this particular case the other three options at the end are not really relevant and are provided only to avoid the warning messages:
 
 * The [`formatting` parameter](https://erwanm.github.io/CLGTextTools/#CLGTextTools%2FObsCollection.pm%2FextractObsFromText(%24self%2C%20%24filePrefix)) is used to interpret sentences or paragraphs as separate units. This may be useful in conjunction with the `sl` (sentence limit) part of the observations types if some formatting is present in the input files.
 ** `0` (or undef or empty string): no formatting at all
@@ -110,3 +107,76 @@ In this particular case the three general options at the end are not really rele
 * The [`wordTokenization` parameter](https://erwanm.github.io/CLGTextTools/#CLGTextTools%2FObsCollection.pm%2FextractObsFromText(%24self%2C%20%24filePrefix)) indicates whether the input text should be tokenized (value 1) or not (0). This is relevant only for *words* observations types.
 * The [`multipleProbeAggregate` parameter](https://erwanm.github.io/clg-authorship-analytics/#CLGAuthorshipAnalytics%2FVerification%2FBasic.pm%2Fnew(%24class%2C%20%24params)) specifies which method should be used to aggregate the similarity scores if there are more than one probe doc on either side (or both): `random`, `median`,  or `arithm`, `geom`, `harmo` mean.
 ** If "random" (default), then a default doc is picked among the list (disadvantage: same input can give different results). ** Otherwise the similarity is computed between all pairs (cartesian product NxM), and the values are aggregated according to the parameter (disadvantage: NxM longer).
+
+The same result as above can be obtained as follows:
+
+```{bash basic.2}
+source session-setup.sh
+verif-author.pl -c configs/basic.2.conf data/gb/1876-mt-taots data/gb/1884-mt-taohf
+```
+
+- The `-c` option is used to cache and if possible reuse the *count files*: for every document, a count file  is created for every observation type which contains the frequency for every observation.
+
+### Using multiple observations types, multiple documents by group and multiple pairs
+
+Several observations types can be specified. In this case the output will show the corresponding types as columns. 
+
+Config file:
+
+```{bash basic.4}
+cat configs/basic.3.conf
+```
+
+In this example we use various [observation types "families"](https://erwanm.github.io/CLGTextTools/#ObservationType): characters, word, Part-Of-Speech (the latter requires TreeTagger).
+
+One can also use `-H` option to print the columns names:
+
+```{bash basic.5}
+#source session-setup.sh
+#verif-author.pl configs/basic.3.conf data/gb/1876-mt-taots data/gb/1884-mt-taohf
+```
+
+
+## Technical remarks about observation types
+
+
+The observation types belong to different *families*: `CHAR` for character n-grams, `WORD` for word n-grams, `POS` for Part-Of-Speech and `VOCABCLASS` for some custom mapping of words to other categories (this can be used to count words based on their capitalization, for instance). See details in [explanation about the n-grams patterns](https://erwanm.github.io/CLGTextTools/#NGramPatterns).
+
+
+Two special cases presented below require additional preparation steps.
+
+### POS observations
+
+These require the POS tags to have been precomputed and stored into `.POS` files, otherwise the program will cause an error. The simple way to precompute these POS files is as follows:
+
+```{bash pos.expl1}
+source session-setup.sh
+ls data/gb/1876-mt-taots data/gb/1884-mt-taohf | count-obs-dataset.sh english POS.P.sl0.mf1
+```
+
+Note: the input documents are provided on STDIN.
+
+### Stop words for word observations
+
+Word-based observations accept an option which specifies *which words to take into account*. This causes all other words to be replaced by a placeholder symbol `_`. It can be used to count only patterns involving frequent words (often called stop words), in order to avoid content words which are less likely to be good indicators of an author style. Note that this is different than the `mf` (minimum frequency) option, which discards full observations, as opposed to some of the words in an observation.
+
+A "stop words list" based on frequency can be calculated based on a collection of documents as follows. For the sake of simplicity we create an example collection directory containing all the books by Mark Twain:
+
+```{bash stopwords1}
+mkdir mark-twain
+cd mark-twain/
+find ../data/gb/*-mt-* -maxdepth 0 -type f | while read f; do ln -s $f; done
+cd ..
+```
+
+Then we precompute all the token frequencies:
+
+```{bash stopwords2}
+source session-setup.sh
+count-obs-dataset.sh -o '-g' english WORD.T.lc1.sl0.mf2 mark-twain
+	evalSafe "sort -r -n +1 -2 \"$destDir/input/global.observations/$basicTokensObsType.count\" | cut -f 1 | head -n $stopWordLimit >\"$destDir/resources/stop-words/$stopWordLimit.stop-list\" " "$progName:$LINENO: "
+
+```
+
+### Example
+

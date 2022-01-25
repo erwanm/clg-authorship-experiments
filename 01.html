@@ -234,20 +234,22 @@ ls data/*/* | head</code></pre>
 <h1>Simple examples</h1>
 <div id="basic-strategy" class="section level2">
 <h2>Basic strategy</h2>
+<div id="example-using-only-command-line-arguments" class="section level3">
+<h3>Example using only command line arguments</h3>
 <p>The simplest way to use the system is to specify the strategy and its parameters directly on the command line. In the following we compare Mark Twain’s “The Adventures of Tom Sawyer” and “The Adventures of Huckleberry Finn” (the last two arguments).</p>
 <pre class="bash"><code>source session-setup.sh
 verif-author.pl -s &quot;strategy=basic;obsType.CHAR.CCC.lc1.sl0.mf3=1&quot; data/gb/1876-mt-taots data/gb/1884-mt-taohf 2&gt;/dev/null</code></pre>
-<pre><code>## 0.660189298720126</code></pre>
+<pre><code>## 0.660189298720129</code></pre>
 <ul>
 <li>The <code>obsType</code> parameter represents charaters (<code>CHAR</code>) trigrams (<code>CCC</code>) with lowercase, no sentence limit and minimum frequency 3. See the <a href="https://erwanm.github.io/CLGTextTools/#Definitions">CLGTextTools documentation</a> for details about observation types.</li>
 <li>The default similarity measure <em>minmax</em> is used.</li>
 <li>The <code>2&gt;/dev/null</code> is used temporarily to mask the numerous warnings (due to not providing values for various parameters).</li>
 <li>The output is a single similarity value: the minmax on the char trigrams frequencies between the two input texts.</li>
 </ul>
-<p>A better and more convenient way is to provide the parameters in a <a href="https://erwanm.github.io/clg-authorship-analytics/#ConfigurationFile">config file</a>. The same result as above can be obtained as follows:</p>
-<pre class="bash"><code>source session-setup.sh
-verif-author.pl configs/basic.2.conf data/gb/1876-mt-taots data/gb/1884-mt-taohf</code></pre>
-<pre><code>## 0.660189298720125</code></pre>
+</div>
+<div id="example-using-a-configuration-file" class="section level3">
+<h3>Example using a configuration file</h3>
+<p>A better and more convenient way is to provide the parameters in a <a href="https://erwanm.github.io/clg-authorship-analytics/#ConfigurationFile">config file</a>.</p>
 <p>The content of the config file is:</p>
 <pre class="bash"><code>cat configs/basic.2.conf</code></pre>
 <pre><code>## strategy=basic
@@ -256,15 +258,52 @@ verif-author.pl configs/basic.2.conf data/gb/1876-mt-taots data/gb/1884-mt-taohf
 ## 
 ## basic.simMeasure=minmax
 ## 
-## # irrelevant options below, just to avoid the warnings
+## # general options 
 ## multipleProbeAggregate=random
 ## wordTokenization=1
 ## formatting=0</code></pre>
+<p>The <code>simMeasure</code> option for the <code>basic</code> strategy indicates which similarity measure to use. In this particular case the other three options at the end are not really relevant and are provided only to avoid the warning messages:</p>
 <ul>
 <li>The <a href="https://erwanm.github.io/CLGTextTools/#CLGTextTools%2FObsCollection.pm%2FextractObsFromText(%24self%2C%20%24filePrefix)"><code>formatting</code> parameter</a> is used to interpret sentences or paragraphs as separate units. This may be useful in conjunction with the <code>sl</code> (sentence limit) part of the observations types if some formatting is present in the input files. ** <code>0</code> (or undef or empty string): no formatting at all ** <code>singleLineBreak</code>: line breaks as separator for meaningful units (e.g. sentences) ** <code>doubleLineBreak</code>: mpty lines (i.e. at least two consecutive line breaks) as separator for meaningful units (e.g. paragraphs).</li>
 <li>The <a href="https://erwanm.github.io/CLGTextTools/#CLGTextTools%2FObsCollection.pm%2FextractObsFromText(%24self%2C%20%24filePrefix)"><code>wordTokenization</code> parameter</a> indicates whether the input text should be tokenized (value 1) or not (0). This is relevant only for <em>words</em> observations types.</li>
 <li>The <a href="https://erwanm.github.io/clg-authorship-analytics/#CLGAuthorshipAnalytics%2FVerification%2FBasic.pm%2Fnew(%24class%2C%20%24params)"><code>multipleProbeAggregate</code> parameter</a> specifies which method should be used to aggregate the similarity scores if there are more than one probe doc on either side (or both): <code>random</code>, <code>median</code>, or <code>arithm</code>, <code>geom</code>, <code>harmo</code> mean. ** If “random” (default), then a default doc is picked among the list (disadvantage: same input can give different results). ** Otherwise the similarity is computed between all pairs (cartesian product NxM), and the values are aggregated according to the parameter (disadvantage: NxM longer).</li>
 </ul>
+<p>The same result as above can be obtained as follows:</p>
+<pre class="bash"><code>source session-setup.sh
+verif-author.pl -c configs/basic.2.conf data/gb/1876-mt-taots data/gb/1884-mt-taohf</code></pre>
+<pre><code>## 0.660189298720124</code></pre>
+</div>
+<div id="using-multiple-observations-types-multiple-documents-by-group-and-multiple-pairs" class="section level3">
+<h3>Using multiple observations types, multiple documents by group and multiple pairs</h3>
+<p>Several observations types can be specified. In this case the output will show the corresponding types as columns.</p>
+<p>Config file:</p>
+<pre class="bash"><code>cat configs/basic.3.conf</code></pre>
+<pre><code>## strategy=basic
+## 
+## obsType.CHAR.CC.lc1.sl0.mf3=1
+## obsType.CHAR.CCC.lc1.sl0.mf3=1
+## obsType.CHAR.CCCC.lc1.sl0.mf3=1
+## obsType.WORD.T.lc1.sl0.mf2=1
+## obsType.WORD.TT.lc1.sl0.mf2=1
+## obsType.POS.P.sl0.mf2=1
+## obsType.POS.PP.sl0.mf2=1
+## obsType.POS.PPP.sl0.mf2=1
+## obsType.POS.PPPP.sl0.mf2=1
+## obsType.POS.L.sl1.mf2=0 1
+## obsType.POS.LL.sl1.mf2=0 1
+## 
+## 
+## basic.simMeasure=minmax
+## 
+## # general options 
+## multipleProbeAggregate=random
+## wordTokenization=1
+## formatting=0</code></pre>
+<p>In this example we use various <a href="https://erwanm.github.io/CLGTextTools/#ObservationType">observation types “families”</a>: characters, word, Part-Of-Speech (the latter requires TreeTagger).</p>
+<p>One can also use <code>-H</code> option to print the columns names:</p>
+<pre class="bash"><code>#source session-setup.sh
+#verif-author.pl configs/basic.3.conf data/gb/1876-mt-taots data/gb/1884-mt-taohf</code></pre>
+</div>
 </div>
 </div>
 
