@@ -1,5 +1,5 @@
 ---
-title: "CLG Authorship experiments"
+title: "CLG Authorship experiments - introduction"
 author: "Erwan Moreau"
 date: "1/23/2022"
 output: html_document
@@ -10,9 +10,7 @@ knitr::opts_chunk$set(echo = TRUE)
 ```
 
 
-# Introduction
-
-## Overview
+# Overview
 
 **TODO**
 
@@ -21,7 +19,7 @@ knitr::opts_chunk$set(echo = TRUE)
 This document was generated from an [R Markdown](https://rmarkdown.rstudio.com/) source file. The source file is provided in the repository, allowing full reproducibility of the experiments presented in the paper. It can be executed through the RStudio interface ("knit" button) or as follows:
 
 ```
-rmarkdown::render('01.Rmd')
+rmarkdown::render('01-intro.Rmd')
 ```
 
 - Naturally the document can also be read as a regular documentation.
@@ -162,19 +160,16 @@ Word-based observations accept an option which specifies *which words to take in
 
 A "stop words list" based on frequency can be calculated based on a collection of documents as follows. For the sake of simplicity we create an example collection directory containing all the books by Mark Twain:
 
-```{bash stopwords1}
-mkdir mark-twain
-cd mark-twain/
-find ../data/gb/*-mt-* -maxdepth 0 -type f | while read f; do ln -s $f; done
-cd ..
-```
 
 Then we precompute all the token frequencies:
 
-```{bash stopwords2}
+```{bash stopwords1}
 source session-setup.sh
+find ../data/gb/*-mt-* -maxdepth 0 -type f | while read f; do ln -s $f; done
+
+
 count-obs-dataset.sh -o '-g' english WORD.T.lc1.sl0.mf2 mark-twain
-	evalSafe "sort -r -n +1 -2 \"$destDir/input/global.observations/$basicTokensObsType.count\" | cut -f 1 | head -n $stopWordLimit >\"$destDir/resources/stop-words/$stopWordLimit.stop-list\" " "$progName:$LINENO: "
+sort -r -n +1 -2 \"$destDir/input/global.observations/$basicTokensObsType.count\" | cut -f 1 | head -n $stopWordLimit >\"$destDir/resources/stop-words/$stopWordLimit.stop-list\" " "$progName:$LINENO: "
 
 ```
 
