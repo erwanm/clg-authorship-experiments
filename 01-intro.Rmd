@@ -14,6 +14,11 @@ knitr::opts_chunk$set(echo = TRUE)
 
 **TODO**
 
+An **Author Verification problem** consists in determining for any two text documents (or any two groups of documents)  whether they have been written by the same person, or more generally exhibit similar stylistic features.
+The `verif-author.pl` script produces a set of features for every verification problem as input, using various possible strategies and parameters.
+
+
+
 ## Rmd
 
 This document was generated from an [R Markdown](https://rmarkdown.rstudio.com/) source file. The source file is provided in the repository, allowing full reproducibility of the experiments presented in the paper. It can be executed through the RStudio interface ("knit" button) or as follows:
@@ -25,18 +30,32 @@ rmarkdown::render('01-intro.Rmd')
 - Naturally the document can also be read as a regular documentation.
 - **Important:** this Rmd document includes [bash chunks](https://bookdown.org/yihui/rmarkdown/language-engines.html). In order for these to work, the environment must have been configured as explained in [Requirements](#requirements) below.
 
+### Options
+
 The `.Rmd` source document can be configured by modifying the following lines:
 
 ```{r myoptions}
 packages.path <- 'packages'
 Sys.setenv(CLG_AUTHORSHIP_PACKAGES_PATH = packages.path)
+output.dir <- '01-intro.output'
+Sys.setenv(OUTPUT_DIR = output.dir)
+delete.previous.output <- TRUE
 ```
 
 * The `packages.path` variable indicates the location of the dependencies (see [software requirements](software-components) below). For the sake of simplicity it is assumed that all the packages are in the same directory (as recommended in the installation instructions, see below). 
 * In Rmd every bash chunk are executed in an independent session, this is why the path for the packages must be initialized. This is used in turn to initialize the environment with the script `session-setup.sh`, which must be present in the same directory for executing the Rmd source file. This is not needed when executing commands manually, as long as the environment has been configured once (see below).
 
+### Initialization
 
-## Requirements
+```{bash init1,echo=delete.previous.output,eval=delete.previous.output}
+rm -rf "$OUTPUT_DIR"
+```
+
+```{bash init2}
+mkdir "$OUTPUT_DIR"
+```
+
+# Requirements
 
 ## Software components
 
@@ -70,9 +89,7 @@ ls data/*/* | head
 
 # Simple examples
 
-## Basic strategy
-
-### Example using only command line arguments
+## Example using only command line arguments
 
 The simplest way to use the system is to specify the strategy and its parameters directly on the command line. In the following we compare Mark Twain's "The Adventures of Tom Sawyer" and "The Adventures of Huckleberry Finn" (the last two arguments).
 
@@ -86,13 +103,13 @@ verif-author.pl -s "strategy=basic;obsType.CHAR.CCC.lc1.sl0.mf3=1" data/gb/1876-
 * The `2>/dev/null` is used temporarily to mask the numerous warnings (due to not providing values for various parameters).
 * The output is a single similarity value: the minmax on the char trigrams frequencies between the two input texts.
 
-### Example using a configuration file
+## Example using a configuration file
 
 A better and more convenient way is to provide the parameters in a [config file](https://erwanm.github.io/clg-authorship-analytics/#ConfigurationFile). 
 
 The content of the config file is:
 
-```{bash basic.3}
+```{bash basic.2.cat}
 cat configs/basic.2.conf
 ```
 
@@ -115,27 +132,65 @@ verif-author.pl -c configs/basic.2.conf data/gb/1876-mt-taots data/gb/1884-mt-ta
 
 - The `-c` option is used to cache and if possible reuse the *count files*: for every document, a count file  is created for every observation type which contains the frequency for every observation.
 
-### Using multiple observations types, multiple documents by group and multiple pairs
+## Using multiple observations types
 
 Several observations types can be specified. In this case the output will show the corresponding types as columns. 
 
+
 Config file:
 
-```{bash basic.4}
+```{bash basic.3.cat}
 cat configs/basic.3.conf
 ```
 
-In this example we use various [observation types "families"](https://erwanm.github.io/CLGTextTools/#ObservationType): characters, word, Part-Of-Speech (the latter requires TreeTagger).
+In this example we use various [observation types "families"](https://erwanm.github.io/CLGTextTools/#ObservationType).
 
-One can also use `-H` option to print the columns names:
 
-```{bash basic.5}
-#source session-setup.sh
-#verif-author.pl configs/basic.3.conf data/gb/1876-mt-taots data/gb/1884-mt-taohf
+```{bash basic.3}
+source session-setup.sh
+verif-author.pl -H configs/basic.3.conf data/gb/1876-mt-taots data/gb/1884-mt-taohf
 ```
 
+* Option `-H` is used to print the columns names as the first line (header).
 
-## Technical remarks about observation types
+
+## Multiple documents by group 
+
+The program can also receive two groups of documents instead of two documents as input. Documents which are together in the same group are assumed to have been written by the same author. Multiple documents by the same author can potentially provide crucial insight by allowing the verification method to distinguish constant stylistic features vs. document-specific ones.
+
+In this example we use the same config as above but compare a group of books by Mark Twain vs. a group of books by Henry James:
+
+
+```{bash basic.3.multi1}
+source session-setup.sh
+verif-author.pl -H configs/basic.3.conf data/gb/1876-mt-taots:data/gb/1884-mt-taohf data/gb/1888-hj-tap:data/gb/1896-hj-tsop:data/gb/1898-hj-ttm
+```
+
+* There can be any number of documents in each of the two groups
+** This is more general than the PAN format which consists of a single questioned document on one side.
+* The `multipleProbeAggregate` parameter presented above determines how the features are combined across the documents in one group to provide the final feature value.
+
+## Multiple verification problems
+
+Finally the program can receive multiple verification problems, applying the same strategy and parameters to all of them.
+
+* The different problems are read from STDIN, one problem by line. It's of course more convenient to first write all the problems in a file, as shown below.
+* The output features are also written on several lines, each line corresponding to one problem, following the same order as the input.
+* Every input problem is independent, different problems may involve the same documents or not. There is no constraint either on the groups of documents.
+
+
+```{bash basic.3.multi2.cat}
+cat data/01-intro.expl1.input
+```
+
+The same config as above is applied to these four problems:
+
+```{bash basic.3.multi2}
+source session-setup.sh
+cat data/01-intro.expl1.input | verif-author.pl -H configs/basic.3.conf
+```
+
+# Technical notes about observation types (preprocessing)
 
 
 The observation types belong to different *families*: `CHAR` for character n-grams, `WORD` for word n-grams, `POS` for Part-Of-Speech and `VOCABCLASS` for some custom mapping of words to other categories (this can be used to count words based on their capitalization, for instance). See details in [explanation about the n-grams patterns](https://erwanm.github.io/CLGTextTools/#NGramPatterns).
@@ -143,35 +198,50 @@ The observation types belong to different *families*: `CHAR` for character n-gra
 
 Two special cases presented below require additional preparation steps.
 
-### POS observations
+## POS observations
 
 These require the POS tags to have been precomputed and stored into `.POS` files, otherwise the program will cause an error. The simple way to precompute these POS files is as follows:
 
 ```{bash pos.expl1}
 source session-setup.sh
-ls data/gb/1876-mt-taots data/gb/1884-mt-taohf | count-obs-dataset.sh english POS.P.sl0.mf1
+ls data/gb/1876-mt-taots data/gb/1884-mt-taohf | count-obs-dataset.sh english POS.P.sl0.mf1 2>/dev/null
 ```
 
 Note: the input documents are provided on STDIN.
 
-### Stop words for word observations
+## Stop words for word observations
 
-Word-based observations accept an option which specifies *which words to take into account*. This causes all other words to be replaced by a placeholder symbol `_`. It can be used to count only patterns involving frequent words (often called stop words), in order to avoid content words which are less likely to be good indicators of an author style. Note that this is different than the `mf` (minimum frequency) option, which discards full observations, as opposed to some of the words in an observation.
+Word-based observations accept an option which specifies *which words to take into account*. This causes all the other words to be replaced by a placeholder symbol `_`. It can be used to count only patterns involving frequent words (often called stop words), in order to avoid content words which are less likely to be good indicators of an author style. Note that this is different from the `mf` (minimum frequency) option, which discards full observations, as opposed to some of the words in an observation.
 
-A "stop words list" based on frequency can be calculated based on a collection of documents as follows. For the sake of simplicity we create an example collection directory containing all the books by Mark Twain:
+A "stop words list" based on frequency can be calculated based on a collection of documents as follows. In this example we use all the books by Mark Twain as the corpus and extract the top 100 most frequent words.
 
-
-Then we precompute all the token frequencies:
 
 ```{bash stopwords1}
 source session-setup.sh
-find ../data/gb/*-mt-* -maxdepth 0 -type f | while read f; do ln -s $f; done
-
-
-count-obs-dataset.sh -o '-g' english WORD.T.lc1.sl0.mf2 mark-twain
-sort -r -n +1 -2 \"$destDir/input/global.observations/$basicTokensObsType.count\" | cut -f 1 | head -n $stopWordLimit >\"$destDir/resources/stop-words/$stopWordLimit.stop-list\" " "$progName:$LINENO: "
-
+find data/gb/*-mt-* -maxdepth 0 -type f >"$OUTPUT_DIR/mark-twain.list"
+count-obs-dataset.sh -i "$OUTPUT_DIR/mark-twain.list" -o '-g' english WORD.T.lc1.sl0.mf2 2>/dev/null
+sort -r -n +1 -2 "$OUTPUT_DIR/global.observations/WORD.T.lc1.sl0.mf2.count" | cut -f 1 | head -n 100 >"$OUTPUT_DIR/mt-100.stop-list" 
 ```
 
+* The `find` command is only used to find all the regular files corresponding to Mark Twain (`mt`)
+* The `count-obs-dataset.sh` command creates the 'global' output directories `doc-freq.observations` and `global.observations` in the dir where the input list is located.
+
 ### Example
+
+The "stop words" option is used by adding the name of the resource containing the list of stop words to the desired word observation types, for example:
+
+```{bash stopwords2}
+cat configs/basic.4.conf
+```
+
+* The last three observation types in this config use the `mt-100` stop words list.
+* The matching of a resource name to a file can be provided using option `-v` in the `verif-author.pl` command, as shown in this example:
+
+```{bash stopwords3}
+source session-setup.sh
+verif-author.pl -H -v mt-100:01-intro.output/mt-100.stop-list configs/basic.4.conf data/gb/1876-mt-taots:data/gb/1884-mt-taohf data/gb/1888-hj-tap:data/gb/1896-hj-tsop:data/gb/1898-hj-ttm
+```
+
+
+# Strategies
 
