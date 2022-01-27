@@ -272,13 +272,13 @@ verif-author.pl -s &quot;strategy=basic;obsType.CHAR.CCC.lc1.sl0.mf3=1&quot; dat
 <p>The <code>simMeasure</code> option for the <code>basic</code> strategy indicates which similarity measure to use. In this particular case the other three options at the end are not really relevant and are provided only to avoid the warning messages:</p>
 <ul>
 <li>The <a href="https://erwanm.github.io/CLGTextTools/#CLGTextTools%2FObsCollection.pm%2FextractObsFromText(%24self%2C%20%24filePrefix)"><code>formatting</code> parameter</a> is used to interpret sentences or paragraphs as separate units. This may be useful in conjunction with the <code>sl</code> (sentence limit) part of the observations types if some formatting is present in the input files. ** <code>0</code> (or undef or empty string): no formatting at all ** <code>singleLineBreak</code>: line breaks as separator for meaningful units (e.g. sentences) ** <code>doubleLineBreak</code>: mpty lines (i.e. at least two consecutive line breaks) as separator for meaningful units (e.g. paragraphs).</li>
-<li>The <a href="https://erwanm.github.io/CLGTextTools/#CLGTextTools%2FObsCollection.pm%2FextractObsFromText(%24self%2C%20%24filePrefix)"><code>wordTokenization</code> parameter</a> indicates whether the input text should be tokenized (value 1) or not (0). This is relevant only for <em>words</em> observations types.</li>
+<li>The <a href="https://erwanm.github.io/CLGTextTools/#CLGTextTools%2FObsCollection.pm%2Fnew(%24class%2C%20%24params)"><code>wordTokenization</code> parameter</a>) indicates whether the input text should be tokenized (value 1) or not (0). This is relevant only for <em>words</em> observations types.</li>
 <li>The <a href="https://erwanm.github.io/clg-authorship-analytics/#CLGAuthorshipAnalytics%2FVerification%2FBasic.pm%2Fnew(%24class%2C%20%24params)"><code>multipleProbeAggregate</code> parameter</a> specifies which method should be used to aggregate the similarity scores if there are more than one probe doc on either side (or both): <code>random</code>, <code>median</code>, or <code>arithm</code>, <code>geom</code>, <code>harmo</code> mean. ** If “random” (default), then a default doc is picked among the list (disadvantage: same input can give different results). ** Otherwise the similarity is computed between all pairs (cartesian product NxM), and the values are aggregated according to the parameter (disadvantage: NxM longer).</li>
 </ul>
 <p>The same result as above can be obtained as follows:</p>
 <pre class="bash"><code>source session-setup.sh
 verif-author.pl -c configs/basic.2.conf data/gb/1876-mt-taots data/gb/1884-mt-taohf</code></pre>
-<pre><code>## 0.660189298720123</code></pre>
+<pre><code>## 0.660189298720124</code></pre>
 <ul>
 <li>The <code>-c</code> option is used to cache and if possible reuse the <em>count files</em>: for every document, a count file is created for every observation type which contains the frequency for every observation.</li>
 </ul>
@@ -306,7 +306,7 @@ verif-author.pl -c configs/basic.2.conf data/gb/1876-mt-taots data/gb/1884-mt-ta
 <pre class="bash"><code>source session-setup.sh
 verif-author.pl -H configs/basic.3.conf data/gb/1876-mt-taots data/gb/1884-mt-taohf</code></pre>
 <pre><code>## CHAR.CC.lc1.sl0.mf3  CHAR.CCC.lc1.sl0.mf3    VOCABCLASS.MORPHO.mf3   WORD.T.lc1.sl0.mf2  WORD.TT.lc1.sl0.mf2
-## 0.785501905123429    0.660189298720126   0.869308226412144   0.535823273937859   0.266504550057528</code></pre>
+## 0.785501905123428    0.660189298720128   0.869308226412144   0.535823273937858   0.266504550057527</code></pre>
 <ul>
 <li>Option <code>-H</code> is used to print the columns names as the first line (header).</li>
 </ul>
@@ -318,7 +318,7 @@ verif-author.pl -H configs/basic.3.conf data/gb/1876-mt-taots data/gb/1884-mt-ta
 <pre class="bash"><code>source session-setup.sh
 verif-author.pl -H configs/basic.3.conf data/gb/1876-mt-taots:data/gb/1884-mt-taohf data/gb/1888-hj-tap:data/gb/1896-hj-tsop:data/gb/1898-hj-ttm</code></pre>
 <pre><code>## CHAR.CC.lc1.sl0.mf3  CHAR.CCC.lc1.sl0.mf3    VOCABCLASS.MORPHO.mf3   WORD.T.lc1.sl0.mf2  WORD.TT.lc1.sl0.mf2
-## 0.796653067537035    0.655232516895644   0.914793492001757   0.412333788254333   0.172097166659154</code></pre>
+## 0.796653067537034    0.559711064329462   0.990329532149888   0.462382617409975   0.221678567913178</code></pre>
 <ul>
 <li>There can be any number of documents in each of the two groups ** This is more general than the PAN format which consists of a single questioned document on one side.</li>
 <li>The <code>multipleProbeAggregate</code> parameter presented above determines how the features are combined across the documents in one group to provide the final feature value.</li>
@@ -341,10 +341,10 @@ verif-author.pl -H configs/basic.3.conf data/gb/1876-mt-taots:data/gb/1884-mt-ta
 <pre class="bash"><code>source session-setup.sh
 cat data/01-intro.expl1.input | verif-author.pl -H configs/basic.3.conf</code></pre>
 <pre><code>## CHAR.CC.lc1.sl0.mf3  CHAR.CCC.lc1.sl0.mf3    VOCABCLASS.MORPHO.mf3   WORD.T.lc1.sl0.mf2  WORD.TT.lc1.sl0.mf2
-## 0.771726251775025    0.55971106432946    0.857564346887423   0.491924951614137   0.1909240176213
-## 0.824380174552584    0.685107588451716   0.865369831410575   0.494722691790678   0.230486834929801
-## 0.744283868758052    0.589120207278101   0.752710395470541   0.418045901549294   0.189270149187808
-## 0.904767750767287    0.700102305328786   0.971264795649289   0.554569550565426   0.289551427832601</code></pre>
+## 0.817609183520629    0.579648991710267   0.856564879924623   0.462382617409977   0.20956450291122
+## 0.824380174552583    0.672902231948793   0.933158902677925   0.488471971440942   0.234622375806398
+## 0.744283868758052    0.589120207278099   0.752710395470541   0.418045901549294   0.18927014918781
+## 0.885603254732977    0.814126802774608   0.950456734790867   0.696300862039207   0.326052048750873</code></pre>
 </div>
 </div>
 <div id="technical-notes-about-observation-types-preprocessing" class="section level1">
@@ -399,7 +399,195 @@ sort -r -n +1 -2 &quot;$OUTPUT_DIR/global.observations/WORD.T.lc1.sl0.mf2.count&
 <pre class="bash"><code>source session-setup.sh
 verif-author.pl -H -v mt-100:01-intro.output/mt-100.stop-list configs/basic.4.conf data/gb/1876-mt-taots:data/gb/1884-mt-taohf data/gb/1888-hj-tap:data/gb/1896-hj-tsop:data/gb/1898-hj-ttm</code></pre>
 <pre><code>## WORD.T.lc1.sl0.mf2   WORD.TT.lc1.sl0.mf2 WORD.TT.lc1.sl0.mt-100.mf2  WORD.TTT.lc1.sl0.mt-100.mf2 WORD.TTTT.lc1.sl0.mt-100.mf2
-## 0.473435372772813    0.215621535412197   0.554467248466763   0.40599591678454    0.290384495029992</code></pre>
+## 0.473435372772814    0.215621535412199   0.554467248466763   0.405995916784539   0.290384495029993</code></pre>
+</div>
+</div>
+</div>
+<div id="strategies" class="section level1">
+<h1>Strategies</h1>
+<p>Currently the program offers three verification strategies. The simplest one, called the <code>basic</code> strategy, has been used in the previous examples. The two more advanced strategies are presented below.</p>
+<div id="universum-univ" class="section level2">
+<h2>Universum (<code>univ</code>)</h2>
+<p>Given two documents A and B, repeatedly mix different portions of A and B together, then compare the similarity obtained between A and A, B and B, A and B, mixed-AB and A, mixed-AB and B, mixed-AB and mixed-AB. If A and B have the same author, the resulting similarity scores should be all similar.</p>
+<p>Config file:</p>
+<pre class="bash"><code>cat configs/univ.1.conf</code></pre>
+<pre><code>## 
+## strategy=univ
+## 
+## obsType.WORD.T.lc1.sl0.mf3=1
+## obsType.WORD.TT.lc1.sl0.mf3=1
+## obsType.WORD.TTT.lc1.sl0.mf3=1
+## 
+## univ.simMeasure=cosine
+## univ.nbRounds=50
+## univ.propObsSubset=0.4
+## univ.withReplacement=0
+## univ.countMostSimByRound=all
+## univ.aggregSimByRoundAggregType=median
+## univ.finalScoresMethod=both
+## univ.aggregSimByRound=all
+## univ.splitWithoutReplacementMaxNbAttempts=3
+## 
+## # general options 
+## multipleProbeAggregate=random
+## wordTokenization=1
+## formatting=0</code></pre>
+<p>This strategy has many parameters (from <a href="https://erwanm.github.io/clg-authorship-analytics/#CLGAuthorshipAnalytics%2FVerification%2FUniversum.pm%2Fnew(%24class%2C%20%24params)">documentation</a>):</p>
+<ul>
+<li><code>nbRounds</code>: number of rounds (higher number -&gt; more randomization, hence less variance in the result) (default 100)</li>
+<li><code>propObsSubset</code>: (0&lt;=p&lt;1) the proportion of observations/occurrences used to mix 2 documents together at each round (p and 1-p); if zero, the proportion is picked randomly at every round (default 0.5)</li>
+<li><code>withReplacement</code>: 0 or 1. default: 0</li>
+<li><code>splitWithoutReplacementMaxNbAttempts</code>: max number of attempts to try splitting doc without replacement if at least one of the subsets is empty. Default: 5.</li>
+<li><code>finalScoresMethod</code>: <code>aggregSimByRound</code>, <code>countMostSimByRound</code> or<code>both</code>. Overall method(s) to obtain the features: by aggregating the similarities for each category or counting the most similar category among rounds. default: <code>countMostSimByRound</code>.</li>
+<li><code>aggregSimByRound</code>: <code>all</code> <code>homogeneity</code> <code>sameCat</code> <code>mergedOrNot</code>: <code>all</code> means use all individual categories as features. with <code>homogeneity</code> four final features are considered: AA+BB, AM+BM, AB, MM; with <code>sameCat</code> there are only two final features: AA+BB+MM, AB+AM+BM. with <code>mergedOrNot</code> there are two categories: AA+BB+AB, AM+BM+MM. default = <code>sameCat</code></li>
+<li><code>countMostSimByRound</code>: <code>all</code> <code>homogeneity</code> <code>sameCat</code> <code>mergedOrNot</code>. See above. default = <code>sameCat</code></li>
+<li><code>aggregSimByRoundAggregType</code>: <code>median</code>, <code>arithm</code>, <code>geom</code>, <code>harmo</code>. default = <code>arithm</code></li>
+</ul>
+<p>This is an ensemble method, the time it requires is proportional to <code>nbRounds</code> (it also depends on the size and number of input documents, of course). With only 50 rounds the following run takes around 20 seconds:</p>
+<pre class="bash"><code>source session-setup.sh
+time verif-author.pl -H configs/univ.1.conf data/gb/1876-mt-taots:data/gb/1884-mt-taohf data/gb/1888-hj-tap:data/gb/1896-hj-tsop:data/gb/1898-hj-ttm</code></pre>
+<pre><code>## simByRound_all_AA    simByRound_all_BA   simByRound_all_BB   simByRound_all_MA   simByRound_all_MB   simByRound_all_MM   countMostSimByRound_all_AA  countMostSimByRound_all_BA  countMostSimByRound_all_BB  countMostSimByRound_all_MA  countMostSimByRound_all_MB  countMostSimByRound_all_MM
+## 0.874480371206912    0.596842222905699   0.880384762111163   0.735678619161495   0.762279321539449   0.975479694090497   0.38    0   0.16    0   0   0.46
+## 
+## real 0m22.173s
+## user 0m22.025s
+## sys  0m0.068s</code></pre>
+</div>
+<div id="general-impostors-gi" class="section level2">
+<h2>General Impostors (<code>GI</code>)</h2>
+<p>The “Impostors” verification strategy (see “Determining if Two Documents are by the Same Author” by Koppel and Winter, 2014): Portions of the tested documents are repeatedly compared to each other and to other external (portions of) external documents (impostors). If the similarity between the tested documents is significantly higher than the similarity obtained between a tested document and an impostor, then the tested documents are likely to be by the same author.</p>
+<div id="preparing-the-impostors" class="section level3">
+<h3>Preparing the impostors</h3>
+<p>The method relies on a set of external impostor documents, which must be provided with option <code>-d</code> to verif-author.pl (see below).</p>
+<p>Below we create a directory with a random subset of 100 books from the dataset. Note that the system is unpleasantly strict about the naming of the path and files:</p>
+<ul>
+<li>The files must be located in a directory <code>&lt;resource path&gt;/&lt;id&gt;/impostors/</code> (note the last <code>impostors</code> dir), where:
+<ul>
+<li><code>&lt;resource path&gt;</code> is the path later provided to <code>-d</code></li>
+<li><code>id</code> is the resource id provided in the config file (see below; note that there can be multiple resources)</li>
+</ul></li>
+<li>Every impostor document filename must end with <code>.txt</code> (the system reads only these files).</li>
+</ul>
+<pre class="bash"><code>source session-setup.sh
+mkdir $OUTPUT_DIR/impostors
+mkdir $OUTPUT_DIR/impostors/GI.1.impostors
+n=$(find data/*/* -maxdepth 0 -type f | wc -l)
+cd $OUTPUT_DIR/impostors/GI.1.impostors
+find ../../../data/*/* -maxdepth 0 -type f | random-lines.pl 100 1 $n | while read f; do ln -s $f $(basename &quot;$f&quot;).txt; done</code></pre>
+</div>
+<div id="simple-example" class="section level3">
+<h3>“Simple” example</h3>
+<p>This is a “simple” example using the impostors created above.</p>
+<p>Config file:</p>
+<pre class="bash"><code>cat configs/GI.1.conf</code></pre>
+<pre><code>## 
+## 
+## strategy=GI
+## 
+## obsType.WORD.T.lc1.sl0.mf3=1
+## obsType.CHAR.CCC.lc1.sl0.mf3=1
+## 
+## 
+## GI.impostors=GI.1.impostors
+## GI.nbImpostorsUsed=10
+## GI.nbRounds=50
+## GI.selectNTimesMostSimilarFirst=0
+## GI.propObsSubset=0.45
+## GI.docSubsetMethod=byObservation
+## GI.minDocFreq=4
+## GI.simMeasure=minmax
+## GI.useCountMostSimFeature=original
+## GI.kNearestNeighbors=5
+## GI.mostSimilarFirst=doc
+## GI.aggregRelRank=arithm
+## GI.useAggregateSim=ratio
+## GI.aggregateSimStat=median
+## 
+## 
+## # general options 
+## wordTokenization=1
+## formatting=0</code></pre>
+<p>Parameters (see <a href="https://erwanm.github.io/clg-authorship-analytics/#CLGAuthorshipAnalytics%2FVerification%2FImpostors.pm%2Fnew(%24class%2C%20%24params)">details</a> in the documentation):</p>
+<ul>
+<li><code>impostors</code> is a list of datasets (resources ids) from which impostors will be picked randomly with equal probability (i.e. independently from the number of docs in each dataset).</li>
+<li><code>minDocFreq</code>: minimum doc frequency for observations (optional, default 1);</li>
+<li><code>selectNTimesMostSimilarFirst</code> is described below.</li>
+<li><code>nbImpostorsUsed</code>: number of impostors documents to select from the impostors dataset (done only once for all rounds) (default 25)</li>
+<li><code>nbRounds</code>: number of rounds (higher number -&gt; more randomization, hence less variance in the result) (default 100)</li>
+<li><code>propObsSubset</code>: (0&lt;=p&lt;1) the proportion of observations/occurrences to keep in every document at each round; if zero, the proportion is picked randomly at every round (default 0.5)</li>
+<li><code>docSubsetMethod</code> (default <code>byObservation</code>):
+<ul>
+<li><code>byOccurrence</code> -&gt; the proportion is applied to the set of all occurrences</li>
+<li><code>byObservation</code> -&gt; applied only to distinct observations</li>
+</ul></li>
+<li><code>useCountMostSimFeature</code>: the method to calculate the “count most similar” feature (default: <code>original</code>):
+<ul>
+<li><code>0</code> -&gt; unused,</li>
+<li><code>original</code> -&gt; original method by Koppel and Winter (2014)</li>
+<li><code>ASGALF</code> -&gt; method used in “A Slightly-modified GI-based Author-verifier with Lots of Features (ASGALF” by Khonji (2014) * <code>ASGALFavg</code> -&gt; variant of the above</li>
+</ul></li>
+<li><code>kNearestNeighbors</code>: uses only the K (value) most similar impostors when calculating result features. default: 0 (use all impostors).</li>
+<li><code>mostSimilarFirst</code>: <code>doc</code> or <code>run</code>, specifies whether the K most similar impostors are selected globally (doc) or for each run (run); unused if <code>GI_kNearestNeighbor</code>s=0. Default: doc.</li>
+<li><code>aggregRelRank</code>: <code>0</code>, <code>median</code>, <code>arithm</code>, <code>geom</code>, <code>harmo</code>. if not <code>0</code>, computes the relative rank of the sim between A and B among sim against all impostors by round; the value is used to aggregate all relative ranks (i.e. the values by round). Default: <code>0</code>.</li>
+<li><code>useAggregateSim</code>: <code>0</code>, <code>diff</code>, <code>ratio</code>. if not <code>0</code>, computes X = the aggregate sim value between A and B across all runs and Y= the aggregate sim value between any probe and any impostor across all rounds; returns A-B (diff) or A/B (ratio); default : <code>0</code>.</li>
+<li><code>aggregateSimStat</code>: <code>median</code>, <code>arithm</code>, <code>geom</code>, <code>harmo</code>. aggregate method to use if <code>useAggregateSim</code> is not 0 (ignored if <code>0</code>). default: <code>arithm</code>.</li>
+</ul>
+<pre class="bash"><code>source session-setup.sh
+time verif-author.pl -H -d $OUTPUT_DIR configs/GI.1.conf data/gb/1876-mt-taots:data/gb/1884-mt-taohf data/gb/1888-hj-tap:data/gb/1896-hj-tsop:data/gb/1898-hj-ttm</code></pre>
+<pre><code>## countMostSim_original    relativeRank    aggregatedSim_ratio
+## 0.2  0.296   0.941463043385227
+## 
+## real 1m42.165s
+## user 1m41.204s
+## sys  0m0.236s</code></pre>
+</div>
+<div id="example-with-pre-computed-similarities" class="section level3">
+<h3>Example with pre-computed similarities</h3>
+<p>The parameter <code>selectNTimesMostSimilarFirst</code>, if not zero, is used to perform an initial filtering stage which retrieves the N most similar documents to the probe documents, instead of picking impostors documents randomly, with N = <code>selectNTimesMostSimilarFirst * nbImpostors</code> (N for every probe doc). This ensures that the most dissimilar impostors are not used, while maintaining a degree of randomness depending on the value of <code>selectNTimesMostSimilarFirst</code>.</p>
+<p>However this option requires the initial similarity values to be precomputed in order to avoid repeating the process as many times as the method is called, which might be prohibitive in computing time. The pre-similarity values are loaded from <code>&lt;probeFile&gt;.simdir/&lt;impDataset&gt;.similarities</code>.</p>
+<p>Below we precompute similarities with the same impostors data and same probe files as in the previous example:</p>
+<pre class="bash"><code>source session-setup.sh
+find $OUTPUT_DIR/impostors/GI.1.impostors/* -maxdepth 0 -type f  &gt;$OUTPUT_DIR/impostors/GI.1.impostors.list
+ls data/gb/1876-mt-taots data/gb/1884-mt-taohf data/gb/1888-hj-tap data/gb/1896-hj-tsop data/gb/1898-hj-ttm &gt;$OUTPUT_DIR/probe-files.list
+sim-collections-doc-by-doc.pl -o WORD.T.lc1.sl0.mf3 -R BASENAME WORD.T.lc1.sl0.mf3:CHAR.CCC.lc1.sl0.mf3 $OUTPUT_DIR/probe-files.list GI.1.impostors:$OUTPUT_DIR/impostors/GI.1.impostors.list 2&gt;/dev/null</code></pre>
+<p>The config file is:</p>
+<pre class="bash"><code>cat configs/GI.2.conf</code></pre>
+<pre><code>## 
+## 
+## strategy=GI
+## 
+## obsType.WORD.T.lc1.sl0.mf3=1
+## obsType.CHAR.CCC.lc1.sl0.mf3=1
+## 
+## GI.selectNTimesMostSimilarFirst=5
+## GI.preSimObsType=WORD.T.lc1.sl0.mf3
+## 
+## GI.impostors=GI.1.impostors
+## GI.nbImpostorsUsed=10
+## GI.nbRounds=20
+## GI.propObsSubset=0.45
+## GI.docSubsetMethod=byObservation
+## GI.minDocFreq=4
+## GI.simMeasure=minmax
+## GI.useCountMostSimFeature=original
+## GI.kNearestNeighbors=5
+## GI.mostSimilarFirst=doc
+## GI.aggregRelRank=arithm
+## GI.useAggregateSim=ratio
+## GI.aggregateSimStat=median
+## 
+## 
+## # general options 
+## wordTokenization=1
+## formatting=0</code></pre>
+<pre class="bash"><code>source session-setup.sh
+time verif-author.pl -H -d $OUTPUT_DIR configs/GI.1.conf data/gb/1876-mt-taots:data/gb/1884-mt-taohf data/gb/1888-hj-tap:data/gb/1896-hj-tsop:data/gb/1898-hj-ttm</code></pre>
+<pre><code>## countMostSim_original    relativeRank    aggregatedSim_ratio
+## 0.14 0.214   0.912672409437347
+## 
+## real 0m13.515s
+## user 0m13.064s
+## sys  0m0.064s</code></pre>
 </div>
 </div>
 </div>

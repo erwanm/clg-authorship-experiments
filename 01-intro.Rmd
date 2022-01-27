@@ -119,7 +119,7 @@ The `simMeasure` option for the `basic` strategy indicates which similarity meas
 ** `0` (or undef or empty string): no formatting at all
 **  `singleLineBreak`: line breaks as separator for meaningful units (e.g. sentences)
 **  `doubleLineBreak`:   mpty lines (i.e. at least two consecutive line breaks) as separator for meaningful units (e.g. paragraphs).
-* The [`wordTokenization` parameter](https://erwanm.github.io/CLGTextTools/#CLGTextTools%2FObsCollection.pm%2FextractObsFromText(%24self%2C%20%24filePrefix)) indicates whether the input text should be tokenized (value 1) or not (0). This is relevant only for *words* observations types.
+* The [`wordTokenization` parameter](https://erwanm.github.io/CLGTextTools/#CLGTextTools%2FObsCollection.pm%2Fnew(%24class%2C%20%24params))) indicates whether the input text should be tokenized (value 1) or not (0). This is relevant only for *words* observations types.
 * The [`multipleProbeAggregate` parameter](https://erwanm.github.io/clg-authorship-analytics/#CLGAuthorshipAnalytics%2FVerification%2FBasic.pm%2Fnew(%24class%2C%20%24params)) specifies which method should be used to aggregate the similarity scores if there are more than one probe doc on either side (or both): `random`, `median`,  or `arithm`, `geom`, `harmo` mean.
 ** If "random" (default), then a default doc is picked among the list (disadvantage: same input can give different results). ** Otherwise the similarity is computed between all pairs (cartesian product NxM), and the values are aggregated according to the parameter (disadvantage: NxM longer).
 
@@ -243,5 +243,129 @@ verif-author.pl -H -v mt-100:01-intro.output/mt-100.stop-list configs/basic.4.co
 ```
 
 
+
 # Strategies
 
+Currently the program offers three verification strategies. The simplest one, called the `basic` strategy, has been used in the previous examples. The two more advanced strategies are presented below.
+
+
+## Universum (`univ`)
+
+Given two documents A and B, repeatedly mix different portions of A and B together, then compare the similarity obtained between A and A, B and B, A and B, mixed-AB and A, mixed-AB and B, mixed-AB and mixed-AB. If A and B have the same author, the resulting similarity scores should be all similar.
+
+Config file:
+
+```{bash univ.1.cat}
+cat configs/univ.1.conf
+```
+
+This strategy has many parameters (from [documentation](https://erwanm.github.io/clg-authorship-analytics/#CLGAuthorshipAnalytics%2FVerification%2FUniversum.pm%2Fnew(%24class%2C%20%24params))):
+
+* `nbRounds`: number of rounds (higher number -> more randomization, hence less variance in the result) (default 100)
+* `propObsSubset`: (0<=p<1) the proportion of observations/occurrences used to mix 2 documents together at each round (p and 1-p); if zero, the proportion is picked randomly at every round (default 0.5)
+* `withReplacement`: 0 or 1. default: 0
+* `splitWithoutReplacementMaxNbAttempts`: max number of attempts to try splitting doc without replacement if at least one of the subsets is empty. Default: 5.
+* `finalScoresMethod`: `aggregSimByRound`, `countMostSimByRound` or`both`. Overall method(s) to obtain the features: by aggregating the similarities for each category or counting the most similar category among rounds. default: `countMostSimByRound`.
+* `aggregSimByRound`: `all` `homogeneity` `sameCat` `mergedOrNot`: `all` means use all individual categories as features. with `homogeneity` four final features are considered: AA+BB, AM+BM, AB, MM; with `sameCat` there are only two final features: AA+BB+MM, AB+AM+BM. with `mergedOrNot` there are two categories: AA+BB+AB, AM+BM+MM. default = `sameCat`
+* `countMostSimByRound`: `all` `homogeneity` `sameCat` `mergedOrNot`. See above.  default = `sameCat`
+* `aggregSimByRoundAggregType`: `median`, `arithm`, `geom`, `harmo`. default = `arithm`
+
+
+This is an ensemble method, the time it requires is proportional to `nbRounds` (it also depends on the size and number of input documents, of course). With only 50 rounds the following run takes around 20 seconds:
+
+```{bash univ.1}
+source session-setup.sh
+time verif-author.pl -H configs/univ.1.conf data/gb/1876-mt-taots:data/gb/1884-mt-taohf data/gb/1888-hj-tap:data/gb/1896-hj-tsop:data/gb/1898-hj-ttm
+```
+
+
+## General Impostors (`GI`)
+
+The "Impostors" verification strategy (see "Determining if Two Documents are by the Same Author" by Koppel and Winter, 2014): Portions of the tested documents are repeatedly compared to each other and to other external (portions of) external documents (impostors). If the similarity between the tested documents is significantly higher than the similarity obtained between a tested document and an impostor, then the tested documents are likely to be by the same author.
+
+### Preparing the impostors
+
+The method relies on a set of external impostor documents, which must be provided with option `-d` to verif-author.pl (see below). 
+
+Below we create a directory with a random subset of 100 books from the dataset. Note that the system is unpleasantly strict about the naming of the path and files:
+
+- The files must be located in a directory `<resource path>/<id>/impostors/` (note the last `impostors` dir), where:
+    - `<resource path>` is the path later provided to `-d`
+    - `id` is the resource id provided in the config file (see below; note that there can be multiple resources)
+- Every impostor document filename must end with `.txt` (the system reads only these files).
+
+
+```{bash gi.1.prepare1}
+source session-setup.sh
+mkdir $OUTPUT_DIR/impostors
+mkdir $OUTPUT_DIR/impostors/GI.1.impostors
+n=$(find data/*/* -maxdepth 0 -type f | wc -l)
+cd $OUTPUT_DIR/impostors/GI.1.impostors
+find ../../../data/*/* -maxdepth 0 -type f | random-lines.pl 100 1 $n | while read f; do ln -s $f $(basename "$f").txt; done
+```
+
+### "Simple" example
+
+This is a "simple" example using the impostors created above.
+
+Config file:
+
+```{bash gi.1.cat}
+cat configs/GI.1.conf
+```
+
+Parameters (see [details](https://erwanm.github.io/clg-authorship-analytics/#CLGAuthorshipAnalytics%2FVerification%2FImpostors.pm%2Fnew(%24class%2C%20%24params)) in the documentation):
+
+* `impostors` is a list of datasets (resources ids) from which impostors will be picked randomly with equal probability (i.e. independently from the number of docs in each dataset).
+* `minDocFreq`: minimum doc frequency for observations (optional, default 1); 
+* `selectNTimesMostSimilarFirst` is described below.
+* `nbImpostorsUsed`: number of impostors documents to select from the impostors dataset (done only once for all rounds) (default 25)
+* `nbRounds`: number of rounds (higher number -> more randomization, hence less variance in the result) (default 100)
+* `propObsSubset`: (0<=p<1) the proportion of observations/occurrences to keep in every document at each round; if zero, the proportion is picked randomly at every round (default 0.5)
+* `docSubsetMethod` (default `byObservation`): 
+    * `byOccurrence` -> the proportion is applied to the set of all occurrences
+    * `byObservation` -> applied only to distinct observations 
+* `useCountMostSimFeature`: the method to calculate the "count most similar" feature (default: `original`):
+    * `0` -> unused,
+    * `original` -> original method by Koppel and Winter (2014)
+    * `ASGALF` -> method used in "A Slightly-modified GI-based Author-verifier with Lots of Features (ASGALF" by Khonji (2014)     * `ASGALFavg` -> variant of the above
+* `kNearestNeighbors`: uses only the K (value) most similar impostors when calculating result features. default: 0 (use all impostors).
+* `mostSimilarFirst`: `doc` or `run`, specifies whether the K most similar impostors are selected globally (doc) or for each run (run); unused if `GI_kNearestNeighbor`s=0. Default: doc.
+* `aggregRelRank`: `0`, `median`, `arithm`, `geom`, `harmo`. if not `0`, computes the relative rank of the sim between A and B among sim against all impostors by round; the value is used to aggregate all relative ranks (i.e. the values by round). Default: `0`.
+* `useAggregateSim`: `0`, `diff`, `ratio`. if not `0`, computes X = the aggregate sim value between A and B across all runs and Y= the aggregate sim value between any probe and any impostor across all rounds; returns A-B (diff) or A/B (ratio); default : `0`.
+* `aggregateSimStat`:  `median`, `arithm`, `geom`, `harmo`. aggregate method to use if `useAggregateSim` is not 0 (ignored if `0`). default: `arithm`.
+
+
+
+```{bash gi.1}
+source session-setup.sh
+time verif-author.pl -H -d $OUTPUT_DIR configs/GI.1.conf data/gb/1876-mt-taots:data/gb/1884-mt-taohf data/gb/1888-hj-tap:data/gb/1896-hj-tsop:data/gb/1898-hj-ttm
+```
+
+### Example with pre-computed similarities
+
+The parameter `selectNTimesMostSimilarFirst`, if not zero, is used to perform an initial filtering stage which retrieves the N most similar documents to the probe documents,  instead  of picking impostors documents randomly, with N = `selectNTimesMostSimilarFirst * nbImpostors` (N for every probe doc). This ensures that the most dissimilar impostors are not used, while maintaining a degree of randomness depending on the value of `selectNTimesMostSimilarFirst`.
+
+However this option requires the initial similarity values to be precomputed in order to avoid repeating the process as many times as the method is called, which might be prohibitive in computing time. The pre-similarity values are loaded from `<probeFile>.simdir/<impDataset>.similarities`.
+
+Below we precompute similarities with the same impostors data and same probe files as in the previous example:
+
+
+```{bash gi.2.prepare}
+source session-setup.sh
+find $OUTPUT_DIR/impostors/GI.1.impostors/* -maxdepth 0 -type f  >$OUTPUT_DIR/impostors/GI.1.impostors.list
+ls data/gb/1876-mt-taots data/gb/1884-mt-taohf data/gb/1888-hj-tap data/gb/1896-hj-tsop data/gb/1898-hj-ttm >$OUTPUT_DIR/probe-files.list
+sim-collections-doc-by-doc.pl -o WORD.T.lc1.sl0.mf3 -R BASENAME WORD.T.lc1.sl0.mf3:CHAR.CCC.lc1.sl0.mf3 $OUTPUT_DIR/probe-files.list GI.1.impostors:$OUTPUT_DIR/impostors/GI.1.impostors.list 2>/dev/null
+```
+
+The config file is:
+
+```{bash gi.2.cat}
+cat configs/GI.2.conf
+```
+
+
+```{bash gi.2}
+source session-setup.sh
+time verif-author.pl -H -d $OUTPUT_DIR configs/GI.1.conf data/gb/1876-mt-taots:data/gb/1884-mt-taohf data/gb/1888-hj-tap:data/gb/1896-hj-tsop:data/gb/1898-hj-ttm
+```
