@@ -180,14 +180,14 @@ Finally the program can receive multiple verification problems, applying the sam
 
 
 ```{bash basic.3.multi2.cat}
-cat data/01-intro.expl1.input
+cat data/01-intro.expl1.input 
 ```
 
 The same config as above is applied to these four problems:
 
 ```{bash basic.3.multi2}
 source session-setup.sh
-cat data/01-intro.expl1.input | verif-author.pl -H configs/basic.3.conf
+cat data/01-intro.expl1.input | cut -f 1 | verif-author.pl -H configs/basic.3.conf
 ```
 
 # Technical notes about observation types (preprocessing)
