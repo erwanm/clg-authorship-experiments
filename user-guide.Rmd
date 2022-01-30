@@ -1,5 +1,5 @@
 ---
-title: "CLG Authorship experiments - introduction"
+title: "CLG Authorship analytics - user guide"
 author: "Erwan Moreau"
 date: "1/23/2022"
 output: html_document
@@ -24,7 +24,7 @@ The `verif-author.pl` script produces a set of features for every verification p
 This document was generated from an [R Markdown](https://rmarkdown.rstudio.com/) source file. The source file is provided in the repository, allowing full reproducibility of the experiments presented in the paper. It can be executed through the RStudio interface ("knit" button) or as follows:
 
 ```
-rmarkdown::render('01-intro.Rmd')
+rmarkdown::render('user-guide.Rmd')
 ```
 
 - Naturally the document can also be read as a regular documentation.
@@ -37,7 +37,7 @@ The `.Rmd` source document can be configured by modifying the following lines:
 ```{r myoptions}
 packages.path <- 'packages'
 Sys.setenv(CLG_AUTHORSHIP_PACKAGES_PATH = packages.path)
-output.dir <- '01-intro.output'
+output.dir <- 'user-guide.output'
 Sys.setenv(OUTPUT_DIR = output.dir)
 delete.previous.output <- TRUE
 ```
@@ -180,14 +180,14 @@ Finally the program can receive multiple verification problems, applying the sam
 
 
 ```{bash basic.3.multi2.cat}
-cat data/01-intro.expl1.input 
+cat data/user-guide.expl1.input 
 ```
 
 The same config as above is applied to these four problems:
 
 ```{bash basic.3.multi2}
 source session-setup.sh
-cat data/01-intro.expl1.input | cut -f 1 | verif-author.pl -H configs/basic.3.conf
+cat data/user-guide.expl1.input | cut -f 1 | verif-author.pl -H configs/basic.3.conf
 ```
 
 # Technical notes about observation types (preprocessing)
@@ -239,7 +239,7 @@ cat configs/basic.4.conf
 
 ```{bash stopwords3}
 source session-setup.sh
-verif-author.pl -H -v mt-100:01-intro.output/mt-100.stop-list configs/basic.4.conf data/gb/1876-mt-taots:data/gb/1884-mt-taohf data/gb/1888-hj-tap:data/gb/1896-hj-tsop:data/gb/1898-hj-ttm
+verif-author.pl -H -v mt-100:user-guide.output/mt-100.stop-list configs/basic.4.conf data/gb/1876-mt-taots:data/gb/1884-mt-taohf data/gb/1888-hj-tap:data/gb/1896-hj-tsop:data/gb/1898-hj-ttm
 ```
 
 
