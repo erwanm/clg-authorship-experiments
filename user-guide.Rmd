@@ -180,14 +180,14 @@ Finally the program can receive multiple verification problems, applying the sam
 
 
 ```{bash basic.3.multi2.cat}
-cat data/user-guide.expl1.input 
+cat data/user-guide.expl1/cases.txt
 ```
 
 The same config as above is applied to these four problems:
 
 ```{bash basic.3.multi2}
 source session-setup.sh
-cat data/user-guide.expl1.input | cut -f 1 | verif-author.pl -H configs/basic.3.conf
+cat data/user-guide.expl1/cases.txt | cut -f 1 | verif-author.pl -H configs/basic.3.conf
 ```
 
 # Technical notes about observation types (preprocessing)
@@ -239,7 +239,7 @@ cat configs/basic.4.conf
 
 ```{bash stopwords3}
 source session-setup.sh
-verif-author.pl -H -v mt-100:user-guide.output/mt-100.stop-list configs/basic.4.conf data/gb/1876-mt-taots:data/gb/1884-mt-taohf data/gb/1888-hj-tap:data/gb/1896-hj-tsop:data/gb/1898-hj-ttm
+verif-author.pl -H -v mt-100:$OUTPUT_DIR/mt-100.stop-list configs/basic.4.conf data/gb/1876-mt-taots:data/gb/1884-mt-taohf data/gb/1888-hj-tap:data/gb/1896-hj-tsop:data/gb/1898-hj-ttm
 ```
 
 
