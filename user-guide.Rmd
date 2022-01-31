@@ -369,3 +369,109 @@ cat configs/GI.2.conf
 source session-setup.sh
 time verif-author.pl -H -d $OUTPUT_DIR configs/GI.1.conf data/gb/1876-mt-taots:data/gb/1884-mt-taohf data/gb/1888-hj-tap:data/gb/1896-hj-tsop:data/gb/1898-hj-ttm
 ```
+
+# Supervised learning 
+
+`verif-author.pl` returns a set of features for every problem. A verification problem, called a *case* in the system, is a pair of sets of documents, with the documents within a group assumed to be from the same author. A case can be *labelled*, i.e. provided with the gold-standard answer determining whether the two groups of documents are actually from the same author or not. Naturally, a set of labelled cases can be used to train a supervised model. 
+
+The most simple option would be to treat the task as binary classification. Since we are also interested in quantifying the confidence level of the system, the supervised setting is implemented as a regression task:
+
+- During training, the cases are provided with the answer as 0 (different author) or 1 (same author). The model is trained to predict this numerical value based on the features returned by `verif-author.pl` for multiple such cases.
+- When the model is applied, the predicted value for the answer may vary between 0 and 1 (even sometimes outside the range). A value close to 0 (resp. 1) indicates probably different (resp. same) author, and a value around 0.5 indicates uncertainty.
+
+## Simple regression model 
+
+The system expects some standard directory structure. This can be created automatically by `prepare-input.sh` (see below), but for the sake of simplicity we start with a predefined dir structure stored in the `data` dir. The `input` subdirectory is populated with a few documents.
+
+```{bash sup1.init}
+mkdir "$OUTPUT_DIR"/sup1
+mkdir "$OUTPUT_DIR"/sup1/input "$OUTPUT_DIR"/sup1/resources "$OUTPUT_DIR"/sup1/output
+cp data/user-guide.expl1/resources-options.conf "$OUTPUT_DIR"/sup1
+cat data/user-guide.expl1/cases.txt data/user-guide.expl1/test-cases.txt | cut -f 1 | tr ' :' '\n\n'  | sort -u | while read f; do cp "$f" "$OUTPUT_DIR/sup1/input"; done
+cat data/user-guide.expl1/cases.txt | sed 's:data/[^/]*/::g' >"$OUTPUT_DIR/sup1/cases.txt"
+cat data/user-guide.expl1/test-cases.txt | sed 's:data/[^/]*/::g' >"$OUTPUT_DIR/sup1/test-cases.gold.txt"
+cat "$OUTPUT_DIR/sup1/test-cases.gold.txt" | cut -f 1 >"$OUTPUT_DIR/sup1/test-cases.txt"
+```
+
+The config file used below contains:
+
+```{bash sup1.cat}
+cat configs/basic.supervised.1.conf
+```
+
+* `learnMethod=M5P-M4`: this parameter indicates which regression algorithm and parameters to use in Weka (here Decision Tree Regression with M5P).
+
+### Training
+
+```{bash sup1.train}
+source session-setup.sh
+train-test.sh -l "$OUTPUT_DIR/sup1/cases.txt" -m "$OUTPUT_DIR/sup1/model" "$OUTPUT_DIR/sup1" configs/basic.supervised.1.conf "$OUTPUT_DIR/sup1/output"
+```
+
+* The Weka model is stored in `$OUTPUT_DIR/sup1/model`
+* The model is automatically applied to the training data, the resulting predictions can be found in `$OUTPUT_DIR/sup1/output/train/self-predict.arff`
+
+### Applying the model
+
+
+We apply the previously trained model to some new cases:
+
+```{bash sup1.test}
+source session-setup.sh
+train-test.sh -a "$OUTPUT_DIR/sup1/test-cases.txt" -m "$OUTPUT_DIR/sup1/model" "$OUTPUT_DIR/sup1" configs/basic.supervised.1.conf "$OUTPUT_DIR/sup1/output"
+```
+
+The predicted values are written in `$OUTPUT_DIR/sup1/output/test/predict.tsv` as a single column, in the same order as the input cases.
+
+### Evaluating
+
+The predictions can be evaluated against the gold-standard answers either with AUC or accuracy. Both the predictions and gold file must be provided as two columns: `<case id> <value>`.
+
+```{bash sup1.eval.auc}
+source session-setup.sh
+paste "$OUTPUT_DIR/sup1/test-cases.txt" "$OUTPUT_DIR/sup1/output/test/predict.tsv" >"$OUTPUT_DIR/sup1/predicted.tsv"
+auc.pl "$OUTPUT_DIR/sup1/test-cases.gold.txt" "$OUTPUT_DIR/sup1/predicted.tsv"
+```
+
+
+```{bash sup1.eval.accu}
+source session-setup.sh
+accuracy.pl "$OUTPUT_DIR/sup1/test-cases.gold.txt" "$OUTPUT_DIR/sup1/predicted.tsv" | cut -f 1
+```
+
+## k-fold Cross-validation
+
+### Splitting for CV
+
+The script called below requires the dataset to have been split before and the indexes to be stored in a subdirectory `folds`:
+
+```{bash cv.split}
+source session-setup.sh
+mkdir "$OUTPUT_DIR/sup1/output/folds"
+n=$(cat user-guide.output/sup1/cases.txt  | wc -l)
+generate-random-cross-fold-ids.pl 5 $n "$OUTPUT_DIR/sup1/output/folds/fold"
+for f in "$OUTPUT_DIR"/sup1/output/folds/fold*.indexes; do
+  cat  "$OUTPUT_DIR/sup1/cases.txt" | select-lines-nos.pl "$f" 1 >${f%.indexes}.cases
+done
+```
+
+### Running CV
+
+```{bash cv.run}
+source session-setup.sh
+cp "$OUTPUT_DIR/sup1/cases.txt" "$OUTPUT_DIR/sup1/output/truth"
+train-cv.sh configs/basic.supervised.1.conf "$OUTPUT_DIR/sup1" "$OUTPUT_DIR/sup1/output"
+```
+
+The results can be found in a `.perf` file named after the configuration filename:
+
+```{bash cv.result}
+cat "$OUTPUT_DIR/sup1/output/basic.supervised.1.perf"
+```
+
+The three values are:
+
+- the "final score", i.e. product of the AUC and accuracy modified according to PAN15 evaluation method
+- the AUC score
+- the accuracy score modified according to PAN15 evaluation method
+

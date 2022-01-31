@@ -1,5 +1,10 @@
 data/gb/1876-mt-taots:data/gb/1884-mt-taohf data/gb/1888-hj-tap:data/gb/1896-hj-tsop:data/gb/1898-hj-ttm	0
+data/gb/1876-mt-taots data/gb/1884-mt-taohf	1
 data/gb/1888-hj-tap:data/gb/1896-hj-tsop data/gb/1898-hj-ttm	1
 data/gb/1882-haj-ffbts data/gb/1895-cfw-mcac:data/gb/1895-cfw-tfyaois:data/gb/1895-cfw-daois	0
 data/gb/1905-haj-fftf data/gb/1905-ga-ttt	0
 data/gb/1918-rwc-tlg:data/gb/1918-rwc-tmw data/gb/1919-rwc-tct:data/gb/1919-rwc-tsos	1
+data/gb/1882-haj-ffbts data/gb/1895-cfw-daois	0
+data/gb/1895-cfw-mcac data/gb/1895-cfw-tfyaois	1
+data/gb/1895-cfw-mcac data/gb/1895-cfw-daois	1
+data/gb/1905-haj-fftf data/gb/1884-mt-taohf	0
