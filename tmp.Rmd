@@ -1,5 +1,5 @@
 ---
-title: "CLG Authorship experiments - introduction"
+title: "CLG Authorship experiments - user guide (part 2)"
 author: "Erwan Moreau"
 date: "1/23/2022"
 output: html_document
@@ -13,9 +13,11 @@ knitr::opts_chunk$set(echo = TRUE)
 ```{r myoptions}
 packages.path <- 'packages'
 Sys.setenv(CLG_AUTHORSHIP_PACKAGES_PATH = packages.path)
-output.dir <- 'user-guide.output'
+output.dir <- 'user-guide-part2.output'
 Sys.setenv(OUTPUT_DIR = output.dir)
 delete.previous.output <- TRUE
+# normally not needed with regular setup:
+Sys.setenv(ADD_TO_PERL5LIB = '/home/moreaue/perl5/lib/perl5')
 ```
 
 
@@ -72,7 +74,7 @@ The script `expand-multi-config.pl` is used to generate a subset of individual c
 source session-setup.sh
 targetdir="$OUTPUT_DIR/example-50-configs"
 mkdir "$targetdir"
-echo "$OUTPUT_DIR/gen1/0/multi-conf-files/basic.multi-conf"  | expand-multi-config.pl -r 50 "$targetdir/"
+#echo "$OUTPUT_DIR/gen1/0/multi-conf-files/basic.multi-conf"  | expand-multi-config.pl -r 50 "$targetdir/"
 ```
 
 
@@ -80,7 +82,8 @@ echo "$OUTPUT_DIR/gen1/0/multi-conf-files/basic.multi-conf"  | expand-multi-conf
 
 ### Preparation
 
-The multi-config files above contain some ["stop-words" observation types](#stop-words-for-word-observations). For the sake of simplicity we just use the Mark Twain books to compute two stop words lists (50 and 200):
+The multi-config files above contain some ["stop-words" observation types](user-guide-part1.html#stop-words-for-word-observations). For the sake of simplicity we just use the Mark Twain books to compute two stop words lists (50 and 200):
+
 
 ```{bash gen.prep1}
 source session-setup.sh
@@ -90,9 +93,21 @@ sort -r -n +1 -2 "$OUTPUT_DIR/global.observations/WORD.T.lc1.sl0.mf2.count" | cu
 sort -r -n +1 -2 "$OUTPUT_DIR/global.observations/WORD.T.lc1.sl0.mf2.count" | cut -f 1 | head -n 200 >"$OUTPUT_DIR/mt-200.stop-list" 
 ```
 
-A "resources" files is also needed, it specifies the location of the stop words files and the impostors directory (as created above in [the GI method](#preparing-the-impostors)):
+For this example we also create a small set of impostors in the same way as [presented in the GI method](user-guide-part1.html#preparing-the-impostors)):
+
 
 ```{bash gen.prep2}
+source session-setup.sh
+mkdir $OUTPUT_DIR/impostors
+mkdir $OUTPUT_DIR/impostors/GI.1.impostors
+n=$(find data/*/* -maxdepth 0 -type f | wc -l)
+cd $OUTPUT_DIR/impostors/GI.1.impostors
+find ../../../data/*/* -maxdepth 0 -type f | random-lines.pl 100 1 $n | while read f; do ln -s $f $(basename "$f").txt; done
+```
+
+A "resources" file is needed, it contains in particular the location of the stop words files and the impostors directory:
+
+```{bash gen.prep3}
 target="$OUTPUT_DIR/gen1/resources-options.conf"
 echo "vocabResources=50:$OUTPUT_DIR/mt-50.stop-list;200:$OUTPUT_DIR/mt-200.stop-list" >"$target"
 echo "useCountFiles=1" >>"$target"
