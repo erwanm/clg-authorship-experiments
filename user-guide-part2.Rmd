@@ -1,5 +1,5 @@
 ---
-title: "CLG Authorship experiments - user guide TMP"
+title: "CLG authorship analytics - user guide (part 2)"
 author: "Erwan Moreau"
 date: "1/23/2022"
 output: html_document
@@ -9,6 +9,25 @@ output: html_document
 knitr::opts_chunk$set(echo = TRUE)
 ```
 
+
+# Overview
+
+This is the second part of the user guide for "CLG authorship analytics". The first part is [here](user-guide-part1.html).
+
+## Rmd
+
+This document was generated from an [R Markdown](https://rmarkdown.rstudio.com/) source file. The source file is provided in the repository, it can be used to reproduce these experiments. It can be executed through the RStudio interface ("knit" button) or as follows:
+
+```
+rmarkdown::render('user-guide-part2.Rmd')
+```
+
+- Naturally the document can also be read as a regular documentation.
+- **Important:** this Rmd document includes [bash chunks](https://bookdown.org/yihui/rmarkdown/language-engines.html). In order for these to work, the environment must have been configured as explained in [Requirements](#requirements) below.
+
+### Options
+
+The `.Rmd` source document can be configured by modifying the following lines:
 
 ```{r myoptions}
 packages.path <- 'packages'
@@ -20,7 +39,9 @@ delete.previous.output <- TRUE
 Sys.setenv(ADD_TO_PERL5LIB = '/home/moreaue/perl5/lib/perl5')
 ```
 
+See [user guide part 1](user-guide-part1.html#options) for details.
 
+### Initialization
 
 ```{bash init1,echo=delete.previous.output,eval=delete.previous.output}
 rm -rf "$OUTPUT_DIR"
@@ -30,8 +51,9 @@ rm -rf "$OUTPUT_DIR"
 mkdir "$OUTPUT_DIR"
 ```
 
+# Requirements
 
-
+The software and data requirements are the same as described in [user guide part 1](user-guide-part1.html#requirements), except that **this part requires a lot more computational power**. It is strongly recommended to run these experiments on a machine with many cores and a large amount of RAM available.
 
 # Genetic learning
 
@@ -114,13 +136,3 @@ echo "vocabResources=50:$OUTPUT_DIR/mt-50.stop-list;200:$OUTPUT_DIR/mt-200.stop-
 echo "useCountFiles=1" >>"$target"
 echo "datasetResourcesPath=$OUTPUT_DIR/impostors/GI.1.impostors" >>"$target"
 ```
-
-### Running the genetic process
-
-todo: input + id
-
-```
-echo user-guide.output/gen1/0/multi-conf-files/basic.multi-conf | train-genetic.sh user-guide.output/gen1 user-guide.output/input gen1_
-```
-
-# Meta-classifier (stacked generalization)

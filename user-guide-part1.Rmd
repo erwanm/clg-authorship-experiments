@@ -1,5 +1,5 @@
 ---
-title: "CLG Authorship analytics - user guide"
+title: "CLG authorship analytics - user guide (part 1)"
 author: "Erwan Moreau"
 date: "1/23/2022"
 output: html_document
@@ -17,14 +17,16 @@ knitr::opts_chunk$set(echo = TRUE)
 An **Author Verification problem** consists in determining for any two text documents (or any two groups of documents)  whether they have been written by the same person, or more generally exhibit similar stylistic features.
 The `verif-author.pl` script produces a set of features for every verification problem as input, using various possible strategies and parameters.
 
+See also:
 
+- [User guide - part 2](user-guide-part2.html)
 
 ## Rmd
 
-This document was generated from an [R Markdown](https://rmarkdown.rstudio.com/) source file. The source file is provided in the repository, allowing full reproducibility of the experiments presented in the paper. It can be executed through the RStudio interface ("knit" button) or as follows:
+This document was generated from an [R Markdown](https://rmarkdown.rstudio.com/) source file. The source file is provided in the repository, it can be used to reproduce these experiments. It can be executed through the RStudio interface ("knit" button) or as follows:
 
 ```
-rmarkdown::render('user-guide.Rmd')
+rmarkdown::render('user-guide-part1.Rmd')
 ```
 
 - Naturally the document can also be read as a regular documentation.
@@ -37,9 +39,11 @@ The `.Rmd` source document can be configured by modifying the following lines:
 ```{r myoptions}
 packages.path <- 'packages'
 Sys.setenv(CLG_AUTHORSHIP_PACKAGES_PATH = packages.path)
-output.dir <- 'user-guide.output'
+output.dir <- 'user-guide-part1.output'
 Sys.setenv(OUTPUT_DIR = output.dir)
 delete.previous.output <- TRUE
+# normally not needed with regular setup:
+Sys.setenv(ADD_TO_PERL5LIB = '/home/moreaue/perl5/lib/perl5')
 ```
 
 * The `packages.path` variable indicates the location of the dependencies (see [software requirements](software-components) below). For the sake of simplicity it is assumed that all the packages are in the same directory (as recommended in the installation instructions, see below). 
