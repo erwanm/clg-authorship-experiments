@@ -1,0 +1,16 @@
+# ****************************************************************
+# REDEFINED COMMON PARAMETERS
+# ****************************************************************
+
+strategy=basic
+
+
+
+# ***************************************************************
+# PARAMETERS FOR BASIC STRATEGY
+# ***************************************************************
+
+
+
+basic.simMeasure=cosine minmax
+multipleProbeAggregate=random  median arithm geom harmo

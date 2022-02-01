@@ -1,0 +1,12 @@
+data/gb/1883-espw-btg data/gb/1881-sw-aloc	0
+data/gb/1883-espw-btg data/gb/1894-espw-asl	1
+data/gb/1883-espw-btg:data/gb/1883-espw-btg data/gb/1868-sw-ditf	0
+data/gb/1868-wta-mob data/gb/1855-wta-aa	1
+data/gb/1868-tsa-aasaos data/gb/1868-tsa-ats	1
+data/gb/1868-tsa-ats data/gb/1868-wta-fof:data/gb/1868-wta-mob	0
+data/gb/1868-wta-mob data/gb/1881-wdh-dbp	0
+data/gb/1868-wta-mob data/gb/1868-sw-ditf	0
+data/gb/1881-sw-aloc data/gb/1868-sw-ditf	1
+data/gb/1881-sw-aloc data/gb/1868-wta-fof	0
+data/gb/1868-tsa-ats data/gb/1868-wta-fof	0
+data/gb/1868-tsa-ats data/gb/1868-wta-mob	0

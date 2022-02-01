@@ -1,0 +1,110 @@
+---
+title: "CLG Authorship experiments - introduction"
+author: "Erwan Moreau"
+date: "1/23/2022"
+output: html_document
+---
+
+```{r setup, include=FALSE}
+knitr::opts_chunk$set(echo = TRUE)
+```
+
+
+```{r myoptions}
+packages.path <- 'packages'
+Sys.setenv(CLG_AUTHORSHIP_PACKAGES_PATH = packages.path)
+output.dir <- 'user-guide.output'
+Sys.setenv(OUTPUT_DIR = output.dir)
+delete.previous.output <- TRUE
+```
+
+
+
+```{bash init1,echo=delete.previous.output,eval=delete.previous.output}
+rm -rf "$OUTPUT_DIR"
+```
+
+```{bash init2}
+mkdir "$OUTPUT_DIR"
+```
+
+
+
+# Genetic learning
+
+Naturally there is a high number of possible configurations. The system is intended to learn which configuration(s) work best with a training dataset, using a genetic algorithm to explore the space of possible configurations efficiently.
+
+## Multi-configurations files
+
+The concept of *multi-config file* is introduced for the genetic process. Such a config file is meant to enumerate all the possible values for a parameter: 
+
+```
+paramName=value1 value2 ... valueN
+``` 
+
+The multi-conf contains the parameters for which the Genetic process has to select the optimal values. The parameters are grouped into three categories (see the [documentation](https://erwanm.github.io/clg-authorship-analytics/#ConfigurationFile) for mor details):
+
+- Common parameters
+- Strategy-specific parameters
+- Genetic process parameter
+
+Examples of multi-config "parts" files are provided in `configs/multi/` These different parts can be combined:
+
+```{bash multi2}
+source session-setup.sh
+mkdir "$OUTPUT_DIR/gen1"
+generate-multi-conf.sh -d configs/multi/ 0 "$OUTPUT_DIR/gen1/0"
+```
+
+- The second argument is 0 for ignoring obsertvation types involving POS tags, 1 otherwise.
+- This generates a full multi-config file on `$OUTPUT_DIR/gen1/0/multi-conf-files` for every strategy.
+- The subdir `0` is needed to avoid that `genetic-train.sh` deletes the dir (confusing design)
+
+### Generating individual config files from a multi-config
+
+The script `expand-multi-config.pl` is used to generate a subset of individual config files based on a multi-config.
+
+- By default it generates the exhaustive set of all the combinations of parameters values. Of course, **using this option wouldn't be wise with a very large number of parameters/values** (see below the number with the `basic` multi-conf file)
+- With option `-r <N>` (used in the example below) it generates a random subset of N configs.
+- With option `-g` (genetic algorithm) it generates a new generation of configs based on the results of a previous generation. This is called internally in the script `train-genetic.sh` presented later.
+
+```{bash multi3}
+source session-setup.sh
+targetdir="$OUTPUT_DIR/example-50-configs"
+mkdir "$targetdir"
+echo "$OUTPUT_DIR/gen1/0/multi-conf-files/basic.multi-conf"  | expand-multi-config.pl -r 50 "$targetdir/"
+```
+
+
+## Genetic algorithm
+
+### Preparation
+
+The multi-config files above contain some ["stop-words" observation types](#stop-words-for-word-observations). For the sake of simplicity we just use the Mark Twain books to compute two stop words lists (50 and 200):
+
+```{bash gen.prep1}
+source session-setup.sh
+find data/gb/*-mt-* -maxdepth 0 -type f >"$OUTPUT_DIR/mark-twain.list"
+count-obs-dataset.sh -i "$OUTPUT_DIR/mark-twain.list" -o '-g' english WORD.T.lc1.sl0.mf2 2>/dev/null
+sort -r -n +1 -2 "$OUTPUT_DIR/global.observations/WORD.T.lc1.sl0.mf2.count" | cut -f 1 | head -n 50 >"$OUTPUT_DIR/mt-50.stop-list" 
+sort -r -n +1 -2 "$OUTPUT_DIR/global.observations/WORD.T.lc1.sl0.mf2.count" | cut -f 1 | head -n 200 >"$OUTPUT_DIR/mt-200.stop-list" 
+```
+
+A "resources" files is also needed, it specifies the location of the stop words files and the impostors directory (as created above in [the GI method](#preparing-the-impostors)):
+
+```{bash gen.prep2}
+target="$OUTPUT_DIR/gen1/resources-options.conf"
+echo "vocabResources=50:$OUTPUT_DIR/mt-50.stop-list;200:$OUTPUT_DIR/mt-200.stop-list" >"$target"
+echo "useCountFiles=1" >>"$target"
+echo "datasetResourcesPath=$OUTPUT_DIR/impostors/GI.1.impostors" >>"$target"
+```
+
+### Running the genetic process
+
+todo: input + id
+
+```
+echo user-guide.output/gen1/0/multi-conf-files/basic.multi-conf | train-genetic.sh user-guide.output/gen1 user-guide.output/input gen1_
+```
+
+# Meta-classifier (stacked generalization)
