@@ -18,8 +18,10 @@ Sys.setenv(OUTPUT_DIR = output.dir)
 delete.previous.output <- TRUE
 # normally not needed with regular setup:
 Sys.setenv(ADD_TO_PERL5LIB = '/home/moreaue/perl5/lib/perl5')
+nb.cores <- 20
 ```
 
+* Note: `nb.cores` should be set to represent the number of cores available on the machine.
 
 
 ```{bash init1,echo=delete.previous.output,eval=delete.previous.output}
@@ -30,6 +32,19 @@ rm -rf "$OUTPUT_DIR"
 mkdir "$OUTPUT_DIR"
 ```
 
+
+# Parallel/distributed processing
+
+The following examples require parallel procesing. The scripts do not handle this themselves, instead a system of external parallel processing is used:
+
+- A predetermined directory, for instance `~/tasks`, is used as an inbox for the tasks to process.
+- A script run with argument `-P ~/tasks` writes multiple individual tasks as simple one-line scripts into this directory, instead of running them sequentially.
+- An external script `task-distrib-daemon.sh` runs in the background, picks up the tasks written in `~/tasks` and runs them in parallel.
+    - `task-distrib-daemon.sh` accepts various options which makes it possible to use for distributed processing on multiple machine (typically on a computing cluster).
+    - Tasks are run whenever a slot is available, based on the provided number of cores.
+- The calling script waits for the tasks to be achieved by checking regularly if some output file has been written.
+- This system allows flexibility at various levels. In particular multiple scripts can use to the same `~/tasks` directory, as long as they write uniquely named files. Since the daemon runs globally, there is no need to control the number of cores allocated to each script. 
+    - This is used to start the genetic process (see below) for several strategies running at the same time, each of them leaving their tasks in the same directory.
 
 
 
