@@ -39,7 +39,7 @@ The `.Rmd` source document can be configured by modifying the following lines:
 ```{r myoptions}
 packages.path <- 'packages'
 Sys.setenv(CLG_AUTHORSHIP_PACKAGES_PATH = packages.path)
-output.dir <- 'user-guide-part1.output'
+output.dir <- '/tmp/user-guide-part1.output'
 Sys.setenv(OUTPUT_DIR = output.dir)
 delete.previous.output <- TRUE
 # normally not needed with regular setup:
@@ -48,6 +48,15 @@ Sys.setenv(ADD_TO_PERL5LIB = '/home/moreaue/perl5/lib/perl5')
 
 * The `packages.path` variable indicates the location of the dependencies (see [software requirements](software-components) below). For the sake of simplicity it is assumed that all the packages are in the same directory (as recommended in the installation instructions, see below). 
 * In Rmd every bash chunk are executed in an independent session, this is why the path for the packages must be initialized. This is used in turn to initialize the environment with the script `session-setup.sh`, which must be present in the same directory for executing the Rmd source file. This is not needed when executing commands manually, as long as the environment has been configured once (see below).
+
+In order to manually execute some of the commands below, it is recommended to assign the appropriate value to the above environment variables for the whole session, for example:
+
+```{bash init0}
+export CLG_AUTHORSHIP_PACKAGES_PATH=packages
+export OUTPUT_DIR=user-guide-part1.output
+```
+
+One can also manually replace the variables with the appropriate value in every command of course (less convenient).
 
 ### Initialization
 
@@ -479,3 +488,7 @@ The three values are:
 - the AUC score
 - the accuracy score modified according to PAN15 evaluation method
 
+
+# Next: genetic learning
+
+The genetic learning process is described in [user guide - part 2](user-guide-part2.html). Note that the second part requires much more computing power than the first one (multiple cores and large RAM recommended).
