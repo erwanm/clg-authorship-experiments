@@ -1,0 +1,39 @@
+
+# ***********************************
+# PARAMETERS USED IN DATA PREPARATION
+# ***********************************
+
+formatting=0
+wordTokenization=1
+
+
+
+# special: observation types allowed
+
+obsType.WORD.T.lc1.sl0.mf3=0 1
+obsType.WORD.TT.lc1.sl0.mf3=0 1
+obsType.WORD.TTT.lc1.sl0.50.mf3=0 1
+obsType.WORD.TTTT.lc1.sl0.50.mf3=0 1
+obsType.CHAR.CCC.lc0.sl0.mf3=0 1
+obsType.CHAR.CCCC.lc0.sl0.mf3=0 1
+
+
+
+
+# ***************************************************************
+# GENERAL PARAMETERS
+# ***************************************************************
+
+# strategy
+strategy=basic univ GI
+# confidence learning (for C@1)
+# 0 = no confidence learning; 1 = using all the training set (same data as score learning); 0<x<1 = separate training data score/confidence learning
+confidenceTrainProp=0
+# the two following params are ignored if confidenceTrainProp=0
+confidenceLearnMethod=J48-M2 J48-M4 J48-M10 LogRegRidge LogRegBoost simpleOptimC1
+# features to use for weka:
+confidenceWekaFeatures=indicators distances all
+# learning mode: weka id
+# learn_method can also have 'simpleColumn_N' as value, where N is the column number to consider as the score (not implemented yet!)
+learnMethod=M5P-M4 M5P-M8 SMO-C1-N0 SMO-C1-N1 SMO-C1-N0-RBF SMO-C1-N1-RBF
+

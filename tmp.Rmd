@@ -16,8 +16,6 @@ Sys.setenv(CLG_AUTHORSHIP_PACKAGES_PATH = packages.path)
 output.dir <- '/tmp/user-guide-part2.output'
 Sys.setenv(OUTPUT_DIR = output.dir)
 delete.previous.output <- TRUE
-# normally not needed with regular setup:
-Sys.setenv(ADD_TO_PERL5LIB = '/home/moreaue/perl5/lib/perl5')
 Sys.setenv(NCORES = 20)
 Sys.setenv(TASKS_DIR= '/tmp/clg-authorship.tasks')
 ```
@@ -26,11 +24,12 @@ Sys.setenv(TASKS_DIR= '/tmp/clg-authorship.tasks')
 * The role of `TASKS_DIR` is described below in the "Parallel/distributed processing" section.
 
 ```{bash init1,echo=delete.previous.output,eval=delete.previous.output}
-rm -rf "$OUTPUT_DIR" "TASKS_DIR"
+rm -rf "$OUTPUT_DIR" "$TASKS_DIR"
 ```
 
 ```{bash init2}
 mkdir "$OUTPUT_DIR"
+mkdir "$TASKS_DIR"
 ```
 
 
@@ -72,12 +71,12 @@ Examples of multi-config "parts" files are provided in `configs/multi/` These di
 ```{bash multi2}
 source session-setup.sh
 mkdir "$OUTPUT_DIR/gen1"
-generate-multi-conf.sh -d configs/multi/ -g genetic.simplified.multi-conf.part 0 "$OUTPUT_DIR/gen1/0"
+generate-multi-conf.sh -d configs/multi/ -c common.simplified.multi-conf.part -g genetic.simplified.multi-conf.part 0 "$OUTPUT_DIR/gen1/0"
 ```
 
 - the `-d` option specifies the directory where the configuration "parts" are found. 
-- `-g` is used to force the use of a specific config file for the genetic part instead of the default (see also [below](#genetic-algorithm) about the genetic process configuration). 
-- The first mandatory argument is 0 for ignoring obsertvation types involving POS tags, 1 otherwise.
+- `-c` and  `-g` are used to force the use of a specific config file for the 'common' and 'genetic' part instead of the default, in this case a simplified variant meant to take less time  (see also [below](#genetic-algorithm) about the genetic process configuration). 
+- The first mandatory argument is 0 for ignoring observation types involving POS tags, 1 otherwise.
 - This generates a full multi-config file on `$OUTPUT_DIR/gen1/0/multi-conf-files` for every strategy.
 - The subdir `0` is needed to avoid that `genetic-train.sh` deletes the dir (confusing design)
 
@@ -163,17 +162,28 @@ Finally we create a small input dataset:
 ```{bash sup1.init}
 mkdir "$OUTPUT_DIR"/gen1/input "$OUTPUT_DIR"/gen1/resources "$OUTPUT_DIR"/gen1/output
 cat data/user-guide.expl1/cases.txt data/user-guide.expl1/test-cases.txt | cut -f 1 | tr ' :' '\n\n'  | sort -u | while read f; do cp "$f" "$OUTPUT_DIR/gen1/input"; done
-cat data/user-guide.expl1/cases.txt | sed 's:data/[^/]*/::g' >"$OUTPUT_DIR/gen1/cases.txt"
+cat data/user-guide.expl1/cases.txt | sed 's:data/[^/]*/::g' >"$OUTPUT_DIR/gen1/input/truth.txt"
 cat data/user-guide.expl1/test-cases.txt | sed 's:data/[^/]*/::g' >"$OUTPUT_DIR/gen1/test-cases.gold.txt"
 cat "$OUTPUT_DIR/gen1/test-cases.gold.txt" | cut -f 1 >"$OUTPUT_DIR/gen1/test-cases.txt"
 ```
+
+- Note: the script expects a file `truth.txt` in a subdirectory `input` containing the cases to be used for training.
 
 ### Running the genetic process
 
 todo: input + id
 
+```{bash sup1.go}
+source session-setup.sh
+task-distrib-daemon.sh  "$TASKS_DIR" $NCORES >"$OUTPUT_DIR/gen1.task-daemon.log" &
+echo "$OUTPUT_DIR/gen1/0/multi-conf-files/basic.multi-conf" | train-genetic.sh -P "$TASKS_DIR/mytasks" -o  '-c -s' "$OUTPUT_DIR/gen1" "$OUTPUT_DIR/gen1/input/truth.txt" indivGenetic_1_
 ```
-echo "$OUTPUT_DIR/gen1/0/multi-conf-files/basic.multi-conf" | train-genetic.sh "$OUTPUT_DIR/gen1" user-guide.output/input indivGenetic_
-```
+
+- To see whether the daemon is starting tasks as expected, check its output in `$OUTPUT_DIR/gen1.task-daemon.log`.
+    - Note: the deamon outputs a summary every 30 minutes by default. The duration, level of detail and various options can be configured in the parameters (see `task-distrib-daemon.sh -h`)
+- The option `-o '-c -s'` is used to call `train-cv.sh` with the following two options:
+    - `-c` cleans up intermediate files created by the process 
+    - `-s` (for *safe*) prevents errors from causing the full process to abort. This is useful as the randomness of the process may sometimes lead to inconsistent input, causing errors. But it should be used with caution, since this implies that errors are ignored.
+- Errors happening in the individual processes are written to files named `$OUTPUT_DIR//gen1/generations/*/train/*.log.err`, where the first `*` corresponds to the geneation id and the second `*` to the configuration id in this generation.
 
 # Meta-classifier (stacked generalization)
