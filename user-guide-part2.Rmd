@@ -35,9 +35,7 @@ Sys.setenv(CLG_AUTHORSHIP_PACKAGES_PATH = packages.path)
 output.dir <- '/tmp/user-guide-part2.output'
 Sys.setenv(OUTPUT_DIR = output.dir)
 delete.previous.output <- TRUE
-# normally not needed with regular setup:
-Sys.setenv(ADD_TO_PERL5LIB = '/home/moreaue/perl5/lib/perl5')
-Sys.setenv(NCORES = 20)
+Sys.setenv(NCORES = 40)
 Sys.setenv(TASKS_DIR= '/tmp/clg-authorship.tasks')
 ```
 
@@ -48,7 +46,7 @@ In order to manually execute some of the commands below, it is recommended to as
 
 ```{bash init0}
 export CLG_AUTHORSHIP_PACKAGES_PATH=packages
-export OUTPUT_DIR=user-guide-part1.output
+export OUTPUT_DIR=/tmp/user-guide-part1.output
 ```
 
 ### Initialization
@@ -59,6 +57,7 @@ rm -rf "$OUTPUT_DIR" "TASKS_DIR"
 
 ```{bash init2}
 mkdir "$OUTPUT_DIR"
+mkdir "$TASKS_DIR"
 ```
 
 
@@ -67,4 +66,160 @@ mkdir "$OUTPUT_DIR"
 The software and data requirements are the same as described in [user guide part 1](user-guide-part1.html#requirements), except that **this part requires a lot more computational power**. It is strongly recommended to run these experiments on a machine with many cores and a large amount of RAM available.
 
 
+# Parallel/distributed processing
+
+The following examples require parallel procesing. The scripts do not handle this themselves, instead a system of external parallel processing is used:
+
+- A predetermined directory, for instance `~/tasks`, is used as an inbox for the tasks to process.
+- A script run with argument `-P ~/tasks` writes multiple individual tasks as simple one-line scripts into this directory, instead of running them sequentially.
+- An external script [`task-distrib-daemon.sh`](https://erwanm.github.io/erw-bash-commons/#task-distrib-daemon.sh) runs in the background, picks up the tasks written in `~/tasks` and runs them in parallel.
+    - `task-distrib-daemon.sh` accepts various options which makes it possible to use for distributed processing on multiple machine (typically on a computing cluster).
+    - Tasks are run whenever a slot is available, based on the provided number of cores.
+- The calling script waits for the tasks to be achieved by checking regularly if some output file has been written.
+- This system allows flexibility at various levels. In particular multiple scripts can use to the same `~/tasks` directory, as long as they write uniquely named files. Since the daemon runs globally, there is no need to control the number of cores allocated to each script. 
+    - This is used to start the genetic process (see below) for several strategies running at the same time, each of them leaving their tasks in the same directory.
+
+
+
+# Genetic learning
+
+Naturally there is a high number of possible configurations. The system is intended to learn which configuration(s) work best with a training dataset, using a genetic algorithm to explore the space of possible configurations efficiently.
+
+## Multi-configurations files
+
+The concept of *multi-config file* is introduced for the genetic process. Such a config file is meant to enumerate all the possible values for a parameter: 
+
+```
+paramName=value1 value2 ... valueN
+``` 
+
+The multi-conf contains the parameters for which the Genetic process has to select the optimal values. The parameters are grouped into three categories (see the [documentation](https://erwanm.github.io/clg-authorship-analytics/#ConfigurationFile) for mor details):
+
+- Common parameters
+- Strategy-specific parameters
+- Genetic process parameter
+
+Examples of multi-config "parts" files are provided in `configs/multi/` These different parts can be combined:
+
+```{bash multi2}
+source session-setup.sh
+mkdir "$OUTPUT_DIR/gen1"
+generate-multi-conf.sh -d configs/multi/ -c common.simplified.multi-conf.part -g genetic.simplified.multi-conf.part 0 "$OUTPUT_DIR/gen1/0"
+```
+
+- the `-d` option specifies the directory where the configuration "parts" are found. 
+- `-c` and  `-g` are used to force the use of a specific config file for the 'common' and 'genetic' part instead of the default, in this case a simplified variant meant to take less time  (see also [below](#genetic-algorithm) about the genetic process configuration). 
+- The first mandatory argument is 0 for ignoring observation types involving POS tags, 1 otherwise.
+- This generates a full multi-config file on `$OUTPUT_DIR/gen1/0/multi-conf-files` for every strategy.
+- The subdir `0` is needed to avoid that `genetic-train.sh` deletes the dir (confusing design)
+
+### Generating individual config files from a multi-config
+
+The script `expand-multi-config.pl` is used to generate a subset of individual config files based on a multi-config.
+
+- By default it generates the exhaustive set of all the combinations of parameters values. Of course, **using this option wouldn't be wise with a very large number of parameters/values** (see below the number with the `basic` multi-conf file)
+- With option `-r <N>` (used in the example below) it generates a random subset of N configs.
+- With option `-g` (genetic algorithm) it generates a new generation of configs based on the results of a previous generation. This is called internally in the script `train-genetic.sh` presented later.
+
+```{bash multi3}
+source session-setup.sh
+targetdir="$OUTPUT_DIR/example-50-configs"
+mkdir "$targetdir"
+echo "$OUTPUT_DIR/gen1/0/multi-conf-files/basic.multi-conf"  | expand-multi-config.pl -r 50 "$targetdir/"
+```
+
+
+## Genetic algorithm
+
+### Configuration
+
+The genetic process is controlled by the "genetic" part of the multi-configuration:
+
+```{bash gen.config1}
+cat configs/multi/genetic.simplified.multi-conf.part
+```
+
+- The `population` parameter is the number of individual configs in every generation.
+- The "stop criterion" defines when to stop the genetic process: the average performance of the configs in a generation is averaged over a window of the N last generations (`stopCriterionNbGenerationsByWindow`). The process stops if this value does not increase during M generations (`stopCriterionNbWindows`). 
+    - Note: this means that the process must run at least N generations.
+- The `geneticParams` are 4 values separated by colons:
+    - `prop breeders` is the proportion of indivuals to select from the prev gen (cannot be higher than 0.5)
+    - `prob mutation` is the probablity of a mutation on one gene. This is actually the probability of a new random value, which can end up being one the parents values.
+    - `prop elite` is the proportion of the new generation taken as is from the top previous generation
+    - `prop random` is the proportion of the new generation selected totally randomly.
+- `perfCriterion`: evalation measure to use: `auc`, `C1` (C@1, variant of accuracy with 'unsure' answer) or `final` (product of the previous two, as used in PAN15).
+- `nbFoldsOrProp`: $k$ value for $k$-fold cross-validation
+- `returnNbBest`: number $n$ of top $n$ best performing configs to return as output of the full process.
+
+The full genetic process may involve a sequence of several steps, each identified with a prefix (e.g. `indivGenetic_`) and followed by an integer or `final` for the last step. This allows progressively refining the evaluation of the configs, for instance by using a higher $k$ or larger 'stop criterion window' in the later stages of the process. This multi-steps sequence is managed by [`train-multi-stages.sh`](https://erwanm.github.io/clg-authorship-analytics/#Implementation%3A%20train-multi-stages.sh).
+
+
+### Preparation
+
+This part is identical to the steps presented in [part 1](user-guide-part1.html).
+
+The multi-config files above contain some ["stop-words" observation types](user-guide-part1.html#stop-words-for-word-observations). For the sake of simplicity we just use the Mark Twain books to compute two stop words lists (50 and 200):
+
+
+```{bash gen.prep1}
+source session-setup.sh
+find data/gb/*-mt-* -maxdepth 0 -type f >"$OUTPUT_DIR/mark-twain.list"
+count-obs-dataset.sh -i "$OUTPUT_DIR/mark-twain.list" -o '-g' english WORD.T.lc1.sl0.mf2 2>/dev/null
+sort -r -n +1 -2 "$OUTPUT_DIR/global.observations/WORD.T.lc1.sl0.mf2.count" | cut -f 1 | head -n 50 >"$OUTPUT_DIR/mt-50.stop-list" 
+sort -r -n +1 -2 "$OUTPUT_DIR/global.observations/WORD.T.lc1.sl0.mf2.count" | cut -f 1 | head -n 200 >"$OUTPUT_DIR/mt-200.stop-list" 
+```
+
+For this example we also create a small set of impostors in the same way as [presented in the GI method](user-guide-part1.html#preparing-the-impostors)):
+
+
+```{bash gen.prep2}
+source session-setup.sh
+mkdir $OUTPUT_DIR/impostors
+mkdir $OUTPUT_DIR/impostors/GI.1.impostors
+n=$(find data/*/* -maxdepth 0 -type f | wc -l)
+cd $OUTPUT_DIR/impostors/GI.1.impostors
+find ../../../data/*/* -maxdepth 0 -type f | random-lines.pl 100 1 $n | while read f; do ln -s $f $(basename "$f").txt; done
+```
+
+A "resources" file is needed, it contains in particular the location of the stop words files and the impostors directory:
+
+```{bash gen.prep3}
+target="$OUTPUT_DIR/gen1/resources-options.conf"
+echo "vocabResources=50:$OUTPUT_DIR/mt-50.stop-list;200:$OUTPUT_DIR/mt-200.stop-list" >"$target"
+echo "useCountFiles=1" >>"$target"
+echo "datasetResourcesPath=$OUTPUT_DIR/impostors/GI.1.impostors" >>"$target"
+```
+
+Finally we create a small input dataset:
+
+```{bash sup1.init}
+mkdir "$OUTPUT_DIR"/gen1/input "$OUTPUT_DIR"/gen1/resources "$OUTPUT_DIR"/gen1/output
+cat data/user-guide.expl1/cases.txt data/user-guide.expl1/test-cases.txt | cut -f 1 | tr ' :' '\n\n'  | sort -u | while read f; do cp "$f" "$OUTPUT_DIR/gen1/input"; done
+cat data/user-guide.expl1/cases.txt | sed 's:data/[^/]*/::g' >"$OUTPUT_DIR/gen1/input/truth.txt"
+cat data/user-guide.expl1/test-cases.txt | sed 's:data/[^/]*/::g' >"$OUTPUT_DIR/gen1/test-cases.gold.txt"
+cat "$OUTPUT_DIR/gen1/test-cases.gold.txt" | cut -f 1 >"$OUTPUT_DIR/gen1/test-cases.txt"
+```
+
+- Note: the script expects a file `truth.txt` in a subdirectory `input` containing the cases to be used for training.
+
+### Running the genetic process
+
+
+```{bash sup1.go}
+source session-setup.sh
+task-distrib-daemon.sh  -s 30s -p 1 -v -q 4 "$TASKS_DIR" $NCORES >"$OUTPUT_DIR/gen1.task-daemon.log" &
+echo "$OUTPUT_DIR/gen1/0/multi-conf-files/basic.multi-conf" | train-genetic.sh -P "$TASKS_DIR/mytasks" -o  '-c -s' "$OUTPUT_DIR/gen1" "$OUTPUT_DIR/gen1/input/truth.txt" indivGenetic_1_
+```
+
+- The above process takes around 10 to 20 mn with 40 cores.
+- To see whether the daemon is starting tasks as expected, check its output in `$OUTPUT_DIR/gen1.task-daemon.log`.
+    - Note: the deamon outputs a summary every 30 minutes by default. The duration, level of detail and various options can be configured in the parameters (see `task-distrib-daemon.sh -h`):
+        - `-s <duration>` cycle duration, i.e. how often to check for new tasks.
+        - `-p <N>` print summary every N cycles.
+        - `-v` verbose mode, more details printed (`-V` for highest verbosity level).
+        - `-q <N>` stop the daemon after N cycles idle (no task running, no new task). By default the daemon runs until interrupted.
+- The option `-o '-c -s'` is used to call `train-cv.sh` with the following two options:
+    - `-c` cleans up intermediate files created by the process 
+    - `-s` (for *safe*) prevents errors from causing the full process to abort. This is useful as the randomness of the process may sometimes lead to inconsistent input, causing errors. But it should be used with caution, since this implies that errors are ignored.
+- Errors happening in the individual processes are written to files named `$OUTPUT_DIR//gen1/generations/*/train/*.log.err`, where the first `*` corresponds to the geneation id and the second `*` to the configuration id in this generation.
 

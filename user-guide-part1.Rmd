@@ -53,7 +53,7 @@ In order to manually execute some of the commands below, it is recommended to as
 
 ```{bash init0}
 export CLG_AUTHORSHIP_PACKAGES_PATH=packages
-export OUTPUT_DIR=user-guide-part1.output
+export OUTPUT_DIR=/tmp/user-guide-part1.output
 ```
 
 One can also manually replace the variables with the appropriate value in every command of course (less convenient).
@@ -313,8 +313,7 @@ source session-setup.sh
 mkdir $OUTPUT_DIR/impostors
 mkdir $OUTPUT_DIR/impostors/GI.1.impostors
 n=$(find data/*/* -maxdepth 0 -type f | wc -l)
-cd $OUTPUT_DIR/impostors/GI.1.impostors
-find ../../../data/*/* -maxdepth 0 -type f | random-lines.pl 100 1 $n | while read f; do ln -s $f $(basename "$f").txt; done
+find data/*/* -maxdepth 0 -type f | random-lines.pl 100 1 $n | while read f; do cp $f $OUTPUT_DIR/impostors/GI.1.impostors/$(basename "$f").txt; done
 ```
 
 ### "Simple" example
@@ -352,7 +351,7 @@ Parameters (see [details](https://erwanm.github.io/clg-authorship-analytics/#CLG
 
 ```{bash gi.1}
 source session-setup.sh
-time verif-author.pl -H -d $OUTPUT_DIR configs/GI.1.conf data/gb/1876-mt-taots:data/gb/1884-mt-taohf data/gb/1888-hj-tap:data/gb/1896-hj-tsop:data/gb/1898-hj-ttm
+verif-author.pl -H -d $OUTPUT_DIR configs/GI.1.conf data/gb/1876-mt-taots:data/gb/1884-mt-taohf data/gb/1888-hj-tap:data/gb/1896-hj-tsop:data/gb/1898-hj-ttm
 ```
 
 ### Example with pre-computed similarities
