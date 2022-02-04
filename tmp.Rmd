@@ -171,19 +171,20 @@ cat "$OUTPUT_DIR/gen1/test-cases.gold.txt" | cut -f 1 >"$OUTPUT_DIR/gen1/test-ca
 
 ### Running the genetic process
 
-todo: input + id
 
 ```{bash sup1.go}
 source session-setup.sh
-task-distrib-daemon.sh  -s 30s -p 1 -v "$TASKS_DIR" $NCORES >"$OUTPUT_DIR/gen1.task-daemon.log" &
+task-distrib-daemon.sh  -s 30s -p 1 -v -q 4 "$TASKS_DIR" $NCORES >"$OUTPUT_DIR/gen1.task-daemon.log" &
 echo "$OUTPUT_DIR/gen1/0/multi-conf-files/basic.multi-conf" | train-genetic.sh -P "$TASKS_DIR/mytasks" -o  '-c -s' "$OUTPUT_DIR/gen1" "$OUTPUT_DIR/gen1/input/truth.txt" indivGenetic_1_
 ```
 
+- The above process takes around 10 to 20 mn with 40 cores.
 - To see whether the daemon is starting tasks as expected, check its output in `$OUTPUT_DIR/gen1.task-daemon.log`.
     - Note: the deamon outputs a summary every 30 minutes by default. The duration, level of detail and various options can be configured in the parameters (see `task-distrib-daemon.sh -h`):
         - `-s <duration>` cycle duration, i.e. how often to check for new tasks.
         - `-p <N>` print summary every N cycles.
         - `-v` verbose mode, more details printed (`-V` for highest verbosity level).
+        - `-q <N>` stop the daemon after N cycles idle (no task running, no new task). By default the daemon runs until interrupted.
 - The option `-o '-c -s'` is used to call `train-cv.sh` with the following two options:
     - `-c` cleans up intermediate files created by the process 
     - `-s` (for *safe*) prevents errors from causing the full process to abort. This is useful as the randomness of the process may sometimes lead to inconsistent input, causing errors. But it should be used with caution, since this implies that errors are ignored.
