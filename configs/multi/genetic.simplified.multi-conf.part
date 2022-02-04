@@ -4,9 +4,9 @@
 
 indivGenetic_1_population=40
 indivGenetic_1_stopCriterionNbWindows=3
-indivGenetic_1_stopCriterionNbGenerationsByWindow=4
-indivGenetic_1_geneticParams=0.1:0.02:0.1:0.05
-indivGenetic_1_perfCriterion=auc
+indivGenetic_1_stopCriterionNbGenerationsByWindow=2
+indivGenetic_1_geneticParams=0.2:0.02:0.1:0.05
+indivGenetic_1_perfCriterion=AUC
 indivGenetic_1_nbFoldsOrProp=2
 indivGenetic_1_returnNbBest=100
 
