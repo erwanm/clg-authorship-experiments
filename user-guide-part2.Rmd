@@ -177,8 +177,7 @@ source session-setup.sh
 mkdir $OUTPUT_DIR/impostors
 mkdir $OUTPUT_DIR/impostors/GI.1.impostors
 n=$(find data/*/* -maxdepth 0 -type f | wc -l)
-cd $OUTPUT_DIR/impostors/GI.1.impostors
-find ../../../data/*/* -maxdepth 0 -type f | random-lines.pl 100 1 $n | while read f; do ln -s $f $(basename "$f").txt; done
+find data/*/* -maxdepth 0 -type f | random-lines.pl 100 1 $n | while read f; do cp $f $OUTPUT_DIR/impostors/GI.1.impostors/$(basename "$f").txt; done
 ```
 
 A "resources" file is needed, it contains in particular the location of the stop words files and the impostors directory:

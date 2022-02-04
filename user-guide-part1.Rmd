@@ -398,7 +398,10 @@ The system expects some standard directory structure. This can be created automa
 ```{bash sup1.init}
 mkdir "$OUTPUT_DIR"/sup1
 mkdir "$OUTPUT_DIR"/sup1/input "$OUTPUT_DIR"/sup1/resources "$OUTPUT_DIR"/sup1/output
-cp data/user-guide.expl1/resources-options.conf "$OUTPUT_DIR"/sup1
+target="$OUTPUT_DIR/sup1/resources-options.conf"
+echo "vocabResources=" >"$target"
+echo "useCountFiles=1" >>"$target"
+echo "datasetResourcesPath=$OUTPUT_DIR/impostors/GI.1.impostors" >>"$target"
 cat data/user-guide.expl1/cases.txt data/user-guide.expl1/test-cases.txt | cut -f 1 | tr ' :' '\n\n'  | sort -u | while read f; do cp "$f" "$OUTPUT_DIR/sup1/input"; done
 cat data/user-guide.expl1/cases.txt | sed 's:data/[^/]*/::g' >"$OUTPUT_DIR/sup1/cases.txt"
 cat data/user-guide.expl1/test-cases.txt | sed 's:data/[^/]*/::g' >"$OUTPUT_DIR/sup1/test-cases.gold.txt"
@@ -460,7 +463,7 @@ The script called below requires the dataset to have been split before and the i
 ```{bash cv.split}
 source session-setup.sh
 mkdir "$OUTPUT_DIR/sup1/output/folds"
-n=$(cat user-guide.output/sup1/cases.txt  | wc -l)
+n=$(cat $OUTPUT_DIR/sup1/cases.txt  | wc -l)
 generate-random-cross-fold-ids.pl 5 $n "$OUTPUT_DIR/sup1/output/folds/fold"
 for f in "$OUTPUT_DIR"/sup1/output/folds/fold*.indexes; do
   cat  "$OUTPUT_DIR/sup1/cases.txt" | select-lines-nos.pl "$f" 1 >${f%.indexes}.cases
