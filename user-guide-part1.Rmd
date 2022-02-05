@@ -103,6 +103,7 @@ ls data/*/* | head
 For these experiments we create a version of the dataset where each document is replaced with a 100 lines snippet:
 
 ```{bash snippets}
+source session-setup.sh
 find data/gb/* data/ia/* -maxdepth 0 -type f | ./create-snippets-dataset.sh $SNIPPETS_SIZE $OUTPUT_DIR/data
 ```
 

@@ -54,7 +54,7 @@ export OUTPUT_DIR=/tmp/user-guide-part1.output
 ### Initialization
 
 ```{bash init1,echo=delete.previous.output,eval=delete.previous.output}
-rm -rf "$OUTPUT_DIR" "TASKS_DIR"
+rm -rf "$OUTPUT_DIR" "$TASKS_DIR"
 ```
 
 ```{bash init2}
@@ -63,6 +63,7 @@ mkdir "$TASKS_DIR"
 ```
 
 ```{bash snippets}
+source session-setup.sh
 find data/gb/* data/ia/* -maxdepth 0 -type f | ./create-snippets-dataset.sh $SNIPPETS_SIZE $OUTPUT_DIR/data
 ```
 
@@ -238,7 +239,7 @@ As mentioned [above](#configuration), there can be several steps of genetic trai
 
 In the following code we use the `-r` option to resume the previous training and apply the final stage. Note that the id  provided as last parameter contains only the prefix `indivGenetic` since it's not about a specific stage anymore. 
 
-```{bash sup1.go}
+```{bash sup1.multi}
 source session-setup.sh
 task-distrib-daemon.sh  -s 30s -p 1 -v -q 4 "$TASKS_DIR" $NCORES >"$OUTPUT_DIR/gen1.task-daemon.log" &
 train-multi-stages.sh -P "$TASKS_DIR/mytasks" -o  '-c -s' "$OUTPUT_DIR/gen1" "$OUTPUT_DIR/gen1/input/truth.txt" "$OUTPUT_DIR/gen1/0/multi-conf-files/basic.multi-conf" indivGenetic
