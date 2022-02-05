@@ -35,6 +35,8 @@ Sys.setenv(CLG_AUTHORSHIP_PACKAGES_PATH = packages.path)
 output.dir <- '/tmp/user-guide-part2.output'
 Sys.setenv(OUTPUT_DIR = output.dir)
 delete.previous.output <- TRUE
+snippets.size <- 100
+Sys.setenv(SNIPPETS_SIZE = snippets.size)
 Sys.setenv(NCORES = 40)
 Sys.setenv(TASKS_DIR= '/tmp/clg-authorship.tasks')
 ```
@@ -61,7 +63,7 @@ mkdir "$TASKS_DIR"
 ```
 
 ```{bash snippets}
-find data/gb/* data/ia/* -maxdepth 0 -type f | ./create-snippets-dataset.sh 100 $OUTPUT_DIR/data
+find data/gb/* data/ia/* -maxdepth 0 -type f | ./create-snippets-dataset.sh $SNIPPETS_SIZE $OUTPUT_DIR/data
 ```
 
 

@@ -42,8 +42,8 @@ Sys.setenv(CLG_AUTHORSHIP_PACKAGES_PATH = packages.path)
 output.dir <- '/tmp/user-guide-part1.output'
 Sys.setenv(OUTPUT_DIR = output.dir)
 delete.previous.output <- TRUE
-# normally not needed with regular setup:
-Sys.setenv(ADD_TO_PERL5LIB = '/home/moreaue/perl5/lib/perl5')
+snippets.size <- 100
+Sys.setenv(SNIPPETS_SIZE = snippets.size)
 ```
 
 * The `packages.path` variable indicates the location of the dependencies (see [software requirements](software-components) below). For the sake of simplicity it is assumed that all the packages are in the same directory (as recommended in the installation instructions, see below). 
@@ -103,7 +103,7 @@ ls data/*/* | head
 For these experiments we create a version of the dataset where each document is replaced with a 100 lines snippet:
 
 ```{bash snippets}
-find data/gb/* data/ia/* -maxdepth 0 -type f | ./create-snippets-dataset.sh 100 $OUTPUT_DIR/data
+find data/gb/* data/ia/* -maxdepth 0 -type f | ./create-snippets-dataset.sh $SNIPPETS_SIZE $OUTPUT_DIR/data
 ```
 
 # Simple examples
