@@ -60,6 +60,10 @@ mkdir "$OUTPUT_DIR"
 mkdir "$TASKS_DIR"
 ```
 
+```{bash snippets}
+find data/gb/* data/ia/* -maxdepth 0 -type f | ./create-snippets-dataset.sh 100 $OUTPUT_DIR/data
+```
+
 
 # Requirements
 
@@ -163,7 +167,7 @@ The multi-config files above contain some ["stop-words" observation types](user-
 
 ```{bash gen.prep1}
 source session-setup.sh
-find data/gb/*-mt-* -maxdepth 0 -type f >"$OUTPUT_DIR/mark-twain.list"
+find $OUTPUT_DIR/data/*-mt-* -maxdepth 0 -type f >"$OUTPUT_DIR/mark-twain.list"
 count-obs-dataset.sh -i "$OUTPUT_DIR/mark-twain.list" -o '-g' english WORD.T.lc1.sl0.mf2 2>/dev/null
 sort -r -n +1 -2 "$OUTPUT_DIR/global.observations/WORD.T.lc1.sl0.mf2.count" | cut -f 1 | head -n 50 >"$OUTPUT_DIR/mt-50.stop-list" 
 sort -r -n +1 -2 "$OUTPUT_DIR/global.observations/WORD.T.lc1.sl0.mf2.count" | cut -f 1 | head -n 200 >"$OUTPUT_DIR/mt-200.stop-list" 
