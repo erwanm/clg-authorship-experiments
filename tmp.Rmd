@@ -189,5 +189,10 @@ echo "$OUTPUT_DIR/gen1/0/multi-conf-files/basic.multi-conf" | train-genetic.sh -
     - `-c` cleans up intermediate files created by the process 
     - `-s` (for *safe*) prevents errors from causing the full process to abort. This is useful as the randomness of the process may sometimes lead to inconsistent input, causing errors. But it should be used with caution, since this implies that errors are ignored.
 - Errors happening in the individual processes are written to files named `$OUTPUT_DIR//gen1/generations/*/train/*.log.err`, where the first `*` corresponds to the geneation id and the second `*` to the configuration id in this generation.
+- The output is found in `$OUTPUT_DIR/gen1/`:
+    - The `best-configs` contains the top N configuration files (in the above configuration N=100)
+    - The file `best-configs.res` contains the CV performance of the top N configs
+    - The file `all-configs.results` contains the CV performance of all the configs evaluated for every generation (caution: the configs ids are different from the ids of the top configs).
+
 
 # Meta-classifier (stacked generalization)
