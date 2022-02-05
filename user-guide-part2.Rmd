@@ -157,7 +157,7 @@ cat configs/multi/genetic.simplified.multi-conf.part
 - `nbFoldsOrProp`: $k$ value for $k$-fold cross-validation
 - `returnNbBest`: number $n$ of top $n$ best performing configs to return as output of the full process.
 
-The full genetic process may involve a sequence of several steps, each identified with a prefix (e.g. `indivGenetic_`) and followed by an integer or `final` for the last step. This allows progressively refining the evaluation of the configs, for instance by using a higher $k$ or larger 'stop criterion window' in the later stages of the process. This multi-steps sequence is managed by [`train-multi-stages.sh`](https://erwanm.github.io/clg-authorship-analytics/#Implementation%3A%20train-multi-stages.sh).
+The full genetic process may involve a sequence of several steps, each identified with a prefix (e.g. `indivGenetic_`) and followed by an integer or `final` for the last step. This allows progressively refining the evaluation of the configs, for instance by using a higher $k$ or larger 'stop criterion window' in the later stages of the process. This multi-steps sequence is managed by [`train-multi-stages.sh`](https://erwanm.github.io/clg-authorship-analytics/#Implementation%3A%20train-multi-stages.sh) (see also below).
 
 
 ### Preparation
@@ -228,3 +228,18 @@ echo "$OUTPUT_DIR/gen1/0/multi-conf-files/basic.multi-conf" | train-genetic.sh -
     - `-s` (for *safe*) prevents errors from causing the full process to abort. This is useful as the randomness of the process may sometimes lead to inconsistent input, causing errors. But it should be used with caution, since this implies that errors are ignored.
 - Errors happening in the individual processes are written to files named `$OUTPUT_DIR//gen1/generations/*/train/*.log.err`, where the first `*` corresponds to the geneation id and the second `*` to the configuration id in this generation.
 
+
+### Multi-stages genetic process
+
+As mentioned [above](#configuration), there can be several steps of genetic training with different parameters. A multi-stages sequence must always end with a special stage identified as `final` in the genetic configuration file. This step finalizes the process:
+
+- It performs [5x2 repeated cross-validation](https://en.wikipedia.org/wiki/Cross-validation_(statistics)#Repeated_random_sub-sampling_validation) with [train-multi-runs.sh](https://erwanm.github.io/clg-authorship-analytics/#5x2%20cross-validation) on the best configurations returned by the last stage of genetic training. The final set of configs is selected based on the results of this evaluation.
+- It re-trains the selected configs on the full training data and also performs once cross-validation once again to obtain the final evaluation scores.
+
+In the following code we use the `-r` option to resume the previous training and apply the final stage. Note that the id  provided as last parameter contains only the prefix `indivGenetic` since it's not about a specific stage anymore. 
+
+```{bash sup1.go}
+source session-setup.sh
+task-distrib-daemon.sh  -s 30s -p 1 -v -q 4 "$TASKS_DIR" $NCORES >"$OUTPUT_DIR/gen1.task-daemon.log" &
+train-multi-stages.sh -P "$TASKS_DIR/mytasks" -o  '-c -s' "$OUTPUT_DIR/gen1" "$OUTPUT_DIR/gen1/input/truth.txt" "$OUTPUT_DIR/gen1/0/multi-conf-files/basic.multi-conf" indivGenetic
+```
