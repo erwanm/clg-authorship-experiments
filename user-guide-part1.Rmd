@@ -100,6 +100,12 @@ ls data/*/* | head
 - This document assumes that the CLSA data is found in the directory `./data`. If this is not the case it is advised to create a symbolic link for convenience.
 - The `data` directory must be writable because the program uses cached intermediate files whenever possible for efficiency reasons
 
+For these experiments we create a version of the dataset where each document is replaced with a 100 lines snippet:
+
+```{bash snippets}
+find data/gb/* data/ia/* -maxdepth 0 -type f | ./create-snippets-dataset.sh 100 $OUTPUT_DIR/data
+```
+
 # Simple examples
 
 ## Example using only command line arguments
@@ -108,7 +114,7 @@ The simplest way to use the system is to specify the strategy and its parameters
 
 ```{bash basic.1}
 source session-setup.sh
-verif-author.pl -s "strategy=basic;obsType.CHAR.CCC.lc1.sl0.mf3=1" data/gb/1876-mt-taots data/gb/1884-mt-taohf 2>/dev/null
+verif-author.pl -s "strategy=basic;obsType.CHAR.CCC.lc1.sl0.mf3=1" $OUTPUT_DIR/data/1876-mt-taots $OUTPUT_DIR/data/1884-mt-taohf 2>/dev/null
 ```
 
 * The `obsType` parameter represents charaters (`CHAR`) trigrams (`CCC`) with lowercase, no sentence limit and minimum frequency 3. See the [CLGTextTools documentation](https://erwanm.github.io/CLGTextTools/#Definitions) for details about observation types.
@@ -140,7 +146,7 @@ The same result as above can be obtained as follows:
 
 ```{bash basic.2}
 source session-setup.sh
-verif-author.pl -c configs/basic.2.conf data/gb/1876-mt-taots data/gb/1884-mt-taohf
+verif-author.pl -c configs/basic.2.conf $OUTPUT_DIR/data/1876-mt-taots $OUTPUT_DIR/data/1884-mt-taohf
 ```
 
 - The `-c` option is used to cache and if possible reuse the *count files*: for every document, a count file  is created for every observation type which contains the frequency for every observation.
@@ -161,7 +167,7 @@ In this example we use various [observation types "families"](https://erwanm.git
 
 ```{bash basic.3}
 source session-setup.sh
-verif-author.pl -H configs/basic.3.conf data/gb/1876-mt-taots data/gb/1884-mt-taohf
+verif-author.pl -H configs/basic.3.conf $OUTPUT_DIR/data/1876-mt-taots $OUTPUT_DIR/data/1884-mt-taohf
 ```
 
 * Option `-H` is used to print the columns names as the first line (header).
@@ -176,7 +182,7 @@ In this example we use the same config as above but compare a group of books by 
 
 ```{bash basic.3.multi1}
 source session-setup.sh
-verif-author.pl -H configs/basic.3.conf data/gb/1876-mt-taots:data/gb/1884-mt-taohf data/gb/1888-hj-tap:data/gb/1896-hj-tsop:data/gb/1898-hj-ttm
+verif-author.pl -H configs/basic.3.conf $OUTPUT_DIR/data/1876-mt-taots:$OUTPUT_DIR/data/1884-mt-taohf $OUTPUT_DIR/data/1888-hj-tap:$OUTPUT_DIR/data/1896-hj-tsop:$OUTPUT_DIR/data/1898-hj-ttm
 ```
 
 * There can be any number of documents in each of the two groups
@@ -200,7 +206,7 @@ The same config as above is applied to these four problems:
 
 ```{bash basic.3.multi2}
 source session-setup.sh
-cat data/user-guide.expl1/cases.txt | cut -f 1 | verif-author.pl -H configs/basic.3.conf
+cat data/user-guide.expl1/cases.txt | sed "s:data/gb:$OUTPUT_DIR/data:g" | cut -f 1 | verif-author.pl -H configs/basic.3.conf
 ```
 
 # Technical notes about observation types (preprocessing)
@@ -217,7 +223,7 @@ These require the POS tags to have been precomputed and stored into `.POS` files
 
 ```{bash pos.expl1}
 source session-setup.sh
-ls data/gb/1876-mt-taots data/gb/1884-mt-taohf | count-obs-dataset.sh english POS.P.sl0.mf1 2>/dev/null
+ls $OUTPUT_DIR/data/1876-mt-taots $OUTPUT_DIR/data/1884-mt-taohf | count-obs-dataset.sh english POS.P.sl0.mf1 2>/dev/null
 ```
 
 Note: the input documents are provided on STDIN.
@@ -231,7 +237,7 @@ A "stop words list" based on frequency can be calculated based on a collection o
 
 ```{bash stopwords1}
 source session-setup.sh
-find data/gb/*-mt-* -maxdepth 0 -type f >"$OUTPUT_DIR/mark-twain.list"
+find $OUTPUT_DIR/data/*-mt-* -maxdepth 0 -type f >"$OUTPUT_DIR/mark-twain.list"
 count-obs-dataset.sh -i "$OUTPUT_DIR/mark-twain.list" -o '-g' english WORD.T.lc1.sl0.mf2 2>/dev/null
 sort -r -n +1 -2 "$OUTPUT_DIR/global.observations/WORD.T.lc1.sl0.mf2.count" | cut -f 1 | head -n 100 >"$OUTPUT_DIR/mt-100.stop-list" 
 ```
@@ -252,7 +258,7 @@ cat configs/basic.4.conf
 
 ```{bash stopwords3}
 source session-setup.sh
-verif-author.pl -H -v mt-100:$OUTPUT_DIR/mt-100.stop-list configs/basic.4.conf data/gb/1876-mt-taots:data/gb/1884-mt-taohf data/gb/1888-hj-tap:data/gb/1896-hj-tsop:data/gb/1898-hj-ttm
+verif-author.pl -H -v mt-100:$OUTPUT_DIR/mt-100.stop-list configs/basic.4.conf $OUTPUT_DIR/data/1876-mt-taots:$OUTPUT_DIR/data/1884-mt-taohf $OUTPUT_DIR/data/1888-hj-tap:$OUTPUT_DIR/data/1896-hj-tsop:$OUTPUT_DIR/data/1898-hj-ttm
 ```
 
 
@@ -288,7 +294,7 @@ This is an ensemble method, the time it requires is proportional to `nbRounds` (
 
 ```{bash univ.1}
 source session-setup.sh
-time verif-author.pl -H configs/univ.1.conf data/gb/1876-mt-taots:data/gb/1884-mt-taohf data/gb/1888-hj-tap:data/gb/1896-hj-tsop:data/gb/1898-hj-ttm
+verif-author.pl -H configs/univ.1.conf $OUTPUT_DIR/data/1876-mt-taots:$OUTPUT_DIR/data/1884-mt-taohf $OUTPUT_DIR/data/1888-hj-tap:$OUTPUT_DIR/data/1896-hj-tsop:$OUTPUT_DIR/data/1898-hj-ttm
 ```
 
 
@@ -312,8 +318,8 @@ Below we create a directory with a random subset of 100 books from the dataset. 
 source session-setup.sh
 mkdir $OUTPUT_DIR/impostors
 mkdir $OUTPUT_DIR/impostors/GI.1.impostors
-n=$(find data/*/* -maxdepth 0 -type f | wc -l)
-find data/*/* -maxdepth 0 -type f | random-lines.pl 100 1 $n | while read f; do cp $f $OUTPUT_DIR/impostors/GI.1.impostors/$(basename "$f").txt; done
+n=$(find $OUTPUT_DIR/data/* -maxdepth 0 -type f | wc -l)
+find $OUTPUT_DIR/data/* -maxdepth 0 -type f | random-lines.pl 100 1 $n | while read f; do cp $f $OUTPUT_DIR/impostors/GI.1.impostors/$(basename "$f").txt; done
 ```
 
 ### "Simple" example
@@ -351,7 +357,7 @@ Parameters (see [details](https://erwanm.github.io/clg-authorship-analytics/#CLG
 
 ```{bash gi.1}
 source session-setup.sh
-verif-author.pl -H -d $OUTPUT_DIR configs/GI.1.conf data/gb/1876-mt-taots:data/gb/1884-mt-taohf data/gb/1888-hj-tap:data/gb/1896-hj-tsop:data/gb/1898-hj-ttm
+verif-author.pl -H -d $OUTPUT_DIR configs/GI.1.conf $OUTPUT_DIR/data/1876-mt-taots:$OUTPUT_DIR/data/1884-mt-taohf $OUTPUT_DIR/data/1888-hj-tap:$OUTPUT_DIR/data/1896-hj-tsop:$OUTPUT_DIR/data/1898-hj-ttm
 ```
 
 ### Example with pre-computed similarities
@@ -366,7 +372,7 @@ Below we precompute similarities with the same impostors data and same probe fil
 ```{bash gi.2.prepare}
 source session-setup.sh
 find $OUTPUT_DIR/impostors/GI.1.impostors/* -maxdepth 0 -type f  >$OUTPUT_DIR/impostors/GI.1.impostors.list
-ls data/gb/1876-mt-taots data/gb/1884-mt-taohf data/gb/1888-hj-tap data/gb/1896-hj-tsop data/gb/1898-hj-ttm >$OUTPUT_DIR/probe-files.list
+ls $OUTPUT_DIR/data/1876-mt-taots $OUTPUT_DIR/data/1884-mt-taohf $OUTPUT_DIR/data/1888-hj-tap $OUTPUT_DIR/data/1896-hj-tsop $OUTPUT_DIR/data/1898-hj-ttm >$OUTPUT_DIR/probe-files.list
 sim-collections-doc-by-doc.pl -o WORD.T.lc1.sl0.mf3 -R BASENAME WORD.T.lc1.sl0.mf3:CHAR.CCC.lc1.sl0.mf3 $OUTPUT_DIR/probe-files.list GI.1.impostors:$OUTPUT_DIR/impostors/GI.1.impostors.list 2>/dev/null
 ```
 
@@ -379,7 +385,7 @@ cat configs/GI.2.conf
 
 ```{bash gi.2}
 source session-setup.sh
-time verif-author.pl -H -d $OUTPUT_DIR configs/GI.1.conf data/gb/1876-mt-taots:data/gb/1884-mt-taohf data/gb/1888-hj-tap:data/gb/1896-hj-tsop:data/gb/1898-hj-ttm
+verif-author.pl -H -d $OUTPUT_DIR configs/GI.1.conf $OUTPUT_DIR/data/1876-mt-taots:$OUTPUT_DIR/data/1884-mt-taohf $OUTPUT_DIR/data/1888-hj-tap:$OUTPUT_DIR/data/1896-hj-tsop:$OUTPUT_DIR/data/1898-hj-ttm
 ```
 
 # Supervised learning 

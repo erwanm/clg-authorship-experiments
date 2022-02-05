@@ -247,6 +247,8 @@ ls data/*/* | head</code></pre>
 <li>This document assumes that the CLSA data is found in the directory <code>./data</code>. If this is not the case it is advised to create a symbolic link for convenience.</li>
 <li>The <code>data</code> directory must be writable because the program uses cached intermediate files whenever possible for efficiency reasons</li>
 </ul>
+<p>For these experiments we create a version of the dataset where each document is replaced with a 100 lines snippet:</p>
+<pre class="bash"><code>find data/gb/* data/ia/* -maxdepth 0 -type f | ./create-snippets-dataset.sh 100 $OUTPUT_DIR/data</code></pre>
 </div>
 </div>
 <div id="simple-examples" class="section level1">
@@ -255,8 +257,8 @@ ls data/*/* | head</code></pre>
 <h2>Example using only command line arguments</h2>
 <p>The simplest way to use the system is to specify the strategy and its parameters directly on the command line. In the following we compare Mark Twain’s “The Adventures of Tom Sawyer” and “The Adventures of Huckleberry Finn” (the last two arguments).</p>
 <pre class="bash"><code>source session-setup.sh
-verif-author.pl -s &quot;strategy=basic;obsType.CHAR.CCC.lc1.sl0.mf3=1&quot; data/gb/1876-mt-taots data/gb/1884-mt-taohf 2&gt;/dev/null</code></pre>
-<pre><code>## 0.660189298720126</code></pre>
+verif-author.pl -s &quot;strategy=basic;obsType.CHAR.CCC.lc1.sl0.mf3=1&quot; $OUTPUT_DIR/data/1876-mt-taots $OUTPUT_DIR/data/1884-mt-taohf 2&gt;/dev/null</code></pre>
+<pre><code>## 0.381123081742439</code></pre>
 <ul>
 <li>The <code>obsType</code> parameter represents charaters (<code>CHAR</code>) trigrams (<code>CCC</code>) with lowercase, no sentence limit and minimum frequency 3. See the <a href="https://erwanm.github.io/CLGTextTools/#Definitions">CLGTextTools documentation</a> for details about observation types.</li>
 <li>The default similarity measure <em>minmax</em> is used.</li>
@@ -287,8 +289,8 @@ verif-author.pl -s &quot;strategy=basic;obsType.CHAR.CCC.lc1.sl0.mf3=1&quot; dat
 </ul>
 <p>The same result as above can be obtained as follows:</p>
 <pre class="bash"><code>source session-setup.sh
-verif-author.pl -c configs/basic.2.conf data/gb/1876-mt-taots data/gb/1884-mt-taohf</code></pre>
-<pre><code>## 0.660189298720122</code></pre>
+verif-author.pl -c configs/basic.2.conf $OUTPUT_DIR/data/1876-mt-taots $OUTPUT_DIR/data/1884-mt-taohf</code></pre>
+<pre><code>## 0.381123081742438</code></pre>
 <ul>
 <li>The <code>-c</code> option is used to cache and if possible reuse the <em>count files</em>: for every document, a count file is created for every observation type which contains the frequency for every observation.</li>
 </ul>
@@ -314,9 +316,9 @@ verif-author.pl -c configs/basic.2.conf data/gb/1876-mt-taots data/gb/1884-mt-ta
 ## formatting=0</code></pre>
 <p>In this example we use various <a href="https://erwanm.github.io/CLGTextTools/#ObservationType">observation types “families”</a>.</p>
 <pre class="bash"><code>source session-setup.sh
-verif-author.pl -H configs/basic.3.conf data/gb/1876-mt-taots data/gb/1884-mt-taohf</code></pre>
+verif-author.pl -H configs/basic.3.conf $OUTPUT_DIR/data/1876-mt-taots $OUTPUT_DIR/data/1884-mt-taohf</code></pre>
 <pre><code>## CHAR.CC.lc1.sl0.mf3  CHAR.CCC.lc1.sl0.mf3    VOCABCLASS.MORPHO.mf3   WORD.T.lc1.sl0.mf2  WORD.TT.lc1.sl0.mf2
-## 0.78550190512343 0.660189298720126   0.869308226412144   0.535823273937859   0.26650455005753</code></pre>
+## 0.610619442082035    0.381123081742439   0.860821200190789   0.313583361949269   0.0537664203612478</code></pre>
 <ul>
 <li>Option <code>-H</code> is used to print the columns names as the first line (header).</li>
 </ul>
@@ -326,9 +328,9 @@ verif-author.pl -H configs/basic.3.conf data/gb/1876-mt-taots data/gb/1884-mt-ta
 <p>The program can also receive two groups of documents instead of two documents as input. Documents which are together in the same group are assumed to have been written by the same author. Multiple documents by the same author can potentially provide crucial insight by allowing the verification method to distinguish constant stylistic features vs. document-specific ones.</p>
 <p>In this example we use the same config as above but compare a group of books by Mark Twain vs. a group of books by Henry James:</p>
 <pre class="bash"><code>source session-setup.sh
-verif-author.pl -H configs/basic.3.conf data/gb/1876-mt-taots:data/gb/1884-mt-taohf data/gb/1888-hj-tap:data/gb/1896-hj-tsop:data/gb/1898-hj-ttm</code></pre>
+verif-author.pl -H configs/basic.3.conf $OUTPUT_DIR/data/1876-mt-taots:$OUTPUT_DIR/data/1884-mt-taohf $OUTPUT_DIR/data/1888-hj-tap:$OUTPUT_DIR/data/1896-hj-tsop:$OUTPUT_DIR/data/1898-hj-ttm</code></pre>
 <pre><code>## CHAR.CC.lc1.sl0.mf3  CHAR.CCC.lc1.sl0.mf3    VOCABCLASS.MORPHO.mf3   WORD.T.lc1.sl0.mf2  WORD.TT.lc1.sl0.mf2
-## 0.817609183520629    0.631308098768206   0.914793492001757   0.441741719656144   0.221678567913177</code></pre>
+## 0.676846630337647    0.453109402900663   0.848029609099052   0.360284516220328   0.0488144992277726</code></pre>
 <ul>
 <li>There can be any number of documents in each of the two groups ** This is more general than the PAN format which consists of a single questioned document on one side.</li>
 <li>The <code>multipleProbeAggregate</code> parameter presented above determines how the features are combined across the documents in one group to provide the final feature value.</li>
@@ -355,18 +357,18 @@ verif-author.pl -H configs/basic.3.conf data/gb/1876-mt-taots:data/gb/1884-mt-ta
 ## data/gb/1905-haj-fftf data/gb/1884-mt-taohf  0</code></pre>
 <p>The same config as above is applied to these four problems:</p>
 <pre class="bash"><code>source session-setup.sh
-cat data/user-guide.expl1/cases.txt | cut -f 1 | verif-author.pl -H configs/basic.3.conf</code></pre>
+cat data/user-guide.expl1/cases.txt | sed &quot;s:data/gb:$OUTPUT_DIR/data:g&quot; | cut -f 1 | verif-author.pl -H configs/basic.3.conf</code></pre>
 <pre><code>## CHAR.CC.lc1.sl0.mf3  CHAR.CCC.lc1.sl0.mf3    VOCABCLASS.MORPHO.mf3   WORD.T.lc1.sl0.mf2  WORD.TT.lc1.sl0.mf2
-## 0.710634305765627    0.579648991710267   0.914793492001757   0.484488128135651   0.22167856791318
-## 0.785501905123428    0.660189298720126   0.869308226412144   0.535823273937859   0.266504550057531
-## 0.856610156339414    0.746896961025602   0.854068625048439   0.625629683269484   0.345386782338882
-## 0.824380174552583    0.685107588451716   0.933158902677925   0.503660018198424   0.230486834929801
-## 0.744283868758053    0.589120207278101   0.752710395470541   0.418045901549295   0.18927014918781
-## 0.904767750767286    0.771167963552948   0.950456734790867   0.554569550565428   0.326052048750869
-## 0.811800620566883    0.672902231948792   0.863023964279087   0.503660018198425   0.234622375806397
-## 0.810855989611139    0.688410970290306   0.925150069619713   0.521212671960009   0.27097656924803
-## 0.829537354411972    0.714213900808293   0.92265087611813    0.547610016302093   0.296200498628827
-## 0.760918881595236    0.609714286196064   0.854843071987197   0.483236755847064   0.234494182123214</code></pre>
+## 0.598841490051632    0.295189149828739   0.948576211829273   0.263621271986521   0.0707146672364065
+## 0.610619442082035    0.381123081742439   0.860821200190789   0.313583361949268   0.0537664203612478
+## 0.643291497667601    0.38232063578848    0.728662241082593   0.35120907581004    0.0572524677787836
+## 0.672626864764882    0.41215907242515    0.840618033566078   0.28908100752018    0.0642319873317499
+## 0.611764696299144    0.33109001662802    0.728426710436997   0.272239010842848   0.0615425501231962
+## 0.602243841512569    0.35287261748618    0.801622463068758   0.343055529901863   0.117612837122067
+## 0.621156952593578    0.339582847568752   0.840618033566078   0.28908100752018    0.0316992856524932
+## 0.683334207120488    0.41774752151734    0.940904878394964   0.383934901664915   0.0906342302951371
+## 0.656557975297375    0.373337646820809   0.8288696262297 0.335312175996169   0.0483048304830483
+## 0.590252011229795    0.315311846399118   0.874297268730565   0.325567850902738   0.065122754372234</code></pre>
 </div>
 </div>
 <div id="technical-notes-about-observation-types-preprocessing" class="section level1">
@@ -377,7 +379,7 @@ cat data/user-guide.expl1/cases.txt | cut -f 1 | verif-author.pl -H configs/basi
 <h2>POS observations</h2>
 <p>These require the POS tags to have been precomputed and stored into <code>.POS</code> files, otherwise the program will cause an error. The simple way to precompute these POS files is as follows:</p>
 <pre class="bash"><code>source session-setup.sh
-ls data/gb/1876-mt-taots data/gb/1884-mt-taohf | count-obs-dataset.sh english POS.P.sl0.mf1 2&gt;/dev/null</code></pre>
+ls $OUTPUT_DIR/data/1876-mt-taots $OUTPUT_DIR/data/1884-mt-taohf | count-obs-dataset.sh english POS.P.sl0.mf1 2&gt;/dev/null</code></pre>
 <pre><code>## count-obs-dataset.sh: tokenization and POS tagging
 ## count-obs-dataset.sh: generating count files</code></pre>
 <p>Note: the input documents are provided on STDIN.</p>
@@ -387,7 +389,7 @@ ls data/gb/1876-mt-taots data/gb/1884-mt-taohf | count-obs-dataset.sh english PO
 <p>Word-based observations accept an option which specifies <em>which words to take into account</em>. This causes all the other words to be replaced by a placeholder symbol <code>_</code>. It can be used to count only patterns involving frequent words (often called stop words), in order to avoid content words which are less likely to be good indicators of an author style. Note that this is different from the <code>mf</code> (minimum frequency) option, which discards full observations, as opposed to some of the words in an observation.</p>
 <p>A “stop words list” based on frequency can be calculated based on a collection of documents as follows. In this example we use all the books by Mark Twain as the corpus and extract the top 100 most frequent words.</p>
 <pre class="bash"><code>source session-setup.sh
-find data/gb/*-mt-* -maxdepth 0 -type f &gt;&quot;$OUTPUT_DIR/mark-twain.list&quot;
+find $OUTPUT_DIR/data/*-mt-* -maxdepth 0 -type f &gt;&quot;$OUTPUT_DIR/mark-twain.list&quot;
 count-obs-dataset.sh -i &quot;$OUTPUT_DIR/mark-twain.list&quot; -o &#39;-g&#39; english WORD.T.lc1.sl0.mf2 2&gt;/dev/null
 sort -r -n +1 -2 &quot;$OUTPUT_DIR/global.observations/WORD.T.lc1.sl0.mf2.count&quot; | cut -f 1 | head -n 100 &gt;&quot;$OUTPUT_DIR/mt-100.stop-list&quot; </code></pre>
 <pre><code>## count-obs-dataset.sh: no TreeTagger tokenization/POS tagging needed
@@ -419,9 +421,9 @@ sort -r -n +1 -2 &quot;$OUTPUT_DIR/global.observations/WORD.T.lc1.sl0.mf2.count&
 <li>The matching of a resource name to a file can be provided using option <code>-v</code> in the <code>verif-author.pl</code> command, as shown in this example:</li>
 </ul>
 <pre class="bash"><code>source session-setup.sh
-verif-author.pl -H -v mt-100:$OUTPUT_DIR/mt-100.stop-list configs/basic.4.conf data/gb/1876-mt-taots:data/gb/1884-mt-taohf data/gb/1888-hj-tap:data/gb/1896-hj-tsop:data/gb/1898-hj-ttm</code></pre>
+verif-author.pl -H -v mt-100:$OUTPUT_DIR/mt-100.stop-list configs/basic.4.conf $OUTPUT_DIR/data/1876-mt-taots:$OUTPUT_DIR/data/1884-mt-taohf $OUTPUT_DIR/data/1888-hj-tap:$OUTPUT_DIR/data/1896-hj-tsop:$OUTPUT_DIR/data/1898-hj-ttm</code></pre>
 <pre><code>## WORD.T.lc1.sl0.mf2   WORD.TT.lc1.sl0.mf2 WORD.TT.lc1.sl0.mt-100.mf2  WORD.TTT.lc1.sl0.mt-100.mf2 WORD.TTTT.lc1.sl0.mt-100.mf2
-## 0.473435372772814    0.2156215354122 0.557541366579735   0.408574282221634   0.291973202157235</code></pre>
+## 0.354533665558548    0.0704480880850572  0.379297739538697   0.207433649587486   0.112937947916738</code></pre>
 </div>
 </div>
 </div>
@@ -467,13 +469,9 @@ verif-author.pl -H -v mt-100:$OUTPUT_DIR/mt-100.stop-list configs/basic.4.conf d
 </ul>
 <p>This is an ensemble method, the time it requires is proportional to <code>nbRounds</code> (it also depends on the size and number of input documents, of course). With only 50 rounds the following run takes around 20 seconds:</p>
 <pre class="bash"><code>source session-setup.sh
-time verif-author.pl -H configs/univ.1.conf data/gb/1876-mt-taots:data/gb/1884-mt-taohf data/gb/1888-hj-tap:data/gb/1896-hj-tsop:data/gb/1898-hj-ttm</code></pre>
+verif-author.pl -H configs/univ.1.conf $OUTPUT_DIR/data/1876-mt-taots:$OUTPUT_DIR/data/1884-mt-taohf $OUTPUT_DIR/data/1888-hj-tap:$OUTPUT_DIR/data/1896-hj-tsop:$OUTPUT_DIR/data/1898-hj-ttm</code></pre>
 <pre><code>## simByRound_all_AA    simByRound_all_BA   simByRound_all_BB   simByRound_all_MA   simByRound_all_MB   simByRound_all_MM   countMostSimByRound_all_AA  countMostSimByRound_all_BA  countMostSimByRound_all_BB  countMostSimByRound_all_MA  countMostSimByRound_all_MB  countMostSimByRound_all_MM
-## 0.921847335638202    0.522581733396829   0.882108183036457   0.837184822803349   0.822270567083127   0.979293366340464   0.42    0   0.08    0   0   0.5
-## 
-## real 0m21.159s
-## user 0m20.783s
-## sys  0m0.076s</code></pre>
+## 0.698058770264658    0.244524199020657   0.626938503241522   0.552576325489  0.396631506838462   0.866567199304046   0.4 0   0.12    0.02    0.02    0.44</code></pre>
 </div>
 <div id="general-impostors-gi" class="section level2">
 <h2>General Impostors (<code>GI</code>)</h2>
@@ -493,8 +491,8 @@ time verif-author.pl -H configs/univ.1.conf data/gb/1876-mt-taots:data/gb/1884-m
 <pre class="bash"><code>source session-setup.sh
 mkdir $OUTPUT_DIR/impostors
 mkdir $OUTPUT_DIR/impostors/GI.1.impostors
-n=$(find data/*/* -maxdepth 0 -type f | wc -l)
-find data/*/* -maxdepth 0 -type f | random-lines.pl 100 1 $n | while read f; do cp $f $OUTPUT_DIR/impostors/GI.1.impostors/$(basename &quot;$f&quot;).txt; done</code></pre>
+n=$(find $OUTPUT_DIR/data/* -maxdepth 0 -type f | wc -l)
+find $OUTPUT_DIR/data/* -maxdepth 0 -type f | random-lines.pl 100 1 $n | while read f; do cp $f $OUTPUT_DIR/impostors/GI.1.impostors/$(basename &quot;$f&quot;).txt; done</code></pre>
 </div>
 <div id="simple-example" class="section level3">
 <h3>“Simple” example</h3>
@@ -554,9 +552,9 @@ find data/*/* -maxdepth 0 -type f | random-lines.pl 100 1 $n | while read f; do 
 <li><code>aggregateSimStat</code>: <code>median</code>, <code>arithm</code>, <code>geom</code>, <code>harmo</code>. aggregate method to use if <code>useAggregateSim</code> is not 0 (ignored if <code>0</code>). default: <code>arithm</code>.</li>
 </ul>
 <pre class="bash"><code>source session-setup.sh
-verif-author.pl -H -d $OUTPUT_DIR configs/GI.1.conf data/gb/1876-mt-taots:data/gb/1884-mt-taohf data/gb/1888-hj-tap:data/gb/1896-hj-tsop:data/gb/1898-hj-ttm</code></pre>
+verif-author.pl -H -d $OUTPUT_DIR configs/GI.1.conf $OUTPUT_DIR/data/1876-mt-taots:$OUTPUT_DIR/data/1884-mt-taohf $OUTPUT_DIR/data/1888-hj-tap:$OUTPUT_DIR/data/1896-hj-tsop:$OUTPUT_DIR/data/1898-hj-ttm</code></pre>
 <pre><code>## countMostSim_original    relativeRank    aggregatedSim_ratio
-## 0.08 0.278   0.929653218277974</code></pre>
+## 0.2  0.364   0.938014378968919</code></pre>
 </div>
 <div id="example-with-pre-computed-similarities" class="section level3">
 <h3>Example with pre-computed similarities</h3>
@@ -565,7 +563,7 @@ verif-author.pl -H -d $OUTPUT_DIR configs/GI.1.conf data/gb/1876-mt-taots:data/g
 <p>Below we precompute similarities with the same impostors data and same probe files as in the previous example:</p>
 <pre class="bash"><code>source session-setup.sh
 find $OUTPUT_DIR/impostors/GI.1.impostors/* -maxdepth 0 -type f  &gt;$OUTPUT_DIR/impostors/GI.1.impostors.list
-ls data/gb/1876-mt-taots data/gb/1884-mt-taohf data/gb/1888-hj-tap data/gb/1896-hj-tsop data/gb/1898-hj-ttm &gt;$OUTPUT_DIR/probe-files.list
+ls $OUTPUT_DIR/data/1876-mt-taots $OUTPUT_DIR/data/1884-mt-taohf $OUTPUT_DIR/data/1888-hj-tap $OUTPUT_DIR/data/1896-hj-tsop $OUTPUT_DIR/data/1898-hj-ttm &gt;$OUTPUT_DIR/probe-files.list
 sim-collections-doc-by-doc.pl -o WORD.T.lc1.sl0.mf3 -R BASENAME WORD.T.lc1.sl0.mf3:CHAR.CCC.lc1.sl0.mf3 $OUTPUT_DIR/probe-files.list GI.1.impostors:$OUTPUT_DIR/impostors/GI.1.impostors.list 2&gt;/dev/null</code></pre>
 <p>The config file is:</p>
 <pre class="bash"><code>cat configs/GI.2.conf</code></pre>
@@ -598,13 +596,9 @@ sim-collections-doc-by-doc.pl -o WORD.T.lc1.sl0.mf3 -R BASENAME WORD.T.lc1.sl0.m
 ## wordTokenization=1
 ## formatting=0</code></pre>
 <pre class="bash"><code>source session-setup.sh
-time verif-author.pl -H -d $OUTPUT_DIR configs/GI.1.conf data/gb/1876-mt-taots:data/gb/1884-mt-taohf data/gb/1888-hj-tap:data/gb/1896-hj-tsop:data/gb/1898-hj-ttm</code></pre>
+verif-author.pl -H -d $OUTPUT_DIR configs/GI.1.conf $OUTPUT_DIR/data/1876-mt-taots:$OUTPUT_DIR/data/1884-mt-taohf $OUTPUT_DIR/data/1888-hj-tap:$OUTPUT_DIR/data/1896-hj-tsop:$OUTPUT_DIR/data/1898-hj-ttm</code></pre>
 <pre><code>## countMostSim_original    relativeRank    aggregatedSim_ratio
-## 0.12 0.136   0.921474923835868
-## 
-## real 0m11.853s
-## user 0m11.784s
-## sys  0m0.040s</code></pre>
+## 0.42 0.384   0.917629114082302</code></pre>
 </div>
 </div>
 </div>
@@ -676,10 +670,10 @@ train-test.sh -a &quot;$OUTPUT_DIR/sup1/test-cases.txt&quot; -m &quot;$OUTPUT_DI
 <pre class="bash"><code>source session-setup.sh
 paste &quot;$OUTPUT_DIR/sup1/test-cases.txt&quot; &quot;$OUTPUT_DIR/sup1/output/test/predict.tsv&quot; &gt;&quot;$OUTPUT_DIR/sup1/predicted.tsv&quot;
 auc.pl &quot;$OUTPUT_DIR/sup1/test-cases.gold.txt&quot; &quot;$OUTPUT_DIR/sup1/predicted.tsv&quot;</code></pre>
-<pre><code>## 0.75</code></pre>
+<pre><code>## 0.90625</code></pre>
 <pre class="bash"><code>source session-setup.sh
 accuracy.pl &quot;$OUTPUT_DIR/sup1/test-cases.gold.txt&quot; &quot;$OUTPUT_DIR/sup1/predicted.tsv&quot; | cut -f 1</code></pre>
-<pre><code>## 0.583333333333333</code></pre>
+<pre><code>## 0.5</code></pre>
 </div>
 </div>
 <div id="k-fold-cross-validation" class="section level2">
@@ -714,7 +708,7 @@ train-cv.sh configs/basic.supervised.1.conf &quot;$OUTPUT_DIR/sup1&quot; &quot;$
 ## obtain-strategy-features.sh,59: Warning: parameter &#39;vocabResources&#39; is defined but empty in parameter file &#39;/tmp/user-guide-part1.output/sup1/resources-options.conf&#39;</code></pre>
 <p>The results can be found in a <code>.perf</code> file named after the configuration filename:</p>
 <pre class="bash"><code>cat &quot;$OUTPUT_DIR/sup1/output/basic.supervised.1.perf&quot;</code></pre>
-<pre><code>## 0.504000 0.720000    0.700000</code></pre>
+<pre><code>## 0.864000 0.960000    0.900000</code></pre>
 <p>The three values are:</p>
 <ul>
 <li>the “final score”, i.e. product of the AUC and accuracy modified according to PAN15 evaluation method</li>
