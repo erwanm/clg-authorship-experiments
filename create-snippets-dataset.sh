@@ -3,6 +3,7 @@
 # EM Feb 2022
 
 minSize=""
+removeEmptyLines=""
 
 function usage {
   echo
@@ -19,6 +20,7 @@ function usage {
   echo "  Options:"
   echo "    -h this help"
   echo "    -e <N>: exclude files with less than N lines."
+  echo "    -r remove empty lines before selecting a snippet."
   echo
 }
 
@@ -28,11 +30,12 @@ function usage {
 
 
 OPTIND=1
-while getopts 'he:' option ; do 
+while getopts 'he:r' option ; do 
     case $option in
 	"h" ) usage
  	      exit 0;;
 	"e" ) minSize="$OPTARG";;
+	"r" ) removeEmptyLines="1";;
 	"?" ) 
 	    echo "Error, unknow option." 1>&2
             printHelp=1;;
@@ -55,19 +58,27 @@ while read inputFile; do
     if [ ! -f "$inputFile" ]; then
 	echo "Warning: file $inputFile not found, ignoring."  1>&2
     else
+	f="$inputFile"
+	if [ ! -z "$removeEmptyLines" ]; then
+	    f=$(mktemp --tmpdir "tmp.$0.XXXXXXXX")
+	    cat "$inputFile" | grep . >"$f"
+	fi
 	ok=""
 	if [ ! -z "$minSize" ]; then
-	    n=$(cat "$inputFile" | wc -l)
+	    n=$(cat "$f" | wc -l)
 	    if [ $n -lt $minSize ]; then
 		ok="nope"
 	    fi
 	fi
 	if [ -z "$ok" ]; then
 	    if [ $size -eq 0 ]; then
-		cat "$inputFile" >"$outputDir"/$(basename "$inputFile")
+		cat "$f" >"$outputDir"/$(basename "$inputFile")
 	    else
-		extract-continuous-sample.pl "$inputFile" "$size" >"$outputDir"/$(basename "$inputFile")
+		extract-continuous-sample.pl "$f" "$size" >"$outputDir"/$(basename "$inputFile")
 	    fi
+	fi
+	if [ ! -z "$removeEmptyLines" ]; then
+	    rm -f "$f"
 	fi
     fi 
 done

@@ -263,5 +263,5 @@ rm -f "$OUTPUT_DIR/gen1/0/multi-conf-files/GI.multi-conf" "$OUTPUT_DIR/gen1/0/mu
 ```{bash gen.meta}
 source session-setup.sh
 task-distrib-daemon.sh  -s 30s -p 1 -v -q 4 "$TASKS_DIR" $NCORES >"$OUTPUT_DIR/gen1.task-daemon.log" &
-train-outerCV-1fold.sh -r -P "$TASKS_DIR/mytasks" -o  '-c -s' "$OUTPUT_DIR/gen1" "$OUTPUT_DIR/gen1/input/truth.txt" "$OUTPUT_DIR/gen1/0/multi-conf-files"
+train-outerCV-1fold.sh -r -P "$TASKS_DIR/mytasks" -o  '-c -s' "$OUTPUT_DIR/gen1" "$OUTPUT_DIR/gen1/input/truth.txt" "$OUTPUT_DIR/gen1/test-cases.gold.txt" "$OUTPUT_DIR/gen1/0/multi-conf-files"
 ```
