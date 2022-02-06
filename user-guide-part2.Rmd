@@ -14,6 +14,9 @@ knitr::opts_chunk$set(echo = TRUE)
 
 This is the second part of the user guide for "CLG authorship analytics". The first part is [here](user-guide-part1.html).
 
+Note: this guide is organized by order of complexity, from the most simple to the most complex kind of process. It is meant to help the reader understand what each of the different levels of the process actually does. Thus the simplest way to run the full process is described at the end of this document. 
+
+
 ## Rmd
 
 This document was generated from an [R Markdown](https://rmarkdown.rstudio.com/) source file. The source file is provided in the repository, it can be used to reproduce these experiments. It can be executed through the RStudio interface ("knit" button) or as follows:
@@ -35,7 +38,7 @@ Sys.setenv(CLG_AUTHORSHIP_PACKAGES_PATH = packages.path)
 output.dir <- '/tmp/user-guide-part2.output'
 Sys.setenv(OUTPUT_DIR = output.dir)
 delete.previous.output <- TRUE
-snippets.size <- 100
+snippets.size <- 25
 Sys.setenv(SNIPPETS_SIZE = snippets.size)
 Sys.setenv(NCORES = 40)
 Sys.setenv(TASKS_DIR= '/tmp/clg-authorship.tasks')
@@ -198,7 +201,7 @@ echo "datasetResourcesPath=$OUTPUT_DIR/impostors/GI.1.impostors" >>"$target"
 
 Finally we create a small input dataset:
 
-```{bash sup1.init}
+```{bash gen.init}
 mkdir "$OUTPUT_DIR"/gen1/input "$OUTPUT_DIR"/gen1/resources "$OUTPUT_DIR"/gen1/output
 cat data/user-guide.expl1/cases.txt data/user-guide.expl1/test-cases.txt | cut -f 1 | tr ' :' '\n\n'  | sort -u | while read f; do cp "$f" "$OUTPUT_DIR/gen1/input"; done
 cat data/user-guide.expl1/cases.txt | sed 's:data/[^/]*/::g' >"$OUTPUT_DIR/gen1/input/truth.txt"
@@ -211,7 +214,7 @@ cat "$OUTPUT_DIR/gen1/test-cases.gold.txt" | cut -f 1 >"$OUTPUT_DIR/gen1/test-ca
 ### Running the genetic process
 
 
-```{bash sup1.go}
+```{bash gen.go}
 source session-setup.sh
 task-distrib-daemon.sh  -s 30s -p 1 -v -q 4 "$TASKS_DIR" $NCORES >"$OUTPUT_DIR/gen1.task-daemon.log" &
 echo "$OUTPUT_DIR/gen1/0/multi-conf-files/basic.multi-conf" | train-genetic.sh -P "$TASKS_DIR/mytasks" -o  '-c -s' "$OUTPUT_DIR/gen1" "$OUTPUT_DIR/gen1/input/truth.txt" indivGenetic_1_
@@ -239,8 +242,26 @@ As mentioned [above](#configuration), there can be several steps of genetic trai
 
 In the following code we use the `-r` option to resume the previous training and apply the final stage. Note that the id  provided as last parameter contains only the prefix `indivGenetic` since it's not about a specific stage anymore. 
 
-```{bash sup1.multi}
+```{bash gen.multi}
 source session-setup.sh
 task-distrib-daemon.sh  -s 30s -p 1 -v -q 4 "$TASKS_DIR" $NCORES >"$OUTPUT_DIR/gen1.task-daemon.log" &
-train-multi-stages.sh -P "$TASKS_DIR/mytasks" -o  '-c -s' "$OUTPUT_DIR/gen1" "$OUTPUT_DIR/gen1/input/truth.txt" "$OUTPUT_DIR/gen1/0/multi-conf-files/basic.multi-conf" indivGenetic
+train-multi-stages.sh -r -P "$TASKS_DIR/mytasks" -o  '-c -s' "$OUTPUT_DIR/gen1" "$OUTPUT_DIR/gen1/input/truth.txt" "$OUTPUT_DIR/gen1/0/multi-conf-files/basic.multi-conf" indivGenetic
+```
+
+# Meta-classifier (stacked generalization)
+
+We have seen above that the genetic process can return a set of N best performing configurations. Additionally different strategies can be trained, every strategy returning its N best configurations. These individual configs can be considered as individual learners and combined in a meta-classifier which leverages their diversity to predict the final results.
+
+For the sake of simplicity and computation speed, in the example below we remove the `GI` and `univ` strategies before running the process, resulting in the meta-classifier using only the `basic` strategy. This is of course not necessary nor recommended in real applications. 
+
+
+```{bash gen.meta.init}
+# below removing univ and GI strategies to make the process faster
+rm -f "$OUTPUT_DIR/gen1/0/multi-conf-files/GI.multi-conf" "$OUTPUT_DIR/gen1/0/multi-conf-files/univ.multi-conf"
+```
+
+```{bash gen.meta}
+source session-setup.sh
+task-distrib-daemon.sh  -s 30s -p 1 -v -q 4 "$TASKS_DIR" $NCORES >"$OUTPUT_DIR/gen1.task-daemon.log" &
+train-outerCV-1fold.sh -r -P "$TASKS_DIR/mytasks" -o  '-c -s' "$OUTPUT_DIR/gen1" "$OUTPUT_DIR/gen1/input/truth.txt" "$OUTPUT_DIR/gen1/0/multi-conf-files"
 ```

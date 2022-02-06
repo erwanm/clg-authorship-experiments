@@ -42,7 +42,7 @@ Sys.setenv(CLG_AUTHORSHIP_PACKAGES_PATH = packages.path)
 output.dir <- '/tmp/user-guide-part1.output'
 Sys.setenv(OUTPUT_DIR = output.dir)
 delete.previous.output <- TRUE
-snippets.size <- 100
+snippets.size <- 25
 Sys.setenv(SNIPPETS_SIZE = snippets.size)
 ```
 
