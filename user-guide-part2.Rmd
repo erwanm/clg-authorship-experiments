@@ -109,15 +109,15 @@ The multi-conf contains the parameters for which the Genetic process has to sele
 - Strategy-specific parameters
 - Genetic process parameter
 
-Examples of multi-config "parts" files are provided in `configs/multi/` These different parts can be combined:
+Examples of multi-config "parts" files are provided in `conf/` These different parts can be combined:
 
 ```{bash multi2}
 source session-setup.sh
 mkdir "$OUTPUT_DIR/gen1"
-generate-multi-conf.sh -d configs/multi/ -c common.simplified.multi-conf.part -g genetic.simplified.multi-conf.part 0 "$OUTPUT_DIR/gen1/0"
+generate-multi-conf.sh -c common.simplified.multi-conf.part -g genetic.simplified.multi-conf.part 0 "$OUTPUT_DIR/gen1/0"
 ```
 
-- the `-d` option specifies the directory where the configuration "parts" are found. 
+- By default the configs parts are found in the directory `./conf` . The `-d` option can be used to specify the directory where the configuration "parts" are found. 
 - `-c` and  `-g` are used to force the use of a specific config file for the 'common' and 'genetic' part instead of the default, in this case a simplified variant meant to take less time  (see also [below](#genetic-algorithm) about the genetic process configuration). 
 - The first mandatory argument is 0 for ignoring observation types involving POS tags, 1 otherwise.
 - This generates a full multi-config file on `$OUTPUT_DIR/gen1/0/multi-conf-files` for every strategy.
@@ -146,7 +146,7 @@ echo "$OUTPUT_DIR/gen1/0/multi-conf-files/basic.multi-conf"  | expand-multi-conf
 The genetic process is controlled by the "genetic" part of the multi-configuration:
 
 ```{bash gen.config1}
-cat configs/multi/genetic.simplified.multi-conf.part
+cat conf/genetic.simplified.multi-conf.part
 ```
 
 - The `population` parameter is the number of individual configs in every generation.
@@ -186,8 +186,8 @@ For this example we also create a small set of impostors in the same way as [pre
 source session-setup.sh
 mkdir $OUTPUT_DIR/impostors
 mkdir $OUTPUT_DIR/impostors/GI.1.impostors
-n=$(find data/*/* -maxdepth 0 -type f | wc -l)
-find data/*/* -maxdepth 0 -type f | random-lines.pl 100 1 $n | while read f; do cp $f $OUTPUT_DIR/impostors/GI.1.impostors/$(basename "$f").txt; done
+n=$(find $OUTPUT_DIR/data/* -maxdepth 0 -type f | wc -l)
+find $OUTPUT_DIR/data/* -maxdepth 0 -type f | random-lines.pl 100 1 $n | while read f; do cp $f $OUTPUT_DIR/impostors/GI.1.impostors/$(basename "$f").txt; done
 ```
 
 A "resources" file is needed, it contains in particular the location of the stop words files and the impostors directory:
@@ -202,8 +202,8 @@ echo "datasetResourcesPath=$OUTPUT_DIR/impostors/GI.1.impostors" >>"$target"
 Finally we create a small input dataset:
 
 ```{bash gen.init}
-mkdir "$OUTPUT_DIR"/gen1/input "$OUTPUT_DIR"/gen1/resources "$OUTPUT_DIR"/gen1/output
-cat data/user-guide.expl1/cases.txt data/user-guide.expl1/test-cases.txt | cut -f 1 | tr ' :' '\n\n'  | sort -u | while read f; do cp "$f" "$OUTPUT_DIR/gen1/input"; done
+mkdir "$OUTPUT_DIR"/gen1/input "$OUTPUT_DIR"/gen1/resources
+cat data/user-guide.expl1/cases.txt data/user-guide.expl1/test-cases.txt | cut -f 1  | sed "s:data/gb:$OUTPUT_DIR/data:g" |  tr ' :' '\n\n'  | sort -u | while read f; do cp "$f" "$OUTPUT_DIR/gen1/input"; done
 cat data/user-guide.expl1/cases.txt | sed 's:data/[^/]*/::g' >"$OUTPUT_DIR/gen1/input/truth.txt"
 cat data/user-guide.expl1/test-cases.txt | sed 's:data/[^/]*/::g' >"$OUTPUT_DIR/gen1/test-cases.gold.txt"
 cat "$OUTPUT_DIR/gen1/test-cases.gold.txt" | cut -f 1 >"$OUTPUT_DIR/gen1/test-cases.txt"
@@ -250,12 +250,34 @@ train-multi-stages.sh -r -P "$TASKS_DIR/mytasks" -o  '-c -s' "$OUTPUT_DIR/gen1" 
 
 # Meta-classifier (stacked generalization)
 
-We have seen above that the genetic process can return a set of N best performing configurations. Additionally different strategies can be trained, every strategy returning its N best configurations. These individual configs can be considered as individual learners and combined in a meta-classifier which leverages their diversity to predict the final results.
+We have seen above that the genetic process can return a set of N best performing configurations. Additionally different strategies can be trained, every strategy returning its N best configurations. These individual configs can be considered as individual learners and combined in a meta-classifier which leverages their diversity to predict the final results (hopefully more accurately that any individual learner).
+
+The training of the meta-model is done with the same genetic algorithm as used above, where the parameters to optimize are now the subset of individual configs/models and possibly some additional parameters for the meta-model. Since the set of possible individual models is fixed,  the predictions that they return are precomputed in order to avoid repeatedly computing them during the genetic training. Note that this makes this genetic learning stage much faster than the previous one, but it may in some cases cause a bias due to the randomness of some of the methods (since the individual learners are treated as deterministic at this stage).
+
+### `train-outerCV-1fold.sh`
+
+The meta-training is performed by `train-outerCV-1fold.sh`, which takes as input a training set and a test set. The script uses them in a quite complex way explained below:
+
+- The training set (called "strategy training set" later) is first used to perform the genetic training presented above by calling `train-multi-stages.sh` *for every strategy*.
+- The N best configs for every strategy are obtained from the stage above. These configs are applied to both the training and test set instances (with `apply-multi-configs.sh`).
+- The test set is then randomly split into two subsets:
+    - meta-training set
+    - meta validation set (or meta-test set)
+- The meta-training set is used to perform the genetic training of the meta-model, calling `train-multi-stages.sh` again (only once).
+- The N best configurations obtained from the meta-training are applied to all the instances: strategy training set, meta-training set and validation set. These top configurations are also "packaged" in a sub directory `refactored-strategy-configs` in order to be easily usable for application later.
+- Bagging ([bootstrap aggregating](https://en.wikipedia.org/wiki/Bootstrap_aggregating)) is applied on the meta validation set (fresh instances) in order to select the final top N meta-configs. This step can be used to analyze the variance of the meta-configs.
+
+The test set used by the script must be a subset of the full training set, more precisely a subset of the list of cases contained in `$OUTPUT_DIR/gen1/input/truth.txt`. We simulate this in the example below by concatenating the test cases to the file `truth.txt` below:
+
+```{bash gen.meta.init1}
+cat "$OUTPUT_DIR/gen1/test-cases.gold.txt" >>"$OUTPUT_DIR/gen1/input/truth.txt"
+```
 
 For the sake of simplicity and computation speed, in the example below we remove the `GI` and `univ` strategies before running the process, resulting in the meta-classifier using only the `basic` strategy. This is of course not necessary nor recommended in real applications. 
 
 
-```{bash gen.meta.init}
+```{bash gen.meta.init2}
+cp conf/meta-template.simplified.multi-conf "$OUTPUT_DIR/gen1/meta-template.multi-conf"
 # below removing univ and GI strategies to make the process faster
 rm -f "$OUTPUT_DIR/gen1/0/multi-conf-files/GI.multi-conf" "$OUTPUT_DIR/gen1/0/multi-conf-files/univ.multi-conf"
 ```
@@ -265,3 +287,5 @@ source session-setup.sh
 task-distrib-daemon.sh  -s 30s -p 1 -v -q 4 "$TASKS_DIR" $NCORES >"$OUTPUT_DIR/gen1.task-daemon.log" &
 train-outerCV-1fold.sh -r -P "$TASKS_DIR/mytasks" -o  '-c -s' "$OUTPUT_DIR/gen1" "$OUTPUT_DIR/gen1/input/truth.txt" "$OUTPUT_DIR/gen1/test-cases.gold.txt" "$OUTPUT_DIR/gen1/0/multi-conf-files"
 ```
+
+

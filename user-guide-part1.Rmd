@@ -130,7 +130,7 @@ A better and more convenient way is to provide the parameters in a [config file]
 The content of the config file is:
 
 ```{bash basic.2.cat}
-cat configs/basic.2.conf
+cat conf/basic.2.conf
 ```
 
 The `simMeasure` option for the `basic` strategy indicates which similarity measure to use. In this particular case the other three options at the end are not really relevant and are provided only to avoid the warning messages:
@@ -147,7 +147,7 @@ The same result as above can be obtained as follows:
 
 ```{bash basic.2}
 source session-setup.sh
-verif-author.pl -c configs/basic.2.conf $OUTPUT_DIR/data/1876-mt-taots $OUTPUT_DIR/data/1884-mt-taohf
+verif-author.pl -c conf/basic.2.conf $OUTPUT_DIR/data/1876-mt-taots $OUTPUT_DIR/data/1884-mt-taohf
 ```
 
 - The `-c` option is used to cache and if possible reuse the *count files*: for every document, a count file  is created for every observation type which contains the frequency for every observation.
@@ -160,7 +160,7 @@ Several observations types can be specified. In this case the output will show t
 Config file:
 
 ```{bash basic.3.cat}
-cat configs/basic.3.conf
+cat conf/basic.3.conf
 ```
 
 In this example we use various [observation types "families"](https://erwanm.github.io/CLGTextTools/#ObservationType).
@@ -168,7 +168,7 @@ In this example we use various [observation types "families"](https://erwanm.git
 
 ```{bash basic.3}
 source session-setup.sh
-verif-author.pl -H configs/basic.3.conf $OUTPUT_DIR/data/1876-mt-taots $OUTPUT_DIR/data/1884-mt-taohf
+verif-author.pl -H conf/basic.3.conf $OUTPUT_DIR/data/1876-mt-taots $OUTPUT_DIR/data/1884-mt-taohf
 ```
 
 * Option `-H` is used to print the columns names as the first line (header).
@@ -183,7 +183,7 @@ In this example we use the same config as above but compare a group of books by 
 
 ```{bash basic.3.multi1}
 source session-setup.sh
-verif-author.pl -H configs/basic.3.conf $OUTPUT_DIR/data/1876-mt-taots:$OUTPUT_DIR/data/1884-mt-taohf $OUTPUT_DIR/data/1888-hj-tap:$OUTPUT_DIR/data/1896-hj-tsop:$OUTPUT_DIR/data/1898-hj-ttm
+verif-author.pl -H conf/basic.3.conf $OUTPUT_DIR/data/1876-mt-taots:$OUTPUT_DIR/data/1884-mt-taohf $OUTPUT_DIR/data/1888-hj-tap:$OUTPUT_DIR/data/1896-hj-tsop:$OUTPUT_DIR/data/1898-hj-ttm
 ```
 
 * There can be any number of documents in each of the two groups
@@ -207,7 +207,7 @@ The same config as above is applied to these four problems:
 
 ```{bash basic.3.multi2}
 source session-setup.sh
-cat data/user-guide.expl1/cases.txt | sed "s:data/gb:$OUTPUT_DIR/data:g" | cut -f 1 | verif-author.pl -H configs/basic.3.conf
+cat data/user-guide.expl1/cases.txt | sed "s:data/gb:$OUTPUT_DIR/data:g" | cut -f 1 | verif-author.pl -H conf/basic.3.conf
 ```
 
 # Technical notes about observation types (preprocessing)
@@ -251,7 +251,7 @@ sort -r -n +1 -2 "$OUTPUT_DIR/global.observations/WORD.T.lc1.sl0.mf2.count" | cu
 The "stop words" option is used by adding the name of the resource containing the list of stop words to the desired word observation types, for example:
 
 ```{bash stopwords2}
-cat configs/basic.4.conf
+cat conf/basic.4.conf
 ```
 
 * The last three observation types in this config use the `mt-100` stop words list.
@@ -259,7 +259,7 @@ cat configs/basic.4.conf
 
 ```{bash stopwords3}
 source session-setup.sh
-verif-author.pl -H -v mt-100:$OUTPUT_DIR/mt-100.stop-list configs/basic.4.conf $OUTPUT_DIR/data/1876-mt-taots:$OUTPUT_DIR/data/1884-mt-taohf $OUTPUT_DIR/data/1888-hj-tap:$OUTPUT_DIR/data/1896-hj-tsop:$OUTPUT_DIR/data/1898-hj-ttm
+verif-author.pl -H -v mt-100:$OUTPUT_DIR/mt-100.stop-list conf/basic.4.conf $OUTPUT_DIR/data/1876-mt-taots:$OUTPUT_DIR/data/1884-mt-taohf $OUTPUT_DIR/data/1888-hj-tap:$OUTPUT_DIR/data/1896-hj-tsop:$OUTPUT_DIR/data/1898-hj-ttm
 ```
 
 
@@ -276,7 +276,7 @@ Given two documents A and B, repeatedly mix different portions of A and B togeth
 Config file:
 
 ```{bash univ.1.cat}
-cat configs/univ.1.conf
+cat conf/univ.1.conf
 ```
 
 This strategy has many parameters (from [documentation](https://erwanm.github.io/clg-authorship-analytics/#CLGAuthorshipAnalytics%2FVerification%2FUniversum.pm%2Fnew(%24class%2C%20%24params))):
@@ -295,7 +295,7 @@ This is an ensemble method, the time it requires is proportional to `nbRounds` (
 
 ```{bash univ.1}
 source session-setup.sh
-verif-author.pl -H configs/univ.1.conf $OUTPUT_DIR/data/1876-mt-taots:$OUTPUT_DIR/data/1884-mt-taohf $OUTPUT_DIR/data/1888-hj-tap:$OUTPUT_DIR/data/1896-hj-tsop:$OUTPUT_DIR/data/1898-hj-ttm
+verif-author.pl -H conf/univ.1.conf $OUTPUT_DIR/data/1876-mt-taots:$OUTPUT_DIR/data/1884-mt-taohf $OUTPUT_DIR/data/1888-hj-tap:$OUTPUT_DIR/data/1896-hj-tsop:$OUTPUT_DIR/data/1898-hj-ttm
 ```
 
 
@@ -330,7 +330,7 @@ This is a "simple" example using the impostors created above.
 Config file:
 
 ```{bash gi.1.cat}
-cat configs/GI.1.conf
+cat conf/GI.1.conf
 ```
 
 Parameters (see [details](https://erwanm.github.io/clg-authorship-analytics/#CLGAuthorshipAnalytics%2FVerification%2FImpostors.pm%2Fnew(%24class%2C%20%24params)) in the documentation):
@@ -358,7 +358,7 @@ Parameters (see [details](https://erwanm.github.io/clg-authorship-analytics/#CLG
 
 ```{bash gi.1}
 source session-setup.sh
-verif-author.pl -H -d $OUTPUT_DIR configs/GI.1.conf $OUTPUT_DIR/data/1876-mt-taots:$OUTPUT_DIR/data/1884-mt-taohf $OUTPUT_DIR/data/1888-hj-tap:$OUTPUT_DIR/data/1896-hj-tsop:$OUTPUT_DIR/data/1898-hj-ttm
+verif-author.pl -H -d $OUTPUT_DIR conf/GI.1.conf $OUTPUT_DIR/data/1876-mt-taots:$OUTPUT_DIR/data/1884-mt-taohf $OUTPUT_DIR/data/1888-hj-tap:$OUTPUT_DIR/data/1896-hj-tsop:$OUTPUT_DIR/data/1898-hj-ttm
 ```
 
 ### Example with pre-computed similarities
@@ -380,13 +380,13 @@ sim-collections-doc-by-doc.pl -o WORD.T.lc1.sl0.mf3 -R BASENAME WORD.T.lc1.sl0.m
 The config file is:
 
 ```{bash gi.2.cat}
-cat configs/GI.2.conf
+cat conf/GI.2.conf
 ```
 
 
 ```{bash gi.2}
 source session-setup.sh
-verif-author.pl -H -d $OUTPUT_DIR configs/GI.1.conf $OUTPUT_DIR/data/1876-mt-taots:$OUTPUT_DIR/data/1884-mt-taohf $OUTPUT_DIR/data/1888-hj-tap:$OUTPUT_DIR/data/1896-hj-tsop:$OUTPUT_DIR/data/1898-hj-ttm
+verif-author.pl -H -d $OUTPUT_DIR conf/GI.1.conf $OUTPUT_DIR/data/1876-mt-taots:$OUTPUT_DIR/data/1884-mt-taohf $OUTPUT_DIR/data/1888-hj-tap:$OUTPUT_DIR/data/1896-hj-tsop:$OUTPUT_DIR/data/1898-hj-ttm
 ```
 
 # Supervised learning 
@@ -418,7 +418,7 @@ cat "$OUTPUT_DIR/sup1/test-cases.gold.txt" | cut -f 1 >"$OUTPUT_DIR/sup1/test-ca
 The config file used below contains:
 
 ```{bash sup1.cat}
-cat configs/basic.supervised.1.conf
+cat conf/basic.supervised.1.conf
 ```
 
 * `learnMethod=M5P-M4`: this parameter indicates which regression algorithm and parameters to use in Weka (here Decision Tree Regression with M5P).
@@ -427,7 +427,7 @@ cat configs/basic.supervised.1.conf
 
 ```{bash sup1.train}
 source session-setup.sh
-train-test.sh -l "$OUTPUT_DIR/sup1/cases.txt" -m "$OUTPUT_DIR/sup1/model" "$OUTPUT_DIR/sup1" configs/basic.supervised.1.conf "$OUTPUT_DIR/sup1/output"
+train-test.sh -l "$OUTPUT_DIR/sup1/cases.txt" -m "$OUTPUT_DIR/sup1/model" "$OUTPUT_DIR/sup1" conf/basic.supervised.1.conf "$OUTPUT_DIR/sup1/output"
 ```
 
 * The Weka model is stored in `$OUTPUT_DIR/sup1/model`
@@ -440,7 +440,7 @@ We apply the previously trained model to some new cases:
 
 ```{bash sup1.test}
 source session-setup.sh
-train-test.sh -a "$OUTPUT_DIR/sup1/test-cases.txt" -m "$OUTPUT_DIR/sup1/model" "$OUTPUT_DIR/sup1" configs/basic.supervised.1.conf "$OUTPUT_DIR/sup1/output"
+train-test.sh -a "$OUTPUT_DIR/sup1/test-cases.txt" -m "$OUTPUT_DIR/sup1/model" "$OUTPUT_DIR/sup1" conf/basic.supervised.1.conf "$OUTPUT_DIR/sup1/output"
 ```
 
 The predicted values are written in `$OUTPUT_DIR/sup1/output/test/predict.tsv` as a single column, in the same order as the input cases.
@@ -482,7 +482,7 @@ done
 ```{bash cv.run}
 source session-setup.sh
 cp "$OUTPUT_DIR/sup1/cases.txt" "$OUTPUT_DIR/sup1/output/truth"
-train-cv.sh configs/basic.supervised.1.conf "$OUTPUT_DIR/sup1" "$OUTPUT_DIR/sup1/output"
+train-cv.sh conf/basic.supervised.1.conf "$OUTPUT_DIR/sup1" "$OUTPUT_DIR/sup1/output"
 ```
 
 The results can be found in a `.perf` file named after the configuration filename:
