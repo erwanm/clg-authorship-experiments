@@ -101,7 +101,7 @@ cat data/user-guide.expl1/cases.txt data/user-guide.expl1/test-cases.txt | cut -
 cat data/user-guide.expl1/cases.txt data/user-guide.expl1/test-cases.txt | sed 's:data/[^/]*/::g' >"$OUTPUT_DIR/input-data.full/truth.txt"
 ```
 
-### Inpostors data
+### Impostors data
 
 We build an impostors data:
 
@@ -113,6 +113,8 @@ n=$(find $OUTPUT_DIR/data/* -maxdepth 0 -type f | wc -l)
 find $OUTPUT_DIR/data/* -maxdepth 0 -type f | random-lines.pl 100 1 $n | while read f; do cp $f $OUTPUT_DIR/impostors.full/my.impostors/$(basename "$f").txt; done
 ```
 
+- Note: the name `my.impostors` is the one used in the default GI config file `conf/GI.multi-conf.part`.
+
 ### Multi-conf files
 
 For this example we create some simplified multi-conf files which are slightly more advanced than in the previous example:
@@ -120,13 +122,13 @@ For this example we create some simplified multi-conf files which are slightly m
 - The three strategies are included.
 - Observation types with stop word and POS tags are used.
 
-**Important:** The "meta" config file must also be present in the directory under the name `meta-template.multi-conf`.
+**Important:** The "meta" config file must also be copied in the target directory under the name `meta-template.multi-conf`, as shown below.
 
 ```{bash multi2}
 source session-setup.sh
-mkdir "$OUTPUT_DIR/multi-conf.full"
-generate-multi-conf.sh -c common.simplified2.multi-conf.part -g genetic.simplified.multi-conf.part 0 "$OUTPUT_DIR/multi-conf.full"
-cat conf/meta-template.simplified.multi-conf > "$OUTPUT_DIR/multi-conf.full/meta-template.multi-conf"
+mkdir "$OUTPUT_DIR/full"
+generate-multi-conf.sh -c common.simplified2.multi-conf.part -g genetic.simplified.multi-conf.part 1 "$OUTPUT_DIR/full"
+cat conf/meta-template.simplified.multi-conf > "$OUTPUT_DIR/full/meta-template.multi-conf"
 ```
 
 
@@ -139,7 +141,7 @@ cat conf/meta-template.simplified.multi-conf > "$OUTPUT_DIR/multi-conf.full/meta
 
 ```{bash prepare.input}
 source session-setup.sh
-ls "$OUTPUT_DIR/multi-conf.full/*" | prepare-input-data.sh -l english -i $OUTPUT_DIR/impostors.full/my.impostors "$OUTPUT_DIR/input-data.full" "$OUTPUT_DIR/full"
+prepare-input-data.sh -l english -i $OUTPUT_DIR/impostors.full/ "$OUTPUT_DIR/input-data.full" "$OUTPUT_DIR/full"
 ```
 
 
@@ -159,6 +161,7 @@ This "top-level" stage can be useful to manually assess the effect of randomness
 The script receives only the previously initialized working directory, which contains the training data and multi-configuration files. 
 
 ```{bash full.run}
+ source session-setup.sh
 task-distrib-daemon.sh  -s 30s -p 1 -v -q 10 "$TASKS_DIR" $NCORES >"$OUTPUT_DIR/full.task-daemon.log" &
 train-top-level.sh -r -P "$TASKS_DIR/mytasks" -o  '-c -s' "$OUTPUT_DIR/full"
 ```
