@@ -17,11 +17,14 @@ metaGenetic_1_returnNbBest=50
 metaGenetic_final_nbFolds=2
 metaGenetic_final_nbRuns=3
 metaGenetic_final_returnNbBest=20
+metaGenetic_final_selectMethod=mean
 
 metaTestFold_bagging_nbRuns=10
 metaTestFold_bagging_returnNbBest=10
+metaTestFold_bagging_selectMethod=mean
 
 final_bagging_nbRuns=10
 final_bagging_returnNbBest=10
+final_bagging_selectMethod=metaTestSet
 
 
