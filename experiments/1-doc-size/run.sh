@@ -7,6 +7,7 @@ SIZE="$2"
 TASKS_DIR="$3"
 NCORES="$4"
 
+[ -d "$TASKS_DIR" ] || mkdir "$TASKS_DIR"
 
 prepare-input-data.sh -l english -i "$EXPE1_WORK_DIR/$SIZE/impostors" "$EXPE1_WORK_DIR/$SIZE/data" "$EXPE1_WORK_DIR/$SIZE/process"
 task-distrib-daemon.sh  -s 30s -p 1 -v -q 20 "$TASKS_DIR" $NCORES >"$EXPE1_WORK_DIR/$SIZE/task-daemon.log" &
