@@ -1,0 +1,85 @@
+---
+title: "Experiment 1"
+author: "Erwan Moreau"
+date: "2/9/2022"
+output: html_document
+---
+
+```{r setup, include=FALSE}
+knitr::opts_chunk$set(echo = TRUE)
+source('experiments.R')
+```
+
+### Options
+
+The `.Rmd` source document can be configured by modifying the following lines:
+
+```{r myoptions}
+packages.path <- 'packages'
+Sys.setenv(CLG_AUTHORSHIP_PACKAGES_PATH = packages.path)
+work.dir <- 'experiments/1-doc-size'
+Sys.setenv(EXPE1_WORK_DIR = work.dir)
+doc.sizes <- '20 40 60 80 100 120 140 160 180 200'
+Sys.setenv(EXPE1_DOC_SIZES = doc.sizes)
+any.doc.size <- strsplit(doc.sizes, ' ',fixed=TRUE)[[1]][1]
+set.seed(2022)
+```
+
+
+# Data generation
+
+## Dataset by document size
+
+```{bash generate.data}
+source session-setup.sh
+[ -d "$EXPE1_WORK_DIR" ] || mkdir "$EXPE1_WORK_DIR"
+for SIZE in $EXPE1_DOC_SIZES; do
+  if [ ! -d "$EXPE1_WORK_DIR/$SIZE" ]; then 
+    echo "Creating data in dir $EXPE1_WORK_DIR/$SIZE."
+    mkdir "$EXPE1_WORK_DIR/$SIZE"
+    mkdir "$EXPE1_WORK_DIR/$SIZE/data"
+    find data/gb/* data/ia/* -maxdepth 0 -type f | ./create-snippets-dataset.sh $SIZE "$EXPE1_WORK_DIR/$SIZE/data"
+  else
+    echo "dir $EXPE1_WORK_DIR/$SIZE already created."
+  fi
+done
+```
+
+
+## Training and test cases
+
+```{r generate.cases1}
+d <- readDataDir(paste(work.dir,any.doc.size,'data',sep='/'))
+dataSplitByAuthor <- splitAuthors(d)
+```
+
+```{r generate.cases2}
+full <- buildFullDataset(dataSplitByAuthor, 100, 100)
+fwrite(full, paste(work.dir,'full-dataset.tsv',sep='/'), sep='\t')
+saveDatasetInCasesFormat(full,dir=work.dir)
+```
+
+## Adding truth file, impostors and meta-config files
+
+- Simply using all the training docs as impostors.
+
+```{bash truth.files}
+source session-setup.sh
+for SIZE in $EXPE1_DOC_SIZES; do
+  echo "$SIZE: truth file"
+  cat "$EXPE1_WORK_DIR/train.tsv" > "$EXPE1_WORK_DIR/$SIZE/data/truth.txt"
+  echo "$SIZE: impostors"
+  if [ ! -d "$EXPE1_WORK_DIR/$SIZE/impostors" ]; then
+    mkdir "$EXPE1_WORK_DIR/$SIZE/impostors"
+    mkdir "$EXPE1_WORK_DIR/$SIZE/impostors/my.impostors"
+    ls "$EXPE1_WORK_DIR/$SIZE/data"/* | grep -v "truth.txt" | while read f; do
+      cp $f $EXPE1_WORK_DIR/$SIZE/impostors/my.impostors/$(basename "$f").txt
+    done
+  fi
+  echo "$SIZE: multi-conf files"
+  [ -d "$EXPE1_WORK_DIR/$SIZE/process" ] || mkdir "$EXPE1_WORK_DIR/$SIZE/process"
+  generate-multi-conf.sh 1 "$EXPE1_WORK_DIR/$SIZE/process"
+  cat conf/meta-template.std.multi-conf > "$EXPE1_WORK_DIR/$SIZE/process/meta-template.multi-conf"
+done
+```
+
