@@ -7,10 +7,10 @@ confidenceLearnMethod=NA
 learnMethod=mean median geomMean
 
 metaGenetic_1_population=100
-metaGenetic_1_stopCriterionNbWindows=3
-metaGenetic_1_stopCriterionNbGenerationsByWindow=8
+metaGenetic_1_stopCriterionNbWindows=4
+metaGenetic_1_stopCriterionNbGenerationsByWindow=3
 metaGenetic_1_geneticParams=0.1:0.02:0.1:0.05
-metaGenetic_1_perfCriterion=final
+metaGenetic_1_perfCriterion=AUC
 metaGenetic_1_nbFoldsOrProp=10
 metaGenetic_1_returnNbBest=200
 
