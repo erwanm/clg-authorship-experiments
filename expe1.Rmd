@@ -83,3 +83,13 @@ for SIZE in $EXPE1_DOC_SIZES; do
 done
 ```
 
+# Running the training processes
+
+For every size `N` the training process is run as follows: 
+
+```
+source session-setup.sh
+prepare-input-data.sh -l english -i "$EXPE1_WORK_DIR/$SIZE/impostors" "$EXPE1_WORK_DIR/$SIZE/data" "$EXPE1_WORK_DIR/$SIZE/process"
+task-distrib-daemon.sh  -s 30s -p 1 -v -q 10 "$TASKS_DIR" $NCORES >"$EXPE1_WORK_DIR/$SIZE/task-daemon.log" &
+train-top-level.sh -r -P "$TASKS_DIR/mytasks" -o  '-c -s' "$EXPE1_WORK_DIR/$SIZE/process"
+```
