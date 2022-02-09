@@ -195,8 +195,8 @@ Sys.setenv(CLG_AUTHORSHIP_PACKAGES_PATH = packages.path)
 output.dir &lt;- &#39;/tmp/user-guide-part1.output&#39;
 Sys.setenv(OUTPUT_DIR = output.dir)
 delete.previous.output &lt;- TRUE
-# normally not needed with regular setup:
-Sys.setenv(ADD_TO_PERL5LIB = &#39;/home/moreaue/perl5/lib/perl5&#39;)</code></pre>
+snippets.size &lt;- 25
+Sys.setenv(SNIPPETS_SIZE = snippets.size)</code></pre>
 <ul>
 <li>The <code>packages.path</code> variable indicates the location of the dependencies (see <a href="software-components">software requirements</a> below). For the sake of simplicity it is assumed that all the packages are in the same directory (as recommended in the installation instructions, see below).</li>
 <li>In Rmd every bash chunk are executed in an independent session, this is why the path for the packages must be initialized. This is used in turn to initialize the environment with the script <code>session-setup.sh</code>, which must be present in the same directory for executing the Rmd source file. This is not needed when executing commands manually, as long as the environment has been configured once (see below).</li>
@@ -248,7 +248,8 @@ ls data/*/* | head</code></pre>
 <li>The <code>data</code> directory must be writable because the program uses cached intermediate files whenever possible for efficiency reasons</li>
 </ul>
 <p>For these experiments we create a version of the dataset where each document is replaced with a 100 lines snippet:</p>
-<pre class="bash"><code>find data/gb/* data/ia/* -maxdepth 0 -type f | ./create-snippets-dataset.sh 100 $OUTPUT_DIR/data</code></pre>
+<pre class="bash"><code>source session-setup.sh
+find data/gb/* data/ia/* -maxdepth 0 -type f | ./create-snippets-dataset.sh $SNIPPETS_SIZE $OUTPUT_DIR/data</code></pre>
 </div>
 </div>
 <div id="simple-examples" class="section level1">
@@ -258,7 +259,7 @@ ls data/*/* | head</code></pre>
 <p>The simplest way to use the system is to specify the strategy and its parameters directly on the command line. In the following we compare Mark Twain’s “The Adventures of Tom Sawyer” and “The Adventures of Huckleberry Finn” (the last two arguments).</p>
 <pre class="bash"><code>source session-setup.sh
 verif-author.pl -s &quot;strategy=basic;obsType.CHAR.CCC.lc1.sl0.mf3=1&quot; $OUTPUT_DIR/data/1876-mt-taots $OUTPUT_DIR/data/1884-mt-taohf 2&gt;/dev/null</code></pre>
-<pre><code>## 0.381123081742439</code></pre>
+<pre><code>## 0.284662948616859</code></pre>
 <ul>
 <li>The <code>obsType</code> parameter represents charaters (<code>CHAR</code>) trigrams (<code>CCC</code>) with lowercase, no sentence limit and minimum frequency 3. See the <a href="https://erwanm.github.io/CLGTextTools/#Definitions">CLGTextTools documentation</a> for details about observation types.</li>
 <li>The default similarity measure <em>minmax</em> is used.</li>
@@ -270,7 +271,7 @@ verif-author.pl -s &quot;strategy=basic;obsType.CHAR.CCC.lc1.sl0.mf3=1&quot; $OU
 <h2>Example using a configuration file</h2>
 <p>A better and more convenient way is to provide the parameters in a <a href="https://erwanm.github.io/clg-authorship-analytics/#ConfigurationFile">config file</a>.</p>
 <p>The content of the config file is:</p>
-<pre class="bash"><code>cat configs/basic.2.conf</code></pre>
+<pre class="bash"><code>cat conf/basic.2.conf</code></pre>
 <pre><code>## strategy=basic
 ## 
 ## obsType.CHAR.CCC.lc1.sl0.mf3=1
@@ -289,8 +290,8 @@ verif-author.pl -s &quot;strategy=basic;obsType.CHAR.CCC.lc1.sl0.mf3=1&quot; $OU
 </ul>
 <p>The same result as above can be obtained as follows:</p>
 <pre class="bash"><code>source session-setup.sh
-verif-author.pl -c configs/basic.2.conf $OUTPUT_DIR/data/1876-mt-taots $OUTPUT_DIR/data/1884-mt-taohf</code></pre>
-<pre><code>## 0.381123081742438</code></pre>
+verif-author.pl -c conf/basic.2.conf $OUTPUT_DIR/data/1876-mt-taots $OUTPUT_DIR/data/1884-mt-taohf</code></pre>
+<pre><code>## 0.284662948616858</code></pre>
 <ul>
 <li>The <code>-c</code> option is used to cache and if possible reuse the <em>count files</em>: for every document, a count file is created for every observation type which contains the frequency for every observation.</li>
 </ul>
@@ -299,7 +300,7 @@ verif-author.pl -c configs/basic.2.conf $OUTPUT_DIR/data/1876-mt-taots $OUTPUT_D
 <h2>Using multiple observations types</h2>
 <p>Several observations types can be specified. In this case the output will show the corresponding types as columns.</p>
 <p>Config file:</p>
-<pre class="bash"><code>cat configs/basic.3.conf</code></pre>
+<pre class="bash"><code>cat conf/basic.3.conf</code></pre>
 <pre><code>## strategy=basic
 ## 
 ## obsType.CHAR.CC.lc1.sl0.mf3=1
@@ -316,9 +317,9 @@ verif-author.pl -c configs/basic.2.conf $OUTPUT_DIR/data/1876-mt-taots $OUTPUT_D
 ## formatting=0</code></pre>
 <p>In this example we use various <a href="https://erwanm.github.io/CLGTextTools/#ObservationType">observation types “families”</a>.</p>
 <pre class="bash"><code>source session-setup.sh
-verif-author.pl -H configs/basic.3.conf $OUTPUT_DIR/data/1876-mt-taots $OUTPUT_DIR/data/1884-mt-taohf</code></pre>
+verif-author.pl -H conf/basic.3.conf $OUTPUT_DIR/data/1876-mt-taots $OUTPUT_DIR/data/1884-mt-taohf</code></pre>
 <pre><code>## CHAR.CC.lc1.sl0.mf3  CHAR.CCC.lc1.sl0.mf3    VOCABCLASS.MORPHO.mf3   WORD.T.lc1.sl0.mf2  WORD.TT.lc1.sl0.mf2
-## 0.610619442082035    0.381123081742439   0.860821200190789   0.313583361949269   0.0537664203612478</code></pre>
+## 0.527548482556109    0.284662948616859   0.838069999086174   0.320275722932078   0</code></pre>
 <ul>
 <li>Option <code>-H</code> is used to print the columns names as the first line (header).</li>
 </ul>
@@ -328,9 +329,9 @@ verif-author.pl -H configs/basic.3.conf $OUTPUT_DIR/data/1876-mt-taots $OUTPUT_D
 <p>The program can also receive two groups of documents instead of two documents as input. Documents which are together in the same group are assumed to have been written by the same author. Multiple documents by the same author can potentially provide crucial insight by allowing the verification method to distinguish constant stylistic features vs. document-specific ones.</p>
 <p>In this example we use the same config as above but compare a group of books by Mark Twain vs. a group of books by Henry James:</p>
 <pre class="bash"><code>source session-setup.sh
-verif-author.pl -H configs/basic.3.conf $OUTPUT_DIR/data/1876-mt-taots:$OUTPUT_DIR/data/1884-mt-taohf $OUTPUT_DIR/data/1888-hj-tap:$OUTPUT_DIR/data/1896-hj-tsop:$OUTPUT_DIR/data/1898-hj-ttm</code></pre>
+verif-author.pl -H conf/basic.3.conf $OUTPUT_DIR/data/1876-mt-taots:$OUTPUT_DIR/data/1884-mt-taohf $OUTPUT_DIR/data/1888-hj-tap:$OUTPUT_DIR/data/1896-hj-tsop:$OUTPUT_DIR/data/1898-hj-ttm</code></pre>
 <pre><code>## CHAR.CC.lc1.sl0.mf3  CHAR.CCC.lc1.sl0.mf3    VOCABCLASS.MORPHO.mf3   WORD.T.lc1.sl0.mf2  WORD.TT.lc1.sl0.mf2
-## 0.676846630337647    0.453109402900663   0.848029609099052   0.360284516220328   0.0488144992277726</code></pre>
+## 0.524361140606737    0.295343770979623   0.858124886439343   0.274813343379684   0.049291638277377</code></pre>
 <ul>
 <li>There can be any number of documents in each of the two groups ** This is more general than the PAN format which consists of a single questioned document on one side.</li>
 <li>The <code>multipleProbeAggregate</code> parameter presented above determines how the features are combined across the documents in one group to provide the final feature value.</li>
@@ -357,18 +358,18 @@ verif-author.pl -H configs/basic.3.conf $OUTPUT_DIR/data/1876-mt-taots:$OUTPUT_D
 ## data/gb/1905-haj-fftf data/gb/1884-mt-taohf  0</code></pre>
 <p>The same config as above is applied to these four problems:</p>
 <pre class="bash"><code>source session-setup.sh
-cat data/user-guide.expl1/cases.txt | sed &quot;s:data/gb:$OUTPUT_DIR/data:g&quot; | cut -f 1 | verif-author.pl -H configs/basic.3.conf</code></pre>
+cat data/user-guide.expl1/cases.txt | sed &quot;s:data/gb:$OUTPUT_DIR/data:g&quot; | cut -f 1 | verif-author.pl -H conf/basic.3.conf</code></pre>
 <pre><code>## CHAR.CC.lc1.sl0.mf3  CHAR.CCC.lc1.sl0.mf3    VOCABCLASS.MORPHO.mf3   WORD.T.lc1.sl0.mf2  WORD.TT.lc1.sl0.mf2
-## 0.598841490051632    0.295189149828739   0.948576211829273   0.263621271986521   0.0707146672364065
-## 0.610619442082035    0.381123081742439   0.860821200190789   0.313583361949268   0.0537664203612478
-## 0.643291497667601    0.38232063578848    0.728662241082593   0.35120907581004    0.0572524677787836
-## 0.672626864764882    0.41215907242515    0.840618033566078   0.28908100752018    0.0642319873317499
-## 0.611764696299144    0.33109001662802    0.728426710436997   0.272239010842848   0.0615425501231962
-## 0.602243841512569    0.35287261748618    0.801622463068758   0.343055529901863   0.117612837122067
-## 0.621156952593578    0.339582847568752   0.840618033566078   0.28908100752018    0.0316992856524932
-## 0.683334207120488    0.41774752151734    0.940904878394964   0.383934901664915   0.0906342302951371
-## 0.656557975297375    0.373337646820809   0.8288696262297 0.335312175996169   0.0483048304830483
-## 0.590252011229795    0.315311846399118   0.874297268730565   0.325567850902738   0.065122754372234</code></pre>
+## 0.55071508273749 0.255733226355103   0.858124886439343   0.270534071736996   0.061765301986218
+## 0.527548482556109    0.284662948616859   0.838069999086174   0.320275722932078   0
+## 0.586642225992505    0.223415907180839   0.798013245033113   0.240713224368499   0.0225770925110132
+## 0.544693728477512    0.262600285286852   0.907435696296602   0.336148275931238   0.0335053880286154
+## 0.485058111195559    0.246452564130989   0.878592972596737   0.238575067958954   0.0665785248843139
+## 0.379565818126785    0.19753807960415    0.932526892972249   0.225806451612903   0
+## 0.459020564827645    0.211282777753183   0.886409736308316   0.215400246752304   0.0335053880286154
+## 0.555770141614561    0.327832145640538   0.862323889604025   0.445977084558297   0.0962579430454224
+## 0.484443643409106    0.246556093729102   0.949158786687953   0.291497975708502   0.12654980761009
+## 0.525505068809764    0.246489124850145   0.860691904335593   0.263578530098142   0.0543321009484006</code></pre>
 </div>
 </div>
 <div id="technical-notes-about-observation-types-preprocessing" class="section level1">
@@ -401,7 +402,7 @@ sort -r -n +1 -2 &quot;$OUTPUT_DIR/global.observations/WORD.T.lc1.sl0.mf2.count&
 <div id="example" class="section level3">
 <h3>Example</h3>
 <p>The “stop words” option is used by adding the name of the resource containing the list of stop words to the desired word observation types, for example:</p>
-<pre class="bash"><code>cat configs/basic.4.conf</code></pre>
+<pre class="bash"><code>cat conf/basic.4.conf</code></pre>
 <pre><code>## strategy=basic
 ## 
 ## obsType.WORD.T.lc1.sl0.mf2=1
@@ -421,9 +422,9 @@ sort -r -n +1 -2 &quot;$OUTPUT_DIR/global.observations/WORD.T.lc1.sl0.mf2.count&
 <li>The matching of a resource name to a file can be provided using option <code>-v</code> in the <code>verif-author.pl</code> command, as shown in this example:</li>
 </ul>
 <pre class="bash"><code>source session-setup.sh
-verif-author.pl -H -v mt-100:$OUTPUT_DIR/mt-100.stop-list configs/basic.4.conf $OUTPUT_DIR/data/1876-mt-taots:$OUTPUT_DIR/data/1884-mt-taohf $OUTPUT_DIR/data/1888-hj-tap:$OUTPUT_DIR/data/1896-hj-tsop:$OUTPUT_DIR/data/1898-hj-ttm</code></pre>
+verif-author.pl -H -v mt-100:$OUTPUT_DIR/mt-100.stop-list conf/basic.4.conf $OUTPUT_DIR/data/1876-mt-taots:$OUTPUT_DIR/data/1884-mt-taohf $OUTPUT_DIR/data/1888-hj-tap:$OUTPUT_DIR/data/1896-hj-tsop:$OUTPUT_DIR/data/1898-hj-ttm</code></pre>
 <pre><code>## WORD.T.lc1.sl0.mf2   WORD.TT.lc1.sl0.mf2 WORD.TT.lc1.sl0.mt-100.mf2  WORD.TTT.lc1.sl0.mt-100.mf2 WORD.TTTT.lc1.sl0.mt-100.mf2
-## 0.354533665558548    0.0704480880850572  0.379297739538697   0.207433649587486   0.112937947916738</code></pre>
+## 0.27267370755834 0.02894377621016    0.297048857199746   0.135070708992029   0.0516673770847219</code></pre>
 </div>
 </div>
 </div>
@@ -434,7 +435,7 @@ verif-author.pl -H -v mt-100:$OUTPUT_DIR/mt-100.stop-list configs/basic.4.conf $
 <h2>Universum (<code>univ</code>)</h2>
 <p>Given two documents A and B, repeatedly mix different portions of A and B together, then compare the similarity obtained between A and A, B and B, A and B, mixed-AB and A, mixed-AB and B, mixed-AB and mixed-AB. If A and B have the same author, the resulting similarity scores should be all similar.</p>
 <p>Config file:</p>
-<pre class="bash"><code>cat configs/univ.1.conf</code></pre>
+<pre class="bash"><code>cat conf/univ.1.conf</code></pre>
 <pre><code>## 
 ## strategy=univ
 ## 
@@ -469,9 +470,10 @@ verif-author.pl -H -v mt-100:$OUTPUT_DIR/mt-100.stop-list configs/basic.4.conf $
 </ul>
 <p>This is an ensemble method, the time it requires is proportional to <code>nbRounds</code> (it also depends on the size and number of input documents, of course). With only 50 rounds the following run takes around 20 seconds:</p>
 <pre class="bash"><code>source session-setup.sh
-verif-author.pl -H configs/univ.1.conf $OUTPUT_DIR/data/1876-mt-taots:$OUTPUT_DIR/data/1884-mt-taohf $OUTPUT_DIR/data/1888-hj-tap:$OUTPUT_DIR/data/1896-hj-tsop:$OUTPUT_DIR/data/1898-hj-ttm</code></pre>
-<pre><code>## simByRound_all_AA    simByRound_all_BA   simByRound_all_BB   simByRound_all_MA   simByRound_all_MB   simByRound_all_MM   countMostSimByRound_all_AA  countMostSimByRound_all_BA  countMostSimByRound_all_BB  countMostSimByRound_all_MA  countMostSimByRound_all_MB  countMostSimByRound_all_MM
-## 0.698058770264658    0.244524199020657   0.626938503241522   0.552576325489  0.396631506838462   0.866567199304046   0.4 0   0.12    0.02    0.02    0.44</code></pre>
+verif-author.pl -H conf/univ.1.conf $OUTPUT_DIR/data/1876-mt-taots:$OUTPUT_DIR/data/1884-mt-taohf $OUTPUT_DIR/data/1888-hj-tap:$OUTPUT_DIR/data/1896-hj-tsop:$OUTPUT_DIR/data/1898-hj-ttm</code></pre>
+<pre><code>## doc(s) too small =&gt; impossible to find enough partitions =&gt; used empty doc(s) 28 times (out of 50 rounds). at /home/erwan/now/22-authorship/CLGTextTools/lib/CLGTextTools/Logging.pm line 118.
+## simByRound_all_AA    simByRound_all_BA   simByRound_all_BB   simByRound_all_MA   simByRound_all_MB   simByRound_all_MM   countMostSimByRound_all_AA  countMostSimByRound_all_BA  countMostSimByRound_all_BB  countMostSimByRound_all_MA  countMostSimByRound_all_MB  countMostSimByRound_all_MM
+## 0.197190505564069    0   0.415869441362426   0.351199401454065   0.385736438947069   0.696832231556098   0.32    0   0.24    0.08    0.08    0.28</code></pre>
 </div>
 <div id="general-impostors-gi" class="section level2">
 <h2>General Impostors (<code>GI</code>)</h2>
@@ -498,7 +500,7 @@ find $OUTPUT_DIR/data/* -maxdepth 0 -type f | random-lines.pl 100 1 $n | while r
 <h3>“Simple” example</h3>
 <p>This is a “simple” example using the impostors created above.</p>
 <p>Config file:</p>
-<pre class="bash"><code>cat configs/GI.1.conf</code></pre>
+<pre class="bash"><code>cat conf/GI.1.conf</code></pre>
 <pre><code>## 
 ## 
 ## strategy=GI
@@ -552,9 +554,9 @@ find $OUTPUT_DIR/data/* -maxdepth 0 -type f | random-lines.pl 100 1 $n | while r
 <li><code>aggregateSimStat</code>: <code>median</code>, <code>arithm</code>, <code>geom</code>, <code>harmo</code>. aggregate method to use if <code>useAggregateSim</code> is not 0 (ignored if <code>0</code>). default: <code>arithm</code>.</li>
 </ul>
 <pre class="bash"><code>source session-setup.sh
-verif-author.pl -H -d $OUTPUT_DIR configs/GI.1.conf $OUTPUT_DIR/data/1876-mt-taots:$OUTPUT_DIR/data/1884-mt-taohf $OUTPUT_DIR/data/1888-hj-tap:$OUTPUT_DIR/data/1896-hj-tsop:$OUTPUT_DIR/data/1898-hj-ttm</code></pre>
+verif-author.pl -H -d $OUTPUT_DIR conf/GI.1.conf $OUTPUT_DIR/data/1876-mt-taots:$OUTPUT_DIR/data/1884-mt-taohf $OUTPUT_DIR/data/1888-hj-tap:$OUTPUT_DIR/data/1896-hj-tsop:$OUTPUT_DIR/data/1898-hj-ttm</code></pre>
 <pre><code>## countMostSim_original    relativeRank    aggregatedSim_ratio
-## 0.2  0.364   0.938014378968919</code></pre>
+## 0.16 0.331   0.852414612329023</code></pre>
 </div>
 <div id="example-with-pre-computed-similarities" class="section level3">
 <h3>Example with pre-computed similarities</h3>
@@ -566,7 +568,7 @@ find $OUTPUT_DIR/impostors/GI.1.impostors/* -maxdepth 0 -type f  &gt;$OUTPUT_DIR
 ls $OUTPUT_DIR/data/1876-mt-taots $OUTPUT_DIR/data/1884-mt-taohf $OUTPUT_DIR/data/1888-hj-tap $OUTPUT_DIR/data/1896-hj-tsop $OUTPUT_DIR/data/1898-hj-ttm &gt;$OUTPUT_DIR/probe-files.list
 sim-collections-doc-by-doc.pl -o WORD.T.lc1.sl0.mf3 -R BASENAME WORD.T.lc1.sl0.mf3:CHAR.CCC.lc1.sl0.mf3 $OUTPUT_DIR/probe-files.list GI.1.impostors:$OUTPUT_DIR/impostors/GI.1.impostors.list 2&gt;/dev/null</code></pre>
 <p>The config file is:</p>
-<pre class="bash"><code>cat configs/GI.2.conf</code></pre>
+<pre class="bash"><code>cat conf/GI.2.conf</code></pre>
 <pre><code>## 
 ## 
 ## strategy=GI
@@ -596,9 +598,9 @@ sim-collections-doc-by-doc.pl -o WORD.T.lc1.sl0.mf3 -R BASENAME WORD.T.lc1.sl0.m
 ## wordTokenization=1
 ## formatting=0</code></pre>
 <pre class="bash"><code>source session-setup.sh
-verif-author.pl -H -d $OUTPUT_DIR configs/GI.1.conf $OUTPUT_DIR/data/1876-mt-taots:$OUTPUT_DIR/data/1884-mt-taohf $OUTPUT_DIR/data/1888-hj-tap:$OUTPUT_DIR/data/1896-hj-tsop:$OUTPUT_DIR/data/1898-hj-ttm</code></pre>
+verif-author.pl -H -d $OUTPUT_DIR conf/GI.1.conf $OUTPUT_DIR/data/1876-mt-taots:$OUTPUT_DIR/data/1884-mt-taohf $OUTPUT_DIR/data/1888-hj-tap:$OUTPUT_DIR/data/1896-hj-tsop:$OUTPUT_DIR/data/1898-hj-ttm</code></pre>
 <pre><code>## countMostSim_original    relativeRank    aggregatedSim_ratio
-## 0.42 0.384   0.917629114082302</code></pre>
+## 0.16 0.296   0.932776828111695</code></pre>
 </div>
 </div>
 </div>
@@ -624,7 +626,7 @@ cat data/user-guide.expl1/cases.txt | sed &#39;s:data/[^/]*/::g&#39; &gt;&quot;$
 cat data/user-guide.expl1/test-cases.txt | sed &#39;s:data/[^/]*/::g&#39; &gt;&quot;$OUTPUT_DIR/sup1/test-cases.gold.txt&quot;
 cat &quot;$OUTPUT_DIR/sup1/test-cases.gold.txt&quot; | cut -f 1 &gt;&quot;$OUTPUT_DIR/sup1/test-cases.txt&quot;</code></pre>
 <p>The config file used below contains:</p>
-<pre class="bash"><code>cat configs/basic.supervised.1.conf</code></pre>
+<pre class="bash"><code>cat conf/basic.supervised.1.conf</code></pre>
 <pre><code>## strategy=basic
 ## 
 ## obsType.CHAR.CCC.lc1.sl0.mf3=1
@@ -649,7 +651,7 @@ cat &quot;$OUTPUT_DIR/sup1/test-cases.gold.txt&quot; | cut -f 1 &gt;&quot;$OUTPU
 <div id="training" class="section level3">
 <h3>Training</h3>
 <pre class="bash"><code>source session-setup.sh
-train-test.sh -l &quot;$OUTPUT_DIR/sup1/cases.txt&quot; -m &quot;$OUTPUT_DIR/sup1/model&quot; &quot;$OUTPUT_DIR/sup1&quot; configs/basic.supervised.1.conf &quot;$OUTPUT_DIR/sup1/output&quot;</code></pre>
+train-test.sh -l &quot;$OUTPUT_DIR/sup1/cases.txt&quot; -m &quot;$OUTPUT_DIR/sup1/model&quot; &quot;$OUTPUT_DIR/sup1&quot; conf/basic.supervised.1.conf &quot;$OUTPUT_DIR/sup1/output&quot;</code></pre>
 <pre><code>## obtain-strategy-features.sh,59: Warning: parameter &#39;vocabResources&#39; is defined but empty in parameter file &#39;/tmp/user-guide-part1.output/sup1/resources-options.conf&#39;</code></pre>
 <ul>
 <li>The Weka model is stored in <code>$OUTPUT_DIR/sup1/model</code></li>
@@ -660,7 +662,7 @@ train-test.sh -l &quot;$OUTPUT_DIR/sup1/cases.txt&quot; -m &quot;$OUTPUT_DIR/sup
 <h3>Applying the model</h3>
 <p>We apply the previously trained model to some new cases:</p>
 <pre class="bash"><code>source session-setup.sh
-train-test.sh -a &quot;$OUTPUT_DIR/sup1/test-cases.txt&quot; -m &quot;$OUTPUT_DIR/sup1/model&quot; &quot;$OUTPUT_DIR/sup1&quot; configs/basic.supervised.1.conf &quot;$OUTPUT_DIR/sup1/output&quot;</code></pre>
+train-test.sh -a &quot;$OUTPUT_DIR/sup1/test-cases.txt&quot; -m &quot;$OUTPUT_DIR/sup1/model&quot; &quot;$OUTPUT_DIR/sup1&quot; conf/basic.supervised.1.conf &quot;$OUTPUT_DIR/sup1/output&quot;</code></pre>
 <pre><code>## obtain-strategy-features.sh,59: Warning: parameter &#39;vocabResources&#39; is defined but empty in parameter file &#39;/tmp/user-guide-part1.output/sup1/resources-options.conf&#39;</code></pre>
 <p>The predicted values are written in <code>$OUTPUT_DIR/sup1/output/test/predict.tsv</code> as a single column, in the same order as the input cases.</p>
 </div>
@@ -693,7 +695,7 @@ done</code></pre>
 <h3>Running CV</h3>
 <pre class="bash"><code>source session-setup.sh
 cp &quot;$OUTPUT_DIR/sup1/cases.txt&quot; &quot;$OUTPUT_DIR/sup1/output/truth&quot;
-train-cv.sh configs/basic.supervised.1.conf &quot;$OUTPUT_DIR/sup1&quot; &quot;$OUTPUT_DIR/sup1/output&quot;</code></pre>
+train-cv.sh conf/basic.supervised.1.conf &quot;$OUTPUT_DIR/sup1&quot; &quot;$OUTPUT_DIR/sup1/output&quot;</code></pre>
 <pre><code>## train-cv.sh: fail safe mode is OFF
 ## train-cv.sh: cleanup mode is OFF
 ##  fold.1;obtain-strategy-features.sh,59: Warning: parameter &#39;vocabResources&#39; is defined but empty in parameter file &#39;/tmp/user-guide-part1.output/sup1/resources-options.conf&#39;
@@ -708,7 +710,7 @@ train-cv.sh configs/basic.supervised.1.conf &quot;$OUTPUT_DIR/sup1&quot; &quot;$
 ## obtain-strategy-features.sh,59: Warning: parameter &#39;vocabResources&#39; is defined but empty in parameter file &#39;/tmp/user-guide-part1.output/sup1/resources-options.conf&#39;</code></pre>
 <p>The results can be found in a <code>.perf</code> file named after the configuration filename:</p>
 <pre class="bash"><code>cat &quot;$OUTPUT_DIR/sup1/output/basic.supervised.1.perf&quot;</code></pre>
-<pre><code>## 0.864000 0.960000    0.900000</code></pre>
+<pre><code>## 0.756000 0.840000    0.900000</code></pre>
 <p>The three values are:</p>
 <ul>
 <li>the “final score”, i.e. product of the AUC and accuracy modified according to PAN15 evaluation method</li>

@@ -74,7 +74,7 @@ pickPairsOfDistinctBooks <- function(populationDT, alreadyPickedDT, nbToPick) {
   pickedAT <- c(alreadyPickedDT[,filename.x], alreadyPickedDT[,filename.y])
   for (i in 1:nbToPick) {
     availableDT <- populationDT[!(filename.x %in% pickedAT) & !(filename.y %in% pickedAT),]
-    print(paste('    Picking no',i,'.',length(pickedAT),' books already picked; ', nrow(availableDT),'pairs available.'))
+#    print(paste('    Picking no',i,'.',length(pickedAT),' books already picked; ', nrow(availableDT),'pairs available.'))
     if (nrow(availableDT) < 1) {
       stop('Error: not enough data to pick pairs of distinct books. Try option "with replacement".')
     }
@@ -129,7 +129,29 @@ buildTrainOrTestSet <- function(dataSplitByAuthor, nbCases, train.set, propPosit
 # dataSplitByAuthor <- splitAuthors(d)
 #
 buildFullDataset <- function(dataSplitByAuthor, nbCasesTrain, nbCasesTest, propPositive=.5, withReplacement=FALSE) {
+  print('*** TRAIN SET')
   trainDT <- buildTrainOrTestSet(dataSplitByAuthor, nbCasesTrain, TRUE, propPositive, withReplacement)
+  trainDT[, train.set.x:= NULL]
+  trainDT[, train.set.y:= NULL]
+  trainDT[, train.or.test := 'train']
+  print('*** TEST SET')
   testDT <- buildTrainOrTestSet(dataSplitByAuthor, nbCasesTest, FALSE, propPositive, withReplacement)
-  rbind(trainDT, testDT)
+  testDT[, train.set.x:= NULL]
+  testDT[, train.set.y:= NULL]
+  testDT[, train.or.test:= 'test']
+  r <- rbind(trainDT, testDT)
+  r[, case.id := paste(filename.x, filename.y)]
+  r[same.author==FALSE, answer := 0, ]
+  r[same.author==TRUE,  answer := 1, ]
+  r
 }
+
+# fullDataset <- buildFullDataset(...)
+saveDatasetInCasesFormat <- function(fullDataset, dir='.', trainFile='train.tsv', testFile='test.tsv') {
+  trainset <- fullDataset[train.or.test=='train',.(case.id,answer)]
+  testset <- fullDataset[train.or.test=='test',.(case.id,answer)]
+  fwrite(trainset, paste(dir,trainFile,sep='/'), sep='\t', col.names=FALSE)
+  fwrite(testset, paste(dir,testFile,sep='/'), sep='\t', col.names=FALSE)
+}
+
+
