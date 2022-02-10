@@ -38,7 +38,7 @@ for SIZE in $EXPE1_DOC_SIZES; do
     echo "Creating data in dir $EXPE1_WORK_DIR/$SIZE."
     mkdir "$EXPE1_WORK_DIR/$SIZE"
     mkdir "$EXPE1_WORK_DIR/$SIZE/data"
-    find data/gb/* data/ia/* -maxdepth 0 -type f | ./create-snippets-dataset.sh $SIZE "$EXPE1_WORK_DIR/$SIZE/data"
+    find data/gb/* data/ia/* -maxdepth 0 -type f | grep -v '\.' | ./create-snippets-dataset.sh $SIZE "$EXPE1_WORK_DIR/$SIZE/data"
   else
     echo "dir $EXPE1_WORK_DIR/$SIZE already created."
   fi

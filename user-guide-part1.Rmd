@@ -104,7 +104,7 @@ For these experiments we create a version of the dataset where each document is 
 
 ```{bash snippets}
 source session-setup.sh
-find data/gb/* data/ia/* -maxdepth 0 -type f | ./create-snippets-dataset.sh $SNIPPETS_SIZE $OUTPUT_DIR/data
+find data/gb/* data/ia/* -maxdepth 0 -type f | grep -v '\.' | ./create-snippets-dataset.sh $SNIPPETS_SIZE $OUTPUT_DIR/data
 ```
 
 # Simple examples
@@ -238,7 +238,7 @@ A "stop words list" based on frequency can be calculated based on a collection o
 
 ```{bash stopwords1}
 source session-setup.sh
-find $OUTPUT_DIR/data/*-mt-* -maxdepth 0 -type f >"$OUTPUT_DIR/mark-twain.list"
+find $OUTPUT_DIR/data/*-mt-* -maxdepth 0 -type f  >"$OUTPUT_DIR/mark-twain.list"
 count-obs-dataset.sh -i "$OUTPUT_DIR/mark-twain.list" -o '-g' english WORD.T.lc1.sl0.mf2 2>/dev/null
 sort -r -n +1 -2 "$OUTPUT_DIR/global.observations/WORD.T.lc1.sl0.mf2.count" | cut -f 1 | head -n 100 >"$OUTPUT_DIR/mt-100.stop-list" 
 ```

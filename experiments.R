@@ -15,16 +15,23 @@ library(plyr)
 
 # list the content of a dir, only regular files, no subdirs
 #
-readDataDir <- function(dir) {
+readDataDir <- function(dir, ignore.filename.if.contains.dot=TRUE) {
   files <- list.files(dir,all.files = FALSE,recursive = FALSE,include.dirs = FALSE,no..=TRUE)
-  ldply(files, function(filename) {
-    l <- strsplit(filename, '-',fixed=TRUE )
-    parts <- l[[1]]
-    year <- parts[1]
-    author <- parts[2]
-    title <- paste(parts[3:length(parts)],collapse ='-')
-    data.frame(year=year, author=author, title=title, filename=filename)
+  r<-ldply(files, function(filename) {
+    # to ignore .POS or .tok or any spurious files; the normal data filenames are not supposed to contain '.'
+    if (!ignore.filename.if.contains.dot | (length(grep('.',filename,fixed=TRUE))==0)) {
+      l <- strsplit(filename, '-',fixed=TRUE )
+      parts <- l[[1]]
+      year <- parts[1]
+      author <- parts[2]
+      title <- paste(parts[3:length(parts)],collapse ='-')
+      data.frame(year=year, author=author, title=title, filename=filename)
+    }
   })
+  if (nrow(r) != 554) {
+    warning(paste('Normally there should be 554 documents, found',nrow(r)))
+  }
+  r
 }
 
 

@@ -194,50 +194,50 @@ for SIZE in $EXPE1_DOC_SIZES; do
     echo &quot;Creating data in dir $EXPE1_WORK_DIR/$SIZE.&quot;
     mkdir &quot;$EXPE1_WORK_DIR/$SIZE&quot;
     mkdir &quot;$EXPE1_WORK_DIR/$SIZE/data&quot;
-    find data/gb/* data/ia/* -maxdepth 0 -type f | ./create-snippets-dataset.sh $SIZE &quot;$EXPE1_WORK_DIR/$SIZE/data&quot;
+    find data/gb/* data/ia/* -maxdepth 0 -type f | grep -v &#39;\.&#39; | ./create-snippets-dataset.sh $SIZE &quot;$EXPE1_WORK_DIR/$SIZE/data&quot;
   else
     echo &quot;dir $EXPE1_WORK_DIR/$SIZE already created.&quot;
   fi
 done</code></pre>
-<pre><code>## dir experiments/1-doc-size/20 already created.
-## dir experiments/1-doc-size/40 already created.
-## dir experiments/1-doc-size/60 already created.
-## dir experiments/1-doc-size/80 already created.
-## dir experiments/1-doc-size/100 already created.
-## dir experiments/1-doc-size/120 already created.
-## dir experiments/1-doc-size/140 already created.
-## dir experiments/1-doc-size/160 already created.
-## dir experiments/1-doc-size/180 already created.
-## dir experiments/1-doc-size/200 already created.</code></pre>
+<pre><code>## Creating data in dir experiments/1-doc-size/20.
+## Creating data in dir experiments/1-doc-size/40.
+## Creating data in dir experiments/1-doc-size/60.
+## Creating data in dir experiments/1-doc-size/80.
+## Creating data in dir experiments/1-doc-size/100.
+## Creating data in dir experiments/1-doc-size/120.
+## Creating data in dir experiments/1-doc-size/140.
+## Creating data in dir experiments/1-doc-size/160.
+## Creating data in dir experiments/1-doc-size/180.
+## Creating data in dir experiments/1-doc-size/200.</code></pre>
 </div>
 <div id="training-and-test-cases" class="section level2">
 <h2>Training and test cases</h2>
 <pre class="r"><code>d &lt;- readDataDir(paste(work.dir,any.doc.size,&#39;data&#39;,sep=&#39;/&#39;))
 dataSplitByAuthor &lt;- splitAuthors(d)</code></pre>
-<pre><code>## [1] &quot;25  authors ( 22 with at least 2 books )&quot;
+<pre><code>## [1] &quot;24  authors ( 22 with at least 2 books )&quot;
 ## [1] &quot;authors in train-only:  mh,wdh,sw,ga,amd,hm,tsa&quot;
-## [1] &quot;authors in test-only:  fmc,haj,hj,espw,hbs,us,ab,ewaoc,mh+,NA&quot;
+## [1] &quot;authors in test-only:  fmc,haj,hj,espw,hbs,us,ab,ewaoc,mh+&quot;
 ## [1] &quot;authors in shared:  ew,cfw,cdw,lma,es,mt,rwc,wta&quot;
 ## [1] &quot;books from shared authors in the training set:  90&quot;
 ## [1] &quot;all books in the training set:  285&quot;
-## [1] &quot;books from shared authors in the test set:  91&quot;
-## [1] &quot;books NOT from shared authors in the test set:  181&quot;
-## [1] &quot;all books in the test set:  272&quot;</code></pre>
+## [1] &quot;books from shared authors in the test set:  89&quot;
+## [1] &quot;books NOT from shared authors in the test set:  180&quot;
+## [1] &quot;all books in the test set:  269&quot;</code></pre>
 <pre class="r"><code>full &lt;- buildFullDataset(dataSplitByAuthor, 100, 100)</code></pre>
 <pre><code>## [1] &quot;*** TRAIN SET&quot;
 ## [1] &quot;Cartesian product:  81225&quot;
 ## [1] &quot;Removing pairs with same book:  80940&quot;
-## [1] &quot;pairs same author: 7624&quot;
-## [1] &quot;pairs diff author: 73316&quot;
+## [1] &quot;pairs same author: 7608&quot;
+## [1] &quot;pairs diff author: 73332&quot;
 ## [1] &quot;picking without replacement (a book can appear only once):&quot;
 ## [1] &quot; *** (1) same author&quot;
 ## [1] &quot; *** (2) different author&quot;
 ## [1] &quot;shuffling rows&quot;
 ## [1] &quot;*** TEST SET&quot;
-## [1] &quot;Cartesian product:  73984&quot;
-## [1] &quot;Removing pairs with same book:  73712&quot;
-## [1] &quot;pairs same author: 6400&quot;
-## [1] &quot;pairs diff author: 66770&quot;
+## [1] &quot;Cartesian product:  72361&quot;
+## [1] &quot;Removing pairs with same book:  72092&quot;
+## [1] &quot;pairs same author: 6354&quot;
+## [1] &quot;pairs diff author: 65738&quot;
 ## [1] &quot;picking without replacement (a book can appear only once):&quot;
 ## [1] &quot; *** (1) same author&quot;
 ## [1] &quot; *** (2) different author&quot;
@@ -328,6 +328,14 @@ done</code></pre>
 ## generate-multi-conf.sh: Strategy &#39;GI&#39; (with POS)
 ## generate-multi-conf.sh: Strategy &#39;univ&#39; (with POS)</code></pre>
 </div>
+</div>
+<div id="running-the-training-processes" class="section level1">
+<h1>Running the training processes</h1>
+<p>For every size <code>N</code> the training process is run as follows:</p>
+<pre><code>source session-setup.sh
+prepare-input-data.sh -l english -i &quot;$EXPE1_WORK_DIR/$SIZE/impostors&quot; &quot;$EXPE1_WORK_DIR/$SIZE/data&quot; &quot;$EXPE1_WORK_DIR/$SIZE/process&quot;
+task-distrib-daemon.sh  -s 30s -p 1 -v -q 10 &quot;$TASKS_DIR&quot; $NCORES &gt;&quot;$EXPE1_WORK_DIR/$SIZE/task-daemon.log&quot; &amp;
+train-top-level.sh -r -P &quot;$TASKS_DIR/mytasks&quot; -o  &#39;-c -s&#39; &quot;$EXPE1_WORK_DIR/$SIZE/process&quot;</code></pre>
 </div>
 
 

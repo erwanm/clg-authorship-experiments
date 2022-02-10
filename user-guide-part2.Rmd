@@ -67,7 +67,7 @@ mkdir "$TASKS_DIR"
 
 ```{bash snippets}
 source session-setup.sh
-find data/gb/* data/ia/* -maxdepth 0 -type f | ./create-snippets-dataset.sh $SNIPPETS_SIZE $OUTPUT_DIR/data
+find data/gb/* data/ia/* -maxdepth 0 -type f | grep -v '\.' | ./create-snippets-dataset.sh $SNIPPETS_SIZE $OUTPUT_DIR/data
 ```
 
 
