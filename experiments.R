@@ -92,7 +92,6 @@ pickPairsOfDistinctBooks <- function(populationDT, alreadyPickedDT, nbToPick) {
   alreadyPickedDT
 }
 
-
 #
 # d <- readDataDir()
 # dataSplitByAuthor <- splitAuthors(d)
@@ -154,7 +153,7 @@ buildFullDataset <- function(dataSplitByAuthor, nbCasesTrain, nbCasesTest, propP
   r[, case.id := paste(filename.x, filename.y)]
   r[same.author==FALSE, answer := 0, ]
   r[same.author==TRUE,  answer := 1, ]
-  assignAuthorsSeenInTraining(r)
+  r <- assignAuthorsSeenInTraining(r)
   r
 }
 
@@ -223,6 +222,72 @@ restrictTrainingSetDiversity <- function(fullDataset) {
   }
   l
 #  trainset
-  
-  
+}
+
+
+buildTrainOrTestSetWithGroups <- function(dataSplitByAuthor, nbCases, train.set, propPositive=.5, group1.sizes=1:5, group2.sizes=1) {
+  dt <- as.data.table(dataSplitByAuthor[dataSplitByAuthor$train.set==train.set,])
+  setkey(dt, author, title)
+  authors <- as.data.table(booksByAuthor(dt))
+  positive <- sample(nbCases, round(propPositive*nbCases))
+  l <- list()
+  for (i in 1:nbCases) {
+    group1.size <- sample(group1.sizes,1)
+    group2.size <- sample(group2.sizes,1)
+    if (i %in% positive) {
+#      print('POS')
+      selectableAuthors <- authors[n>=group1.size+group2.size,author]
+#      print(selectableAuthors)
+      this.author <- selectableAuthors[sample(length(selectableAuthors),1)]
+#      print(paste('selected:',this.author))
+      selectable.books <- dt[author==this.author,]
+      picked <- selectable.books[sample(nrow(selectable.books),group1.size+group2.size),]
+      gp1 <- sample(nrow(picked),group1.size)
+      gp2 <- !(1:nrow(picked) %in% gp1)
+      group1 <- picked[gp1,]
+      group2 <- picked[gp2,]
+    } else {
+#      print('NEG')
+      selectableAuthors1 <- authors[n>=group1.size,author]
+#      print(selectableAuthors1)
+      author1 <- selectableAuthors1[sample(length(selectableAuthors1),1)]
+      selectableAuthors2 <- authors[n>=group2.size & author != author1,author]
+#      print(selectableAuthors2)
+      author2 <- selectableAuthors2[sample(length(selectableAuthors2),1)]
+#      print(paste('selected:',author1,author2))
+      selectable.books1 <- dt[author==author1,]
+      group1 <- selectable.books1[sample(nrow(selectable.books1),group1.size),]
+      selectable.books2 <- dt[author==author2,]
+      group2 <- selectable.books2[sample(nrow(selectable.books2),group2.size),]
+    }
+#    print(group1)
+#    print(group2)
+    r1 <- data.table(author.x=group1[1,author],filename.x=paste(group1[,filename],collapse=':'),author.y=group2[1,author],filename.y=paste(group2[,filename],collapse=':'), same.author=(i %in% positive), train.set=train.set)
+    l[[i]] <- r1
+    
+  }
+  rbindlist(l)
+#  r<-rbindlist(l)
+#  print(paste('DEBUG', length(unique(c(r$author.x,r$author.y)))))
+#  r
+}
+
+
+#
+# d <- readDataDir()
+# dataSplitByAuthor <- splitAuthors(d)
+#
+buildFullDatasetWithGroups <- function(dataSplitByAuthor, nbCasesTrain, nbCasesTest, propPositive=.5, group1.sizes=1:5, group2.sizes=1) {
+  print('*** TRAIN SET')
+  trainDT <- buildTrainOrTestSetWithGroups(dataSplitByAuthor, nbCasesTrain, TRUE, propPositive, group1.sizes, group2.sizes)
+  trainDT[, train.or.test := 'train']
+  print('*** TEST SET')
+  testDT <- buildTrainOrTestSetWithGroups(dataSplitByAuthor, nbCasesTest, FALSE, propPositive, group1.sizes, group2.sizes)
+  testDT[, train.or.test:= 'test']
+  r <- rbind(trainDT, testDT)
+  r[, case.id := paste(filename.x, filename.y)]
+  r[same.author==FALSE, answer := 0, ]
+  r[same.author==TRUE,  answer := 1, ]
+  r <- assignAuthorsSeenInTraining(r)
+  r
 }
