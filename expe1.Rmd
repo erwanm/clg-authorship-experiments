@@ -19,7 +19,7 @@ packages.path <- 'packages'
 Sys.setenv(CLG_AUTHORSHIP_PACKAGES_PATH = packages.path)
 work.dir <- 'experiments/1-doc-size'
 Sys.setenv(EXPE1_WORK_DIR = work.dir)
-doc.sizes <- '20 40 60 80 100 120 140 160 180 200'
+doc.sizes <- '20 40 60 80 100 120 140 160 180 200 300 400 500 600 700 800 900 1000'
 Sys.setenv(EXPE1_DOC_SIZES = doc.sizes)
 any.doc.size <- strsplit(doc.sizes, ' ',fixed=TRUE)[[1]][1]
 set.seed(2022)

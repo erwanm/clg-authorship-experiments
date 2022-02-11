@@ -97,36 +97,40 @@ pickPairsOfDistinctBooks <- function(populationDT, alreadyPickedDT, nbToPick) {
 # d <- readDataDir()
 # dataSplitByAuthor <- splitAuthors(d)
 #
-buildTrainOrTestSet <- function(dataSplitByAuthor, nbCases, train.set, propPositive=.5, withReplacement=FALSE) {
+buildTrainOrTestSet <- function(dataSplitByAuthor, nbCases, train.set, propPositive=.5, withReplacement=FALSE,silent=FALSE) {
   dt <- as.data.table(dataSplitByAuthor[dataSplitByAuthor$train.set==train.set,])
   setkey(dt, author, title)
   dt[,dummy := rep(1,nrow(dt))]
   # cartesian product
   cp <- merge(dt,dt,by='dummy',allow.cartesian=TRUE)
-  print(paste('Cartesian product: ',nrow(cp)))
+  cp[,dummy:=NULL]
+  if (!silent) print(paste('Cartesian product: ',nrow(cp)))
   # remove same book
   cp <- cp[filename.x != filename.y,]
-  print(paste('Removing pairs with same book: ',nrow(cp)))
+  if (!silent) print(paste('Removing pairs with same book: ',nrow(cp)))
   # label as same author or not
   cp[, same.author := author.x == author.y,]
-  print(paste('pairs same author:',nrow(cp[same.author==TRUE,])))
-  print(paste('pairs diff author:',nrow(cp[same.author==FALSE,])))
+  if (!silent) print(paste('pairs same author:',nrow(cp[same.author==TRUE,])))
+  if (!silent) print(paste('pairs diff author:',nrow(cp[same.author==FALSE,])))
   same <- cp[same.author==TRUE,]
   diff <- cp[same.author==FALSE,]
   if (withReplacement) {
-    print('picking with replacement (same book allowed several times)')
+    if (!silent) print('picking with replacement (same book allowed several times)')
+    # avoid duplicates by symmetry like (x,y) = (y,x)
+    same <- same[filename.x < filename.y,]
+    diff <- diff[filename.x < filename.y,]
     r <- rbind(same[sample(nrow(same),round(propPositive*nbCases)),], diff[sample(nrow(diff),(1-propPositive)*nbCases),])
   } else {
-    print('picking without replacement (a book can appear only once):')
+    if (!silent) print('picking without replacement (a book can appear only once):')
     # easy way to create an empty data.table with same columns as cp:
     r <- cp[filename.x!=filename.x,]
-    print(' *** (1) same author')
+    if (!silent) print(' *** (1) same author')
     r <- pickPairsOfDistinctBooks(same, r, round(propPositive*nbCases))
-    print(' *** (2) different author')
+    if (!silent) print(' *** (2) different author')
     r <- pickPairsOfDistinctBooks(diff, r, round((1-propPositive)*nbCases))
     r
   }
-  print('shuffling rows')
+  if (!silent) print('shuffling rows')
   r[sample(1:nrow(r)),]
 }
 
@@ -138,18 +142,19 @@ buildTrainOrTestSet <- function(dataSplitByAuthor, nbCases, train.set, propPosit
 buildFullDataset <- function(dataSplitByAuthor, nbCasesTrain, nbCasesTest, propPositive=.5, withReplacement=FALSE) {
   print('*** TRAIN SET')
   trainDT <- buildTrainOrTestSet(dataSplitByAuthor, nbCasesTrain, TRUE, propPositive, withReplacement)
-  trainDT[, train.set.x:= NULL]
-  trainDT[, train.set.y:= NULL]
   trainDT[, train.or.test := 'train']
   print('*** TEST SET')
   testDT <- buildTrainOrTestSet(dataSplitByAuthor, nbCasesTest, FALSE, propPositive, withReplacement)
-  testDT[, train.set.x:= NULL]
-  testDT[, train.set.y:= NULL]
   testDT[, train.or.test:= 'test']
   r <- rbind(trainDT, testDT)
+  r[, train.set.x:= NULL]
+  r[, train.set.y:= NULL]
+  r[,author.seen.x :=  NULL]
+  r[,author.seen.y :=  NULL]
   r[, case.id := paste(filename.x, filename.y)]
   r[same.author==FALSE, answer := 0, ]
   r[same.author==TRUE,  answer := 1, ]
+  assignAuthorsSeenInTraining(r)
   r
 }
 
@@ -162,3 +167,62 @@ saveDatasetInCasesFormat <- function(fullDataset, dir='.', trainFile='train.tsv'
 }
 
 
+#
+# assumes an already computed "full dataset":
+# fullDataset <- buildFullDataset(...)
+#
+assignAuthorsSeenInTraining <- function(fullDataset,silent=FALSE) {
+  trainset <- fullDataset[train.or.test=='train',]
+  train.authors <- unique(c(trainset[,author.x], trainset[,author.y]))
+  if (!silent) print(paste(length(train.authors),'authors in the training set'))
+  fullDataset[,author.seen :=  author.x %in% train.authors | author.y %in% train.authors]
+  testset <- fullDataset[train.or.test=='test',]
+  if (!silent) print(paste("proportion of 'author seen in training' in the test set:", nrow(testset[author.seen==TRUE,])/nrow(testset)))
+  fullDataset
+}
+
+
+#
+# assumes an already computed "full dataset":
+# fullDataset <- buildFullDataset(...)
+#
+restrictTrainingSetDiversity <- function(fullDataset) {
+  trainsetX <- fullDataset[train.or.test=='train',]
+  trainsetX[,year := year.x]
+  trainsetX[,author := author.x]
+  trainsetX[,title := title.x]
+  trainsetX[,filename := filename.x]
+  trainsetY <- fullDataset[train.or.test=='train',]
+  trainsetY[,year := year.y]
+  trainsetY[,author := author.y]
+  trainsetY[,title := title.y]
+  trainsetY[,filename := filename.y]
+  nb.cases <- nrow(trainsetX)
+  trainset <- rbind(trainsetX[,c('year','author','title','filename')],trainsetY[,c('year','author','title','filename')])
+  trainset[,train.set := TRUE]
+  nb.books.by.author<-trainset[,nrow(.SD),by=author]
+  setnames(nb.books.by.author,'V1','n.books')
+  nb.books.by.author <- nb.books.by.author[order(-n.books),]
+  nb.books.by.author
+  l <- list()
+  l[[1]] <- 'NA'
+  for (n in 2:nrow(nb.books.by.author)) {
+    subset.authors <- nb.books.by.author[1:n,author]
+    train.subset <- trainset[author %in% subset.authors,]
+    print(paste('#### Generating training set with',n,'authors. Nb books:',nrow(train.subset)))
+    s <- buildTrainOrTestSet(train.subset,nb.cases,train.set = TRUE,withReplacement = TRUE,silent=TRUE)
+    s[, train.or.test := 'train']
+    s[, train.set.x:= NULL]
+    s[, train.set.y:= NULL]
+    r <- rbind(s, fullDataset[train.or.test=='test',], fill=TRUE)
+    r[, case.id := paste(filename.x, filename.y)]
+    r[same.author==FALSE, answer := 0, ]
+    r[same.author==TRUE,  answer := 1, ]
+    assignAuthorsSeenInTraining(r)
+    l[[n]] <- r
+  }
+  l
+#  trainset
+  
+  
+}

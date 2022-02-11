@@ -1,201 +1,201 @@
-dummy	year.x	author.x	title.x	filename.x	author.seen.x	year.y	author.y	title.y	filename.y	author.seen.y	same.author	train.or.test	case.id	answer
-1	1891	es	mm	1891-es-mm	TRUE	1920	rwc	tlrf	1920-rwc-tlrf	TRUE	FALSE	train	1891-es-mm 1920-rwc-tlrf	0
-1	1916	ga	mb	1916-ga-mb	FALSE	1897	ga	psaht	1897-ga-psaht	FALSE	TRUE	train	1916-ga-mb 1897-ga-psaht	1
-1	1907	wdh	tteotn	1907-wdh-tteotn	FALSE	1873	wdh	aca	1873-wdh-aca	FALSE	TRUE	train	1907-wdh-tteotn 1873-wdh-aca	1
-1	1854	tsa	tniabr	1854-tsa-tniabr	FALSE	1851	tsa	wt	1851-tsa-wt	FALSE	TRUE	train	1854-tsa-tniabr 1851-tsa-wt	1
-1	1905	amd	hgaah	1905-amd-hgaah	FALSE	1900	amd	algiow	1900-amd-algiow	FALSE	TRUE	train	1905-amd-hgaah 1900-amd-algiow	1
-1	1920	hm	tpm	1920-hm-tpm	FALSE	1915	hm	tmdm	1915-hm-tmdm	FALSE	TRUE	train	1920-hm-tpm 1915-hm-tmdm	1
-1	1877	cdw	bab	1877-cdw-bab	TRUE	1851	tsa	tlasorl	1851-tsa-tlasorl	FALSE	FALSE	train	1877-cdw-bab 1851-tsa-tlasorl	0
-1	1870	wta	pap	1870-wta-pap	TRUE	1894	wta	ab	1894-wta-ab	TRUE	TRUE	train	1870-wta-pap 1894-wta-ab	1
-1	1889	amd	amaae	1889-amd-amaae	FALSE	1864	sw	toh	1864-sw-toh	FALSE	FALSE	train	1889-amd-amaae 1864-sw-toh	0
-1	1896	wdh	tlatlh	1896-wdh-tlatlh	FALSE	1903	wdh	qs	1903-wdh-qs	FALSE	TRUE	train	1896-wdh-tlatlh 1903-wdh-qs	1
-1	1870	sw	wsc	1870-sw-wsc	FALSE	1880	cfw	rtk	1880-cfw-rtk	TRUE	FALSE	train	1870-sw-wsc 1880-cfw-rtk	0
-1	1894	mh	mwws	1894-mh-mwws	FALSE	1913	amd	amc	1913-amd-amc	FALSE	FALSE	train	1894-mh-mwws 1913-amd-amc	0
-1	1871	sw	o	1871-sw-o	FALSE	1899	cdw	tf	1899-cdw-tf	TRUE	FALSE	train	1871-sw-o 1899-cdw-tf	0
-1	1906	es	ha	1906-es-ha	TRUE	1877	wdh	aca	1877-wdh-aca	FALSE	FALSE	train	1906-es-ha 1877-wdh-aca	0
-1	1899	amd	thos	1899-amd-thos	FALSE	1902	amd	algiod	1902-amd-algiod	FALSE	TRUE	train	1899-amd-thos 1902-amd-algiod	1
-1	1895	wta	ai	1895-wta-ai	TRUE	1902	wdh	tfotpb	1902-wdh-tfotpb	FALSE	FALSE	train	1895-wta-ai 1902-wdh-tfotpb	0
-1	1911	rwc	j	1911-rwc-j	TRUE	1870	mh	al	1870-mh-al	FALSE	FALSE	train	1911-rwc-j 1870-mh-al	0
-1	1851	tsa	lilfawwrt	1851-tsa-lilfawwrt	FALSE	1864	sw	toh-v2	1864-sw-toh-v2	FALSE	FALSE	train	1851-tsa-lilfawwrt 1864-sw-toh-v2	0
-1	1870	amd	wfah	1870-amd-wfah	FALSE	1906	amd	ael	1906-amd-ael	FALSE	TRUE	train	1870-amd-wfah 1906-amd-ael	1
-1	1883	amd	wkm	1883-amd-wkm	FALSE	1868	wta	dtr	1868-wta-dtr	TRUE	FALSE	train	1883-amd-wkm 1868-wta-dtr	0
-1	1894	mt	tet	1894-mt-tet	TRUE	1891	mt	tac	1891-mt-tac	TRUE	TRUE	train	1894-mt-tet 1891-mt-tac	1
-1	1894	amd	iwrt	1894-amd-iwrt	FALSE	1875	amd	da	1875-amd-da	FALSE	TRUE	train	1894-amd-iwrt 1875-amd-da	1
-1	1914	rwc	a	1914-rwc-a	TRUE	1917	ew	s	1917-ew-s	TRUE	FALSE	train	1914-rwc-a 1917-ew-s	0
-1	1908	wdh	rhao	1908-wdh-rhao	FALSE	1893	wdh	tcob	1893-wdh-tcob	FALSE	TRUE	train	1908-wdh-rhao 1893-wdh-tcob	1
-1	1898	wdh	aoec	1898-wdh-aoec	FALSE	1881	wdh	dbp	1881-wdh-dbp	FALSE	TRUE	train	1898-wdh-aoec 1881-wdh-dbp	1
-1	1881	sw	aloc	1881-sw-aloc	FALSE	1923	ga	bo	1923-ga-bo	FALSE	FALSE	train	1881-sw-aloc 1923-ga-bo	0
-1	1898	amd	algiob	1898-amd-algiob	FALSE	1894	es	e	1894-es-e	TRUE	FALSE	train	1898-amd-algiob 1894-es-e	0
-1	1856	tsa	fan	1856-tsa-fan	FALSE	1872	tsa	tyiamt	1872-tsa-tyiamt	FALSE	TRUE	train	1856-tsa-fan 1872-tsa-tyiamt	1
-1	1909	amd	hgt	1909-amd-hgt	FALSE	1866	amd	it	1866-amd-it	FALSE	TRUE	train	1909-amd-hgt 1866-amd-it	1
-1	1889	mt	acyikac	1889-mt-acyikac	TRUE	1873	mt	tga-c	1873-mt-tga-c	TRUE	TRUE	train	1889-mt-acyikac 1873-mt-tga-c	1
-1	1897	mt	fte	1897-mt-fte	TRUE	1907	mt	cs	1907-mt-cs	TRUE	TRUE	train	1897-mt-fte 1907-mt-cs	1
-1	1861	sw	tcobh	1861-sw-tcobh	FALSE	1879	sw	md	1879-sw-md	FALSE	TRUE	train	1861-sw-tcobh 1879-sw-md	1
-1	1883	amd	fgh	1883-amd-fgh	FALSE	1876	amd	nkk	1876-amd-nkk	FALSE	TRUE	train	1883-amd-fgh 1876-amd-nkk	1
-1	1888	ga	wdmc	1888-ga-wdmc	FALSE	1867	wta	saf	1867-wta-saf	TRUE	FALSE	train	1888-ga-wdmc 1867-wta-saf	0
-1	1850	sw	www	1850-sw-www	FALSE	1880	sw	teoac	1880-sw-teoac	FALSE	TRUE	train	1850-sw-www 1880-sw-teoac	1
-1	1864	wta	waw	1864-wta-waw	TRUE	1894	wta	its	1894-wta-its	TRUE	TRUE	train	1864-wta-waw 1894-wta-its	1
-1	1851	tsa	ttw	1851-tsa-ttw	FALSE	1852	tsa	trowww	1852-tsa-trowww	FALSE	TRUE	train	1851-tsa-ttw 1852-tsa-trowww	1
-1	1877	sw	d	1877-sw-d	FALSE	1903	amd	algiosl	1903-amd-algiosl	FALSE	FALSE	train	1877-sw-d 1903-amd-algiosl	0
-1	1919	ga	ta	1919-ga-ta	FALSE	1913	rwc	qa	1913-rwc-qa	TRUE	FALSE	train	1919-ga-ta 1913-rwc-qa	0
-1	1914	amd	tgamm	1914-amd-tgamm	FALSE	1896	wta	fye	1896-wta-fye	TRUE	FALSE	train	1914-amd-tgamm 1896-wta-fye	0
-1	1852	sw	q	1852-sw-q	FALSE	1895	cfw	daois	1895-cfw-daois	TRUE	FALSE	train	1852-sw-q 1895-cfw-daois	0
-1	1913	amd	trhcag	1913-amd-trhcag	FALSE	1870	amd	kar	1870-amd-kar	FALSE	TRUE	train	1913-amd-trhcag 1870-amd-kar	1
-1	1860	sw	sas-v2-c	1860-sw-sas-v2-c	FALSE	1871	wta	nl	1871-wta-nl	TRUE	FALSE	train	1860-sw-sas-v2-c 1871-wta-nl	0
-1	1880	mt	ata	1880-mt-ata	TRUE	1912	hm	tpoh	1912-hm-tpoh	FALSE	FALSE	train	1880-mt-ata 1912-hm-tpoh	0
-1	1867	amd	sd	1867-amd-sd	FALSE	1870	amd	ktw	1870-amd-ktw	FALSE	TRUE	train	1867-amd-sd 1870-amd-ktw	1
-1	1884	amd	ootw	1884-amd-ootw	FALSE	1879	wdh	tlofa	1879-wdh-tlofa	FALSE	FALSE	train	1884-amd-ootw 1879-wdh-tlofa	0
-1	1901	rwc	c	1901-rwc-c	TRUE	1915	rwc	wgt	1915-rwc-wgt	TRUE	TRUE	train	1901-rwc-c 1915-rwc-wgt	1
-1	1913	wdh	fst	1913-wdh-fst	FALSE	1897	wdh	soo	1897-wdh-soo	FALSE	TRUE	train	1913-wdh-fst 1897-wdh-soo	1
-1	1860	sw	sas-c	1860-sw-sas-c	FALSE	1902	rwc	tmop	1902-rwc-tmop	TRUE	FALSE	train	1860-sw-sas-c 1902-rwc-tmop	0
-1	1922	hm	tre-ia	1922-hm-tre-ia	FALSE	1880	mh	csith-nf	1880-mh-csith-nf	FALSE	FALSE	train	1922-hm-tre-ia 1880-mh-csith-nf	0
-1	1889	wdh	ahonf-v1	1889-wdh-ahonf-v1	FALSE	1884	wdh	trpsl	1884-wdh-trpsl	FALSE	TRUE	train	1889-wdh-ahonf-v1 1884-wdh-trpsl	1
-1	1856	sw	hots	1856-sw-hots	FALSE	1877	sw	pn	1877-sw-pn	FALSE	TRUE	train	1856-sw-hots 1877-sw-pn	1
-1	1908	ga	tgi	1908-ga-tgi	FALSE	1898	ga	tvr	1898-ga-tvr	FALSE	TRUE	train	1908-ga-tgi 1898-ga-tvr	1
-1	1908	amd	algios	1908-amd-algios	FALSE	1915	rwc	tgp	1915-rwc-tgp	TRUE	FALSE	train	1908-amd-algios 1915-rwc-tgp	0
-1	1850	sw	www-v2	1850-sw-www-v2	FALSE	1909	hm	tgg	1909-hm-tgg	FALSE	FALSE	train	1850-sw-www-v2 1909-hm-tgg	0
-1	1871	wdh	ss	1871-wdh-ss	FALSE	1908	wdh	far	1908-wdh-far	FALSE	TRUE	train	1871-wdh-ss 1908-wdh-far	1
-1	1876	mt	taots	1876-mt-taots	TRUE	1892	es	ip	1892-es-ip	TRUE	FALSE	train	1876-mt-taots 1892-es-ip	0
-1	1910	wdh	ii	1910-wdh-ii	FALSE	1860	wta	lbl	1860-wta-lbl	TRUE	FALSE	train	1910-wdh-ii 1860-wta-lbl	0
-1	1889	ga	hs	1889-ga-hs	FALSE	1921	ga	sil	1921-ga-sil	FALSE	TRUE	train	1889-ga-hs 1921-ga-sil	1
-1	1874	amd	sd	1874-amd-sd	FALSE	1912	amd	tcitlorh	1912-amd-tcitlorh	FALSE	TRUE	train	1874-amd-sd 1912-amd-tcitlorh	1
-1	1871	wta	utb	1871-wta-utb	TRUE	1875	mh	blat-nf	1875-mh-blat-nf	FALSE	FALSE	train	1871-wta-utb 1875-mh-blat-nf	0
-1	1877	sw	pn-?	1877-sw-pn-?	FALSE	1914	hm	taok	1914-hm-taok	FALSE	FALSE	train	1877-sw-pn-? 1914-hm-taok	0
-1	1907	amd	hgs	1907-amd-hgs	FALSE	1897	amd	ha	1897-amd-ha	FALSE	TRUE	train	1907-amd-hgs 1897-amd-ha	1
-1	1876	wta	ltf	1876-wta-ltf	TRUE	1890	tsa	absal	1890-tsa-absal	FALSE	FALSE	train	1876-wta-ltf 1890-tsa-absal	0
-1	1889	wdh	ahonf-v2	1889-wdh-ahonf-v2	FALSE	1907	ga	a	1907-ga-a	FALSE	FALSE	train	1889-wdh-ahonf-v2 1907-ga-a	0
-1	1867	wdh	vl	1867-wdh-vl	FALSE	1899	wdh	arl	1899-wdh-arl	FALSE	TRUE	train	1867-wdh-vl 1899-wdh-arl	1
-1	1887	wdh	ah	1887-wdh-ah	FALSE	1907	wdh	btdatd	1907-wdh-btdatd	FALSE	TRUE	train	1887-wdh-ah 1907-wdh-btdatd	1
-1	1892	wta	fftr	1892-wta-fftr	TRUE	1884	mh	mhcfb-nf	1884-mh-mhcfb-nf	FALSE	FALSE	train	1892-wta-fftr 1884-mh-mhcfb-nf	0
-1	1896	rwc	tmoc	1896-rwc-tmoc	TRUE	1907	rwc	tys	1907-rwc-tys	TRUE	TRUE	train	1896-rwc-tmoc 1907-rwc-tys	1
-1	1893	ga	td	1893-ga-td	FALSE	1917	ga	tlp	1917-ga-tlp	FALSE	TRUE	train	1893-ga-td 1917-ga-tlp	1
-1	1853	tsa	fpotwol	1853-tsa-fpotwol	FALSE	1912	rwc	tbol	1912-rwc-tbol	TRUE	FALSE	train	1853-tsa-fpotwol 1912-rwc-tbol	0
-1	1868	sw	d	1868-sw-d	FALSE	1858	tsa	thbnth	1858-tsa-thbnth	FALSE	FALSE	train	1868-sw-d 1858-tsa-thbnth	0
-1	1909	wdh	sec	1909-wdh-sec	FALSE	1900	ga	sn	1900-ga-sn	FALSE	FALSE	train	1909-wdh-sec 1900-ga-sn	0
-1	1882	cfw	a	1882-cfw-a	TRUE	1873	cfw	tosh	1873-cfw-tosh	TRUE	TRUE	train	1882-cfw-a 1873-cfw-tosh	1
-1	1852	tsa	hhalp	1852-tsa-hhalp	FALSE	1890	amd	algiop	1890-amd-algiop	FALSE	FALSE	train	1852-tsa-hhalp 1890-amd-algiop	0
-1	1905	amd	algiosf	1905-amd-algiosf	FALSE	1871	amd	hd	1871-amd-hd	FALSE	TRUE	train	1905-amd-algiosf 1871-amd-hd	1
-1	1859	tsa	lg	1859-tsa-lg	FALSE	1909	mt	efcsvth	1909-mt-efcsvth	TRUE	FALSE	train	1859-tsa-lg 1909-mt-efcsvth	0
-1	1895	rwc	tkiy	1895-rwc-tkiy	TRUE	1905	hm	ham-sh	1905-hm-ham-sh	FALSE	FALSE	train	1895-rwc-tkiy 1905-hm-ham-sh	0
-1	1867	wta	ba	1867-wta-ba	TRUE	1876	sw	wh-c	1876-sw-wh-c	FALSE	FALSE	train	1867-wta-ba 1876-sw-wh-c	0
-1	1851	tsa	wftw	1851-tsa-wftw	FALSE	1880	lma	jaj	1880-lma-jaj	TRUE	FALSE	train	1851-tsa-wftw 1880-lma-jaj	0
-1	1866	wta	hah	1866-wta-hah	TRUE	1896	wta	tbc-r	1896-wta-tbc-r	TRUE	TRUE	train	1866-wta-hah 1896-wta-tbc-r	1
-1	1879	amd	hm	1879-amd-hm	FALSE	1897	amd	hpitw	1897-amd-hpitw	FALSE	TRUE	train	1879-amd-hm 1897-amd-hpitw	1
-1	1901	wdh	apopl	1901-wdh-apopl	FALSE	1915	hm	tvitf	1915-hm-tvitf	FALSE	FALSE	train	1901-wdh-apopl 1915-hm-tvitf	0
-1	1870	wta	dad	1870-wta-dad	TRUE	1866	wta	haw	1866-wta-haw	TRUE	TRUE	train	1870-wta-dad 1866-wta-haw	1
-1	1880	cdw	mwotn	1880-cdw-mwotn	TRUE	1868	tsa	aasaos	1868-tsa-aasaos	FALSE	FALSE	train	1880-cdw-mwotn 1868-tsa-aasaos	0
-1	1905	ga	ttt	1905-ga-ttt	FALSE	1904	amd	algic	1904-amd-algic	FALSE	FALSE	train	1905-ga-ttt 1904-amd-algic	0
-1	1865	tsa	nbm	1865-tsa-nbm	FALSE	1894	rwc	itq	1894-rwc-itq	TRUE	FALSE	train	1865-tsa-nbm 1894-rwc-itq	0
-1	1893	wta	avu	1893-wta-avu	TRUE	1856	wta	non	1856-wta-non	TRUE	TRUE	train	1893-wta-avu 1856-wta-non	1
-1	1877	tsa	tsatu	1877-tsa-tsatu	FALSE	1852	tsa	ml	1852-tsa-ml	FALSE	TRUE	train	1877-tsa-tsatu 1852-tsa-ml	1
-1	1895	cfw	tfyaois	1895-cfw-tfyaois	TRUE	1868	wta	osb	1868-wta-osb	TRUE	FALSE	train	1895-cfw-tfyaois 1868-wta-osb	0
-1	1875	tsa	dowithoaf	1875-tsa-dowithoaf	FALSE	1909	es	dotr	1909-es-dotr	TRUE	FALSE	train	1875-tsa-dowithoaf 1909-es-dotr	0
-1	1864	sw	mh	1864-sw-mh	FALSE	1871	sw	thit	1871-sw-thit	FALSE	TRUE	train	1864-sw-mh 1871-sw-thit	1
-1	1907	hm	tbm	1907-hm-tbm	FALSE	1884	lma	sws	1884-lma-sws	TRUE	FALSE	train	1907-hm-tbm 1884-lma-sws	0
-1	1906	rwc	tfc	1906-rwc-tfc	TRUE	1919	rwc	tct	1919-rwc-tct	TRUE	TRUE	train	1906-rwc-tfc 1919-rwc-tct	1
-1	1884	es	b	1884-es-b	TRUE	1889	lma	ll-v3	1889-lma-ll-v3	TRUE	FALSE	train	1884-es-b 1889-lma-ll-v3	0
-1	1876	mt	ototm	1876-mt-ototm	TRUE	1877	amd	fhtm	1877-amd-fhtm	FALSE	FALSE	train	1876-mt-ototm 1877-amd-fhtm	0
-1	1903	amd	hbkh	1903-amd-hbkh	FALSE	1874	amd	towwlias	1874-amd-towwlias	FALSE	TRUE	train	1903-amd-hbkh 1874-amd-towwlias	1
-1	1896	mh	tsoahh	1896-mh-tsoahh	FALSE	1880	mh	lipp-nf	1880-mh-lipp-nf	FALSE	TRUE	train	1896-mh-tsoahh 1880-mh-lipp-nf	1
-1	1868	tsa	ats	1868-tsa-ats	FALSE	1889	tsa	hbe	1889-tsa-hbe	FALSE	TRUE	train	1868-tsa-ats 1889-tsa-hbe	1
-1	1909	mh	tsoall-a	1909-mh-tsoall-a	FALSE	1878	mh	dyb-nf	1878-mh-dyb-nf	FALSE	TRUE	train	1909-mh-tsoall-a 1878-mh-dyb-nf	1
-1	1903	us	tjoas	1903-us-tjoas	FALSE	1854	hbs	smofl	1854-hbs-smofl	FALSE	FALSE	test	1903-us-tjoas 1854-hbs-smofl	0
-1	1895	wta	alae	1895-wta-alae	TRUE	1906	mt	cfma	1906-mt-cfma	TRUE	FALSE	test	1895-wta-alae 1906-mt-cfma	0
-1	1891	fmc	ttf	1891-fmc-ttf	FALSE	1881	haj	fcbtp	1881-haj-fcbtp	FALSE	FALSE	test	1891-fmc-ttf 1881-haj-fcbtp	0
-1	1872	haj	ptf	1872-haj-ptf	FALSE	1906	rwc	ttolp	1906-rwc-ttolp	TRUE	FALSE	test	1872-haj-ptf 1906-rwc-ttolp	0
-1	1898	hj	ttm	1898-hj-ttm	FALSE	1879	hj	h	1879-hj-h	FALSE	TRUE	test	1898-hj-ttm 1879-hj-h	1
-1	1874	wta	tcw	1874-wta-tcw	TRUE	1900	haj	adoh	1900-haj-adoh	FALSE	FALSE	test	1874-wta-tcw 1900-haj-adoh	0
-1	1878	hj	te	1878-hj-te	FALSE	1882	lma	ajsb-v6	1882-lma-ajsb-v6	TRUE	FALSE	test	1878-hj-te 1882-lma-ajsb-v6	0
-1	1883	hj	rh	1883-hj-rh	FALSE	1898	hj	itc	1898-hj-itc	FALSE	TRUE	test	1883-hj-rh 1898-hj-itc	1
-1	1885	hj	gr	1885-hj-gr	FALSE	1910	us	sts	1910-us-sts	FALSE	FALSE	test	1885-hj-gr 1910-us-sts	0
-1	1914	us	sm	1914-us-sm	FALSE	1897	ewaoc	tdof	1897-ewaoc-tdof	FALSE	FALSE	test	1914-us-sm 1897-ewaoc-tdof	0
-1	1896	espw	cfal	1896-espw-cfal	FALSE	1887	espw	jtf	1887-espw-jtf	FALSE	TRUE	test	1896-espw-cfal 1887-espw-jtf	1
-1	1887	espw	tgb	1887-espw-tgb	FALSE	1900	espw	wtg	1900-espw-wtg	FALSE	TRUE	test	1887-espw-tgb 1900-espw-wtg	1
-1	1894	cdw	tgh	1894-cdw-tgh	TRUE	1907	fmc	tdr	1907-fmc-tdr	FALSE	FALSE	test	1894-cdw-tgh 1907-fmc-tdr	0
-1	1900	fmc	itpotk	1900-fmc-itpotk	FALSE	1905	fmc	fm	1905-fmc-fm	FALSE	TRUE	test	1900-fmc-itpotk 1905-fmc-fm	1
-1	1889	fmc	g	1889-fmc-g	FALSE	1898	haj	tyb	1898-haj-tyb	FALSE	FALSE	test	1889-fmc-g 1898-haj-tyb	0
-1	1890	hj	ttm	1890-hj-ttm	FALSE	1904	hj	tgb	1904-hj-tgb	FALSE	TRUE	test	1890-hj-ttm 1904-hj-tgb	1
-1	1878	hbs	pp	1878-hbs-pp	FALSE	1870	hbs	tbc	1870-hbs-tbc	FALSE	TRUE	test	1878-hbs-pp 1870-hbs-tbc	1
-1	1901	us	km	1901-us-km	FALSE	1921	us	tbol	1921-us-tbol	FALSE	TRUE	test	1901-us-km 1921-us-tbol	1
-1	1883	hj	rh-v2	1883-hj-rh-v2	FALSE	1872	wta	lb	1872-wta-lb	TRUE	FALSE	test	1883-hj-rh-v2 1872-wta-lb	0
-1	1866	haj	ccc-ia	1866-haj-ccc-ia	FALSE	1871	hbs	mwai	1871-hbs-mwai	FALSE	FALSE	test	1866-haj-ccc-ia 1871-hbs-mwai	0
-1	1880	hj	c	1880-hj-c	FALSE	1885	hj	altof	1885-hj-altof	FALSE	TRUE	test	1880-hj-c 1885-hj-altof	1
-1	1898	fmc	ari-v2	1898-fmc-ari-v2	FALSE	1893	fmc	kl-v2	1893-fmc-kl-v2	FALSE	TRUE	test	1898-fmc-ari-v2 1893-fmc-kl-v2	1
-1	1918	rwc	tlg	1918-rwc-tlg	TRUE	1863	wta	isao	1863-wta-isao	TRUE	FALSE	test	1918-rwc-tlg 1863-wta-isao	0
-1	1884	ab	sbts	1884-ab-sbts	FALSE	1898	us	apom	1898-us-apom	FALSE	FALSE	test	1884-ab-sbts 1898-us-apom	0
-1	1889	cfw	jl	1889-cfw-jl	TRUE	1915	rwc	p	1915-rwc-p	TRUE	FALSE	test	1889-cfw-jl 1915-rwc-p	0
-1	1872	mt	ri	1872-mt-ri	TRUE	1895	haj	tdw	1895-haj-tdw	FALSE	FALSE	test	1872-mt-ri 1895-haj-tdw	0
-1	1902	fmc	c	1902-fmc-c	FALSE	1883	fmc	tl	1883-fmc-tl	FALSE	TRUE	test	1902-fmc-c 1883-fmc-tl	1
-1	1859	hbs	tmw	1859-hbs-tmw	FALSE	1887	fmc	pp	1887-fmc-pp	FALSE	FALSE	test	1859-hbs-tmw 1887-fmc-pp	0
-1	1884	wta	Sac	1884-wta-Sac	TRUE	1882	wta	aa	1882-wta-aa	TRUE	TRUE	test	1884-wta-Sac 1882-wta-aa	1
-1	1871	haj	tt	1871-haj-tt	FALSE	1876	wta	vao	1876-wta-vao	TRUE	FALSE	test	1871-haj-tt 1876-wta-vao	0
-1	1913	es	tm	1913-es-tm	TRUE	1911	rwc	tgr	1911-rwc-tgr	TRUE	FALSE	test	1913-es-tm 1911-rwc-tgr	0
-1	1905	es	tpoe	1905-es-tpoe	TRUE	1907	es	tlotg	1907-es-tlotg	TRUE	TRUE	test	1905-es-tpoe 1907-es-tlotg	1
-1	1899	haj	mmv	1899-haj-mmv	FALSE	1866	haj	hf	1866-haj-hf	FALSE	TRUE	test	1899-haj-mmv 1866-haj-hf	1
-1	1891	fmc	do	1891-fmc-do	FALSE	1876	cdw	itl	1876-cdw-itl	TRUE	FALSE	test	1891-fmc-do 1876-cdw-itl	0
-1	1892	fmc	pg	1892-fmc-pg	FALSE	1883	fmc	dc	1883-fmc-dc	FALSE	TRUE	test	1892-fmc-pg 1883-fmc-dc	1
-1	1917	ab	bn	1917-ab-bn	FALSE	1922	us	tcmc	1922-us-tcmc	FALSE	FALSE	test	1917-ab-bn 1922-us-tcmc	0
-1	1889	cdw	sths	1889-cdw-sths	TRUE	1869	espw	mwag	1869-espw-mwag	FALSE	FALSE	test	1889-cdw-sths 1869-espw-mwag	0
-1	1902	hj	twotd	1902-hj-twotd	FALSE	1896	hj	tsop	1896-hj-tsop	FALSE	TRUE	test	1902-hj-twotd 1896-hj-tsop	1
-1	1888	haj	bb	1888-haj-bb	FALSE	1899	haj	ra	1899-haj-ra	FALSE	TRUE	test	1888-haj-bb 1899-haj-ra	1
-1	1913	ew	tcotc	1913-ew-tcotc	TRUE	1868	haj	rd	1868-haj-rd	FALSE	FALSE	test	1913-ew-tcotc 1868-haj-rd	0
-1	1868	espw	tga	1868-espw-tga	FALSE	1919	rwc	tsos	1919-rwc-tsos	TRUE	FALSE	test	1868-espw-tga 1919-rwc-tsos	0
-1	1900	haj	ainy	1900-haj-ainy	FALSE	1919	ew	m	1919-ew-m	TRUE	FALSE	test	1900-haj-ainy 1919-ew-m	0
-1	1881	mt	tpatp	1881-mt-tpatp	TRUE	1899	haj	aoatb	1899-haj-aoatb	FALSE	FALSE	test	1881-mt-tpatp 1899-haj-aoatb	0
-1	1891	fmc	k	1891-fmc-k	FALSE	1893	fmc	tr	1893-fmc-tr	FALSE	TRUE	test	1891-fmc-k 1893-fmc-tr	1
-1	1881	hj	tpoal	1881-hj-tpoal	FALSE	1890	fmc	acmr	1890-fmc-acmr	FALSE	FALSE	test	1881-hj-tpoal 1890-fmc-acmr	0
-1	1869	haj	mtmb	1869-haj-mtmb	FALSE	1903	haj	bba-ph	1903-haj-bba-ph	FALSE	TRUE	test	1869-haj-mtmb 1903-haj-bba-ph	1
-1	1885	fmc	atoalp	1885-fmc-atoalp	FALSE	1905	fmc	wso	1905-fmc-wso	FALSE	TRUE	test	1885-fmc-atoalp 1905-fmc-wso	1
-1	1868	wta	mob	1868-wta-mob	TRUE	1870	wta	faf	1870-wta-faf	TRUE	TRUE	test	1868-wta-mob 1870-wta-faf	1
-1	1871	hbs	pawt	1871-hbs-pawt	FALSE	1904	rwc	isotu	1904-rwc-isotu	TRUE	FALSE	test	1871-hbs-pawt 1904-rwc-isotu	0
-1	1875	cfw	cn	1875-cfw-cn	TRUE	1864	lma	m	1864-lma-m	TRUE	FALSE	test	1875-cfw-cn 1864-lma-m	0
-1	1914	mh+	mhce-nf	1914-mh+-mhce-nf	FALSE	1908	fmc	tp	1908-fmc-tp	FALSE	FALSE	test	1914-mh+-mhce-nf 1908-fmc-tp	0
-1	1893	fmc	md	1893-fmc-md	FALSE	1895	fmc	ajs	1895-fmc-ajs	FALSE	TRUE	test	1893-fmc-md 1895-fmc-ajs	1
-1	1864	wta	tsb	1864-wta-tsb	TRUE	1883	wta	sh	1883-wta-sh	TRUE	TRUE	test	1864-wta-tsb 1883-wta-sh	1
-1	1900	rwc	taoamm	1900-rwc-taoamm	TRUE	1910	rwc	tgm	1910-rwc-tgm	TRUE	TRUE	test	1900-rwc-taoamm 1910-rwc-tgm	1
-1	1903	fmc	thor	1903-fmc-thor	FALSE	1887	fmc	s	1887-fmc-s	FALSE	TRUE	test	1903-fmc-thor 1887-fmc-s	1
-1	1884	mt	taohf	1884-mt-taohf	TRUE	1874	mt	lotm	1874-mt-lotm	TRUE	TRUE	test	1884-mt-taohf 1874-mt-lotm	1
-1	1907	espw	tldup	1907-espw-tldup	FALSE	1871	espw	tsp	1871-espw-tsp	FALSE	TRUE	test	1907-espw-tldup 1871-espw-tsp	1
-1	1866	espw	gcj	1866-espw-gcj	FALSE	1882	haj	bn	1882-haj-bn	FALSE	FALSE	test	1866-espw-gcj 1882-haj-bn	0
-1	1883	haj	tbb	1883-haj-tbb	FALSE	1888	es	ttatv	1888-es-ttatv	TRUE	FALSE	test	1883-haj-tbb 1888-es-ttatv	0
-1	1908	fmc	s	1908-fmc-s	FALSE	1908	fmc	tws	1908-fmc-tws	FALSE	TRUE	test	1908-fmc-s 1908-fmc-tws	1
-1	1889	wta	wtel	1889-wta-wtel	TRUE	1911	rwc	tcl	1911-rwc-tcl	TRUE	FALSE	test	1889-wta-wtel 1911-rwc-tcl	0
-1	1904	rwc	sm	1904-rwc-sm	TRUE	1886	hj	pc	1886-hj-pc	FALSE	FALSE	test	1904-rwc-sm 1886-hj-pc	0
-1	1918	us	jh	1918-us-jh	FALSE	1897	ew	tdof	1897-ew-tdof	TRUE	FALSE	test	1918-us-jh 1897-ew-tdof	0
-1	1872	lma	ss	1872-lma-ss	TRUE	1867	lma	tagomtt	1867-lma-tagomtt	TRUE	TRUE	test	1872-lma-ss 1867-lma-tagomtt	1
-1	1910	ew	tomag	1910-ew-tomag	TRUE	1889	es	atg	1889-es-atg	TRUE	FALSE	test	1910-ew-tomag 1889-es-atg	0
-1	1889	espw	tsfi	1889-espw-tsfi	FALSE	1895	espw	tsojc	1895-espw-tsojc	FALSE	TRUE	test	1889-espw-tsfi 1895-espw-tsojc	1
-1	1905	haj	fftf	1905-haj-fftf	FALSE	1870	haj	rar	1870-haj-rar	FALSE	TRUE	test	1905-haj-fftf 1870-haj-rar	1
-1	1882	espw	dz	1882-espw-dz	FALSE	1909	mt	isd	1909-mt-isd	TRUE	FALSE	test	1882-espw-dz 1909-mt-isd	0
-1	1907	ew	tfott	1907-ew-tfott	TRUE	1896	hj	toh	1896-hj-toh	FALSE	FALSE	test	1907-ew-tfott 1896-hj-toh	0
-1	1868	wta	dad	1868-wta-dad	TRUE	1885	wta	sts	1885-wta-sts	TRUE	TRUE	test	1868-wta-dad 1885-wta-sts	1
-1	1909	rwc	tdm	1909-rwc-tdm	TRUE	1897	ab	tdohy	1897-ab-tdohy	FALSE	FALSE	test	1909-rwc-tdm 1897-ab-tdohy	0
-1	1891	haj	tetb	1891-haj-tetb	FALSE	1868	haj	faf	1868-haj-faf	FALSE	TRUE	test	1891-haj-tetb 1868-haj-faf	1
-1	1893	haj	dtn	1893-haj-dtn	FALSE	1866	haj	tcw	1866-haj-tcw	FALSE	TRUE	test	1893-haj-dtn 1866-haj-tcw	1
-1	1869	wta	dtr	1869-wta-dtr	TRUE	1865	wta	waw	1865-wta-waw	TRUE	TRUE	test	1869-wta-dtr 1865-wta-waw	1
-1	1891	cdw	oi	1891-cdw-oi	TRUE	1873	hbs	wish	1873-hbs-wish	FALSE	FALSE	test	1891-cdw-oi 1873-hbs-wish	0
-1	1879	hj	dm	1879-hj-dm	FALSE	1903	hj	ta	1903-hj-ta	FALSE	TRUE	test	1879-hj-dm 1903-hj-ta	1
-1	1874	cfw	tac	1874-cfw-tac	TRUE	1882	fmc	mi	1882-fmc-mi	FALSE	FALSE	test	1874-cfw-tac 1882-fmc-mi	0
-1	1893	espw	dm	1893-espw-dm	FALSE	1896	ab	boat	1896-ab-boat	FALSE	FALSE	test	1893-espw-dm 1896-ab-boat	0
-1	1896	espw	tsasa	1896-espw-tsasa	FALSE	1894	espw	asl	1894-espw-asl	FALSE	TRUE	test	1896-espw-tsasa 1894-espw-asl	1
-1	1879	haj	tym	1879-haj-tym	FALSE	1869	haj	pjb	1869-haj-pjb	FALSE	TRUE	test	1879-haj-tym 1869-haj-pjb	1
-1	1920	us	1tsoap	1920-us-1tsoap	FALSE	1913	us	dg	1913-us-dg	FALSE	TRUE	test	1920-us-1tsoap 1913-us-dg	1
-1	1917	es	ow-sh	1917-es-ow-sh	TRUE	1873	hbs	pl	1873-hbs-pl	FALSE	FALSE	test	1917-es-ow-sh 1873-hbs-pl	0
-1	1855	wta	aa	1855-wta-aa	TRUE	1873	wta	tyc	1873-wta-tyc	TRUE	TRUE	test	1855-wta-aa 1873-wta-tyc	1
-1	1879	haj	ttb	1879-haj-ttb	FALSE	1894	fmc	wg	1894-fmc-wg	FALSE	FALSE	test	1879-haj-ttb 1894-fmc-wg	0
-1	1898	fmc	vc	1898-fmc-vc	FALSE	1895	fmc	t	1895-fmc-t	FALSE	TRUE	test	1898-fmc-vc 1895-fmc-t	1
-1	1867	espw	gyatgc	1867-espw-gyatgc	FALSE	1901	espw	a	1901-espw-a	FALSE	TRUE	test	1867-espw-gyatgc 1901-espw-a	1
-1	1896	fmc	c	1896-fmc-c	FALSE	1885	fmc	zamc	1885-fmc-zamc	FALSE	TRUE	test	1896-fmc-c 1885-fmc-zamc	1
-1	1855	hbs	tmf	1855-hbs-tmf	FALSE	1866	espw	gb	1866-espw-gb	FALSE	FALSE	test	1855-hbs-tmf 1866-espw-gb	0
-1	1897	fmc	aroy	1897-fmc-aroy	FALSE	1884	fmc	aap	1884-fmc-aap	FALSE	TRUE	test	1897-fmc-aroy 1884-fmc-aap	1
-1	1883	espw	btg	1883-espw-btg	FALSE	1911	hj	to	1911-hj-to	FALSE	FALSE	test	1883-espw-btg 1911-hj-to	0
-1	1862	hbs	tpooi	1862-hbs-tpooi	FALSE	1875	hbs	waon	1875-hbs-waon	FALSE	TRUE	test	1862-hbs-tpooi 1875-hbs-waon	1
-1	1883	fmc	ars	1883-fmc-ars	FALSE	1885	fmc	tcotk	1885-fmc-tcotk	FALSE	TRUE	test	1883-fmc-ars 1885-fmc-tcotk	1
-1	1886	hbs	tsw	1886-hbs-tsw	FALSE	1854	hbs	smofl-v2	1854-hbs-smofl-v2	FALSE	TRUE	test	1886-hbs-tsw 1854-hbs-smofl-v2	1
-1	1903	ew	ivatg	1903-ew-ivatg	TRUE	1878	cdw	hikab	1878-cdw-hikab	TRUE	FALSE	test	1903-ew-ivatg 1878-cdw-hikab	0
-1	1858	wta	pap	1858-wta-pap	TRUE	1897	haj	fof	1897-haj-fof	FALSE	FALSE	test	1858-wta-pap 1897-haj-fof	0
-1	1902	hj	twotd-v2	1902-hj-twotd-v2	FALSE	1888	hj	tr	1888-hj-tr	FALSE	TRUE	test	1902-hj-twotd-v2 1888-hj-tr	1
-1	1871	hbs	ofs	1871-hbs-ofs	FALSE	1888	fmc	si	1888-fmc-si	FALSE	FALSE	test	1871-hbs-ofs 1888-fmc-si	0
-1	1907	ab	rm	1907-ab-rm	FALSE	1901	hj	tsf	1901-hj-tsf	FALSE	FALSE	test	1907-ab-rm 1901-hj-tsf	0
-1	1882	haj	ffbts	1882-haj-ffbts	FALSE	1893	haj	ianwatgfoa	1893-haj-ianwatgfoa	FALSE	TRUE	test	1882-haj-ffbts 1893-haj-ianwatgfoa	1
-1	1908	rwc	tfl	1908-rwc-tfl	TRUE	1910	rwc	ap	1910-rwc-ap	TRUE	TRUE	test	1908-rwc-tfl 1910-rwc-ap	1
+year.x	author.x	title.x	filename.x	year.y	author.y	title.y	filename.y	same.author	train.or.test	case.id	answer	author.seen
+1891	es	mm	1891-es-mm	1920	rwc	tlrf	1920-rwc-tlrf	FALSE	train	1891-es-mm 1920-rwc-tlrf	0	TRUE
+1916	ga	mb	1916-ga-mb	1897	ga	psaht	1897-ga-psaht	TRUE	train	1916-ga-mb 1897-ga-psaht	1	TRUE
+1907	wdh	tteotn	1907-wdh-tteotn	1873	wdh	aca	1873-wdh-aca	TRUE	train	1907-wdh-tteotn 1873-wdh-aca	1	TRUE
+1854	tsa	tniabr	1854-tsa-tniabr	1851	tsa	wt	1851-tsa-wt	TRUE	train	1854-tsa-tniabr 1851-tsa-wt	1	TRUE
+1905	amd	hgaah	1905-amd-hgaah	1900	amd	algiow	1900-amd-algiow	TRUE	train	1905-amd-hgaah 1900-amd-algiow	1	TRUE
+1920	hm	tpm	1920-hm-tpm	1915	hm	tmdm	1915-hm-tmdm	TRUE	train	1920-hm-tpm 1915-hm-tmdm	1	TRUE
+1877	cdw	bab	1877-cdw-bab	1851	tsa	tlasorl	1851-tsa-tlasorl	FALSE	train	1877-cdw-bab 1851-tsa-tlasorl	0	TRUE
+1870	wta	pap	1870-wta-pap	1894	wta	ab	1894-wta-ab	TRUE	train	1870-wta-pap 1894-wta-ab	1	TRUE
+1889	amd	amaae	1889-amd-amaae	1864	sw	toh	1864-sw-toh	FALSE	train	1889-amd-amaae 1864-sw-toh	0	TRUE
+1896	wdh	tlatlh	1896-wdh-tlatlh	1903	wdh	qs	1903-wdh-qs	TRUE	train	1896-wdh-tlatlh 1903-wdh-qs	1	TRUE
+1870	sw	wsc	1870-sw-wsc	1880	cfw	rtk	1880-cfw-rtk	FALSE	train	1870-sw-wsc 1880-cfw-rtk	0	TRUE
+1894	mh	mwws	1894-mh-mwws	1913	amd	amc	1913-amd-amc	FALSE	train	1894-mh-mwws 1913-amd-amc	0	TRUE
+1871	sw	o	1871-sw-o	1899	cdw	tf	1899-cdw-tf	FALSE	train	1871-sw-o 1899-cdw-tf	0	TRUE
+1906	es	ha	1906-es-ha	1877	wdh	aca	1877-wdh-aca	FALSE	train	1906-es-ha 1877-wdh-aca	0	TRUE
+1899	amd	thos	1899-amd-thos	1902	amd	algiod	1902-amd-algiod	TRUE	train	1899-amd-thos 1902-amd-algiod	1	TRUE
+1895	wta	ai	1895-wta-ai	1902	wdh	tfotpb	1902-wdh-tfotpb	FALSE	train	1895-wta-ai 1902-wdh-tfotpb	0	TRUE
+1911	rwc	j	1911-rwc-j	1870	mh	al	1870-mh-al	FALSE	train	1911-rwc-j 1870-mh-al	0	TRUE
+1851	tsa	lilfawwrt	1851-tsa-lilfawwrt	1864	sw	toh-v2	1864-sw-toh-v2	FALSE	train	1851-tsa-lilfawwrt 1864-sw-toh-v2	0	TRUE
+1870	amd	wfah	1870-amd-wfah	1906	amd	ael	1906-amd-ael	TRUE	train	1870-amd-wfah 1906-amd-ael	1	TRUE
+1883	amd	wkm	1883-amd-wkm	1868	wta	dtr	1868-wta-dtr	FALSE	train	1883-amd-wkm 1868-wta-dtr	0	TRUE
+1894	mt	tet	1894-mt-tet	1891	mt	tac	1891-mt-tac	TRUE	train	1894-mt-tet 1891-mt-tac	1	TRUE
+1894	amd	iwrt	1894-amd-iwrt	1875	amd	da	1875-amd-da	TRUE	train	1894-amd-iwrt 1875-amd-da	1	TRUE
+1914	rwc	a	1914-rwc-a	1917	ew	s	1917-ew-s	FALSE	train	1914-rwc-a 1917-ew-s	0	TRUE
+1908	wdh	rhao	1908-wdh-rhao	1893	wdh	tcob	1893-wdh-tcob	TRUE	train	1908-wdh-rhao 1893-wdh-tcob	1	TRUE
+1898	wdh	aoec	1898-wdh-aoec	1881	wdh	dbp	1881-wdh-dbp	TRUE	train	1898-wdh-aoec 1881-wdh-dbp	1	TRUE
+1881	sw	aloc	1881-sw-aloc	1923	ga	bo	1923-ga-bo	FALSE	train	1881-sw-aloc 1923-ga-bo	0	TRUE
+1898	amd	algiob	1898-amd-algiob	1894	es	e	1894-es-e	FALSE	train	1898-amd-algiob 1894-es-e	0	TRUE
+1856	tsa	fan	1856-tsa-fan	1872	tsa	tyiamt	1872-tsa-tyiamt	TRUE	train	1856-tsa-fan 1872-tsa-tyiamt	1	TRUE
+1909	amd	hgt	1909-amd-hgt	1866	amd	it	1866-amd-it	TRUE	train	1909-amd-hgt 1866-amd-it	1	TRUE
+1889	mt	acyikac	1889-mt-acyikac	1873	mt	tga-c	1873-mt-tga-c	TRUE	train	1889-mt-acyikac 1873-mt-tga-c	1	TRUE
+1897	mt	fte	1897-mt-fte	1907	mt	cs	1907-mt-cs	TRUE	train	1897-mt-fte 1907-mt-cs	1	TRUE
+1861	sw	tcobh	1861-sw-tcobh	1879	sw	md	1879-sw-md	TRUE	train	1861-sw-tcobh 1879-sw-md	1	TRUE
+1883	amd	fgh	1883-amd-fgh	1876	amd	nkk	1876-amd-nkk	TRUE	train	1883-amd-fgh 1876-amd-nkk	1	TRUE
+1888	ga	wdmc	1888-ga-wdmc	1867	wta	saf	1867-wta-saf	FALSE	train	1888-ga-wdmc 1867-wta-saf	0	TRUE
+1850	sw	www	1850-sw-www	1880	sw	teoac	1880-sw-teoac	TRUE	train	1850-sw-www 1880-sw-teoac	1	TRUE
+1864	wta	waw	1864-wta-waw	1894	wta	its	1894-wta-its	TRUE	train	1864-wta-waw 1894-wta-its	1	TRUE
+1851	tsa	ttw	1851-tsa-ttw	1852	tsa	trowww	1852-tsa-trowww	TRUE	train	1851-tsa-ttw 1852-tsa-trowww	1	TRUE
+1877	sw	d	1877-sw-d	1903	amd	algiosl	1903-amd-algiosl	FALSE	train	1877-sw-d 1903-amd-algiosl	0	TRUE
+1919	ga	ta	1919-ga-ta	1913	rwc	qa	1913-rwc-qa	FALSE	train	1919-ga-ta 1913-rwc-qa	0	TRUE
+1914	amd	tgamm	1914-amd-tgamm	1896	wta	fye	1896-wta-fye	FALSE	train	1914-amd-tgamm 1896-wta-fye	0	TRUE
+1852	sw	q	1852-sw-q	1895	cfw	daois	1895-cfw-daois	FALSE	train	1852-sw-q 1895-cfw-daois	0	TRUE
+1913	amd	trhcag	1913-amd-trhcag	1870	amd	kar	1870-amd-kar	TRUE	train	1913-amd-trhcag 1870-amd-kar	1	TRUE
+1860	sw	sas-v2-c	1860-sw-sas-v2-c	1871	wta	nl	1871-wta-nl	FALSE	train	1860-sw-sas-v2-c 1871-wta-nl	0	TRUE
+1880	mt	ata	1880-mt-ata	1912	hm	tpoh	1912-hm-tpoh	FALSE	train	1880-mt-ata 1912-hm-tpoh	0	TRUE
+1867	amd	sd	1867-amd-sd	1870	amd	ktw	1870-amd-ktw	TRUE	train	1867-amd-sd 1870-amd-ktw	1	TRUE
+1884	amd	ootw	1884-amd-ootw	1879	wdh	tlofa	1879-wdh-tlofa	FALSE	train	1884-amd-ootw 1879-wdh-tlofa	0	TRUE
+1901	rwc	c	1901-rwc-c	1915	rwc	wgt	1915-rwc-wgt	TRUE	train	1901-rwc-c 1915-rwc-wgt	1	TRUE
+1913	wdh	fst	1913-wdh-fst	1897	wdh	soo	1897-wdh-soo	TRUE	train	1913-wdh-fst 1897-wdh-soo	1	TRUE
+1860	sw	sas-c	1860-sw-sas-c	1902	rwc	tmop	1902-rwc-tmop	FALSE	train	1860-sw-sas-c 1902-rwc-tmop	0	TRUE
+1922	hm	tre-ia	1922-hm-tre-ia	1880	mh	csith-nf	1880-mh-csith-nf	FALSE	train	1922-hm-tre-ia 1880-mh-csith-nf	0	TRUE
+1889	wdh	ahonf-v1	1889-wdh-ahonf-v1	1884	wdh	trpsl	1884-wdh-trpsl	TRUE	train	1889-wdh-ahonf-v1 1884-wdh-trpsl	1	TRUE
+1856	sw	hots	1856-sw-hots	1877	sw	pn	1877-sw-pn	TRUE	train	1856-sw-hots 1877-sw-pn	1	TRUE
+1908	ga	tgi	1908-ga-tgi	1898	ga	tvr	1898-ga-tvr	TRUE	train	1908-ga-tgi 1898-ga-tvr	1	TRUE
+1908	amd	algios	1908-amd-algios	1915	rwc	tgp	1915-rwc-tgp	FALSE	train	1908-amd-algios 1915-rwc-tgp	0	TRUE
+1850	sw	www-v2	1850-sw-www-v2	1909	hm	tgg	1909-hm-tgg	FALSE	train	1850-sw-www-v2 1909-hm-tgg	0	TRUE
+1871	wdh	ss	1871-wdh-ss	1908	wdh	far	1908-wdh-far	TRUE	train	1871-wdh-ss 1908-wdh-far	1	TRUE
+1876	mt	taots	1876-mt-taots	1892	es	ip	1892-es-ip	FALSE	train	1876-mt-taots 1892-es-ip	0	TRUE
+1910	wdh	ii	1910-wdh-ii	1860	wta	lbl	1860-wta-lbl	FALSE	train	1910-wdh-ii 1860-wta-lbl	0	TRUE
+1889	ga	hs	1889-ga-hs	1921	ga	sil	1921-ga-sil	TRUE	train	1889-ga-hs 1921-ga-sil	1	TRUE
+1874	amd	sd	1874-amd-sd	1912	amd	tcitlorh	1912-amd-tcitlorh	TRUE	train	1874-amd-sd 1912-amd-tcitlorh	1	TRUE
+1871	wta	utb	1871-wta-utb	1875	mh	blat-nf	1875-mh-blat-nf	FALSE	train	1871-wta-utb 1875-mh-blat-nf	0	TRUE
+1877	sw	pn-?	1877-sw-pn-?	1914	hm	taok	1914-hm-taok	FALSE	train	1877-sw-pn-? 1914-hm-taok	0	TRUE
+1907	amd	hgs	1907-amd-hgs	1897	amd	ha	1897-amd-ha	TRUE	train	1907-amd-hgs 1897-amd-ha	1	TRUE
+1876	wta	ltf	1876-wta-ltf	1890	tsa	absal	1890-tsa-absal	FALSE	train	1876-wta-ltf 1890-tsa-absal	0	TRUE
+1889	wdh	ahonf-v2	1889-wdh-ahonf-v2	1907	ga	a	1907-ga-a	FALSE	train	1889-wdh-ahonf-v2 1907-ga-a	0	TRUE
+1867	wdh	vl	1867-wdh-vl	1899	wdh	arl	1899-wdh-arl	TRUE	train	1867-wdh-vl 1899-wdh-arl	1	TRUE
+1887	wdh	ah	1887-wdh-ah	1907	wdh	btdatd	1907-wdh-btdatd	TRUE	train	1887-wdh-ah 1907-wdh-btdatd	1	TRUE
+1892	wta	fftr	1892-wta-fftr	1884	mh	mhcfb-nf	1884-mh-mhcfb-nf	FALSE	train	1892-wta-fftr 1884-mh-mhcfb-nf	0	TRUE
+1896	rwc	tmoc	1896-rwc-tmoc	1907	rwc	tys	1907-rwc-tys	TRUE	train	1896-rwc-tmoc 1907-rwc-tys	1	TRUE
+1893	ga	td	1893-ga-td	1917	ga	tlp	1917-ga-tlp	TRUE	train	1893-ga-td 1917-ga-tlp	1	TRUE
+1853	tsa	fpotwol	1853-tsa-fpotwol	1912	rwc	tbol	1912-rwc-tbol	FALSE	train	1853-tsa-fpotwol 1912-rwc-tbol	0	TRUE
+1868	sw	d	1868-sw-d	1858	tsa	thbnth	1858-tsa-thbnth	FALSE	train	1868-sw-d 1858-tsa-thbnth	0	TRUE
+1909	wdh	sec	1909-wdh-sec	1900	ga	sn	1900-ga-sn	FALSE	train	1909-wdh-sec 1900-ga-sn	0	TRUE
+1882	cfw	a	1882-cfw-a	1873	cfw	tosh	1873-cfw-tosh	TRUE	train	1882-cfw-a 1873-cfw-tosh	1	TRUE
+1852	tsa	hhalp	1852-tsa-hhalp	1890	amd	algiop	1890-amd-algiop	FALSE	train	1852-tsa-hhalp 1890-amd-algiop	0	TRUE
+1905	amd	algiosf	1905-amd-algiosf	1871	amd	hd	1871-amd-hd	TRUE	train	1905-amd-algiosf 1871-amd-hd	1	TRUE
+1859	tsa	lg	1859-tsa-lg	1909	mt	efcsvth	1909-mt-efcsvth	FALSE	train	1859-tsa-lg 1909-mt-efcsvth	0	TRUE
+1895	rwc	tkiy	1895-rwc-tkiy	1905	hm	ham-sh	1905-hm-ham-sh	FALSE	train	1895-rwc-tkiy 1905-hm-ham-sh	0	TRUE
+1867	wta	ba	1867-wta-ba	1876	sw	wh-c	1876-sw-wh-c	FALSE	train	1867-wta-ba 1876-sw-wh-c	0	TRUE
+1851	tsa	wftw	1851-tsa-wftw	1880	lma	jaj	1880-lma-jaj	FALSE	train	1851-tsa-wftw 1880-lma-jaj	0	TRUE
+1866	wta	hah	1866-wta-hah	1896	wta	tbc-r	1896-wta-tbc-r	TRUE	train	1866-wta-hah 1896-wta-tbc-r	1	TRUE
+1879	amd	hm	1879-amd-hm	1897	amd	hpitw	1897-amd-hpitw	TRUE	train	1879-amd-hm 1897-amd-hpitw	1	TRUE
+1901	wdh	apopl	1901-wdh-apopl	1915	hm	tvitf	1915-hm-tvitf	FALSE	train	1901-wdh-apopl 1915-hm-tvitf	0	TRUE
+1870	wta	dad	1870-wta-dad	1866	wta	haw	1866-wta-haw	TRUE	train	1870-wta-dad 1866-wta-haw	1	TRUE
+1880	cdw	mwotn	1880-cdw-mwotn	1868	tsa	aasaos	1868-tsa-aasaos	FALSE	train	1880-cdw-mwotn 1868-tsa-aasaos	0	TRUE
+1905	ga	ttt	1905-ga-ttt	1904	amd	algic	1904-amd-algic	FALSE	train	1905-ga-ttt 1904-amd-algic	0	TRUE
+1865	tsa	nbm	1865-tsa-nbm	1894	rwc	itq	1894-rwc-itq	FALSE	train	1865-tsa-nbm 1894-rwc-itq	0	TRUE
+1893	wta	avu	1893-wta-avu	1856	wta	non	1856-wta-non	TRUE	train	1893-wta-avu 1856-wta-non	1	TRUE
+1877	tsa	tsatu	1877-tsa-tsatu	1852	tsa	ml	1852-tsa-ml	TRUE	train	1877-tsa-tsatu 1852-tsa-ml	1	TRUE
+1895	cfw	tfyaois	1895-cfw-tfyaois	1868	wta	osb	1868-wta-osb	FALSE	train	1895-cfw-tfyaois 1868-wta-osb	0	TRUE
+1875	tsa	dowithoaf	1875-tsa-dowithoaf	1909	es	dotr	1909-es-dotr	FALSE	train	1875-tsa-dowithoaf 1909-es-dotr	0	TRUE
+1864	sw	mh	1864-sw-mh	1871	sw	thit	1871-sw-thit	TRUE	train	1864-sw-mh 1871-sw-thit	1	TRUE
+1907	hm	tbm	1907-hm-tbm	1884	lma	sws	1884-lma-sws	FALSE	train	1907-hm-tbm 1884-lma-sws	0	TRUE
+1906	rwc	tfc	1906-rwc-tfc	1919	rwc	tct	1919-rwc-tct	TRUE	train	1906-rwc-tfc 1919-rwc-tct	1	TRUE
+1884	es	b	1884-es-b	1889	lma	ll-v3	1889-lma-ll-v3	FALSE	train	1884-es-b 1889-lma-ll-v3	0	TRUE
+1876	mt	ototm	1876-mt-ototm	1877	amd	fhtm	1877-amd-fhtm	FALSE	train	1876-mt-ototm 1877-amd-fhtm	0	TRUE
+1903	amd	hbkh	1903-amd-hbkh	1874	amd	towwlias	1874-amd-towwlias	TRUE	train	1903-amd-hbkh 1874-amd-towwlias	1	TRUE
+1896	mh	tsoahh	1896-mh-tsoahh	1880	mh	lipp-nf	1880-mh-lipp-nf	TRUE	train	1896-mh-tsoahh 1880-mh-lipp-nf	1	TRUE
+1868	tsa	ats	1868-tsa-ats	1889	tsa	hbe	1889-tsa-hbe	TRUE	train	1868-tsa-ats 1889-tsa-hbe	1	TRUE
+1909	mh	tsoall-a	1909-mh-tsoall-a	1878	mh	dyb-nf	1878-mh-dyb-nf	TRUE	train	1909-mh-tsoall-a 1878-mh-dyb-nf	1	TRUE
+1903	us	tjoas	1903-us-tjoas	1854	hbs	smofl	1854-hbs-smofl	FALSE	test	1903-us-tjoas 1854-hbs-smofl	0	FALSE
+1895	wta	alae	1895-wta-alae	1906	mt	cfma	1906-mt-cfma	FALSE	test	1895-wta-alae 1906-mt-cfma	0	TRUE
+1891	fmc	ttf	1891-fmc-ttf	1881	haj	fcbtp	1881-haj-fcbtp	FALSE	test	1891-fmc-ttf 1881-haj-fcbtp	0	FALSE
+1872	haj	ptf	1872-haj-ptf	1906	rwc	ttolp	1906-rwc-ttolp	FALSE	test	1872-haj-ptf 1906-rwc-ttolp	0	TRUE
+1898	hj	ttm	1898-hj-ttm	1879	hj	h	1879-hj-h	TRUE	test	1898-hj-ttm 1879-hj-h	1	FALSE
+1874	wta	tcw	1874-wta-tcw	1900	haj	adoh	1900-haj-adoh	FALSE	test	1874-wta-tcw 1900-haj-adoh	0	TRUE
+1878	hj	te	1878-hj-te	1882	lma	ajsb-v6	1882-lma-ajsb-v6	FALSE	test	1878-hj-te 1882-lma-ajsb-v6	0	TRUE
+1883	hj	rh	1883-hj-rh	1898	hj	itc	1898-hj-itc	TRUE	test	1883-hj-rh 1898-hj-itc	1	FALSE
+1885	hj	gr	1885-hj-gr	1910	us	sts	1910-us-sts	FALSE	test	1885-hj-gr 1910-us-sts	0	FALSE
+1914	us	sm	1914-us-sm	1897	ewaoc	tdof	1897-ewaoc-tdof	FALSE	test	1914-us-sm 1897-ewaoc-tdof	0	FALSE
+1896	espw	cfal	1896-espw-cfal	1887	espw	jtf	1887-espw-jtf	TRUE	test	1896-espw-cfal 1887-espw-jtf	1	FALSE
+1887	espw	tgb	1887-espw-tgb	1900	espw	wtg	1900-espw-wtg	TRUE	test	1887-espw-tgb 1900-espw-wtg	1	FALSE
+1894	cdw	tgh	1894-cdw-tgh	1907	fmc	tdr	1907-fmc-tdr	FALSE	test	1894-cdw-tgh 1907-fmc-tdr	0	TRUE
+1900	fmc	itpotk	1900-fmc-itpotk	1905	fmc	fm	1905-fmc-fm	TRUE	test	1900-fmc-itpotk 1905-fmc-fm	1	FALSE
+1889	fmc	g	1889-fmc-g	1898	haj	tyb	1898-haj-tyb	FALSE	test	1889-fmc-g 1898-haj-tyb	0	FALSE
+1890	hj	ttm	1890-hj-ttm	1904	hj	tgb	1904-hj-tgb	TRUE	test	1890-hj-ttm 1904-hj-tgb	1	FALSE
+1878	hbs	pp	1878-hbs-pp	1870	hbs	tbc	1870-hbs-tbc	TRUE	test	1878-hbs-pp 1870-hbs-tbc	1	FALSE
+1901	us	km	1901-us-km	1921	us	tbol	1921-us-tbol	TRUE	test	1901-us-km 1921-us-tbol	1	FALSE
+1883	hj	rh-v2	1883-hj-rh-v2	1872	wta	lb	1872-wta-lb	FALSE	test	1883-hj-rh-v2 1872-wta-lb	0	TRUE
+1866	haj	ccc-ia	1866-haj-ccc-ia	1871	hbs	mwai	1871-hbs-mwai	FALSE	test	1866-haj-ccc-ia 1871-hbs-mwai	0	FALSE
+1880	hj	c	1880-hj-c	1885	hj	altof	1885-hj-altof	TRUE	test	1880-hj-c 1885-hj-altof	1	FALSE
+1898	fmc	ari-v2	1898-fmc-ari-v2	1893	fmc	kl-v2	1893-fmc-kl-v2	TRUE	test	1898-fmc-ari-v2 1893-fmc-kl-v2	1	FALSE
+1918	rwc	tlg	1918-rwc-tlg	1863	wta	isao	1863-wta-isao	FALSE	test	1918-rwc-tlg 1863-wta-isao	0	TRUE
+1884	ab	sbts	1884-ab-sbts	1898	us	apom	1898-us-apom	FALSE	test	1884-ab-sbts 1898-us-apom	0	FALSE
+1889	cfw	jl	1889-cfw-jl	1915	rwc	p	1915-rwc-p	FALSE	test	1889-cfw-jl 1915-rwc-p	0	TRUE
+1872	mt	ri	1872-mt-ri	1895	haj	tdw	1895-haj-tdw	FALSE	test	1872-mt-ri 1895-haj-tdw	0	TRUE
+1902	fmc	c	1902-fmc-c	1883	fmc	tl	1883-fmc-tl	TRUE	test	1902-fmc-c 1883-fmc-tl	1	FALSE
+1859	hbs	tmw	1859-hbs-tmw	1887	fmc	pp	1887-fmc-pp	FALSE	test	1859-hbs-tmw 1887-fmc-pp	0	FALSE
+1884	wta	Sac	1884-wta-Sac	1882	wta	aa	1882-wta-aa	TRUE	test	1884-wta-Sac 1882-wta-aa	1	TRUE
+1871	haj	tt	1871-haj-tt	1876	wta	vao	1876-wta-vao	FALSE	test	1871-haj-tt 1876-wta-vao	0	TRUE
+1913	es	tm	1913-es-tm	1911	rwc	tgr	1911-rwc-tgr	FALSE	test	1913-es-tm 1911-rwc-tgr	0	TRUE
+1905	es	tpoe	1905-es-tpoe	1907	es	tlotg	1907-es-tlotg	TRUE	test	1905-es-tpoe 1907-es-tlotg	1	TRUE
+1899	haj	mmv	1899-haj-mmv	1866	haj	hf	1866-haj-hf	TRUE	test	1899-haj-mmv 1866-haj-hf	1	FALSE
+1891	fmc	do	1891-fmc-do	1876	cdw	itl	1876-cdw-itl	FALSE	test	1891-fmc-do 1876-cdw-itl	0	TRUE
+1892	fmc	pg	1892-fmc-pg	1883	fmc	dc	1883-fmc-dc	TRUE	test	1892-fmc-pg 1883-fmc-dc	1	FALSE
+1917	ab	bn	1917-ab-bn	1922	us	tcmc	1922-us-tcmc	FALSE	test	1917-ab-bn 1922-us-tcmc	0	FALSE
+1889	cdw	sths	1889-cdw-sths	1869	espw	mwag	1869-espw-mwag	FALSE	test	1889-cdw-sths 1869-espw-mwag	0	TRUE
+1902	hj	twotd	1902-hj-twotd	1896	hj	tsop	1896-hj-tsop	TRUE	test	1902-hj-twotd 1896-hj-tsop	1	FALSE
+1888	haj	bb	1888-haj-bb	1899	haj	ra	1899-haj-ra	TRUE	test	1888-haj-bb 1899-haj-ra	1	FALSE
+1913	ew	tcotc	1913-ew-tcotc	1868	haj	rd	1868-haj-rd	FALSE	test	1913-ew-tcotc 1868-haj-rd	0	TRUE
+1868	espw	tga	1868-espw-tga	1919	rwc	tsos	1919-rwc-tsos	FALSE	test	1868-espw-tga 1919-rwc-tsos	0	TRUE
+1900	haj	ainy	1900-haj-ainy	1919	ew	m	1919-ew-m	FALSE	test	1900-haj-ainy 1919-ew-m	0	TRUE
+1881	mt	tpatp	1881-mt-tpatp	1899	haj	aoatb	1899-haj-aoatb	FALSE	test	1881-mt-tpatp 1899-haj-aoatb	0	TRUE
+1891	fmc	k	1891-fmc-k	1893	fmc	tr	1893-fmc-tr	TRUE	test	1891-fmc-k 1893-fmc-tr	1	FALSE
+1881	hj	tpoal	1881-hj-tpoal	1890	fmc	acmr	1890-fmc-acmr	FALSE	test	1881-hj-tpoal 1890-fmc-acmr	0	FALSE
+1869	haj	mtmb	1869-haj-mtmb	1903	haj	bba-ph	1903-haj-bba-ph	TRUE	test	1869-haj-mtmb 1903-haj-bba-ph	1	FALSE
+1885	fmc	atoalp	1885-fmc-atoalp	1905	fmc	wso	1905-fmc-wso	TRUE	test	1885-fmc-atoalp 1905-fmc-wso	1	FALSE
+1868	wta	mob	1868-wta-mob	1870	wta	faf	1870-wta-faf	TRUE	test	1868-wta-mob 1870-wta-faf	1	TRUE
+1871	hbs	pawt	1871-hbs-pawt	1904	rwc	isotu	1904-rwc-isotu	FALSE	test	1871-hbs-pawt 1904-rwc-isotu	0	TRUE
+1875	cfw	cn	1875-cfw-cn	1864	lma	m	1864-lma-m	FALSE	test	1875-cfw-cn 1864-lma-m	0	TRUE
+1914	mh+	mhce-nf	1914-mh+-mhce-nf	1908	fmc	tp	1908-fmc-tp	FALSE	test	1914-mh+-mhce-nf 1908-fmc-tp	0	FALSE
+1893	fmc	md	1893-fmc-md	1895	fmc	ajs	1895-fmc-ajs	TRUE	test	1893-fmc-md 1895-fmc-ajs	1	FALSE
+1864	wta	tsb	1864-wta-tsb	1883	wta	sh	1883-wta-sh	TRUE	test	1864-wta-tsb 1883-wta-sh	1	TRUE
+1900	rwc	taoamm	1900-rwc-taoamm	1910	rwc	tgm	1910-rwc-tgm	TRUE	test	1900-rwc-taoamm 1910-rwc-tgm	1	TRUE
+1903	fmc	thor	1903-fmc-thor	1887	fmc	s	1887-fmc-s	TRUE	test	1903-fmc-thor 1887-fmc-s	1	FALSE
+1884	mt	taohf	1884-mt-taohf	1874	mt	lotm	1874-mt-lotm	TRUE	test	1884-mt-taohf 1874-mt-lotm	1	TRUE
+1907	espw	tldup	1907-espw-tldup	1871	espw	tsp	1871-espw-tsp	TRUE	test	1907-espw-tldup 1871-espw-tsp	1	FALSE
+1866	espw	gcj	1866-espw-gcj	1882	haj	bn	1882-haj-bn	FALSE	test	1866-espw-gcj 1882-haj-bn	0	FALSE
+1883	haj	tbb	1883-haj-tbb	1888	es	ttatv	1888-es-ttatv	FALSE	test	1883-haj-tbb 1888-es-ttatv	0	TRUE
+1908	fmc	s	1908-fmc-s	1908	fmc	tws	1908-fmc-tws	TRUE	test	1908-fmc-s 1908-fmc-tws	1	FALSE
+1889	wta	wtel	1889-wta-wtel	1911	rwc	tcl	1911-rwc-tcl	FALSE	test	1889-wta-wtel 1911-rwc-tcl	0	TRUE
+1904	rwc	sm	1904-rwc-sm	1886	hj	pc	1886-hj-pc	FALSE	test	1904-rwc-sm 1886-hj-pc	0	TRUE
+1918	us	jh	1918-us-jh	1897	ew	tdof	1897-ew-tdof	FALSE	test	1918-us-jh 1897-ew-tdof	0	TRUE
+1872	lma	ss	1872-lma-ss	1867	lma	tagomtt	1867-lma-tagomtt	TRUE	test	1872-lma-ss 1867-lma-tagomtt	1	TRUE
+1910	ew	tomag	1910-ew-tomag	1889	es	atg	1889-es-atg	FALSE	test	1910-ew-tomag 1889-es-atg	0	TRUE
+1889	espw	tsfi	1889-espw-tsfi	1895	espw	tsojc	1895-espw-tsojc	TRUE	test	1889-espw-tsfi 1895-espw-tsojc	1	FALSE
+1905	haj	fftf	1905-haj-fftf	1870	haj	rar	1870-haj-rar	TRUE	test	1905-haj-fftf 1870-haj-rar	1	FALSE
+1882	espw	dz	1882-espw-dz	1909	mt	isd	1909-mt-isd	FALSE	test	1882-espw-dz 1909-mt-isd	0	TRUE
+1907	ew	tfott	1907-ew-tfott	1896	hj	toh	1896-hj-toh	FALSE	test	1907-ew-tfott 1896-hj-toh	0	TRUE
+1868	wta	dad	1868-wta-dad	1885	wta	sts	1885-wta-sts	TRUE	test	1868-wta-dad 1885-wta-sts	1	TRUE
+1909	rwc	tdm	1909-rwc-tdm	1897	ab	tdohy	1897-ab-tdohy	FALSE	test	1909-rwc-tdm 1897-ab-tdohy	0	TRUE
+1891	haj	tetb	1891-haj-tetb	1868	haj	faf	1868-haj-faf	TRUE	test	1891-haj-tetb 1868-haj-faf	1	FALSE
+1893	haj	dtn	1893-haj-dtn	1866	haj	tcw	1866-haj-tcw	TRUE	test	1893-haj-dtn 1866-haj-tcw	1	FALSE
+1869	wta	dtr	1869-wta-dtr	1865	wta	waw	1865-wta-waw	TRUE	test	1869-wta-dtr 1865-wta-waw	1	TRUE
+1891	cdw	oi	1891-cdw-oi	1873	hbs	wish	1873-hbs-wish	FALSE	test	1891-cdw-oi 1873-hbs-wish	0	TRUE
+1879	hj	dm	1879-hj-dm	1903	hj	ta	1903-hj-ta	TRUE	test	1879-hj-dm 1903-hj-ta	1	FALSE
+1874	cfw	tac	1874-cfw-tac	1882	fmc	mi	1882-fmc-mi	FALSE	test	1874-cfw-tac 1882-fmc-mi	0	TRUE
+1893	espw	dm	1893-espw-dm	1896	ab	boat	1896-ab-boat	FALSE	test	1893-espw-dm 1896-ab-boat	0	FALSE
+1896	espw	tsasa	1896-espw-tsasa	1894	espw	asl	1894-espw-asl	TRUE	test	1896-espw-tsasa 1894-espw-asl	1	FALSE
+1879	haj	tym	1879-haj-tym	1869	haj	pjb	1869-haj-pjb	TRUE	test	1879-haj-tym 1869-haj-pjb	1	FALSE
+1920	us	1tsoap	1920-us-1tsoap	1913	us	dg	1913-us-dg	TRUE	test	1920-us-1tsoap 1913-us-dg	1	FALSE
+1917	es	ow-sh	1917-es-ow-sh	1873	hbs	pl	1873-hbs-pl	FALSE	test	1917-es-ow-sh 1873-hbs-pl	0	TRUE
+1855	wta	aa	1855-wta-aa	1873	wta	tyc	1873-wta-tyc	TRUE	test	1855-wta-aa 1873-wta-tyc	1	TRUE
+1879	haj	ttb	1879-haj-ttb	1894	fmc	wg	1894-fmc-wg	FALSE	test	1879-haj-ttb 1894-fmc-wg	0	FALSE
+1898	fmc	vc	1898-fmc-vc	1895	fmc	t	1895-fmc-t	TRUE	test	1898-fmc-vc 1895-fmc-t	1	FALSE
+1867	espw	gyatgc	1867-espw-gyatgc	1901	espw	a	1901-espw-a	TRUE	test	1867-espw-gyatgc 1901-espw-a	1	FALSE
+1896	fmc	c	1896-fmc-c	1885	fmc	zamc	1885-fmc-zamc	TRUE	test	1896-fmc-c 1885-fmc-zamc	1	FALSE
+1855	hbs	tmf	1855-hbs-tmf	1866	espw	gb	1866-espw-gb	FALSE	test	1855-hbs-tmf 1866-espw-gb	0	FALSE
+1897	fmc	aroy	1897-fmc-aroy	1884	fmc	aap	1884-fmc-aap	TRUE	test	1897-fmc-aroy 1884-fmc-aap	1	FALSE
+1883	espw	btg	1883-espw-btg	1911	hj	to	1911-hj-to	FALSE	test	1883-espw-btg 1911-hj-to	0	FALSE
+1862	hbs	tpooi	1862-hbs-tpooi	1875	hbs	waon	1875-hbs-waon	TRUE	test	1862-hbs-tpooi 1875-hbs-waon	1	FALSE
+1883	fmc	ars	1883-fmc-ars	1885	fmc	tcotk	1885-fmc-tcotk	TRUE	test	1883-fmc-ars 1885-fmc-tcotk	1	FALSE
+1886	hbs	tsw	1886-hbs-tsw	1854	hbs	smofl-v2	1854-hbs-smofl-v2	TRUE	test	1886-hbs-tsw 1854-hbs-smofl-v2	1	FALSE
+1903	ew	ivatg	1903-ew-ivatg	1878	cdw	hikab	1878-cdw-hikab	FALSE	test	1903-ew-ivatg 1878-cdw-hikab	0	TRUE
+1858	wta	pap	1858-wta-pap	1897	haj	fof	1897-haj-fof	FALSE	test	1858-wta-pap 1897-haj-fof	0	TRUE
+1902	hj	twotd-v2	1902-hj-twotd-v2	1888	hj	tr	1888-hj-tr	TRUE	test	1902-hj-twotd-v2 1888-hj-tr	1	FALSE
+1871	hbs	ofs	1871-hbs-ofs	1888	fmc	si	1888-fmc-si	FALSE	test	1871-hbs-ofs 1888-fmc-si	0	FALSE
+1907	ab	rm	1907-ab-rm	1901	hj	tsf	1901-hj-tsf	FALSE	test	1907-ab-rm 1901-hj-tsf	0	FALSE
+1882	haj	ffbts	1882-haj-ffbts	1893	haj	ianwatgfoa	1893-haj-ianwatgfoa	TRUE	test	1882-haj-ffbts 1893-haj-ianwatgfoa	1	FALSE
+1908	rwc	tfl	1908-rwc-tfl	1910	rwc	ap	1910-rwc-ap	TRUE	test	1908-rwc-tfl 1910-rwc-ap	1	TRUE
