@@ -226,14 +226,15 @@ restrictTrainingSetDiversity <- function(fullDataset) {
 
 
 buildTrainOrTestSetWithGroups <- function(dataSplitByAuthor, nbCases, train.set, propPositive=.5, group1.sizes=1:5, group2.sizes=1) {
+  print(group1.sizes)
   dt <- as.data.table(dataSplitByAuthor[dataSplitByAuthor$train.set==train.set,])
   setkey(dt, author, title)
   authors <- as.data.table(booksByAuthor(dt))
   positive <- sample(nbCases, round(propPositive*nbCases))
   l <- list()
   for (i in 1:nbCases) {
-    group1.size <- sample(group1.sizes,1)
-    group2.size <- sample(group2.sizes,1)
+    group1.size <- group1.sizes[sample(length(group1.sizes),1)]
+    group2.size <- group2.sizes[sample(length(group2.sizes),1)]
     if (i %in% positive) {
 #      print('POS')
       selectableAuthors <- authors[n>=group1.size+group2.size,author]
