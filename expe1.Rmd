@@ -72,8 +72,8 @@ for SIZE in $EXPE1_DOC_SIZES; do
   if [ ! -d "$EXPE1_WORK_DIR/$SIZE/impostors" ]; then
     mkdir "$EXPE1_WORK_DIR/$SIZE/impostors"
     mkdir "$EXPE1_WORK_DIR/$SIZE/impostors/my.impostors"
-    ls "$EXPE1_WORK_DIR/$SIZE/data"/* | grep -v "truth.txt" | while read f; do
-      cp $f $EXPE1_WORK_DIR/$SIZE/impostors/my.impostors/$(basename "$f").txt
+    cat "$EXPE1_WORK_DIR/$SIZE/data/truth.txt" | cut -f 1 | tr ' :' '\n\n'  | sort -u | while read f; do 
+      cp "$EXPE1_WORK_DIR/$SIZE/data/$f" $EXPE1_WORK_DIR/$SIZE/impostors/my.impostors/$f.txt
     done
   fi
   echo "$SIZE: multi-conf files"
