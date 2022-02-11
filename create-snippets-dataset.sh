@@ -60,7 +60,7 @@ while read inputFile; do
     else
 	f="$inputFile"
 	if [ ! -z "$removeEmptyLines" ]; then
-	    f=$(mktemp --tmpdir "tmp.$0.XXXXXXXX")
+	    f=$(mktemp --tmpdir "tmp.$(basename "$0").XXXXXXXX")
 	    cat "$inputFile" | grep . >"$f"
 	fi
 	ok=""
