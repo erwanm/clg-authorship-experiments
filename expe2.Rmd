@@ -1,0 +1,88 @@
+---
+title: "Experiment 2: size of a group of documents by the same author"
+author: "Erwan Moreau"
+date: "2/9/2022"
+output: html_document
+---
+
+```{r setup, include=FALSE}
+knitr::opts_chunk$set(echo = TRUE)
+source('experiments.R')
+```
+
+### Options
+
+The `.Rmd` source document can be configured by modifying the following lines:
+
+```{r myoptions}
+packages.path <- 'packages'
+Sys.setenv(CLG_AUTHORSHIP_PACKAGES_PATH = packages.path)
+work.dir <- 'experiments/2-doc-groups-by-case'
+Sys.setenv(EXPE_WORK_DIR = work.dir)
+Sys.setenv(COPY_EXPE1_DATA_DIR = 'experiments/1-doc-size/100')
+group.sizes <- '1 2 3 4 5'
+Sys.setenv(GROUP_SIZES = group.sizes)
+any.group.size <- strsplit(group.sizes, ' ',fixed=TRUE)[[1]][1]
+set.seed(2022)
+```
+
+
+# Data generation
+
+## Dataset 
+
+We use the same dataset as in the first experiment (must have been calculated before).
+
+```{bash generate.data}
+source session-setup.sh
+if [ ! -d "$COPY_EXPE1_DATA_DIR" ]; then
+  echo "Dir '$COPY_EXPE1_DATA_DIR' not found" 1>&2
+  exit 1
+fi
+if [ ! -d "$EXPE_WORK_DIR" ]; then 
+  mkdir "$EXPE_WORK_DIR"
+  for SIZE in $GROUP_SIZES; do
+     mkdir "$EXPE_WORK_DIR/$SIZE"
+     cp -R "$COPY_EXPE1_DATA_DIR"/process "$COPY_EXPE1_DATA_DIR"/data "$COPY_EXPE1_DATA_DIR"/impostors "$EXPE_WORK_DIR/$SIZE"
+     rm -f "$EXPE_WORK_DIR/$SIZE/data/truth.txt"
+  done
+fi
+```
+
+
+## Training and test cases
+
+```{r generate.cases1}
+d <- readDataDir(paste(work.dir,any.group.size,'data',sep='/'))
+dataSplitByAuthor <- splitAuthors(d)
+```
+
+```{r generate.cases2}
+for (size.str in strsplit(group.sizes, ' ',fixed=TRUE)[[1]]) {
+  size <- as.numeric(size.str)
+  full <- buildFullDatasetWithGroups(dataSplitByAuthor, 100, 100,group1.sizes=size, group2.sizes=1)
+  fwrite(full, paste(work.dir,size.str,'full-dataset.tsv',sep='/'), sep='\t')
+  saveDatasetInCasesFormat(full,dir=paste(work.dir,as.character(size),sep='/'))
+}
+```
+
+## Adding truth file
+
+```{bash truth.files}
+source session-setup.sh
+for SIZE in $GROUP_SIZES; do
+  echo "$SIZE: truth file"
+  cat "$EXPE_WORK_DIR/$SIZE/train.tsv" > "$EXPE_WORK_DIR/$SIZE/data/truth.txt"
+done
+```
+
+# Running the training processes
+
+For every size `N` the training process is run as follows: 
+
+```
+source session-setup.sh
+prepare-input-data.sh -l english -i "$EXPE_WORK_DIR/$SIZE/impostors" "$EXPE_WORK_DIR/$SIZE/data" "$EXPE_WORK_DIR/$SIZE/process"
+task-distrib-daemon.sh  -s 30s -p 1 -v -q 10 "$TASKS_DIR" $NCORES >"$EXPE_WORK_DIR/$SIZE/task-daemon.log" &
+train-top-level.sh -r -P "$TASKS_DIR/mytasks" -o  '-c -s' "$EXPE_WORK_DIR/$SIZE/process"
+```
