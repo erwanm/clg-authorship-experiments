@@ -1,0 +1,35 @@
+
+strategy=meta
+
+confidenceTrainProp=0
+confidenceLearnMethod=NA
+#learnMethod=mean median geomMean M5P-M4 M5P-M8 SMO-C1-N0 SMO-C1-N1 SMO-C1-N0-RBF SMO-C1-N1-RBF
+learnMethod=mean median geomMean
+
+metaGenetic_1_population=100
+metaGenetic_1_stopCriterionNbWindows=4
+metaGenetic_1_stopCriterionNbGenerationsByWindow=3
+metaGenetic_1_geneticParams=0.1:0.02:0.1:0.05
+metaGenetic_1_perfCriterion=AUC
+metaGenetic_1_nbFoldsOrProp=10
+metaGenetic_1_returnNbBest=200
+
+metaGenetic_final_nbFolds=5
+metaGenetic_final_nbRuns=20
+metaGenetic_final_returnNbBest=100
+#metaGenetic_final_selectMethod=mean mixedMeanMedianMinusSD
+metaGenetic_final_selectMethod=mean
+
+
+metaTestFold_bagging_nbRuns=20
+metaTestFold_bagging_returnNbBest=50
+#metaTestFold_bagging_selectMethod=mean mixedMeanMedianMinusSD
+metaTestFold_bagging_selectMethod=mean
+
+
+final_bagging_nbRuns=20
+final_bagging_returnNbBest=50
+#final_bagging_selectMethod=metaTestSet fullTrainSet avgMetaTestSetFullTrainSet
+final_bagging_selectMethod=metaTestSet
+
+
