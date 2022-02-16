@@ -1,8 +1,4 @@
 
-#todo:
-#  - update "seen author"?
-#  - save dataset
-#  - prepare expe diversity
 
 
 library(data.table)
@@ -292,3 +288,11 @@ buildFullDatasetWithGroups <- function(dataSplitByAuthor, nbCasesTrain, nbCasesT
   r <- assignAuthorsSeenInTraining(r)
   r
 }
+
+
+##### RESULTS AND ANALYSIS
+
+
+#  d2<-fread('experiments/2-doc-groups-by-case/results/results.tsv')
+# ggplot(d2[selected.by.training==TRUE,], aes(variable,perf.auc,colour=evaluated.on))+geom_point()+geom_line()+ylim(c(0,1))
+
