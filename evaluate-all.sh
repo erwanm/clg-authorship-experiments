@@ -272,6 +272,6 @@ fi
 if [ ! -z "$cleanupLinks" ]; then
     rm -f "$cleanupLinks"
 fi
-echo -e "variable\tselected.by.training\tmodel.type\tevaluated.on\tperf" >"$outputDir/results.tsv"
+echo -e "variable\tselected.by.training\tmodel.type\tevaluated.on\tperf.final\tperf.auc\tperf.accu" >"$outputDir/results.tsv"
 cat "$outputDir"/*/*/*/results.tsv >>"$outputDir/results.tsv"
 echo "$progName: done."
