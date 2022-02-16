@@ -21,26 +21,36 @@ NCORES="$2"
 TASKS_DIR="$3"
 
 
-
+# this is in case the experiment was run in a /tmp directory instead of its current location
+# the paths would contain /tmp/<path>
+# the function creates some symlinks in /tmp (or wherever) to prevent all the 'file not found' errors
+# nothing is deleted but this creates symlinks which may not be deleted if the script doesn't terminate normally
+# also it may not work if the symlinks or other dir already exist at the same location
 function trickDifferentExpeDir {
     local processDir="$1"
 
     targetDir=$(dirname "$processDir")
-    prefix=$(head -n 1 "$processDir/selected-meta-prefixes.list" | cut -f 1)
-#    echo "prefix=$prefix"
+    name=$(basename "$targetDir")
+    prefix=$(head -n 1 "$processDir/selected-meta-prefixes.list" | cut -f 1 | sed s#//*#/#g)
+#    echo "DEBUG prefix=$prefix" 1>&2
     dir=${prefix%/process/selected-meta-configs*}
     if [ ! -d "$dir" ]; then
+	cleanupLinks=""
 	dir0=$(dirname "$dir")
-#	echo "  dir0=$dir0"
 	if [ ! -d "$dir0" ]; then
 	    mkdir "$dir0" 
 	fi
 	linkAbsolutePath "$dir0" "$targetDir"
-	name=$(basename "$targetDir")
-	cleanupLinks="$dir"
+	if [ $? -eq 0 ]; then
+	    cleanupLinks="$cleanupLinks $dir0/$name"
+	fi
+#	echo "  DEBUG creating $name in $dir0" 1>&2
 	if [ ! -d "/tmp/$name" ]; then
 	    linkAbsolutePath "/tmp" "$targetDir"
-	    cleanupLinks="$cleanupLinks /tmp/$name"
+#	    echo "  DEBUG creating $name in /tmp" 1>&2
+	    if [ $? -eq 0 ]; then
+		cleanupLinks="$cleanupLinks /tmp/$name"
+	    fi
 	fi
     fi
     
@@ -233,6 +243,16 @@ for sizeDir in "$EXPE_WORK_DIR"/*; do
 				runEval "$modelPrefix" "$datasetsDir/$trainTest.tsv" "$inputDir" "$thisOutputDir" "$sizeOutputDir" "$size" "$thisModelSelected" "$modelType" &
 				echo "$thisOutputDir/results.tsv" >> "$waitFile"
 			    fi
+			fi
+		    done
+		else
+		    for trainTest in train test; do
+			thisOutputDir="$sizeOutputDir/$modelType/$trainTest"
+			mkdirSafe "$thisOutputDir"
+			echo -e "$size\tFALSE\t$modelType\t$trainTest\tNA" >"$thisOutputDir/results.tsv"
+			if [ "$trainTest" == "test" ]; then
+			    echo -e "$size\tFALSE\t$modelType\ttest.seen\tNA" >>"$thisOutputDir/results.tsv"
+			    echo -e "$size\tFALSE\t$modelType\ttest.unseen\tNA" >>"$thisOutputDir/results.tsv"
 			fi
 		    done
 		fi
