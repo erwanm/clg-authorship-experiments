@@ -249,10 +249,10 @@ for sizeDir in "$EXPE_WORK_DIR"/*; do
 		    for trainTest in train test; do
 			thisOutputDir="$sizeOutputDir/$modelType/$trainTest"
 			mkdirSafe "$thisOutputDir"
-			echo -e "$size\tFALSE\t$modelType\t$trainTest\tNA" >"$thisOutputDir/results.tsv"
+			echo -e "$size\tFALSE\t$modelType\t$trainTest\tNA\tNA\tNA" >"$thisOutputDir/results.tsv"
 			if [ "$trainTest" == "test" ]; then
-			    echo -e "$size\tFALSE\t$modelType\ttest.seen\tNA" >>"$thisOutputDir/results.tsv"
-			    echo -e "$size\tFALSE\t$modelType\ttest.unseen\tNA" >>"$thisOutputDir/results.tsv"
+			    echo -e "$size\tFALSE\t$modelType\ttest.seen\tNA\tNA\tNA" >>"$thisOutputDir/results.tsv"
+			    echo -e "$size\tFALSE\t$modelType\ttest.unseen\tNA\tNA\tNA" >>"$thisOutputDir/results.tsv"
 			fi
 		    done
 		fi

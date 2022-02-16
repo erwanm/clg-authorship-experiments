@@ -15,10 +15,10 @@ variable	selected.by.training	model.type	evaluated.on	perf.final	perf.auc	perf.a
 100	TRUE	univ	test.seen	0.302697	0.541667	0.558824
 100	TRUE	univ	test.unseen	0.332457	0.609504	0.545455
 100	TRUE	univ	train	0.418582	0.686200	0.610000
-200	FALSE	basic	test	NA
-200	FALSE	basic	test.seen	NA
-200	FALSE	basic	test.unseen	NA
-200	FALSE	basic	train	NA
+200	FALSE	basic	test	NA	NA	NA
+200	FALSE	basic	test.seen	NA	NA	NA
+200	FALSE	basic	test.unseen	NA	NA	NA
+200	FALSE	basic	train	NA	NA	NA
 200	FALSE	GI	test	0.354844	0.611800	0.580000
 200	FALSE	GI	test.seen	0.452381	0.785714	0.575758
 200	FALSE	GI	test.unseen	0.353370	0.607071	0.582090
@@ -63,10 +63,10 @@ variable	selected.by.training	model.type	evaluated.on	perf.final	perf.auc	perf.a
 400	TRUE	univ	test.seen	0.394950	0.566667	0.696970
 400	TRUE	univ	test.unseen	0.378978	0.651064	0.582090
 400	TRUE	univ	train	0.362529	0.625050	0.580000
-600	FALSE	basic	test	NA
-600	FALSE	basic	test.seen	NA
-600	FALSE	basic	test.unseen	NA
-600	FALSE	basic	train	NA
+600	FALSE	basic	test	NA	NA	NA
+600	FALSE	basic	test.seen	NA	NA	NA
+600	FALSE	basic	test.unseen	NA	NA	NA
+600	FALSE	basic	train	NA	NA	NA
 600	FALSE	GI	test	0.416384	0.650600	0.640000
 600	FALSE	GI	test.seen	0.582923	0.816092	0.714286
 600	FALSE	GI	test.unseen	0.373052	0.621753	0.600000
@@ -75,7 +75,7 @@ variable	selected.by.training	model.type	evaluated.on	perf.final	perf.auc	perf.a
 600	TRUE	meta	test.seen	0.743842	0.867816	0.857143
 600	TRUE	meta	test.unseen	0.375324	0.717532	0.523077
 600	TRUE	meta	train	0.480524	0.729911	0.658333
-600	FALSE	univ	test	NA
-600	FALSE	univ	test.seen	NA
-600	FALSE	univ	test.unseen	NA
-600	FALSE	univ	train	NA
+600	FALSE	univ	test	NA	NA	NA
+600	FALSE	univ	test.seen	NA	NA	NA
+600	FALSE	univ	test.unseen	NA	NA	NA
+600	FALSE	univ	train	NA	NA	NA
