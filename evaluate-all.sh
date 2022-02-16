@@ -121,14 +121,18 @@ function evalSeenUnseen {
 	echo "Error: different number of lines between '$outputDir/$seenUnseen.answers' and '$seenUnseenDir/$seenUnseen.cases'" 1>&2
 	exit 17
     fi
-    scoreAUC=$(auc.pl -p 6  "$seenUnseenDir/$seenUnseen.cases" "$outputDir/$seenUnseen.answers")
-    scoreC1=$(accuracy.pl -c -p 6  "$seenUnseenDir/$seenUnseen.cases" "$outputDir/$seenUnseen.answers" | cut -f 1)
-    scoreFinal=$(perl -e "printf(\"%.6f\n\", $scoreAUC * $scoreC1);")
-    if [ -z "$scoreAUC" ] || [ -z "$scoreC1" ] || [ -z "$scoreFinal" ] ; then
-        echo "$progName error: was not able to extract one of the evaluation scores in $outputDir" 1>&2
-        exit 1
+    if [ $n1 -gt 0 ]; then
+	scoreAUC=$(auc.pl -p 6  "$seenUnseenDir/$seenUnseen.cases" "$outputDir/$seenUnseen.answers")
+	scoreC1=$(accuracy.pl -c -p 6  "$seenUnseenDir/$seenUnseen.cases" "$outputDir/$seenUnseen.answers" | cut -f 1)
+	scoreFinal=$(perl -e "printf(\"%.6f\n\", $scoreAUC * $scoreC1);")
+	if [ -z "$scoreAUC" ] || [ -z "$scoreC1" ] || [ -z "$scoreFinal" ] ; then
+            echo "$progName error: was not able to extract one of the evaluation scores in $outputDir" 1>&2
+            exit 1
+	fi
+	echo -e "$scoreFinal\t$scoreAUC\t$scoreC1"
+    else # no seen/unseen author at all
+	echo -e "NA\t\NA\tNA"
     fi
-    echo -e "$scoreFinal\t$scoreAUC\t$scoreC1"
 
 
 } 

@@ -1,0 +1,864 @@
+apply-multi-configs.sh: calling self to apply strategy configs/models '/home/moreaue/dump/expe1//results/900/meta/train/indiv-strategies.prefix-list' first.
+apply-multi-configs.sh: applying configs/models '/home/moreaue/dump/expe1//results/900/meta/train/indiv-strategies.prefix-list' to '/home/moreaue/dump/expe1//train.tsv'; writing results to '/home/moreaue/dump/expe1//results/900/meta/train/apply-strategy-configs'.
+apply-multi-configs.sh: applying configs/models '/home/moreaue/dump/expe1//results/900/meta/train/indiv-strategies.prefix-list' to '/home/moreaue/dump/expe1//train.tsv'; writing results to '/home/moreaue/dump/expe1//results/900/meta/train/apply-strategy-configs'. 2022-02-16 20:53: 0/59 done
+
+apply-multi-configs.sh: applying configs/models '/home/moreaue/dump/expe1//results/900/meta/train/indiv-strategies.prefix-list' to '/home/moreaue/dump/expe1//train.tsv'; writing results to '/home/moreaue/dump/expe1//results/900/meta/train/apply-strategy-configs'. 2022-02-16 20:54: 0/59 done
+
+apply-multi-configs.sh: applying configs/models '/home/moreaue/dump/expe1//results/900/meta/train/indiv-strategies.prefix-list' to '/home/moreaue/dump/expe1//train.tsv'; writing results to '/home/moreaue/dump/expe1//results/900/meta/train/apply-strategy-configs'. 2022-02-16 20:54: 0/59 done
+
+apply-multi-configs.sh: applying configs/models '/home/moreaue/dump/expe1//results/900/meta/train/indiv-strategies.prefix-list' to '/home/moreaue/dump/expe1//train.tsv'; writing results to '/home/moreaue/dump/expe1//results/900/meta/train/apply-strategy-configs'. 2022-02-16 20:54: 0/59 done
+
+apply-multi-configs.sh: applying configs/models '/home/moreaue/dump/expe1//results/900/meta/train/indiv-strategies.prefix-list' to '/home/moreaue/dump/expe1//train.tsv'; writing results to '/home/moreaue/dump/expe1//results/900/meta/train/apply-strategy-configs'. 2022-02-16 20:55: 0/59 done
+
+apply-multi-configs.sh: applying configs/models '/home/moreaue/dump/expe1//results/900/meta/train/indiv-strategies.prefix-list' to '/home/moreaue/dump/expe1//train.tsv'; writing results to '/home/moreaue/dump/expe1//results/900/meta/train/apply-strategy-configs'. 2022-02-16 20:55: 0/59 done
+
+apply-multi-configs.sh: applying configs/models '/home/moreaue/dump/expe1//results/900/meta/train/indiv-strategies.prefix-list' to '/home/moreaue/dump/expe1//train.tsv'; writing results to '/home/moreaue/dump/expe1//results/900/meta/train/apply-strategy-configs'. 2022-02-16 20:55: 0/59 done
+
+apply-multi-configs.sh: applying configs/models '/home/moreaue/dump/expe1//results/900/meta/train/indiv-strategies.prefix-list' to '/home/moreaue/dump/expe1//train.tsv'; writing results to '/home/moreaue/dump/expe1//results/900/meta/train/apply-strategy-configs'. 2022-02-16 20:56: 0/59 done
+
+apply-multi-configs.sh: applying configs/models '/home/moreaue/dump/expe1//results/900/meta/train/indiv-strategies.prefix-list' to '/home/moreaue/dump/expe1//train.tsv'; writing results to '/home/moreaue/dump/expe1//results/900/meta/train/apply-strategy-configs'. 2022-02-16 20:56: 0/59 done
+
+apply-multi-configs.sh: applying configs/models '/home/moreaue/dump/expe1//results/900/meta/train/indiv-strategies.prefix-list' to '/home/moreaue/dump/expe1//train.tsv'; writing results to '/home/moreaue/dump/expe1//results/900/meta/train/apply-strategy-configs'. 2022-02-16 20:56: 0/59 done
+
+apply-multi-configs.sh: applying configs/models '/home/moreaue/dump/expe1//results/900/meta/train/indiv-strategies.prefix-list' to '/home/moreaue/dump/expe1//train.tsv'; writing results to '/home/moreaue/dump/expe1//results/900/meta/train/apply-strategy-configs'. 2022-02-16 20:57: 0/59 done
+
+apply-multi-configs.sh: applying configs/models '/home/moreaue/dump/expe1//results/900/meta/train/indiv-strategies.prefix-list' to '/home/moreaue/dump/expe1//train.tsv'; writing results to '/home/moreaue/dump/expe1//results/900/meta/train/apply-strategy-configs'. 2022-02-16 20:57: 0/59 done
+
+apply-multi-configs.sh: applying configs/models '/home/moreaue/dump/expe1//results/900/meta/train/indiv-strategies.prefix-list' to '/home/moreaue/dump/expe1//train.tsv'; writing results to '/home/moreaue/dump/expe1//results/900/meta/train/apply-strategy-configs'. 2022-02-16 20:57: 0/59 done
+
+apply-multi-configs.sh: applying configs/models '/home/moreaue/dump/expe1//results/900/meta/train/indiv-strategies.prefix-list' to '/home/moreaue/dump/expe1//train.tsv'; writing results to '/home/moreaue/dump/expe1//results/900/meta/train/apply-strategy-configs'. 2022-02-16 20:58: 0/59 done
+
+apply-multi-configs.sh: applying configs/models '/home/moreaue/dump/expe1//results/900/meta/train/indiv-strategies.prefix-list' to '/home/moreaue/dump/expe1//train.tsv'; writing results to '/home/moreaue/dump/expe1//results/900/meta/train/apply-strategy-configs'. 2022-02-16 20:58: 0/59 done
+
+apply-multi-configs.sh: applying configs/models '/home/moreaue/dump/expe1//results/900/meta/train/indiv-strategies.prefix-list' to '/home/moreaue/dump/expe1//train.tsv'; writing results to '/home/moreaue/dump/expe1//results/900/meta/train/apply-strategy-configs'. 2022-02-16 20:58: 0/59 done
+
+apply-multi-configs.sh: applying configs/models '/home/moreaue/dump/expe1//results/900/meta/train/indiv-strategies.prefix-list' to '/home/moreaue/dump/expe1//train.tsv'; writing results to '/home/moreaue/dump/expe1//results/900/meta/train/apply-strategy-configs'. 2022-02-16 20:59: 0/59 done
+
+apply-multi-configs.sh: applying configs/models '/home/moreaue/dump/expe1//results/900/meta/train/indiv-strategies.prefix-list' to '/home/moreaue/dump/expe1//train.tsv'; writing results to '/home/moreaue/dump/expe1//results/900/meta/train/apply-strategy-configs'. 2022-02-16 20:59: 0/59 done
+
+apply-multi-configs.sh: applying configs/models '/home/moreaue/dump/expe1//results/900/meta/train/indiv-strategies.prefix-list' to '/home/moreaue/dump/expe1//train.tsv'; writing results to '/home/moreaue/dump/expe1//results/900/meta/train/apply-strategy-configs'. 2022-02-16 20:59: 0/59 done
+
+apply-multi-configs.sh: applying configs/models '/home/moreaue/dump/expe1//results/900/meta/train/indiv-strategies.prefix-list' to '/home/moreaue/dump/expe1//train.tsv'; writing results to '/home/moreaue/dump/expe1//results/900/meta/train/apply-strategy-configs'. 2022-02-16 21:00: 0/59 done
+
+apply-multi-configs.sh: applying configs/models '/home/moreaue/dump/expe1//results/900/meta/train/indiv-strategies.prefix-list' to '/home/moreaue/dump/expe1//train.tsv'; writing results to '/home/moreaue/dump/expe1//results/900/meta/train/apply-strategy-configs'. 2022-02-16 21:00: 0/59 done
+
+apply-multi-configs.sh: applying configs/models '/home/moreaue/dump/expe1//results/900/meta/train/indiv-strategies.prefix-list' to '/home/moreaue/dump/expe1//train.tsv'; writing results to '/home/moreaue/dump/expe1//results/900/meta/train/apply-strategy-configs'. 2022-02-16 21:00: 0/59 done
+
+apply-multi-configs.sh: applying configs/models '/home/moreaue/dump/expe1//results/900/meta/train/indiv-strategies.prefix-list' to '/home/moreaue/dump/expe1//train.tsv'; writing results to '/home/moreaue/dump/expe1//results/900/meta/train/apply-strategy-configs'. 2022-02-16 21:01: 0/59 done
+
+apply-multi-configs.sh: applying configs/models '/home/moreaue/dump/expe1//results/900/meta/train/indiv-strategies.prefix-list' to '/home/moreaue/dump/expe1//train.tsv'; writing results to '/home/moreaue/dump/expe1//results/900/meta/train/apply-strategy-configs'. 2022-02-16 21:01: 0/59 done
+
+apply-multi-configs.sh: applying configs/models '/home/moreaue/dump/expe1//results/900/meta/train/indiv-strategies.prefix-list' to '/home/moreaue/dump/expe1//train.tsv'; writing results to '/home/moreaue/dump/expe1//results/900/meta/train/apply-strategy-configs'. 2022-02-16 21:01: 0/59 done
+
+apply-multi-configs.sh: applying configs/models '/home/moreaue/dump/expe1//results/900/meta/train/indiv-strategies.prefix-list' to '/home/moreaue/dump/expe1//train.tsv'; writing results to '/home/moreaue/dump/expe1//results/900/meta/train/apply-strategy-configs'. 2022-02-16 21:02: 0/59 done
+
+apply-multi-configs.sh: applying configs/models '/home/moreaue/dump/expe1//results/900/meta/train/indiv-strategies.prefix-list' to '/home/moreaue/dump/expe1//train.tsv'; writing results to '/home/moreaue/dump/expe1//results/900/meta/train/apply-strategy-configs'. 2022-02-16 21:02: 0/59 done
+
+apply-multi-configs.sh: applying configs/models '/home/moreaue/dump/expe1//results/900/meta/train/indiv-strategies.prefix-list' to '/home/moreaue/dump/expe1//train.tsv'; writing results to '/home/moreaue/dump/expe1//results/900/meta/train/apply-strategy-configs'. 2022-02-16 21:02: 0/59 done
+
+apply-multi-configs.sh: applying configs/models '/home/moreaue/dump/expe1//results/900/meta/train/indiv-strategies.prefix-list' to '/home/moreaue/dump/expe1//train.tsv'; writing results to '/home/moreaue/dump/expe1//results/900/meta/train/apply-strategy-configs'. 2022-02-16 21:03: 0/59 done
+
+apply-multi-configs.sh: applying configs/models '/home/moreaue/dump/expe1//results/900/meta/train/indiv-strategies.prefix-list' to '/home/moreaue/dump/expe1//train.tsv'; writing results to '/home/moreaue/dump/expe1//results/900/meta/train/apply-strategy-configs'. 2022-02-16 21:03: 0/59 done
+
+apply-multi-configs.sh: applying configs/models '/home/moreaue/dump/expe1//results/900/meta/train/indiv-strategies.prefix-list' to '/home/moreaue/dump/expe1//train.tsv'; writing results to '/home/moreaue/dump/expe1//results/900/meta/train/apply-strategy-configs'. 2022-02-16 21:03: 0/59 done
+
+apply-multi-configs.sh: applying configs/models '/home/moreaue/dump/expe1//results/900/meta/train/indiv-strategies.prefix-list' to '/home/moreaue/dump/expe1//train.tsv'; writing results to '/home/moreaue/dump/expe1//results/900/meta/train/apply-strategy-configs'. 2022-02-16 21:04: 0/59 done
+
+apply-multi-configs.sh: applying configs/models '/home/moreaue/dump/expe1//results/900/meta/train/indiv-strategies.prefix-list' to '/home/moreaue/dump/expe1//train.tsv'; writing results to '/home/moreaue/dump/expe1//results/900/meta/train/apply-strategy-configs'. 2022-02-16 21:04: 0/59 done
+
+apply-multi-configs.sh: applying configs/models '/home/moreaue/dump/expe1//results/900/meta/train/indiv-strategies.prefix-list' to '/home/moreaue/dump/expe1//train.tsv'; writing results to '/home/moreaue/dump/expe1//results/900/meta/train/apply-strategy-configs'. 2022-02-16 21:04: 0/59 done
+
+apply-multi-configs.sh: applying configs/models '/home/moreaue/dump/expe1//results/900/meta/train/indiv-strategies.prefix-list' to '/home/moreaue/dump/expe1//train.tsv'; writing results to '/home/moreaue/dump/expe1//results/900/meta/train/apply-strategy-configs'. 2022-02-16 21:05: 0/59 done
+
+apply-multi-configs.sh: applying configs/models '/home/moreaue/dump/expe1//results/900/meta/train/indiv-strategies.prefix-list' to '/home/moreaue/dump/expe1//train.tsv'; writing results to '/home/moreaue/dump/expe1//results/900/meta/train/apply-strategy-configs'. 2022-02-16 21:05: 0/59 done
+
+apply-multi-configs.sh: applying configs/models '/home/moreaue/dump/expe1//results/900/meta/train/indiv-strategies.prefix-list' to '/home/moreaue/dump/expe1//train.tsv'; writing results to '/home/moreaue/dump/expe1//results/900/meta/train/apply-strategy-configs'. 2022-02-16 21:05: 0/59 done
+
+apply-multi-configs.sh: applying configs/models '/home/moreaue/dump/expe1//results/900/meta/train/indiv-strategies.prefix-list' to '/home/moreaue/dump/expe1//train.tsv'; writing results to '/home/moreaue/dump/expe1//results/900/meta/train/apply-strategy-configs'. 2022-02-16 21:06: 0/59 done
+
+apply-multi-configs.sh: applying configs/models '/home/moreaue/dump/expe1//results/900/meta/train/indiv-strategies.prefix-list' to '/home/moreaue/dump/expe1//train.tsv'; writing results to '/home/moreaue/dump/expe1//results/900/meta/train/apply-strategy-configs'. 2022-02-16 21:06: 0/59 done
+
+apply-multi-configs.sh: applying configs/models '/home/moreaue/dump/expe1//results/900/meta/train/indiv-strategies.prefix-list' to '/home/moreaue/dump/expe1//train.tsv'; writing results to '/home/moreaue/dump/expe1//results/900/meta/train/apply-strategy-configs'. 2022-02-16 21:06: 0/59 done
+
+apply-multi-configs.sh: applying configs/models '/home/moreaue/dump/expe1//results/900/meta/train/indiv-strategies.prefix-list' to '/home/moreaue/dump/expe1//train.tsv'; writing results to '/home/moreaue/dump/expe1//results/900/meta/train/apply-strategy-configs'. 2022-02-16 21:07: 0/59 done
+
+apply-multi-configs.sh: applying configs/models '/home/moreaue/dump/expe1//results/900/meta/train/indiv-strategies.prefix-list' to '/home/moreaue/dump/expe1//train.tsv'; writing results to '/home/moreaue/dump/expe1//results/900/meta/train/apply-strategy-configs'. 2022-02-16 21:07: 0/59 done
+
+apply-multi-configs.sh: applying configs/models '/home/moreaue/dump/expe1//results/900/meta/train/indiv-strategies.prefix-list' to '/home/moreaue/dump/expe1//train.tsv'; writing results to '/home/moreaue/dump/expe1//results/900/meta/train/apply-strategy-configs'. 2022-02-16 21:07: 0/59 done
+
+apply-multi-configs.sh: applying configs/models '/home/moreaue/dump/expe1//results/900/meta/train/indiv-strategies.prefix-list' to '/home/moreaue/dump/expe1//train.tsv'; writing results to '/home/moreaue/dump/expe1//results/900/meta/train/apply-strategy-configs'. 2022-02-16 21:08: 0/59 done
+
+apply-multi-configs.sh: applying configs/models '/home/moreaue/dump/expe1//results/900/meta/train/indiv-strategies.prefix-list' to '/home/moreaue/dump/expe1//train.tsv'; writing results to '/home/moreaue/dump/expe1//results/900/meta/train/apply-strategy-configs'. 2022-02-16 21:08: 0/59 done
+
+apply-multi-configs.sh: applying configs/models '/home/moreaue/dump/expe1//results/900/meta/train/indiv-strategies.prefix-list' to '/home/moreaue/dump/expe1//train.tsv'; writing results to '/home/moreaue/dump/expe1//results/900/meta/train/apply-strategy-configs'. 2022-02-16 21:08: 0/59 done
+
+apply-multi-configs.sh: applying configs/models '/home/moreaue/dump/expe1//results/900/meta/train/indiv-strategies.prefix-list' to '/home/moreaue/dump/expe1//train.tsv'; writing results to '/home/moreaue/dump/expe1//results/900/meta/train/apply-strategy-configs'. 2022-02-16 21:09: 0/59 done
+
+apply-multi-configs.sh: applying configs/models '/home/moreaue/dump/expe1//results/900/meta/train/indiv-strategies.prefix-list' to '/home/moreaue/dump/expe1//train.tsv'; writing results to '/home/moreaue/dump/expe1//results/900/meta/train/apply-strategy-configs'. 2022-02-16 21:09: 0/59 done
+
+apply-multi-configs.sh: applying configs/models '/home/moreaue/dump/expe1//results/900/meta/train/indiv-strategies.prefix-list' to '/home/moreaue/dump/expe1//train.tsv'; writing results to '/home/moreaue/dump/expe1//results/900/meta/train/apply-strategy-configs'. 2022-02-16 21:09: 0/59 done
+
+apply-multi-configs.sh: applying configs/models '/home/moreaue/dump/expe1//results/900/meta/train/indiv-strategies.prefix-list' to '/home/moreaue/dump/expe1//train.tsv'; writing results to '/home/moreaue/dump/expe1//results/900/meta/train/apply-strategy-configs'. 2022-02-16 21:10: 0/59 done
+
+apply-multi-configs.sh: applying configs/models '/home/moreaue/dump/expe1//results/900/meta/train/indiv-strategies.prefix-list' to '/home/moreaue/dump/expe1//train.tsv'; writing results to '/home/moreaue/dump/expe1//results/900/meta/train/apply-strategy-configs'. 2022-02-16 21:10: 0/59 done
+
+apply-multi-configs.sh: applying configs/models '/home/moreaue/dump/expe1//results/900/meta/train/indiv-strategies.prefix-list' to '/home/moreaue/dump/expe1//train.tsv'; writing results to '/home/moreaue/dump/expe1//results/900/meta/train/apply-strategy-configs'. 2022-02-16 21:10: 0/59 done
+
+apply-multi-configs.sh: applying configs/models '/home/moreaue/dump/expe1//results/900/meta/train/indiv-strategies.prefix-list' to '/home/moreaue/dump/expe1//train.tsv'; writing results to '/home/moreaue/dump/expe1//results/900/meta/train/apply-strategy-configs'. 2022-02-16 21:11: 0/59 done
+
+apply-multi-configs.sh: applying configs/models '/home/moreaue/dump/expe1//results/900/meta/train/indiv-strategies.prefix-list' to '/home/moreaue/dump/expe1//train.tsv'; writing results to '/home/moreaue/dump/expe1//results/900/meta/train/apply-strategy-configs'. 2022-02-16 21:11: 0/59 done
+
+apply-multi-configs.sh: applying configs/models '/home/moreaue/dump/expe1//results/900/meta/train/indiv-strategies.prefix-list' to '/home/moreaue/dump/expe1//train.tsv'; writing results to '/home/moreaue/dump/expe1//results/900/meta/train/apply-strategy-configs'. 2022-02-16 21:11: 0/59 done
+
+apply-multi-configs.sh: applying configs/models '/home/moreaue/dump/expe1//results/900/meta/train/indiv-strategies.prefix-list' to '/home/moreaue/dump/expe1//train.tsv'; writing results to '/home/moreaue/dump/expe1//results/900/meta/train/apply-strategy-configs'. 2022-02-16 21:12: 0/59 done
+
+apply-multi-configs.sh: applying configs/models '/home/moreaue/dump/expe1//results/900/meta/train/indiv-strategies.prefix-list' to '/home/moreaue/dump/expe1//train.tsv'; writing results to '/home/moreaue/dump/expe1//results/900/meta/train/apply-strategy-configs'. 2022-02-16 21:12: 0/59 done
+
+apply-multi-configs.sh: applying configs/models '/home/moreaue/dump/expe1//results/900/meta/train/indiv-strategies.prefix-list' to '/home/moreaue/dump/expe1//train.tsv'; writing results to '/home/moreaue/dump/expe1//results/900/meta/train/apply-strategy-configs'. 2022-02-16 21:12: 0/59 done
+
+apply-multi-configs.sh: applying configs/models '/home/moreaue/dump/expe1//results/900/meta/train/indiv-strategies.prefix-list' to '/home/moreaue/dump/expe1//train.tsv'; writing results to '/home/moreaue/dump/expe1//results/900/meta/train/apply-strategy-configs'. 2022-02-16 21:13: 0/59 done
+
+apply-multi-configs.sh: applying configs/models '/home/moreaue/dump/expe1//results/900/meta/train/indiv-strategies.prefix-list' to '/home/moreaue/dump/expe1//train.tsv'; writing results to '/home/moreaue/dump/expe1//results/900/meta/train/apply-strategy-configs'. 2022-02-16 21:13: 0/59 done
+
+apply-multi-configs.sh: applying configs/models '/home/moreaue/dump/expe1//results/900/meta/train/indiv-strategies.prefix-list' to '/home/moreaue/dump/expe1//train.tsv'; writing results to '/home/moreaue/dump/expe1//results/900/meta/train/apply-strategy-configs'. 2022-02-16 21:13: 0/59 done
+
+apply-multi-configs.sh: applying configs/models '/home/moreaue/dump/expe1//results/900/meta/train/indiv-strategies.prefix-list' to '/home/moreaue/dump/expe1//train.tsv'; writing results to '/home/moreaue/dump/expe1//results/900/meta/train/apply-strategy-configs'. 2022-02-16 21:14: 0/59 done
+
+apply-multi-configs.sh: applying configs/models '/home/moreaue/dump/expe1//results/900/meta/train/indiv-strategies.prefix-list' to '/home/moreaue/dump/expe1//train.tsv'; writing results to '/home/moreaue/dump/expe1//results/900/meta/train/apply-strategy-configs'. 2022-02-16 21:14: 0/59 done
+
+apply-multi-configs.sh: applying configs/models '/home/moreaue/dump/expe1//results/900/meta/train/indiv-strategies.prefix-list' to '/home/moreaue/dump/expe1//train.tsv'; writing results to '/home/moreaue/dump/expe1//results/900/meta/train/apply-strategy-configs'. 2022-02-16 21:14: 0/59 done
+
+apply-multi-configs.sh: applying configs/models '/home/moreaue/dump/expe1//results/900/meta/train/indiv-strategies.prefix-list' to '/home/moreaue/dump/expe1//train.tsv'; writing results to '/home/moreaue/dump/expe1//results/900/meta/train/apply-strategy-configs'. 2022-02-16 21:15: 0/59 done
+
+apply-multi-configs.sh: applying configs/models '/home/moreaue/dump/expe1//results/900/meta/train/indiv-strategies.prefix-list' to '/home/moreaue/dump/expe1//train.tsv'; writing results to '/home/moreaue/dump/expe1//results/900/meta/train/apply-strategy-configs'. 2022-02-16 21:15: 0/59 done
+
+apply-multi-configs.sh: applying configs/models '/home/moreaue/dump/expe1//results/900/meta/train/indiv-strategies.prefix-list' to '/home/moreaue/dump/expe1//train.tsv'; writing results to '/home/moreaue/dump/expe1//results/900/meta/train/apply-strategy-configs'. 2022-02-16 21:15: 0/59 done
+
+apply-multi-configs.sh: applying configs/models '/home/moreaue/dump/expe1//results/900/meta/train/indiv-strategies.prefix-list' to '/home/moreaue/dump/expe1//train.tsv'; writing results to '/home/moreaue/dump/expe1//results/900/meta/train/apply-strategy-configs'. 2022-02-16 21:16: 0/59 done
+
+apply-multi-configs.sh: applying configs/models '/home/moreaue/dump/expe1//results/900/meta/train/indiv-strategies.prefix-list' to '/home/moreaue/dump/expe1//train.tsv'; writing results to '/home/moreaue/dump/expe1//results/900/meta/train/apply-strategy-configs'. 2022-02-16 21:16: 0/59 done
+
+apply-multi-configs.sh: applying configs/models '/home/moreaue/dump/expe1//results/900/meta/train/indiv-strategies.prefix-list' to '/home/moreaue/dump/expe1//train.tsv'; writing results to '/home/moreaue/dump/expe1//results/900/meta/train/apply-strategy-configs'. 2022-02-16 21:16: 0/59 done
+
+apply-multi-configs.sh: applying configs/models '/home/moreaue/dump/expe1//results/900/meta/train/indiv-strategies.prefix-list' to '/home/moreaue/dump/expe1//train.tsv'; writing results to '/home/moreaue/dump/expe1//results/900/meta/train/apply-strategy-configs'. 2022-02-16 21:17: 0/59 done
+
+apply-multi-configs.sh: applying configs/models '/home/moreaue/dump/expe1//results/900/meta/train/indiv-strategies.prefix-list' to '/home/moreaue/dump/expe1//train.tsv'; writing results to '/home/moreaue/dump/expe1//results/900/meta/train/apply-strategy-configs'. 2022-02-16 21:17: 0/59 done
+
+apply-multi-configs.sh: applying configs/models '/home/moreaue/dump/expe1//results/900/meta/train/indiv-strategies.prefix-list' to '/home/moreaue/dump/expe1//train.tsv'; writing results to '/home/moreaue/dump/expe1//results/900/meta/train/apply-strategy-configs'. 2022-02-16 21:17: 0/59 done
+
+apply-multi-configs.sh: applying configs/models '/home/moreaue/dump/expe1//results/900/meta/train/indiv-strategies.prefix-list' to '/home/moreaue/dump/expe1//train.tsv'; writing results to '/home/moreaue/dump/expe1//results/900/meta/train/apply-strategy-configs'. 2022-02-16 21:18: 0/59 done
+
+apply-multi-configs.sh: applying configs/models '/home/moreaue/dump/expe1//results/900/meta/train/indiv-strategies.prefix-list' to '/home/moreaue/dump/expe1//train.tsv'; writing results to '/home/moreaue/dump/expe1//results/900/meta/train/apply-strategy-configs'. 2022-02-16 21:18: 0/59 done
+
+apply-multi-configs.sh: applying configs/models '/home/moreaue/dump/expe1//results/900/meta/train/indiv-strategies.prefix-list' to '/home/moreaue/dump/expe1//train.tsv'; writing results to '/home/moreaue/dump/expe1//results/900/meta/train/apply-strategy-configs'. 2022-02-16 21:18: 0/59 done
+
+apply-multi-configs.sh: applying configs/models '/home/moreaue/dump/expe1//results/900/meta/train/indiv-strategies.prefix-list' to '/home/moreaue/dump/expe1//train.tsv'; writing results to '/home/moreaue/dump/expe1//results/900/meta/train/apply-strategy-configs'. 2022-02-16 21:19: 0/59 done
+
+apply-multi-configs.sh: applying configs/models '/home/moreaue/dump/expe1//results/900/meta/train/indiv-strategies.prefix-list' to '/home/moreaue/dump/expe1//train.tsv'; writing results to '/home/moreaue/dump/expe1//results/900/meta/train/apply-strategy-configs'. 2022-02-16 21:19: 0/59 done
+
+apply-multi-configs.sh: applying configs/models '/home/moreaue/dump/expe1//results/900/meta/train/indiv-strategies.prefix-list' to '/home/moreaue/dump/expe1//train.tsv'; writing results to '/home/moreaue/dump/expe1//results/900/meta/train/apply-strategy-configs'. 2022-02-16 21:19: 0/59 done
+
+apply-multi-configs.sh: applying configs/models '/home/moreaue/dump/expe1//results/900/meta/train/indiv-strategies.prefix-list' to '/home/moreaue/dump/expe1//train.tsv'; writing results to '/home/moreaue/dump/expe1//results/900/meta/train/apply-strategy-configs'. 2022-02-16 21:20: 0/59 done
+
+apply-multi-configs.sh: applying configs/models '/home/moreaue/dump/expe1//results/900/meta/train/indiv-strategies.prefix-list' to '/home/moreaue/dump/expe1//train.tsv'; writing results to '/home/moreaue/dump/expe1//results/900/meta/train/apply-strategy-configs'. 2022-02-16 21:20: 0/59 done
+
+apply-multi-configs.sh: applying configs/models '/home/moreaue/dump/expe1//results/900/meta/train/indiv-strategies.prefix-list' to '/home/moreaue/dump/expe1//train.tsv'; writing results to '/home/moreaue/dump/expe1//results/900/meta/train/apply-strategy-configs'. 2022-02-16 21:20: 0/59 done
+
+apply-multi-configs.sh: applying configs/models '/home/moreaue/dump/expe1//results/900/meta/train/indiv-strategies.prefix-list' to '/home/moreaue/dump/expe1//train.tsv'; writing results to '/home/moreaue/dump/expe1//results/900/meta/train/apply-strategy-configs'. 2022-02-16 21:21: 0/59 done
+
+apply-multi-configs.sh: applying configs/models '/home/moreaue/dump/expe1//results/900/meta/train/indiv-strategies.prefix-list' to '/home/moreaue/dump/expe1//train.tsv'; writing results to '/home/moreaue/dump/expe1//results/900/meta/train/apply-strategy-configs'. 2022-02-16 21:21: 0/59 done
+
+apply-multi-configs.sh: applying configs/models '/home/moreaue/dump/expe1//results/900/meta/train/indiv-strategies.prefix-list' to '/home/moreaue/dump/expe1//train.tsv'; writing results to '/home/moreaue/dump/expe1//results/900/meta/train/apply-strategy-configs'. 2022-02-16 21:21: 0/59 done
+
+apply-multi-configs.sh: applying configs/models '/home/moreaue/dump/expe1//results/900/meta/train/indiv-strategies.prefix-list' to '/home/moreaue/dump/expe1//train.tsv'; writing results to '/home/moreaue/dump/expe1//results/900/meta/train/apply-strategy-configs'. 2022-02-16 21:22: 0/59 done
+
+apply-multi-configs.sh: applying configs/models '/home/moreaue/dump/expe1//results/900/meta/train/indiv-strategies.prefix-list' to '/home/moreaue/dump/expe1//train.tsv'; writing results to '/home/moreaue/dump/expe1//results/900/meta/train/apply-strategy-configs'. 2022-02-16 21:22: 0/59 done
+
+apply-multi-configs.sh: applying configs/models '/home/moreaue/dump/expe1//results/900/meta/train/indiv-strategies.prefix-list' to '/home/moreaue/dump/expe1//train.tsv'; writing results to '/home/moreaue/dump/expe1//results/900/meta/train/apply-strategy-configs'. 2022-02-16 21:22: 0/59 done
+
+apply-multi-configs.sh: applying configs/models '/home/moreaue/dump/expe1//results/900/meta/train/indiv-strategies.prefix-list' to '/home/moreaue/dump/expe1//train.tsv'; writing results to '/home/moreaue/dump/expe1//results/900/meta/train/apply-strategy-configs'. 2022-02-16 21:23: 0/59 done
+
+apply-multi-configs.sh: applying configs/models '/home/moreaue/dump/expe1//results/900/meta/train/indiv-strategies.prefix-list' to '/home/moreaue/dump/expe1//train.tsv'; writing results to '/home/moreaue/dump/expe1//results/900/meta/train/apply-strategy-configs'. 2022-02-16 21:23: 0/59 done
+
+apply-multi-configs.sh: applying configs/models '/home/moreaue/dump/expe1//results/900/meta/train/indiv-strategies.prefix-list' to '/home/moreaue/dump/expe1//train.tsv'; writing results to '/home/moreaue/dump/expe1//results/900/meta/train/apply-strategy-configs'. 2022-02-16 21:23: 0/59 done
+
+apply-multi-configs.sh: applying configs/models '/home/moreaue/dump/expe1//results/900/meta/train/indiv-strategies.prefix-list' to '/home/moreaue/dump/expe1//train.tsv'; writing results to '/home/moreaue/dump/expe1//results/900/meta/train/apply-strategy-configs'. 2022-02-16 21:24: 0/59 done
+
+apply-multi-configs.sh: applying configs/models '/home/moreaue/dump/expe1//results/900/meta/train/indiv-strategies.prefix-list' to '/home/moreaue/dump/expe1//train.tsv'; writing results to '/home/moreaue/dump/expe1//results/900/meta/train/apply-strategy-configs'. 2022-02-16 21:24: 0/59 done
+
+apply-multi-configs.sh: applying configs/models '/home/moreaue/dump/expe1//results/900/meta/train/indiv-strategies.prefix-list' to '/home/moreaue/dump/expe1//train.tsv'; writing results to '/home/moreaue/dump/expe1//results/900/meta/train/apply-strategy-configs'. 2022-02-16 21:24: 0/59 done
+
+apply-multi-configs.sh: applying configs/models '/home/moreaue/dump/expe1//results/900/meta/train/indiv-strategies.prefix-list' to '/home/moreaue/dump/expe1//train.tsv'; writing results to '/home/moreaue/dump/expe1//results/900/meta/train/apply-strategy-configs'. 2022-02-16 21:25: 0/59 done
+
+apply-multi-configs.sh: applying configs/models '/home/moreaue/dump/expe1//results/900/meta/train/indiv-strategies.prefix-list' to '/home/moreaue/dump/expe1//train.tsv'; writing results to '/home/moreaue/dump/expe1//results/900/meta/train/apply-strategy-configs'. 2022-02-16 21:25: 0/59 done
+
+apply-multi-configs.sh: applying configs/models '/home/moreaue/dump/expe1//results/900/meta/train/indiv-strategies.prefix-list' to '/home/moreaue/dump/expe1//train.tsv'; writing results to '/home/moreaue/dump/expe1//results/900/meta/train/apply-strategy-configs'. 2022-02-16 21:25: 0/59 done
+
+apply-multi-configs.sh: applying configs/models '/home/moreaue/dump/expe1//results/900/meta/train/indiv-strategies.prefix-list' to '/home/moreaue/dump/expe1//train.tsv'; writing results to '/home/moreaue/dump/expe1//results/900/meta/train/apply-strategy-configs'. 2022-02-16 21:26: 0/59 done
+
+apply-multi-configs.sh: applying configs/models '/home/moreaue/dump/expe1//results/900/meta/train/indiv-strategies.prefix-list' to '/home/moreaue/dump/expe1//train.tsv'; writing results to '/home/moreaue/dump/expe1//results/900/meta/train/apply-strategy-configs'. 2022-02-16 21:26: 0/59 done
+
+apply-multi-configs.sh: applying configs/models '/home/moreaue/dump/expe1//results/900/meta/train/indiv-strategies.prefix-list' to '/home/moreaue/dump/expe1//train.tsv'; writing results to '/home/moreaue/dump/expe1//results/900/meta/train/apply-strategy-configs'. 2022-02-16 21:26: 0/59 done
+
+apply-multi-configs.sh: applying configs/models '/home/moreaue/dump/expe1//results/900/meta/train/indiv-strategies.prefix-list' to '/home/moreaue/dump/expe1//train.tsv'; writing results to '/home/moreaue/dump/expe1//results/900/meta/train/apply-strategy-configs'. 2022-02-16 21:27: 0/59 done
+
+apply-multi-configs.sh: applying configs/models '/home/moreaue/dump/expe1//results/900/meta/train/indiv-strategies.prefix-list' to '/home/moreaue/dump/expe1//train.tsv'; writing results to '/home/moreaue/dump/expe1//results/900/meta/train/apply-strategy-configs'. 2022-02-16 21:27: 0/59 done
+
+apply-multi-configs.sh: applying configs/models '/home/moreaue/dump/expe1//results/900/meta/train/indiv-strategies.prefix-list' to '/home/moreaue/dump/expe1//train.tsv'; writing results to '/home/moreaue/dump/expe1//results/900/meta/train/apply-strategy-configs'. 2022-02-16 21:27: 0/59 done
+
+apply-multi-configs.sh: applying configs/models '/home/moreaue/dump/expe1//results/900/meta/train/indiv-strategies.prefix-list' to '/home/moreaue/dump/expe1//train.tsv'; writing results to '/home/moreaue/dump/expe1//results/900/meta/train/apply-strategy-configs'. 2022-02-16 21:28: 0/59 done
+
+apply-multi-configs.sh: applying configs/models '/home/moreaue/dump/expe1//results/900/meta/train/indiv-strategies.prefix-list' to '/home/moreaue/dump/expe1//train.tsv'; writing results to '/home/moreaue/dump/expe1//results/900/meta/train/apply-strategy-configs'. 2022-02-16 21:28: 0/59 done
+
+apply-multi-configs.sh: applying configs/models '/home/moreaue/dump/expe1//results/900/meta/train/indiv-strategies.prefix-list' to '/home/moreaue/dump/expe1//train.tsv'; writing results to '/home/moreaue/dump/expe1//results/900/meta/train/apply-strategy-configs'. 2022-02-16 21:28: 0/59 done
+
+apply-multi-configs.sh: applying configs/models '/home/moreaue/dump/expe1//results/900/meta/train/indiv-strategies.prefix-list' to '/home/moreaue/dump/expe1//train.tsv'; writing results to '/home/moreaue/dump/expe1//results/900/meta/train/apply-strategy-configs'. 2022-02-16 21:29: 0/59 done
+
+apply-multi-configs.sh: applying configs/models '/home/moreaue/dump/expe1//results/900/meta/train/indiv-strategies.prefix-list' to '/home/moreaue/dump/expe1//train.tsv'; writing results to '/home/moreaue/dump/expe1//results/900/meta/train/apply-strategy-configs'. 2022-02-16 21:29: 0/59 done
+
+apply-multi-configs.sh: applying configs/models '/home/moreaue/dump/expe1//results/900/meta/train/indiv-strategies.prefix-list' to '/home/moreaue/dump/expe1//train.tsv'; writing results to '/home/moreaue/dump/expe1//results/900/meta/train/apply-strategy-configs'. 2022-02-16 21:29: 0/59 done
+
+apply-multi-configs.sh: applying configs/models '/home/moreaue/dump/expe1//results/900/meta/train/indiv-strategies.prefix-list' to '/home/moreaue/dump/expe1//train.tsv'; writing results to '/home/moreaue/dump/expe1//results/900/meta/train/apply-strategy-configs'. 2022-02-16 21:30: 0/59 done
+
+apply-multi-configs.sh: applying configs/models '/home/moreaue/dump/expe1//results/900/meta/train/indiv-strategies.prefix-list' to '/home/moreaue/dump/expe1//train.tsv'; writing results to '/home/moreaue/dump/expe1//results/900/meta/train/apply-strategy-configs'. 2022-02-16 21:30: 0/59 done
+
+apply-multi-configs.sh: applying configs/models '/home/moreaue/dump/expe1//results/900/meta/train/indiv-strategies.prefix-list' to '/home/moreaue/dump/expe1//train.tsv'; writing results to '/home/moreaue/dump/expe1//results/900/meta/train/apply-strategy-configs'. 2022-02-16 21:30: 0/59 done
+
+apply-multi-configs.sh: applying configs/models '/home/moreaue/dump/expe1//results/900/meta/train/indiv-strategies.prefix-list' to '/home/moreaue/dump/expe1//train.tsv'; writing results to '/home/moreaue/dump/expe1//results/900/meta/train/apply-strategy-configs'. 2022-02-16 21:31: 0/59 done
+
+apply-multi-configs.sh: applying configs/models '/home/moreaue/dump/expe1//results/900/meta/train/indiv-strategies.prefix-list' to '/home/moreaue/dump/expe1//train.tsv'; writing results to '/home/moreaue/dump/expe1//results/900/meta/train/apply-strategy-configs'. 2022-02-16 21:31: 0/59 done
+
+apply-multi-configs.sh: applying configs/models '/home/moreaue/dump/expe1//results/900/meta/train/indiv-strategies.prefix-list' to '/home/moreaue/dump/expe1//train.tsv'; writing results to '/home/moreaue/dump/expe1//results/900/meta/train/apply-strategy-configs'. 2022-02-16 21:31: 0/59 done
+
+apply-multi-configs.sh: applying configs/models '/home/moreaue/dump/expe1//results/900/meta/train/indiv-strategies.prefix-list' to '/home/moreaue/dump/expe1//train.tsv'; writing results to '/home/moreaue/dump/expe1//results/900/meta/train/apply-strategy-configs'. 2022-02-16 21:32: 0/59 done
+
+apply-multi-configs.sh: applying configs/models '/home/moreaue/dump/expe1//results/900/meta/train/indiv-strategies.prefix-list' to '/home/moreaue/dump/expe1//train.tsv'; writing results to '/home/moreaue/dump/expe1//results/900/meta/train/apply-strategy-configs'. 2022-02-16 21:32: 0/59 done
+
+apply-multi-configs.sh: applying configs/models '/home/moreaue/dump/expe1//results/900/meta/train/indiv-strategies.prefix-list' to '/home/moreaue/dump/expe1//train.tsv'; writing results to '/home/moreaue/dump/expe1//results/900/meta/train/apply-strategy-configs'. 2022-02-16 21:32: 0/59 done
+
+apply-multi-configs.sh: applying configs/models '/home/moreaue/dump/expe1//results/900/meta/train/indiv-strategies.prefix-list' to '/home/moreaue/dump/expe1//train.tsv'; writing results to '/home/moreaue/dump/expe1//results/900/meta/train/apply-strategy-configs'. 2022-02-16 21:33: 0/59 done
+
+apply-multi-configs.sh: applying configs/models '/home/moreaue/dump/expe1//results/900/meta/train/indiv-strategies.prefix-list' to '/home/moreaue/dump/expe1//train.tsv'; writing results to '/home/moreaue/dump/expe1//results/900/meta/train/apply-strategy-configs'. 2022-02-16 21:33: 0/59 done
+
+apply-multi-configs.sh: applying configs/models '/home/moreaue/dump/expe1//results/900/meta/train/indiv-strategies.prefix-list' to '/home/moreaue/dump/expe1//train.tsv'; writing results to '/home/moreaue/dump/expe1//results/900/meta/train/apply-strategy-configs'. 2022-02-16 21:33: 0/59 done
+
+apply-multi-configs.sh: applying configs/models '/home/moreaue/dump/expe1//results/900/meta/train/indiv-strategies.prefix-list' to '/home/moreaue/dump/expe1//train.tsv'; writing results to '/home/moreaue/dump/expe1//results/900/meta/train/apply-strategy-configs'. 2022-02-16 21:34: 0/59 done
+
+apply-multi-configs.sh: applying configs/models '/home/moreaue/dump/expe1//results/900/meta/train/indiv-strategies.prefix-list' to '/home/moreaue/dump/expe1//train.tsv'; writing results to '/home/moreaue/dump/expe1//results/900/meta/train/apply-strategy-configs'. 2022-02-16 21:34: 0/59 done
+
+apply-multi-configs.sh: applying configs/models '/home/moreaue/dump/expe1//results/900/meta/train/indiv-strategies.prefix-list' to '/home/moreaue/dump/expe1//train.tsv'; writing results to '/home/moreaue/dump/expe1//results/900/meta/train/apply-strategy-configs'. 2022-02-16 21:34: 0/59 done
+
+apply-multi-configs.sh: applying configs/models '/home/moreaue/dump/expe1//results/900/meta/train/indiv-strategies.prefix-list' to '/home/moreaue/dump/expe1//train.tsv'; writing results to '/home/moreaue/dump/expe1//results/900/meta/train/apply-strategy-configs'. 2022-02-16 21:35: 0/59 done
+
+apply-multi-configs.sh: applying configs/models '/home/moreaue/dump/expe1//results/900/meta/train/indiv-strategies.prefix-list' to '/home/moreaue/dump/expe1//train.tsv'; writing results to '/home/moreaue/dump/expe1//results/900/meta/train/apply-strategy-configs'. 2022-02-16 21:35: 0/59 done
+
+apply-multi-configs.sh: applying configs/models '/home/moreaue/dump/expe1//results/900/meta/train/indiv-strategies.prefix-list' to '/home/moreaue/dump/expe1//train.tsv'; writing results to '/home/moreaue/dump/expe1//results/900/meta/train/apply-strategy-configs'. 2022-02-16 21:35: 0/59 done
+
+apply-multi-configs.sh: applying configs/models '/home/moreaue/dump/expe1//results/900/meta/train/indiv-strategies.prefix-list' to '/home/moreaue/dump/expe1//train.tsv'; writing results to '/home/moreaue/dump/expe1//results/900/meta/train/apply-strategy-configs'. 2022-02-16 21:36: 0/59 done
+
+apply-multi-configs.sh: applying configs/models '/home/moreaue/dump/expe1//results/900/meta/train/indiv-strategies.prefix-list' to '/home/moreaue/dump/expe1//train.tsv'; writing results to '/home/moreaue/dump/expe1//results/900/meta/train/apply-strategy-configs'. 2022-02-16 21:36: 0/59 done
+
+apply-multi-configs.sh: applying configs/models '/home/moreaue/dump/expe1//results/900/meta/train/indiv-strategies.prefix-list' to '/home/moreaue/dump/expe1//train.tsv'; writing results to '/home/moreaue/dump/expe1//results/900/meta/train/apply-strategy-configs'. 2022-02-16 21:36: 0/59 done
+
+apply-multi-configs.sh: applying configs/models '/home/moreaue/dump/expe1//results/900/meta/train/indiv-strategies.prefix-list' to '/home/moreaue/dump/expe1//train.tsv'; writing results to '/home/moreaue/dump/expe1//results/900/meta/train/apply-strategy-configs'. 2022-02-16 21:37: 0/59 done
+
+apply-multi-configs.sh: applying configs/models '/home/moreaue/dump/expe1//results/900/meta/train/indiv-strategies.prefix-list' to '/home/moreaue/dump/expe1//train.tsv'; writing results to '/home/moreaue/dump/expe1//results/900/meta/train/apply-strategy-configs'. 2022-02-16 21:37: 0/59 done
+
+apply-multi-configs.sh: applying configs/models '/home/moreaue/dump/expe1//results/900/meta/train/indiv-strategies.prefix-list' to '/home/moreaue/dump/expe1//train.tsv'; writing results to '/home/moreaue/dump/expe1//results/900/meta/train/apply-strategy-configs'. 2022-02-16 21:37: 0/59 done
+
+apply-multi-configs.sh: applying configs/models '/home/moreaue/dump/expe1//results/900/meta/train/indiv-strategies.prefix-list' to '/home/moreaue/dump/expe1//train.tsv'; writing results to '/home/moreaue/dump/expe1//results/900/meta/train/apply-strategy-configs'. 2022-02-16 21:38: 0/59 done
+
+apply-multi-configs.sh: applying configs/models '/home/moreaue/dump/expe1//results/900/meta/train/indiv-strategies.prefix-list' to '/home/moreaue/dump/expe1//train.tsv'; writing results to '/home/moreaue/dump/expe1//results/900/meta/train/apply-strategy-configs'. 2022-02-16 21:38: 0/59 done
+
+apply-multi-configs.sh: applying configs/models '/home/moreaue/dump/expe1//results/900/meta/train/indiv-strategies.prefix-list' to '/home/moreaue/dump/expe1//train.tsv'; writing results to '/home/moreaue/dump/expe1//results/900/meta/train/apply-strategy-configs'. 2022-02-16 21:38: 0/59 done
+
+apply-multi-configs.sh: applying configs/models '/home/moreaue/dump/expe1//results/900/meta/train/indiv-strategies.prefix-list' to '/home/moreaue/dump/expe1//train.tsv'; writing results to '/home/moreaue/dump/expe1//results/900/meta/train/apply-strategy-configs'. 2022-02-16 21:39: 0/59 done
+
+apply-multi-configs.sh: applying configs/models '/home/moreaue/dump/expe1//results/900/meta/train/indiv-strategies.prefix-list' to '/home/moreaue/dump/expe1//train.tsv'; writing results to '/home/moreaue/dump/expe1//results/900/meta/train/apply-strategy-configs'. 2022-02-16 21:39: 0/59 done
+
+apply-multi-configs.sh: applying configs/models '/home/moreaue/dump/expe1//results/900/meta/train/indiv-strategies.prefix-list' to '/home/moreaue/dump/expe1//train.tsv'; writing results to '/home/moreaue/dump/expe1//results/900/meta/train/apply-strategy-configs'. 2022-02-16 21:39: 0/59 done
+
+apply-multi-configs.sh: applying configs/models '/home/moreaue/dump/expe1//results/900/meta/train/indiv-strategies.prefix-list' to '/home/moreaue/dump/expe1//train.tsv'; writing results to '/home/moreaue/dump/expe1//results/900/meta/train/apply-strategy-configs'. 2022-02-16 21:40: 0/59 done
+
+apply-multi-configs.sh: applying configs/models '/home/moreaue/dump/expe1//results/900/meta/train/indiv-strategies.prefix-list' to '/home/moreaue/dump/expe1//train.tsv'; writing results to '/home/moreaue/dump/expe1//results/900/meta/train/apply-strategy-configs'. 2022-02-16 21:40: 0/59 done
+
+apply-multi-configs.sh: applying configs/models '/home/moreaue/dump/expe1//results/900/meta/train/indiv-strategies.prefix-list' to '/home/moreaue/dump/expe1//train.tsv'; writing results to '/home/moreaue/dump/expe1//results/900/meta/train/apply-strategy-configs'. 2022-02-16 21:40: 0/59 done
+
+apply-multi-configs.sh: applying configs/models '/home/moreaue/dump/expe1//results/900/meta/train/indiv-strategies.prefix-list' to '/home/moreaue/dump/expe1//train.tsv'; writing results to '/home/moreaue/dump/expe1//results/900/meta/train/apply-strategy-configs'. 2022-02-16 21:41: 0/59 done
+
+apply-multi-configs.sh: applying configs/models '/home/moreaue/dump/expe1//results/900/meta/train/indiv-strategies.prefix-list' to '/home/moreaue/dump/expe1//train.tsv'; writing results to '/home/moreaue/dump/expe1//results/900/meta/train/apply-strategy-configs'. 2022-02-16 21:41: 0/59 done
+
+apply-multi-configs.sh: applying configs/models '/home/moreaue/dump/expe1//results/900/meta/train/indiv-strategies.prefix-list' to '/home/moreaue/dump/expe1//train.tsv'; writing results to '/home/moreaue/dump/expe1//results/900/meta/train/apply-strategy-configs'. 2022-02-16 21:41: 0/59 done
+
+apply-multi-configs.sh: applying configs/models '/home/moreaue/dump/expe1//results/900/meta/train/indiv-strategies.prefix-list' to '/home/moreaue/dump/expe1//train.tsv'; writing results to '/home/moreaue/dump/expe1//results/900/meta/train/apply-strategy-configs'. 2022-02-16 21:42: 0/59 done
+
+apply-multi-configs.sh: applying configs/models '/home/moreaue/dump/expe1//results/900/meta/train/indiv-strategies.prefix-list' to '/home/moreaue/dump/expe1//train.tsv'; writing results to '/home/moreaue/dump/expe1//results/900/meta/train/apply-strategy-configs'. 2022-02-16 21:42: 0/59 done
+
+apply-multi-configs.sh: applying configs/models '/home/moreaue/dump/expe1//results/900/meta/train/indiv-strategies.prefix-list' to '/home/moreaue/dump/expe1//train.tsv'; writing results to '/home/moreaue/dump/expe1//results/900/meta/train/apply-strategy-configs'. 2022-02-16 21:42: 0/59 done
+
+apply-multi-configs.sh: applying configs/models '/home/moreaue/dump/expe1//results/900/meta/train/indiv-strategies.prefix-list' to '/home/moreaue/dump/expe1//train.tsv'; writing results to '/home/moreaue/dump/expe1//results/900/meta/train/apply-strategy-configs'. 2022-02-16 21:43: 0/59 done
+
+apply-multi-configs.sh: applying configs/models '/home/moreaue/dump/expe1//results/900/meta/train/indiv-strategies.prefix-list' to '/home/moreaue/dump/expe1//train.tsv'; writing results to '/home/moreaue/dump/expe1//results/900/meta/train/apply-strategy-configs'. 2022-02-16 21:43: 0/59 done
+
+apply-multi-configs.sh: applying configs/models '/home/moreaue/dump/expe1//results/900/meta/train/indiv-strategies.prefix-list' to '/home/moreaue/dump/expe1//train.tsv'; writing results to '/home/moreaue/dump/expe1//results/900/meta/train/apply-strategy-configs'. 2022-02-16 21:43: 0/59 done
+
+apply-multi-configs.sh: applying configs/models '/home/moreaue/dump/expe1//results/900/meta/train/indiv-strategies.prefix-list' to '/home/moreaue/dump/expe1//train.tsv'; writing results to '/home/moreaue/dump/expe1//results/900/meta/train/apply-strategy-configs'. 2022-02-16 21:44: 0/59 done
+
+apply-multi-configs.sh: applying configs/models '/home/moreaue/dump/expe1//results/900/meta/train/indiv-strategies.prefix-list' to '/home/moreaue/dump/expe1//train.tsv'; writing results to '/home/moreaue/dump/expe1//results/900/meta/train/apply-strategy-configs'. 2022-02-16 21:44: 0/59 done
+
+apply-multi-configs.sh: applying configs/models '/home/moreaue/dump/expe1//results/900/meta/train/indiv-strategies.prefix-list' to '/home/moreaue/dump/expe1//train.tsv'; writing results to '/home/moreaue/dump/expe1//results/900/meta/train/apply-strategy-configs'. 2022-02-16 21:44: 0/59 done
+
+apply-multi-configs.sh: applying configs/models '/home/moreaue/dump/expe1//results/900/meta/train/indiv-strategies.prefix-list' to '/home/moreaue/dump/expe1//train.tsv'; writing results to '/home/moreaue/dump/expe1//results/900/meta/train/apply-strategy-configs'. 2022-02-16 21:45: 0/59 done
+
+apply-multi-configs.sh: applying configs/models '/home/moreaue/dump/expe1//results/900/meta/train/indiv-strategies.prefix-list' to '/home/moreaue/dump/expe1//train.tsv'; writing results to '/home/moreaue/dump/expe1//results/900/meta/train/apply-strategy-configs'. 2022-02-16 21:45: 0/59 done
+
+apply-multi-configs.sh: applying configs/models '/home/moreaue/dump/expe1//results/900/meta/train/indiv-strategies.prefix-list' to '/home/moreaue/dump/expe1//train.tsv'; writing results to '/home/moreaue/dump/expe1//results/900/meta/train/apply-strategy-configs'. 2022-02-16 21:45: 0/59 done
+
+apply-multi-configs.sh: applying configs/models '/home/moreaue/dump/expe1//results/900/meta/train/indiv-strategies.prefix-list' to '/home/moreaue/dump/expe1//train.tsv'; writing results to '/home/moreaue/dump/expe1//results/900/meta/train/apply-strategy-configs'. 2022-02-16 21:46: 0/59 done
+
+apply-multi-configs.sh: applying configs/models '/home/moreaue/dump/expe1//results/900/meta/train/indiv-strategies.prefix-list' to '/home/moreaue/dump/expe1//train.tsv'; writing results to '/home/moreaue/dump/expe1//results/900/meta/train/apply-strategy-configs'. 2022-02-16 21:46: 0/59 done
+
+apply-multi-configs.sh: applying configs/models '/home/moreaue/dump/expe1//results/900/meta/train/indiv-strategies.prefix-list' to '/home/moreaue/dump/expe1//train.tsv'; writing results to '/home/moreaue/dump/expe1//results/900/meta/train/apply-strategy-configs'. 2022-02-16 21:46: 0/59 done
+
+apply-multi-configs.sh: applying configs/models '/home/moreaue/dump/expe1//results/900/meta/train/indiv-strategies.prefix-list' to '/home/moreaue/dump/expe1//train.tsv'; writing results to '/home/moreaue/dump/expe1//results/900/meta/train/apply-strategy-configs'. 2022-02-16 21:47: 0/59 done
+
+apply-multi-configs.sh: applying configs/models '/home/moreaue/dump/expe1//results/900/meta/train/indiv-strategies.prefix-list' to '/home/moreaue/dump/expe1//train.tsv'; writing results to '/home/moreaue/dump/expe1//results/900/meta/train/apply-strategy-configs'. 2022-02-16 21:47: 0/59 done
+
+apply-multi-configs.sh: applying configs/models '/home/moreaue/dump/expe1//results/900/meta/train/indiv-strategies.prefix-list' to '/home/moreaue/dump/expe1//train.tsv'; writing results to '/home/moreaue/dump/expe1//results/900/meta/train/apply-strategy-configs'. 2022-02-16 21:47: 0/59 done
+
+apply-multi-configs.sh: applying configs/models '/home/moreaue/dump/expe1//results/900/meta/train/indiv-strategies.prefix-list' to '/home/moreaue/dump/expe1//train.tsv'; writing results to '/home/moreaue/dump/expe1//results/900/meta/train/apply-strategy-configs'. 2022-02-16 21:48: 0/59 done
+
+apply-multi-configs.sh: applying configs/models '/home/moreaue/dump/expe1//results/900/meta/train/indiv-strategies.prefix-list' to '/home/moreaue/dump/expe1//train.tsv'; writing results to '/home/moreaue/dump/expe1//results/900/meta/train/apply-strategy-configs'. 2022-02-16 21:48: 0/59 done
+
+apply-multi-configs.sh: applying configs/models '/home/moreaue/dump/expe1//results/900/meta/train/indiv-strategies.prefix-list' to '/home/moreaue/dump/expe1//train.tsv'; writing results to '/home/moreaue/dump/expe1//results/900/meta/train/apply-strategy-configs'. 2022-02-16 21:48: 0/59 done
+
+apply-multi-configs.sh: applying configs/models '/home/moreaue/dump/expe1//results/900/meta/train/indiv-strategies.prefix-list' to '/home/moreaue/dump/expe1//train.tsv'; writing results to '/home/moreaue/dump/expe1//results/900/meta/train/apply-strategy-configs'. 2022-02-16 21:49: 0/59 done
+
+apply-multi-configs.sh: applying configs/models '/home/moreaue/dump/expe1//results/900/meta/train/indiv-strategies.prefix-list' to '/home/moreaue/dump/expe1//train.tsv'; writing results to '/home/moreaue/dump/expe1//results/900/meta/train/apply-strategy-configs'. 2022-02-16 21:49: 0/59 done
+
+apply-multi-configs.sh: applying configs/models '/home/moreaue/dump/expe1//results/900/meta/train/indiv-strategies.prefix-list' to '/home/moreaue/dump/expe1//train.tsv'; writing results to '/home/moreaue/dump/expe1//results/900/meta/train/apply-strategy-configs'. 2022-02-16 21:49: 0/59 done
+
+apply-multi-configs.sh: applying configs/models '/home/moreaue/dump/expe1//results/900/meta/train/indiv-strategies.prefix-list' to '/home/moreaue/dump/expe1//train.tsv'; writing results to '/home/moreaue/dump/expe1//results/900/meta/train/apply-strategy-configs'. 2022-02-16 21:50: 0/59 done
+
+apply-multi-configs.sh: applying configs/models '/home/moreaue/dump/expe1//results/900/meta/train/indiv-strategies.prefix-list' to '/home/moreaue/dump/expe1//train.tsv'; writing results to '/home/moreaue/dump/expe1//results/900/meta/train/apply-strategy-configs'. 2022-02-16 21:50: 0/59 done
+
+apply-multi-configs.sh: applying configs/models '/home/moreaue/dump/expe1//results/900/meta/train/indiv-strategies.prefix-list' to '/home/moreaue/dump/expe1//train.tsv'; writing results to '/home/moreaue/dump/expe1//results/900/meta/train/apply-strategy-configs'. 2022-02-16 21:50: 0/59 done
+
+apply-multi-configs.sh: applying configs/models '/home/moreaue/dump/expe1//results/900/meta/train/indiv-strategies.prefix-list' to '/home/moreaue/dump/expe1//train.tsv'; writing results to '/home/moreaue/dump/expe1//results/900/meta/train/apply-strategy-configs'. 2022-02-16 21:51: 0/59 done
+
+apply-multi-configs.sh: applying configs/models '/home/moreaue/dump/expe1//results/900/meta/train/indiv-strategies.prefix-list' to '/home/moreaue/dump/expe1//train.tsv'; writing results to '/home/moreaue/dump/expe1//results/900/meta/train/apply-strategy-configs'. 2022-02-16 21:51: 0/59 done
+
+apply-multi-configs.sh: applying configs/models '/home/moreaue/dump/expe1//results/900/meta/train/indiv-strategies.prefix-list' to '/home/moreaue/dump/expe1//train.tsv'; writing results to '/home/moreaue/dump/expe1//results/900/meta/train/apply-strategy-configs'. 2022-02-16 21:51: 0/59 done
+
+apply-multi-configs.sh: applying configs/models '/home/moreaue/dump/expe1//results/900/meta/train/indiv-strategies.prefix-list' to '/home/moreaue/dump/expe1//train.tsv'; writing results to '/home/moreaue/dump/expe1//results/900/meta/train/apply-strategy-configs'. 2022-02-16 21:52: 0/59 done
+
+apply-multi-configs.sh: applying configs/models '/home/moreaue/dump/expe1//results/900/meta/train/indiv-strategies.prefix-list' to '/home/moreaue/dump/expe1//train.tsv'; writing results to '/home/moreaue/dump/expe1//results/900/meta/train/apply-strategy-configs'. 2022-02-16 21:52: 0/59 done
+
+apply-multi-configs.sh: applying configs/models '/home/moreaue/dump/expe1//results/900/meta/train/indiv-strategies.prefix-list' to '/home/moreaue/dump/expe1//train.tsv'; writing results to '/home/moreaue/dump/expe1//results/900/meta/train/apply-strategy-configs'. 2022-02-16 21:52: 0/59 done
+
+apply-multi-configs.sh: applying configs/models '/home/moreaue/dump/expe1//results/900/meta/train/indiv-strategies.prefix-list' to '/home/moreaue/dump/expe1//train.tsv'; writing results to '/home/moreaue/dump/expe1//results/900/meta/train/apply-strategy-configs'. 2022-02-16 21:53: 0/59 done
+
+apply-multi-configs.sh: applying configs/models '/home/moreaue/dump/expe1//results/900/meta/train/indiv-strategies.prefix-list' to '/home/moreaue/dump/expe1//train.tsv'; writing results to '/home/moreaue/dump/expe1//results/900/meta/train/apply-strategy-configs'. 2022-02-16 21:53: 0/59 done
+
+apply-multi-configs.sh: applying configs/models '/home/moreaue/dump/expe1//results/900/meta/train/indiv-strategies.prefix-list' to '/home/moreaue/dump/expe1//train.tsv'; writing results to '/home/moreaue/dump/expe1//results/900/meta/train/apply-strategy-configs'. 2022-02-16 21:53: 0/59 done
+
+apply-multi-configs.sh: applying configs/models '/home/moreaue/dump/expe1//results/900/meta/train/indiv-strategies.prefix-list' to '/home/moreaue/dump/expe1//train.tsv'; writing results to '/home/moreaue/dump/expe1//results/900/meta/train/apply-strategy-configs'. 2022-02-16 21:54: 0/59 done
+
+apply-multi-configs.sh: applying configs/models '/home/moreaue/dump/expe1//results/900/meta/train/indiv-strategies.prefix-list' to '/home/moreaue/dump/expe1//train.tsv'; writing results to '/home/moreaue/dump/expe1//results/900/meta/train/apply-strategy-configs'. 2022-02-16 21:54: 0/59 done
+
+apply-multi-configs.sh: applying configs/models '/home/moreaue/dump/expe1//results/900/meta/train/indiv-strategies.prefix-list' to '/home/moreaue/dump/expe1//train.tsv'; writing results to '/home/moreaue/dump/expe1//results/900/meta/train/apply-strategy-configs'. 2022-02-16 21:54: 0/59 done
+
+apply-multi-configs.sh: applying configs/models '/home/moreaue/dump/expe1//results/900/meta/train/indiv-strategies.prefix-list' to '/home/moreaue/dump/expe1//train.tsv'; writing results to '/home/moreaue/dump/expe1//results/900/meta/train/apply-strategy-configs'. 2022-02-16 21:55: 0/59 done
+
+apply-multi-configs.sh: applying configs/models '/home/moreaue/dump/expe1//results/900/meta/train/indiv-strategies.prefix-list' to '/home/moreaue/dump/expe1//train.tsv'; writing results to '/home/moreaue/dump/expe1//results/900/meta/train/apply-strategy-configs'. 2022-02-16 21:55: 0/59 done
+
+apply-multi-configs.sh: applying configs/models '/home/moreaue/dump/expe1//results/900/meta/train/indiv-strategies.prefix-list' to '/home/moreaue/dump/expe1//train.tsv'; writing results to '/home/moreaue/dump/expe1//results/900/meta/train/apply-strategy-configs'. 2022-02-16 21:55: 0/59 done
+
+apply-multi-configs.sh: applying configs/models '/home/moreaue/dump/expe1//results/900/meta/train/indiv-strategies.prefix-list' to '/home/moreaue/dump/expe1//train.tsv'; writing results to '/home/moreaue/dump/expe1//results/900/meta/train/apply-strategy-configs'. 2022-02-16 21:56: 0/59 done
+
+apply-multi-configs.sh: applying configs/models '/home/moreaue/dump/expe1//results/900/meta/train/indiv-strategies.prefix-list' to '/home/moreaue/dump/expe1//train.tsv'; writing results to '/home/moreaue/dump/expe1//results/900/meta/train/apply-strategy-configs'. 2022-02-16 21:56: 0/59 done
+
+apply-multi-configs.sh: applying configs/models '/home/moreaue/dump/expe1//results/900/meta/train/indiv-strategies.prefix-list' to '/home/moreaue/dump/expe1//train.tsv'; writing results to '/home/moreaue/dump/expe1//results/900/meta/train/apply-strategy-configs'. 2022-02-16 21:56: 0/59 done
+
+apply-multi-configs.sh: applying configs/models '/home/moreaue/dump/expe1//results/900/meta/train/indiv-strategies.prefix-list' to '/home/moreaue/dump/expe1//train.tsv'; writing results to '/home/moreaue/dump/expe1//results/900/meta/train/apply-strategy-configs'. 2022-02-16 21:57: 0/59 done
+
+apply-multi-configs.sh: applying configs/models '/home/moreaue/dump/expe1//results/900/meta/train/indiv-strategies.prefix-list' to '/home/moreaue/dump/expe1//train.tsv'; writing results to '/home/moreaue/dump/expe1//results/900/meta/train/apply-strategy-configs'. 2022-02-16 21:57: 0/59 done
+
+apply-multi-configs.sh: applying configs/models '/home/moreaue/dump/expe1//results/900/meta/train/indiv-strategies.prefix-list' to '/home/moreaue/dump/expe1//train.tsv'; writing results to '/home/moreaue/dump/expe1//results/900/meta/train/apply-strategy-configs'. 2022-02-16 21:57: 0/59 done
+
+apply-multi-configs.sh: applying configs/models '/home/moreaue/dump/expe1//results/900/meta/train/indiv-strategies.prefix-list' to '/home/moreaue/dump/expe1//train.tsv'; writing results to '/home/moreaue/dump/expe1//results/900/meta/train/apply-strategy-configs'. 2022-02-16 21:58: 0/59 done
+
+apply-multi-configs.sh: applying configs/models '/home/moreaue/dump/expe1//results/900/meta/train/indiv-strategies.prefix-list' to '/home/moreaue/dump/expe1//train.tsv'; writing results to '/home/moreaue/dump/expe1//results/900/meta/train/apply-strategy-configs'. 2022-02-16 21:58: 0/59 done
+
+apply-multi-configs.sh: applying configs/models '/home/moreaue/dump/expe1//results/900/meta/train/indiv-strategies.prefix-list' to '/home/moreaue/dump/expe1//train.tsv'; writing results to '/home/moreaue/dump/expe1//results/900/meta/train/apply-strategy-configs'. 2022-02-16 21:58: 0/59 done
+
+apply-multi-configs.sh: applying configs/models '/home/moreaue/dump/expe1//results/900/meta/train/indiv-strategies.prefix-list' to '/home/moreaue/dump/expe1//train.tsv'; writing results to '/home/moreaue/dump/expe1//results/900/meta/train/apply-strategy-configs'. 2022-02-16 21:59: 0/59 done
+
+apply-multi-configs.sh: applying configs/models '/home/moreaue/dump/expe1//results/900/meta/train/indiv-strategies.prefix-list' to '/home/moreaue/dump/expe1//train.tsv'; writing results to '/home/moreaue/dump/expe1//results/900/meta/train/apply-strategy-configs'. 2022-02-16 21:59: 0/59 done
+
+apply-multi-configs.sh: applying configs/models '/home/moreaue/dump/expe1//results/900/meta/train/indiv-strategies.prefix-list' to '/home/moreaue/dump/expe1//train.tsv'; writing results to '/home/moreaue/dump/expe1//results/900/meta/train/apply-strategy-configs'. 2022-02-16 21:59: 0/59 done
+
+apply-multi-configs.sh: applying configs/models '/home/moreaue/dump/expe1//results/900/meta/train/indiv-strategies.prefix-list' to '/home/moreaue/dump/expe1//train.tsv'; writing results to '/home/moreaue/dump/expe1//results/900/meta/train/apply-strategy-configs'. 2022-02-16 22:00: 0/59 done
+
+apply-multi-configs.sh: applying configs/models '/home/moreaue/dump/expe1//results/900/meta/train/indiv-strategies.prefix-list' to '/home/moreaue/dump/expe1//train.tsv'; writing results to '/home/moreaue/dump/expe1//results/900/meta/train/apply-strategy-configs'. 2022-02-16 22:00: 0/59 done
+
+apply-multi-configs.sh: applying configs/models '/home/moreaue/dump/expe1//results/900/meta/train/indiv-strategies.prefix-list' to '/home/moreaue/dump/expe1//train.tsv'; writing results to '/home/moreaue/dump/expe1//results/900/meta/train/apply-strategy-configs'. 2022-02-16 22:00: 0/59 done
+
+apply-multi-configs.sh: applying configs/models '/home/moreaue/dump/expe1//results/900/meta/train/indiv-strategies.prefix-list' to '/home/moreaue/dump/expe1//train.tsv'; writing results to '/home/moreaue/dump/expe1//results/900/meta/train/apply-strategy-configs'. 2022-02-16 22:01: 0/59 done
+
+apply-multi-configs.sh: applying configs/models '/home/moreaue/dump/expe1//results/900/meta/train/indiv-strategies.prefix-list' to '/home/moreaue/dump/expe1//train.tsv'; writing results to '/home/moreaue/dump/expe1//results/900/meta/train/apply-strategy-configs'. 2022-02-16 22:01: 0/59 done
+
+apply-multi-configs.sh: applying configs/models '/home/moreaue/dump/expe1//results/900/meta/train/indiv-strategies.prefix-list' to '/home/moreaue/dump/expe1//train.tsv'; writing results to '/home/moreaue/dump/expe1//results/900/meta/train/apply-strategy-configs'. 2022-02-16 22:01: 0/59 done
+
+apply-multi-configs.sh: applying configs/models '/home/moreaue/dump/expe1//results/900/meta/train/indiv-strategies.prefix-list' to '/home/moreaue/dump/expe1//train.tsv'; writing results to '/home/moreaue/dump/expe1//results/900/meta/train/apply-strategy-configs'. 2022-02-16 22:02: 0/59 done
+
+apply-multi-configs.sh: applying configs/models '/home/moreaue/dump/expe1//results/900/meta/train/indiv-strategies.prefix-list' to '/home/moreaue/dump/expe1//train.tsv'; writing results to '/home/moreaue/dump/expe1//results/900/meta/train/apply-strategy-configs'. 2022-02-16 22:02: 0/59 done
+
+apply-multi-configs.sh: applying configs/models '/home/moreaue/dump/expe1//results/900/meta/train/indiv-strategies.prefix-list' to '/home/moreaue/dump/expe1//train.tsv'; writing results to '/home/moreaue/dump/expe1//results/900/meta/train/apply-strategy-configs'. 2022-02-16 22:02: 0/59 done
+
+apply-multi-configs.sh: applying configs/models '/home/moreaue/dump/expe1//results/900/meta/train/indiv-strategies.prefix-list' to '/home/moreaue/dump/expe1//train.tsv'; writing results to '/home/moreaue/dump/expe1//results/900/meta/train/apply-strategy-configs'. 2022-02-16 22:03: 0/59 done
+
+apply-multi-configs.sh: applying configs/models '/home/moreaue/dump/expe1//results/900/meta/train/indiv-strategies.prefix-list' to '/home/moreaue/dump/expe1//train.tsv'; writing results to '/home/moreaue/dump/expe1//results/900/meta/train/apply-strategy-configs'. 2022-02-16 22:03: 0/59 done
+
+apply-multi-configs.sh: applying configs/models '/home/moreaue/dump/expe1//results/900/meta/train/indiv-strategies.prefix-list' to '/home/moreaue/dump/expe1//train.tsv'; writing results to '/home/moreaue/dump/expe1//results/900/meta/train/apply-strategy-configs'. 2022-02-16 22:03: 0/59 done
+
+apply-multi-configs.sh: applying configs/models '/home/moreaue/dump/expe1//results/900/meta/train/indiv-strategies.prefix-list' to '/home/moreaue/dump/expe1//train.tsv'; writing results to '/home/moreaue/dump/expe1//results/900/meta/train/apply-strategy-configs'. 2022-02-16 22:04: 0/59 done
+
+apply-multi-configs.sh: applying configs/models '/home/moreaue/dump/expe1//results/900/meta/train/indiv-strategies.prefix-list' to '/home/moreaue/dump/expe1//train.tsv'; writing results to '/home/moreaue/dump/expe1//results/900/meta/train/apply-strategy-configs'. 2022-02-16 22:04: 0/59 done
+
+apply-multi-configs.sh: applying configs/models '/home/moreaue/dump/expe1//results/900/meta/train/indiv-strategies.prefix-list' to '/home/moreaue/dump/expe1//train.tsv'; writing results to '/home/moreaue/dump/expe1//results/900/meta/train/apply-strategy-configs'. 2022-02-16 22:04: 0/59 done
+
+apply-multi-configs.sh: applying configs/models '/home/moreaue/dump/expe1//results/900/meta/train/indiv-strategies.prefix-list' to '/home/moreaue/dump/expe1//train.tsv'; writing results to '/home/moreaue/dump/expe1//results/900/meta/train/apply-strategy-configs'. 2022-02-16 22:05: 0/59 done
+
+apply-multi-configs.sh: applying configs/models '/home/moreaue/dump/expe1//results/900/meta/train/indiv-strategies.prefix-list' to '/home/moreaue/dump/expe1//train.tsv'; writing results to '/home/moreaue/dump/expe1//results/900/meta/train/apply-strategy-configs'. 2022-02-16 22:05: 0/59 done
+
+apply-multi-configs.sh: applying configs/models '/home/moreaue/dump/expe1//results/900/meta/train/indiv-strategies.prefix-list' to '/home/moreaue/dump/expe1//train.tsv'; writing results to '/home/moreaue/dump/expe1//results/900/meta/train/apply-strategy-configs'. 2022-02-16 22:05: 0/59 done
+
+apply-multi-configs.sh: applying configs/models '/home/moreaue/dump/expe1//results/900/meta/train/indiv-strategies.prefix-list' to '/home/moreaue/dump/expe1//train.tsv'; writing results to '/home/moreaue/dump/expe1//results/900/meta/train/apply-strategy-configs'. 2022-02-16 22:06: 0/59 done
+
+apply-multi-configs.sh: applying configs/models '/home/moreaue/dump/expe1//results/900/meta/train/indiv-strategies.prefix-list' to '/home/moreaue/dump/expe1//train.tsv'; writing results to '/home/moreaue/dump/expe1//results/900/meta/train/apply-strategy-configs'. 2022-02-16 22:06: 0/59 done
+
+apply-multi-configs.sh: applying configs/models '/home/moreaue/dump/expe1//results/900/meta/train/indiv-strategies.prefix-list' to '/home/moreaue/dump/expe1//train.tsv'; writing results to '/home/moreaue/dump/expe1//results/900/meta/train/apply-strategy-configs'. 2022-02-16 22:06: 0/59 done
+
+apply-multi-configs.sh: applying configs/models '/home/moreaue/dump/expe1//results/900/meta/train/indiv-strategies.prefix-list' to '/home/moreaue/dump/expe1//train.tsv'; writing results to '/home/moreaue/dump/expe1//results/900/meta/train/apply-strategy-configs'. 2022-02-16 22:07: 0/59 done
+
+apply-multi-configs.sh: applying configs/models '/home/moreaue/dump/expe1//results/900/meta/train/indiv-strategies.prefix-list' to '/home/moreaue/dump/expe1//train.tsv'; writing results to '/home/moreaue/dump/expe1//results/900/meta/train/apply-strategy-configs'. 2022-02-16 22:07: 0/59 done
+
+apply-multi-configs.sh: applying configs/models '/home/moreaue/dump/expe1//results/900/meta/train/indiv-strategies.prefix-list' to '/home/moreaue/dump/expe1//train.tsv'; writing results to '/home/moreaue/dump/expe1//results/900/meta/train/apply-strategy-configs'. 2022-02-16 22:07: 0/59 done
+
+apply-multi-configs.sh: applying configs/models '/home/moreaue/dump/expe1//results/900/meta/train/indiv-strategies.prefix-list' to '/home/moreaue/dump/expe1//train.tsv'; writing results to '/home/moreaue/dump/expe1//results/900/meta/train/apply-strategy-configs'. 2022-02-16 22:08: 0/59 done
+
+apply-multi-configs.sh: applying configs/models '/home/moreaue/dump/expe1//results/900/meta/train/indiv-strategies.prefix-list' to '/home/moreaue/dump/expe1//train.tsv'; writing results to '/home/moreaue/dump/expe1//results/900/meta/train/apply-strategy-configs'. 2022-02-16 22:08: 0/59 done
+
+apply-multi-configs.sh: applying configs/models '/home/moreaue/dump/expe1//results/900/meta/train/indiv-strategies.prefix-list' to '/home/moreaue/dump/expe1//train.tsv'; writing results to '/home/moreaue/dump/expe1//results/900/meta/train/apply-strategy-configs'. 2022-02-16 22:08: 0/59 done
+
+apply-multi-configs.sh: applying configs/models '/home/moreaue/dump/expe1//results/900/meta/train/indiv-strategies.prefix-list' to '/home/moreaue/dump/expe1//train.tsv'; writing results to '/home/moreaue/dump/expe1//results/900/meta/train/apply-strategy-configs'. 2022-02-16 22:09: 0/59 done
+
+apply-multi-configs.sh: applying configs/models '/home/moreaue/dump/expe1//results/900/meta/train/indiv-strategies.prefix-list' to '/home/moreaue/dump/expe1//train.tsv'; writing results to '/home/moreaue/dump/expe1//results/900/meta/train/apply-strategy-configs'. 2022-02-16 22:09: 0/59 done
+
+apply-multi-configs.sh: applying configs/models '/home/moreaue/dump/expe1//results/900/meta/train/indiv-strategies.prefix-list' to '/home/moreaue/dump/expe1//train.tsv'; writing results to '/home/moreaue/dump/expe1//results/900/meta/train/apply-strategy-configs'. 2022-02-16 22:09: 0/59 done
+
+apply-multi-configs.sh: applying configs/models '/home/moreaue/dump/expe1//results/900/meta/train/indiv-strategies.prefix-list' to '/home/moreaue/dump/expe1//train.tsv'; writing results to '/home/moreaue/dump/expe1//results/900/meta/train/apply-strategy-configs'. 2022-02-16 22:10: 0/59 done
+
+apply-multi-configs.sh: applying configs/models '/home/moreaue/dump/expe1//results/900/meta/train/indiv-strategies.prefix-list' to '/home/moreaue/dump/expe1//train.tsv'; writing results to '/home/moreaue/dump/expe1//results/900/meta/train/apply-strategy-configs'. 2022-02-16 22:10: 0/59 done
+
+apply-multi-configs.sh: applying configs/models '/home/moreaue/dump/expe1//results/900/meta/train/indiv-strategies.prefix-list' to '/home/moreaue/dump/expe1//train.tsv'; writing results to '/home/moreaue/dump/expe1//results/900/meta/train/apply-strategy-configs'. 2022-02-16 22:10: 0/59 done
+
+apply-multi-configs.sh: applying configs/models '/home/moreaue/dump/expe1//results/900/meta/train/indiv-strategies.prefix-list' to '/home/moreaue/dump/expe1//train.tsv'; writing results to '/home/moreaue/dump/expe1//results/900/meta/train/apply-strategy-configs'. 2022-02-16 22:11: 0/59 done
+
+apply-multi-configs.sh: applying configs/models '/home/moreaue/dump/expe1//results/900/meta/train/indiv-strategies.prefix-list' to '/home/moreaue/dump/expe1//train.tsv'; writing results to '/home/moreaue/dump/expe1//results/900/meta/train/apply-strategy-configs'. 2022-02-16 22:11: 0/59 done
+
+apply-multi-configs.sh: applying configs/models '/home/moreaue/dump/expe1//results/900/meta/train/indiv-strategies.prefix-list' to '/home/moreaue/dump/expe1//train.tsv'; writing results to '/home/moreaue/dump/expe1//results/900/meta/train/apply-strategy-configs'. 2022-02-16 22:11: 0/59 done
+
+apply-multi-configs.sh: applying configs/models '/home/moreaue/dump/expe1//results/900/meta/train/indiv-strategies.prefix-list' to '/home/moreaue/dump/expe1//train.tsv'; writing results to '/home/moreaue/dump/expe1//results/900/meta/train/apply-strategy-configs'. 2022-02-16 22:12: 0/59 done
+
+apply-multi-configs.sh: applying configs/models '/home/moreaue/dump/expe1//results/900/meta/train/indiv-strategies.prefix-list' to '/home/moreaue/dump/expe1//train.tsv'; writing results to '/home/moreaue/dump/expe1//results/900/meta/train/apply-strategy-configs'. 2022-02-16 22:12: 0/59 done
+
+apply-multi-configs.sh: applying configs/models '/home/moreaue/dump/expe1//results/900/meta/train/indiv-strategies.prefix-list' to '/home/moreaue/dump/expe1//train.tsv'; writing results to '/home/moreaue/dump/expe1//results/900/meta/train/apply-strategy-configs'. 2022-02-16 22:12: 0/59 done
+
+apply-multi-configs.sh: applying configs/models '/home/moreaue/dump/expe1//results/900/meta/train/indiv-strategies.prefix-list' to '/home/moreaue/dump/expe1//train.tsv'; writing results to '/home/moreaue/dump/expe1//results/900/meta/train/apply-strategy-configs'. 2022-02-16 22:13: 0/59 done
+
+apply-multi-configs.sh: applying configs/models '/home/moreaue/dump/expe1//results/900/meta/train/indiv-strategies.prefix-list' to '/home/moreaue/dump/expe1//train.tsv'; writing results to '/home/moreaue/dump/expe1//results/900/meta/train/apply-strategy-configs'. 2022-02-16 22:13: 0/59 done
+
+apply-multi-configs.sh: applying configs/models '/home/moreaue/dump/expe1//results/900/meta/train/indiv-strategies.prefix-list' to '/home/moreaue/dump/expe1//train.tsv'; writing results to '/home/moreaue/dump/expe1//results/900/meta/train/apply-strategy-configs'. 2022-02-16 22:13: 0/59 done
+
+apply-multi-configs.sh: applying configs/models '/home/moreaue/dump/expe1//results/900/meta/train/indiv-strategies.prefix-list' to '/home/moreaue/dump/expe1//train.tsv'; writing results to '/home/moreaue/dump/expe1//results/900/meta/train/apply-strategy-configs'. 2022-02-16 22:14: 0/59 done
+
+apply-multi-configs.sh: applying configs/models '/home/moreaue/dump/expe1//results/900/meta/train/indiv-strategies.prefix-list' to '/home/moreaue/dump/expe1//train.tsv'; writing results to '/home/moreaue/dump/expe1//results/900/meta/train/apply-strategy-configs'. 2022-02-16 22:14: 0/59 done
+
+apply-multi-configs.sh: applying configs/models '/home/moreaue/dump/expe1//results/900/meta/train/indiv-strategies.prefix-list' to '/home/moreaue/dump/expe1//train.tsv'; writing results to '/home/moreaue/dump/expe1//results/900/meta/train/apply-strategy-configs'. 2022-02-16 22:14: 0/59 done
+
+apply-multi-configs.sh: applying configs/models '/home/moreaue/dump/expe1//results/900/meta/train/indiv-strategies.prefix-list' to '/home/moreaue/dump/expe1//train.tsv'; writing results to '/home/moreaue/dump/expe1//results/900/meta/train/apply-strategy-configs'. 2022-02-16 22:15: 0/59 done
+
+apply-multi-configs.sh: applying configs/models '/home/moreaue/dump/expe1//results/900/meta/train/indiv-strategies.prefix-list' to '/home/moreaue/dump/expe1//train.tsv'; writing results to '/home/moreaue/dump/expe1//results/900/meta/train/apply-strategy-configs'. 2022-02-16 22:15: 0/59 done
+
+apply-multi-configs.sh: applying configs/models '/home/moreaue/dump/expe1//results/900/meta/train/indiv-strategies.prefix-list' to '/home/moreaue/dump/expe1//train.tsv'; writing results to '/home/moreaue/dump/expe1//results/900/meta/train/apply-strategy-configs'. 2022-02-16 22:15: 0/59 done
+
+apply-multi-configs.sh: applying configs/models '/home/moreaue/dump/expe1//results/900/meta/train/indiv-strategies.prefix-list' to '/home/moreaue/dump/expe1//train.tsv'; writing results to '/home/moreaue/dump/expe1//results/900/meta/train/apply-strategy-configs'. 2022-02-16 22:16: 0/59 done
+
+apply-multi-configs.sh: applying configs/models '/home/moreaue/dump/expe1//results/900/meta/train/indiv-strategies.prefix-list' to '/home/moreaue/dump/expe1//train.tsv'; writing results to '/home/moreaue/dump/expe1//results/900/meta/train/apply-strategy-configs'. 2022-02-16 22:16: 0/59 done
+
+apply-multi-configs.sh: applying configs/models '/home/moreaue/dump/expe1//results/900/meta/train/indiv-strategies.prefix-list' to '/home/moreaue/dump/expe1//train.tsv'; writing results to '/home/moreaue/dump/expe1//results/900/meta/train/apply-strategy-configs'. 2022-02-16 22:16: 0/59 done
+
+apply-multi-configs.sh: applying configs/models '/home/moreaue/dump/expe1//results/900/meta/train/indiv-strategies.prefix-list' to '/home/moreaue/dump/expe1//train.tsv'; writing results to '/home/moreaue/dump/expe1//results/900/meta/train/apply-strategy-configs'. 2022-02-16 22:17: 0/59 done
+
+apply-multi-configs.sh: applying configs/models '/home/moreaue/dump/expe1//results/900/meta/train/indiv-strategies.prefix-list' to '/home/moreaue/dump/expe1//train.tsv'; writing results to '/home/moreaue/dump/expe1//results/900/meta/train/apply-strategy-configs'. 2022-02-16 22:17: 0/59 done
+
+apply-multi-configs.sh: applying configs/models '/home/moreaue/dump/expe1//results/900/meta/train/indiv-strategies.prefix-list' to '/home/moreaue/dump/expe1//train.tsv'; writing results to '/home/moreaue/dump/expe1//results/900/meta/train/apply-strategy-configs'. 2022-02-16 22:17: 0/59 done
+
+apply-multi-configs.sh: applying configs/models '/home/moreaue/dump/expe1//results/900/meta/train/indiv-strategies.prefix-list' to '/home/moreaue/dump/expe1//train.tsv'; writing results to '/home/moreaue/dump/expe1//results/900/meta/train/apply-strategy-configs'. 2022-02-16 22:18: 0/59 done
+
+apply-multi-configs.sh: applying configs/models '/home/moreaue/dump/expe1//results/900/meta/train/indiv-strategies.prefix-list' to '/home/moreaue/dump/expe1//train.tsv'; writing results to '/home/moreaue/dump/expe1//results/900/meta/train/apply-strategy-configs'. 2022-02-16 22:18: 0/59 done
+
+apply-multi-configs.sh: applying configs/models '/home/moreaue/dump/expe1//results/900/meta/train/indiv-strategies.prefix-list' to '/home/moreaue/dump/expe1//train.tsv'; writing results to '/home/moreaue/dump/expe1//results/900/meta/train/apply-strategy-configs'. 2022-02-16 22:18: 0/59 done
+
+apply-multi-configs.sh: applying configs/models '/home/moreaue/dump/expe1//results/900/meta/train/indiv-strategies.prefix-list' to '/home/moreaue/dump/expe1//train.tsv'; writing results to '/home/moreaue/dump/expe1//results/900/meta/train/apply-strategy-configs'. 2022-02-16 22:19: 0/59 done
+
+apply-multi-configs.sh: applying configs/models '/home/moreaue/dump/expe1//results/900/meta/train/indiv-strategies.prefix-list' to '/home/moreaue/dump/expe1//train.tsv'; writing results to '/home/moreaue/dump/expe1//results/900/meta/train/apply-strategy-configs'. 2022-02-16 22:19: 2/59 done
+
+apply-multi-configs.sh: applying configs/models '/home/moreaue/dump/expe1//results/900/meta/train/indiv-strategies.prefix-list' to '/home/moreaue/dump/expe1//train.tsv'; writing results to '/home/moreaue/dump/expe1//results/900/meta/train/apply-strategy-configs'. 2022-02-16 22:19: 3/59 done
+
+apply-multi-configs.sh: applying configs/models '/home/moreaue/dump/expe1//results/900/meta/train/indiv-strategies.prefix-list' to '/home/moreaue/dump/expe1//train.tsv'; writing results to '/home/moreaue/dump/expe1//results/900/meta/train/apply-strategy-configs'. 2022-02-16 22:20: 4/59 done
+
+apply-multi-configs.sh: applying configs/models '/home/moreaue/dump/expe1//results/900/meta/train/indiv-strategies.prefix-list' to '/home/moreaue/dump/expe1//train.tsv'; writing results to '/home/moreaue/dump/expe1//results/900/meta/train/apply-strategy-configs'. 2022-02-16 22:20: 5/59 done
+
+apply-multi-configs.sh: applying configs/models '/home/moreaue/dump/expe1//results/900/meta/train/indiv-strategies.prefix-list' to '/home/moreaue/dump/expe1//train.tsv'; writing results to '/home/moreaue/dump/expe1//results/900/meta/train/apply-strategy-configs'. 2022-02-16 22:21: 5/59 done
+
+apply-multi-configs.sh: applying configs/models '/home/moreaue/dump/expe1//results/900/meta/train/indiv-strategies.prefix-list' to '/home/moreaue/dump/expe1//train.tsv'; writing results to '/home/moreaue/dump/expe1//results/900/meta/train/apply-strategy-configs'. 2022-02-16 22:21: 5/59 done
+
+apply-multi-configs.sh: applying configs/models '/home/moreaue/dump/expe1//results/900/meta/train/indiv-strategies.prefix-list' to '/home/moreaue/dump/expe1//train.tsv'; writing results to '/home/moreaue/dump/expe1//results/900/meta/train/apply-strategy-configs'. 2022-02-16 22:21: 5/59 done
+
+apply-multi-configs.sh: applying configs/models '/home/moreaue/dump/expe1//results/900/meta/train/indiv-strategies.prefix-list' to '/home/moreaue/dump/expe1//train.tsv'; writing results to '/home/moreaue/dump/expe1//results/900/meta/train/apply-strategy-configs'. 2022-02-16 22:22: 6/59 done
+
+apply-multi-configs.sh: applying configs/models '/home/moreaue/dump/expe1//results/900/meta/train/indiv-strategies.prefix-list' to '/home/moreaue/dump/expe1//train.tsv'; writing results to '/home/moreaue/dump/expe1//results/900/meta/train/apply-strategy-configs'. 2022-02-16 22:22: 6/59 done
+
+apply-multi-configs.sh: applying configs/models '/home/moreaue/dump/expe1//results/900/meta/train/indiv-strategies.prefix-list' to '/home/moreaue/dump/expe1//train.tsv'; writing results to '/home/moreaue/dump/expe1//results/900/meta/train/apply-strategy-configs'. 2022-02-16 22:22: 6/59 done
+
+apply-multi-configs.sh: applying configs/models '/home/moreaue/dump/expe1//results/900/meta/train/indiv-strategies.prefix-list' to '/home/moreaue/dump/expe1//train.tsv'; writing results to '/home/moreaue/dump/expe1//results/900/meta/train/apply-strategy-configs'. 2022-02-16 22:23: 6/59 done
+
+apply-multi-configs.sh: applying configs/models '/home/moreaue/dump/expe1//results/900/meta/train/indiv-strategies.prefix-list' to '/home/moreaue/dump/expe1//train.tsv'; writing results to '/home/moreaue/dump/expe1//results/900/meta/train/apply-strategy-configs'. 2022-02-16 22:23: 7/59 done
+
+apply-multi-configs.sh: applying configs/models '/home/moreaue/dump/expe1//results/900/meta/train/indiv-strategies.prefix-list' to '/home/moreaue/dump/expe1//train.tsv'; writing results to '/home/moreaue/dump/expe1//results/900/meta/train/apply-strategy-configs'. 2022-02-16 22:23: 7/59 done
+
+apply-multi-configs.sh: applying configs/models '/home/moreaue/dump/expe1//results/900/meta/train/indiv-strategies.prefix-list' to '/home/moreaue/dump/expe1//train.tsv'; writing results to '/home/moreaue/dump/expe1//results/900/meta/train/apply-strategy-configs'. 2022-02-16 22:24: 7/59 done
+
+apply-multi-configs.sh: applying configs/models '/home/moreaue/dump/expe1//results/900/meta/train/indiv-strategies.prefix-list' to '/home/moreaue/dump/expe1//train.tsv'; writing results to '/home/moreaue/dump/expe1//results/900/meta/train/apply-strategy-configs'. 2022-02-16 22:24: 7/59 done
+
+apply-multi-configs.sh: applying configs/models '/home/moreaue/dump/expe1//results/900/meta/train/indiv-strategies.prefix-list' to '/home/moreaue/dump/expe1//train.tsv'; writing results to '/home/moreaue/dump/expe1//results/900/meta/train/apply-strategy-configs'. 2022-02-16 22:24: 8/59 done
+
+apply-multi-configs.sh: applying configs/models '/home/moreaue/dump/expe1//results/900/meta/train/indiv-strategies.prefix-list' to '/home/moreaue/dump/expe1//train.tsv'; writing results to '/home/moreaue/dump/expe1//results/900/meta/train/apply-strategy-configs'. 2022-02-16 22:25: 9/59 done
+
+apply-multi-configs.sh: applying configs/models '/home/moreaue/dump/expe1//results/900/meta/train/indiv-strategies.prefix-list' to '/home/moreaue/dump/expe1//train.tsv'; writing results to '/home/moreaue/dump/expe1//results/900/meta/train/apply-strategy-configs'. 2022-02-16 22:25: 10/59 done
+
+apply-multi-configs.sh: applying configs/models '/home/moreaue/dump/expe1//results/900/meta/train/indiv-strategies.prefix-list' to '/home/moreaue/dump/expe1//train.tsv'; writing results to '/home/moreaue/dump/expe1//results/900/meta/train/apply-strategy-configs'. 2022-02-16 22:25: 11/59 done
+
+apply-multi-configs.sh: applying configs/models '/home/moreaue/dump/expe1//results/900/meta/train/indiv-strategies.prefix-list' to '/home/moreaue/dump/expe1//train.tsv'; writing results to '/home/moreaue/dump/expe1//results/900/meta/train/apply-strategy-configs'. 2022-02-16 22:26: 11/59 done
+
+apply-multi-configs.sh: applying configs/models '/home/moreaue/dump/expe1//results/900/meta/train/indiv-strategies.prefix-list' to '/home/moreaue/dump/expe1//train.tsv'; writing results to '/home/moreaue/dump/expe1//results/900/meta/train/apply-strategy-configs'. 2022-02-16 22:26: 11/59 done
+
+apply-multi-configs.sh: applying configs/models '/home/moreaue/dump/expe1//results/900/meta/train/indiv-strategies.prefix-list' to '/home/moreaue/dump/expe1//train.tsv'; writing results to '/home/moreaue/dump/expe1//results/900/meta/train/apply-strategy-configs'. 2022-02-16 22:26: 11/59 done
+
+apply-multi-configs.sh: applying configs/models '/home/moreaue/dump/expe1//results/900/meta/train/indiv-strategies.prefix-list' to '/home/moreaue/dump/expe1//train.tsv'; writing results to '/home/moreaue/dump/expe1//results/900/meta/train/apply-strategy-configs'. 2022-02-16 22:27: 11/59 done
+
+apply-multi-configs.sh: applying configs/models '/home/moreaue/dump/expe1//results/900/meta/train/indiv-strategies.prefix-list' to '/home/moreaue/dump/expe1//train.tsv'; writing results to '/home/moreaue/dump/expe1//results/900/meta/train/apply-strategy-configs'. 2022-02-16 22:27: 11/59 done
+
+apply-multi-configs.sh: applying configs/models '/home/moreaue/dump/expe1//results/900/meta/train/indiv-strategies.prefix-list' to '/home/moreaue/dump/expe1//train.tsv'; writing results to '/home/moreaue/dump/expe1//results/900/meta/train/apply-strategy-configs'. 2022-02-16 22:27: 11/59 done
+
+apply-multi-configs.sh: applying configs/models '/home/moreaue/dump/expe1//results/900/meta/train/indiv-strategies.prefix-list' to '/home/moreaue/dump/expe1//train.tsv'; writing results to '/home/moreaue/dump/expe1//results/900/meta/train/apply-strategy-configs'. 2022-02-16 22:28: 11/59 done
+
+apply-multi-configs.sh: applying configs/models '/home/moreaue/dump/expe1//results/900/meta/train/indiv-strategies.prefix-list' to '/home/moreaue/dump/expe1//train.tsv'; writing results to '/home/moreaue/dump/expe1//results/900/meta/train/apply-strategy-configs'. 2022-02-16 22:28: 11/59 done
+
+apply-multi-configs.sh: applying configs/models '/home/moreaue/dump/expe1//results/900/meta/train/indiv-strategies.prefix-list' to '/home/moreaue/dump/expe1//train.tsv'; writing results to '/home/moreaue/dump/expe1//results/900/meta/train/apply-strategy-configs'. 2022-02-16 22:28: 12/59 done
+
+apply-multi-configs.sh: applying configs/models '/home/moreaue/dump/expe1//results/900/meta/train/indiv-strategies.prefix-list' to '/home/moreaue/dump/expe1//train.tsv'; writing results to '/home/moreaue/dump/expe1//results/900/meta/train/apply-strategy-configs'. 2022-02-16 22:29: 12/59 done
+
+apply-multi-configs.sh: applying configs/models '/home/moreaue/dump/expe1//results/900/meta/train/indiv-strategies.prefix-list' to '/home/moreaue/dump/expe1//train.tsv'; writing results to '/home/moreaue/dump/expe1//results/900/meta/train/apply-strategy-configs'. 2022-02-16 22:29: 13/59 done
+
+apply-multi-configs.sh: applying configs/models '/home/moreaue/dump/expe1//results/900/meta/train/indiv-strategies.prefix-list' to '/home/moreaue/dump/expe1//train.tsv'; writing results to '/home/moreaue/dump/expe1//results/900/meta/train/apply-strategy-configs'. 2022-02-16 22:29: 14/59 done
+
+apply-multi-configs.sh: applying configs/models '/home/moreaue/dump/expe1//results/900/meta/train/indiv-strategies.prefix-list' to '/home/moreaue/dump/expe1//train.tsv'; writing results to '/home/moreaue/dump/expe1//results/900/meta/train/apply-strategy-configs'. 2022-02-16 22:30: 14/59 done
+
+apply-multi-configs.sh: applying configs/models '/home/moreaue/dump/expe1//results/900/meta/train/indiv-strategies.prefix-list' to '/home/moreaue/dump/expe1//train.tsv'; writing results to '/home/moreaue/dump/expe1//results/900/meta/train/apply-strategy-configs'. 2022-02-16 22:30: 14/59 done
+
+apply-multi-configs.sh: applying configs/models '/home/moreaue/dump/expe1//results/900/meta/train/indiv-strategies.prefix-list' to '/home/moreaue/dump/expe1//train.tsv'; writing results to '/home/moreaue/dump/expe1//results/900/meta/train/apply-strategy-configs'. 2022-02-16 22:30: 14/59 done
+
+apply-multi-configs.sh: applying configs/models '/home/moreaue/dump/expe1//results/900/meta/train/indiv-strategies.prefix-list' to '/home/moreaue/dump/expe1//train.tsv'; writing results to '/home/moreaue/dump/expe1//results/900/meta/train/apply-strategy-configs'. 2022-02-16 22:31: 15/59 done
+
+apply-multi-configs.sh: applying configs/models '/home/moreaue/dump/expe1//results/900/meta/train/indiv-strategies.prefix-list' to '/home/moreaue/dump/expe1//train.tsv'; writing results to '/home/moreaue/dump/expe1//results/900/meta/train/apply-strategy-configs'. 2022-02-16 22:31: 15/59 done
+
+apply-multi-configs.sh: applying configs/models '/home/moreaue/dump/expe1//results/900/meta/train/indiv-strategies.prefix-list' to '/home/moreaue/dump/expe1//train.tsv'; writing results to '/home/moreaue/dump/expe1//results/900/meta/train/apply-strategy-configs'. 2022-02-16 22:31: 16/59 done
+
+apply-multi-configs.sh: applying configs/models '/home/moreaue/dump/expe1//results/900/meta/train/indiv-strategies.prefix-list' to '/home/moreaue/dump/expe1//train.tsv'; writing results to '/home/moreaue/dump/expe1//results/900/meta/train/apply-strategy-configs'. 2022-02-16 22:32: 16/59 done
+
+apply-multi-configs.sh: applying configs/models '/home/moreaue/dump/expe1//results/900/meta/train/indiv-strategies.prefix-list' to '/home/moreaue/dump/expe1//train.tsv'; writing results to '/home/moreaue/dump/expe1//results/900/meta/train/apply-strategy-configs'. 2022-02-16 22:32: 17/59 done
+
+apply-multi-configs.sh: applying configs/models '/home/moreaue/dump/expe1//results/900/meta/train/indiv-strategies.prefix-list' to '/home/moreaue/dump/expe1//train.tsv'; writing results to '/home/moreaue/dump/expe1//results/900/meta/train/apply-strategy-configs'. 2022-02-16 22:32: 18/59 done
+
+apply-multi-configs.sh: applying configs/models '/home/moreaue/dump/expe1//results/900/meta/train/indiv-strategies.prefix-list' to '/home/moreaue/dump/expe1//train.tsv'; writing results to '/home/moreaue/dump/expe1//results/900/meta/train/apply-strategy-configs'. 2022-02-16 22:33: 18/59 done
+
+apply-multi-configs.sh: applying configs/models '/home/moreaue/dump/expe1//results/900/meta/train/indiv-strategies.prefix-list' to '/home/moreaue/dump/expe1//train.tsv'; writing results to '/home/moreaue/dump/expe1//results/900/meta/train/apply-strategy-configs'. 2022-02-16 22:33: 18/59 done
+
+apply-multi-configs.sh: applying configs/models '/home/moreaue/dump/expe1//results/900/meta/train/indiv-strategies.prefix-list' to '/home/moreaue/dump/expe1//train.tsv'; writing results to '/home/moreaue/dump/expe1//results/900/meta/train/apply-strategy-configs'. 2022-02-16 22:33: 18/59 done
+
+apply-multi-configs.sh: applying configs/models '/home/moreaue/dump/expe1//results/900/meta/train/indiv-strategies.prefix-list' to '/home/moreaue/dump/expe1//train.tsv'; writing results to '/home/moreaue/dump/expe1//results/900/meta/train/apply-strategy-configs'. 2022-02-16 22:34: 18/59 done
+
+apply-multi-configs.sh: applying configs/models '/home/moreaue/dump/expe1//results/900/meta/train/indiv-strategies.prefix-list' to '/home/moreaue/dump/expe1//train.tsv'; writing results to '/home/moreaue/dump/expe1//results/900/meta/train/apply-strategy-configs'. 2022-02-16 22:34: 18/59 done
+
+apply-multi-configs.sh: applying configs/models '/home/moreaue/dump/expe1//results/900/meta/train/indiv-strategies.prefix-list' to '/home/moreaue/dump/expe1//train.tsv'; writing results to '/home/moreaue/dump/expe1//results/900/meta/train/apply-strategy-configs'. 2022-02-16 22:34: 18/59 done
+
+apply-multi-configs.sh: applying configs/models '/home/moreaue/dump/expe1//results/900/meta/train/indiv-strategies.prefix-list' to '/home/moreaue/dump/expe1//train.tsv'; writing results to '/home/moreaue/dump/expe1//results/900/meta/train/apply-strategy-configs'. 2022-02-16 22:35: 18/59 done
+
+apply-multi-configs.sh: applying configs/models '/home/moreaue/dump/expe1//results/900/meta/train/indiv-strategies.prefix-list' to '/home/moreaue/dump/expe1//train.tsv'; writing results to '/home/moreaue/dump/expe1//results/900/meta/train/apply-strategy-configs'. 2022-02-16 22:35: 18/59 done
+
+apply-multi-configs.sh: applying configs/models '/home/moreaue/dump/expe1//results/900/meta/train/indiv-strategies.prefix-list' to '/home/moreaue/dump/expe1//train.tsv'; writing results to '/home/moreaue/dump/expe1//results/900/meta/train/apply-strategy-configs'. 2022-02-16 22:35: 18/59 done
+
+apply-multi-configs.sh: applying configs/models '/home/moreaue/dump/expe1//results/900/meta/train/indiv-strategies.prefix-list' to '/home/moreaue/dump/expe1//train.tsv'; writing results to '/home/moreaue/dump/expe1//results/900/meta/train/apply-strategy-configs'. 2022-02-16 22:36: 19/59 done
+
+apply-multi-configs.sh: applying configs/models '/home/moreaue/dump/expe1//results/900/meta/train/indiv-strategies.prefix-list' to '/home/moreaue/dump/expe1//train.tsv'; writing results to '/home/moreaue/dump/expe1//results/900/meta/train/apply-strategy-configs'. 2022-02-16 22:36: 19/59 done
+
+apply-multi-configs.sh: applying configs/models '/home/moreaue/dump/expe1//results/900/meta/train/indiv-strategies.prefix-list' to '/home/moreaue/dump/expe1//train.tsv'; writing results to '/home/moreaue/dump/expe1//results/900/meta/train/apply-strategy-configs'. 2022-02-16 22:36: 20/59 done
+
+apply-multi-configs.sh: applying configs/models '/home/moreaue/dump/expe1//results/900/meta/train/indiv-strategies.prefix-list' to '/home/moreaue/dump/expe1//train.tsv'; writing results to '/home/moreaue/dump/expe1//results/900/meta/train/apply-strategy-configs'. 2022-02-16 22:37: 20/59 done
+
+apply-multi-configs.sh: applying configs/models '/home/moreaue/dump/expe1//results/900/meta/train/indiv-strategies.prefix-list' to '/home/moreaue/dump/expe1//train.tsv'; writing results to '/home/moreaue/dump/expe1//results/900/meta/train/apply-strategy-configs'. 2022-02-16 22:37: 20/59 done
+
+apply-multi-configs.sh: applying configs/models '/home/moreaue/dump/expe1//results/900/meta/train/indiv-strategies.prefix-list' to '/home/moreaue/dump/expe1//train.tsv'; writing results to '/home/moreaue/dump/expe1//results/900/meta/train/apply-strategy-configs'. 2022-02-16 22:37: 20/59 done
+
+apply-multi-configs.sh: applying configs/models '/home/moreaue/dump/expe1//results/900/meta/train/indiv-strategies.prefix-list' to '/home/moreaue/dump/expe1//train.tsv'; writing results to '/home/moreaue/dump/expe1//results/900/meta/train/apply-strategy-configs'. 2022-02-16 22:38: 20/59 done
+
+apply-multi-configs.sh: applying configs/models '/home/moreaue/dump/expe1//results/900/meta/train/indiv-strategies.prefix-list' to '/home/moreaue/dump/expe1//train.tsv'; writing results to '/home/moreaue/dump/expe1//results/900/meta/train/apply-strategy-configs'. 2022-02-16 22:38: 20/59 done
+
+apply-multi-configs.sh: applying configs/models '/home/moreaue/dump/expe1//results/900/meta/train/indiv-strategies.prefix-list' to '/home/moreaue/dump/expe1//train.tsv'; writing results to '/home/moreaue/dump/expe1//results/900/meta/train/apply-strategy-configs'. 2022-02-16 22:38: 21/59 done
+
+apply-multi-configs.sh: applying configs/models '/home/moreaue/dump/expe1//results/900/meta/train/indiv-strategies.prefix-list' to '/home/moreaue/dump/expe1//train.tsv'; writing results to '/home/moreaue/dump/expe1//results/900/meta/train/apply-strategy-configs'. 2022-02-16 22:39: 21/59 done
+
+apply-multi-configs.sh: applying configs/models '/home/moreaue/dump/expe1//results/900/meta/train/indiv-strategies.prefix-list' to '/home/moreaue/dump/expe1//train.tsv'; writing results to '/home/moreaue/dump/expe1//results/900/meta/train/apply-strategy-configs'. 2022-02-16 22:39: 21/59 done
+
+apply-multi-configs.sh: applying configs/models '/home/moreaue/dump/expe1//results/900/meta/train/indiv-strategies.prefix-list' to '/home/moreaue/dump/expe1//train.tsv'; writing results to '/home/moreaue/dump/expe1//results/900/meta/train/apply-strategy-configs'. 2022-02-16 22:39: 22/59 done
+
+apply-multi-configs.sh: applying configs/models '/home/moreaue/dump/expe1//results/900/meta/train/indiv-strategies.prefix-list' to '/home/moreaue/dump/expe1//train.tsv'; writing results to '/home/moreaue/dump/expe1//results/900/meta/train/apply-strategy-configs'. 2022-02-16 22:40: 22/59 done
+
+apply-multi-configs.sh: applying configs/models '/home/moreaue/dump/expe1//results/900/meta/train/indiv-strategies.prefix-list' to '/home/moreaue/dump/expe1//train.tsv'; writing results to '/home/moreaue/dump/expe1//results/900/meta/train/apply-strategy-configs'. 2022-02-16 22:40: 22/59 done
+
+apply-multi-configs.sh: applying configs/models '/home/moreaue/dump/expe1//results/900/meta/train/indiv-strategies.prefix-list' to '/home/moreaue/dump/expe1//train.tsv'; writing results to '/home/moreaue/dump/expe1//results/900/meta/train/apply-strategy-configs'. 2022-02-16 22:40: 22/59 done
+
+apply-multi-configs.sh: applying configs/models '/home/moreaue/dump/expe1//results/900/meta/train/indiv-strategies.prefix-list' to '/home/moreaue/dump/expe1//train.tsv'; writing results to '/home/moreaue/dump/expe1//results/900/meta/train/apply-strategy-configs'. 2022-02-16 22:41: 22/59 done
+
+apply-multi-configs.sh: applying configs/models '/home/moreaue/dump/expe1//results/900/meta/train/indiv-strategies.prefix-list' to '/home/moreaue/dump/expe1//train.tsv'; writing results to '/home/moreaue/dump/expe1//results/900/meta/train/apply-strategy-configs'. 2022-02-16 22:41: 22/59 done
+
+apply-multi-configs.sh: applying configs/models '/home/moreaue/dump/expe1//results/900/meta/train/indiv-strategies.prefix-list' to '/home/moreaue/dump/expe1//train.tsv'; writing results to '/home/moreaue/dump/expe1//results/900/meta/train/apply-strategy-configs'. 2022-02-16 22:41: 22/59 done
+
+apply-multi-configs.sh: applying configs/models '/home/moreaue/dump/expe1//results/900/meta/train/indiv-strategies.prefix-list' to '/home/moreaue/dump/expe1//train.tsv'; writing results to '/home/moreaue/dump/expe1//results/900/meta/train/apply-strategy-configs'. 2022-02-16 22:42: 22/59 done
+
+apply-multi-configs.sh: applying configs/models '/home/moreaue/dump/expe1//results/900/meta/train/indiv-strategies.prefix-list' to '/home/moreaue/dump/expe1//train.tsv'; writing results to '/home/moreaue/dump/expe1//results/900/meta/train/apply-strategy-configs'. 2022-02-16 22:42: 22/59 done
+
+apply-multi-configs.sh: applying configs/models '/home/moreaue/dump/expe1//results/900/meta/train/indiv-strategies.prefix-list' to '/home/moreaue/dump/expe1//train.tsv'; writing results to '/home/moreaue/dump/expe1//results/900/meta/train/apply-strategy-configs'. 2022-02-16 22:42: 22/59 done
+
+apply-multi-configs.sh: applying configs/models '/home/moreaue/dump/expe1//results/900/meta/train/indiv-strategies.prefix-list' to '/home/moreaue/dump/expe1//train.tsv'; writing results to '/home/moreaue/dump/expe1//results/900/meta/train/apply-strategy-configs'. 2022-02-16 22:43: 22/59 done
+
+apply-multi-configs.sh: applying configs/models '/home/moreaue/dump/expe1//results/900/meta/train/indiv-strategies.prefix-list' to '/home/moreaue/dump/expe1//train.tsv'; writing results to '/home/moreaue/dump/expe1//results/900/meta/train/apply-strategy-configs'. 2022-02-16 22:43: 24/59 done
+
+apply-multi-configs.sh: applying configs/models '/home/moreaue/dump/expe1//results/900/meta/train/indiv-strategies.prefix-list' to '/home/moreaue/dump/expe1//train.tsv'; writing results to '/home/moreaue/dump/expe1//results/900/meta/train/apply-strategy-configs'. 2022-02-16 22:43: 24/59 done
+
+apply-multi-configs.sh: applying configs/models '/home/moreaue/dump/expe1//results/900/meta/train/indiv-strategies.prefix-list' to '/home/moreaue/dump/expe1//train.tsv'; writing results to '/home/moreaue/dump/expe1//results/900/meta/train/apply-strategy-configs'. 2022-02-16 22:44: 24/59 done
+
+apply-multi-configs.sh: applying configs/models '/home/moreaue/dump/expe1//results/900/meta/train/indiv-strategies.prefix-list' to '/home/moreaue/dump/expe1//train.tsv'; writing results to '/home/moreaue/dump/expe1//results/900/meta/train/apply-strategy-configs'. 2022-02-16 22:44: 24/59 done
+
+apply-multi-configs.sh: applying configs/models '/home/moreaue/dump/expe1//results/900/meta/train/indiv-strategies.prefix-list' to '/home/moreaue/dump/expe1//train.tsv'; writing results to '/home/moreaue/dump/expe1//results/900/meta/train/apply-strategy-configs'. 2022-02-16 22:44: 24/59 done
+
+apply-multi-configs.sh: applying configs/models '/home/moreaue/dump/expe1//results/900/meta/train/indiv-strategies.prefix-list' to '/home/moreaue/dump/expe1//train.tsv'; writing results to '/home/moreaue/dump/expe1//results/900/meta/train/apply-strategy-configs'. 2022-02-16 22:45: 24/59 done
+
+apply-multi-configs.sh: applying configs/models '/home/moreaue/dump/expe1//results/900/meta/train/indiv-strategies.prefix-list' to '/home/moreaue/dump/expe1//train.tsv'; writing results to '/home/moreaue/dump/expe1//results/900/meta/train/apply-strategy-configs'. 2022-02-16 22:45: 24/59 done
+
+apply-multi-configs.sh: applying configs/models '/home/moreaue/dump/expe1//results/900/meta/train/indiv-strategies.prefix-list' to '/home/moreaue/dump/expe1//train.tsv'; writing results to '/home/moreaue/dump/expe1//results/900/meta/train/apply-strategy-configs'. 2022-02-16 22:45: 24/59 done
+
+apply-multi-configs.sh: applying configs/models '/home/moreaue/dump/expe1//results/900/meta/train/indiv-strategies.prefix-list' to '/home/moreaue/dump/expe1//train.tsv'; writing results to '/home/moreaue/dump/expe1//results/900/meta/train/apply-strategy-configs'. 2022-02-16 22:46: 24/59 done
+
+apply-multi-configs.sh: applying configs/models '/home/moreaue/dump/expe1//results/900/meta/train/indiv-strategies.prefix-list' to '/home/moreaue/dump/expe1//train.tsv'; writing results to '/home/moreaue/dump/expe1//results/900/meta/train/apply-strategy-configs'. 2022-02-16 22:46: 24/59 done
+
+apply-multi-configs.sh: applying configs/models '/home/moreaue/dump/expe1//results/900/meta/train/indiv-strategies.prefix-list' to '/home/moreaue/dump/expe1//train.tsv'; writing results to '/home/moreaue/dump/expe1//results/900/meta/train/apply-strategy-configs'. 2022-02-16 22:46: 24/59 done
+
+apply-multi-configs.sh: applying configs/models '/home/moreaue/dump/expe1//results/900/meta/train/indiv-strategies.prefix-list' to '/home/moreaue/dump/expe1//train.tsv'; writing results to '/home/moreaue/dump/expe1//results/900/meta/train/apply-strategy-configs'. 2022-02-16 22:47: 24/59 done
+
+apply-multi-configs.sh: applying configs/models '/home/moreaue/dump/expe1//results/900/meta/train/indiv-strategies.prefix-list' to '/home/moreaue/dump/expe1//train.tsv'; writing results to '/home/moreaue/dump/expe1//results/900/meta/train/apply-strategy-configs'. 2022-02-16 22:47: 24/59 done
+
+apply-multi-configs.sh: applying configs/models '/home/moreaue/dump/expe1//results/900/meta/train/indiv-strategies.prefix-list' to '/home/moreaue/dump/expe1//train.tsv'; writing results to '/home/moreaue/dump/expe1//results/900/meta/train/apply-strategy-configs'. 2022-02-16 22:47: 24/59 done
+
+apply-multi-configs.sh: applying configs/models '/home/moreaue/dump/expe1//results/900/meta/train/indiv-strategies.prefix-list' to '/home/moreaue/dump/expe1//train.tsv'; writing results to '/home/moreaue/dump/expe1//results/900/meta/train/apply-strategy-configs'. 2022-02-16 22:48: 24/59 done
+
+apply-multi-configs.sh: applying configs/models '/home/moreaue/dump/expe1//results/900/meta/train/indiv-strategies.prefix-list' to '/home/moreaue/dump/expe1//train.tsv'; writing results to '/home/moreaue/dump/expe1//results/900/meta/train/apply-strategy-configs'. 2022-02-16 22:48: 24/59 done
+
+apply-multi-configs.sh: applying configs/models '/home/moreaue/dump/expe1//results/900/meta/train/indiv-strategies.prefix-list' to '/home/moreaue/dump/expe1//train.tsv'; writing results to '/home/moreaue/dump/expe1//results/900/meta/train/apply-strategy-configs'. 2022-02-16 22:48: 24/59 done
+
+apply-multi-configs.sh: applying configs/models '/home/moreaue/dump/expe1//results/900/meta/train/indiv-strategies.prefix-list' to '/home/moreaue/dump/expe1//train.tsv'; writing results to '/home/moreaue/dump/expe1//results/900/meta/train/apply-strategy-configs'. 2022-02-16 22:49: 24/59 done
+
+apply-multi-configs.sh: applying configs/models '/home/moreaue/dump/expe1//results/900/meta/train/indiv-strategies.prefix-list' to '/home/moreaue/dump/expe1//train.tsv'; writing results to '/home/moreaue/dump/expe1//results/900/meta/train/apply-strategy-configs'. 2022-02-16 22:49: 24/59 done
+
+apply-multi-configs.sh: applying configs/models '/home/moreaue/dump/expe1//results/900/meta/train/indiv-strategies.prefix-list' to '/home/moreaue/dump/expe1//train.tsv'; writing results to '/home/moreaue/dump/expe1//results/900/meta/train/apply-strategy-configs'. 2022-02-16 22:49: 26/59 done
+
+apply-multi-configs.sh: applying configs/models '/home/moreaue/dump/expe1//results/900/meta/train/indiv-strategies.prefix-list' to '/home/moreaue/dump/expe1//train.tsv'; writing results to '/home/moreaue/dump/expe1//results/900/meta/train/apply-strategy-configs'. 2022-02-16 22:50: 27/59 done
+
+apply-multi-configs.sh: applying configs/models '/home/moreaue/dump/expe1//results/900/meta/train/indiv-strategies.prefix-list' to '/home/moreaue/dump/expe1//train.tsv'; writing results to '/home/moreaue/dump/expe1//results/900/meta/train/apply-strategy-configs'. 2022-02-16 22:50: 27/59 done
+
+apply-multi-configs.sh: applying configs/models '/home/moreaue/dump/expe1//results/900/meta/train/indiv-strategies.prefix-list' to '/home/moreaue/dump/expe1//train.tsv'; writing results to '/home/moreaue/dump/expe1//results/900/meta/train/apply-strategy-configs'. 2022-02-16 22:50: 27/59 done
+
+apply-multi-configs.sh: applying configs/models '/home/moreaue/dump/expe1//results/900/meta/train/indiv-strategies.prefix-list' to '/home/moreaue/dump/expe1//train.tsv'; writing results to '/home/moreaue/dump/expe1//results/900/meta/train/apply-strategy-configs'. 2022-02-16 22:51: 27/59 done
+
+apply-multi-configs.sh: applying configs/models '/home/moreaue/dump/expe1//results/900/meta/train/indiv-strategies.prefix-list' to '/home/moreaue/dump/expe1//train.tsv'; writing results to '/home/moreaue/dump/expe1//results/900/meta/train/apply-strategy-configs'. 2022-02-16 22:51: 28/59 done
+
+apply-multi-configs.sh: applying configs/models '/home/moreaue/dump/expe1//results/900/meta/train/indiv-strategies.prefix-list' to '/home/moreaue/dump/expe1//train.tsv'; writing results to '/home/moreaue/dump/expe1//results/900/meta/train/apply-strategy-configs'. 2022-02-16 22:51: 28/59 done
+
+apply-multi-configs.sh: applying configs/models '/home/moreaue/dump/expe1//results/900/meta/train/indiv-strategies.prefix-list' to '/home/moreaue/dump/expe1//train.tsv'; writing results to '/home/moreaue/dump/expe1//results/900/meta/train/apply-strategy-configs'. 2022-02-16 22:52: 28/59 done
+
+apply-multi-configs.sh: applying configs/models '/home/moreaue/dump/expe1//results/900/meta/train/indiv-strategies.prefix-list' to '/home/moreaue/dump/expe1//train.tsv'; writing results to '/home/moreaue/dump/expe1//results/900/meta/train/apply-strategy-configs'. 2022-02-16 22:52: 29/59 done
+
+apply-multi-configs.sh: applying configs/models '/home/moreaue/dump/expe1//results/900/meta/train/indiv-strategies.prefix-list' to '/home/moreaue/dump/expe1//train.tsv'; writing results to '/home/moreaue/dump/expe1//results/900/meta/train/apply-strategy-configs'. 2022-02-16 22:52: 29/59 done
+
+apply-multi-configs.sh: applying configs/models '/home/moreaue/dump/expe1//results/900/meta/train/indiv-strategies.prefix-list' to '/home/moreaue/dump/expe1//train.tsv'; writing results to '/home/moreaue/dump/expe1//results/900/meta/train/apply-strategy-configs'. 2022-02-16 22:53: 30/59 done
+
+apply-multi-configs.sh: applying configs/models '/home/moreaue/dump/expe1//results/900/meta/train/indiv-strategies.prefix-list' to '/home/moreaue/dump/expe1//train.tsv'; writing results to '/home/moreaue/dump/expe1//results/900/meta/train/apply-strategy-configs'. 2022-02-16 22:53: 32/59 done
+
+apply-multi-configs.sh: applying configs/models '/home/moreaue/dump/expe1//results/900/meta/train/indiv-strategies.prefix-list' to '/home/moreaue/dump/expe1//train.tsv'; writing results to '/home/moreaue/dump/expe1//results/900/meta/train/apply-strategy-configs'. 2022-02-16 22:53: 32/59 done
+
+apply-multi-configs.sh: applying configs/models '/home/moreaue/dump/expe1//results/900/meta/train/indiv-strategies.prefix-list' to '/home/moreaue/dump/expe1//train.tsv'; writing results to '/home/moreaue/dump/expe1//results/900/meta/train/apply-strategy-configs'. 2022-02-16 22:54: 32/59 done
+
+apply-multi-configs.sh: applying configs/models '/home/moreaue/dump/expe1//results/900/meta/train/indiv-strategies.prefix-list' to '/home/moreaue/dump/expe1//train.tsv'; writing results to '/home/moreaue/dump/expe1//results/900/meta/train/apply-strategy-configs'. 2022-02-16 22:54: 32/59 done
+
+apply-multi-configs.sh: applying configs/models '/home/moreaue/dump/expe1//results/900/meta/train/indiv-strategies.prefix-list' to '/home/moreaue/dump/expe1//train.tsv'; writing results to '/home/moreaue/dump/expe1//results/900/meta/train/apply-strategy-configs'. 2022-02-16 22:54: 32/59 done
+
+apply-multi-configs.sh: applying configs/models '/home/moreaue/dump/expe1//results/900/meta/train/indiv-strategies.prefix-list' to '/home/moreaue/dump/expe1//train.tsv'; writing results to '/home/moreaue/dump/expe1//results/900/meta/train/apply-strategy-configs'. 2022-02-16 22:55: 33/59 done
+
+apply-multi-configs.sh: applying configs/models '/home/moreaue/dump/expe1//results/900/meta/train/indiv-strategies.prefix-list' to '/home/moreaue/dump/expe1//train.tsv'; writing results to '/home/moreaue/dump/expe1//results/900/meta/train/apply-strategy-configs'. 2022-02-16 22:55: 35/59 done
+
+apply-multi-configs.sh: applying configs/models '/home/moreaue/dump/expe1//results/900/meta/train/indiv-strategies.prefix-list' to '/home/moreaue/dump/expe1//train.tsv'; writing results to '/home/moreaue/dump/expe1//results/900/meta/train/apply-strategy-configs'. 2022-02-16 22:55: 35/59 done
+
+apply-multi-configs.sh: applying configs/models '/home/moreaue/dump/expe1//results/900/meta/train/indiv-strategies.prefix-list' to '/home/moreaue/dump/expe1//train.tsv'; writing results to '/home/moreaue/dump/expe1//results/900/meta/train/apply-strategy-configs'. 2022-02-16 22:56: 35/59 done
+
+apply-multi-configs.sh: applying configs/models '/home/moreaue/dump/expe1//results/900/meta/train/indiv-strategies.prefix-list' to '/home/moreaue/dump/expe1//train.tsv'; writing results to '/home/moreaue/dump/expe1//results/900/meta/train/apply-strategy-configs'. 2022-02-16 22:56: 37/59 done
+
+apply-multi-configs.sh: applying configs/models '/home/moreaue/dump/expe1//results/900/meta/train/indiv-strategies.prefix-list' to '/home/moreaue/dump/expe1//train.tsv'; writing results to '/home/moreaue/dump/expe1//results/900/meta/train/apply-strategy-configs'. 2022-02-16 22:56: 37/59 done
+
+apply-multi-configs.sh: applying configs/models '/home/moreaue/dump/expe1//results/900/meta/train/indiv-strategies.prefix-list' to '/home/moreaue/dump/expe1//train.tsv'; writing results to '/home/moreaue/dump/expe1//results/900/meta/train/apply-strategy-configs'. 2022-02-16 22:57: 38/59 done
+
+apply-multi-configs.sh: applying configs/models '/home/moreaue/dump/expe1//results/900/meta/train/indiv-strategies.prefix-list' to '/home/moreaue/dump/expe1//train.tsv'; writing results to '/home/moreaue/dump/expe1//results/900/meta/train/apply-strategy-configs'. 2022-02-16 22:57: 38/59 done
+
+apply-multi-configs.sh: applying configs/models '/home/moreaue/dump/expe1//results/900/meta/train/indiv-strategies.prefix-list' to '/home/moreaue/dump/expe1//train.tsv'; writing results to '/home/moreaue/dump/expe1//results/900/meta/train/apply-strategy-configs'. 2022-02-16 22:57: 38/59 done
+
+apply-multi-configs.sh: applying configs/models '/home/moreaue/dump/expe1//results/900/meta/train/indiv-strategies.prefix-list' to '/home/moreaue/dump/expe1//train.tsv'; writing results to '/home/moreaue/dump/expe1//results/900/meta/train/apply-strategy-configs'. 2022-02-16 22:58: 38/59 done
+
+apply-multi-configs.sh: applying configs/models '/home/moreaue/dump/expe1//results/900/meta/train/indiv-strategies.prefix-list' to '/home/moreaue/dump/expe1//train.tsv'; writing results to '/home/moreaue/dump/expe1//results/900/meta/train/apply-strategy-configs'. 2022-02-16 22:58: 38/59 done
+
+apply-multi-configs.sh: applying configs/models '/home/moreaue/dump/expe1//results/900/meta/train/indiv-strategies.prefix-list' to '/home/moreaue/dump/expe1//train.tsv'; writing results to '/home/moreaue/dump/expe1//results/900/meta/train/apply-strategy-configs'. 2022-02-16 22:58: 38/59 done
+
+apply-multi-configs.sh: applying configs/models '/home/moreaue/dump/expe1//results/900/meta/train/indiv-strategies.prefix-list' to '/home/moreaue/dump/expe1//train.tsv'; writing results to '/home/moreaue/dump/expe1//results/900/meta/train/apply-strategy-configs'. 2022-02-16 22:59: 38/59 done
+
+apply-multi-configs.sh: applying configs/models '/home/moreaue/dump/expe1//results/900/meta/train/indiv-strategies.prefix-list' to '/home/moreaue/dump/expe1//train.tsv'; writing results to '/home/moreaue/dump/expe1//results/900/meta/train/apply-strategy-configs'. 2022-02-16 22:59: 38/59 done
+
+apply-multi-configs.sh: applying configs/models '/home/moreaue/dump/expe1//results/900/meta/train/indiv-strategies.prefix-list' to '/home/moreaue/dump/expe1//train.tsv'; writing results to '/home/moreaue/dump/expe1//results/900/meta/train/apply-strategy-configs'. 2022-02-16 22:59: 39/59 done
+
+apply-multi-configs.sh: applying configs/models '/home/moreaue/dump/expe1//results/900/meta/train/indiv-strategies.prefix-list' to '/home/moreaue/dump/expe1//train.tsv'; writing results to '/home/moreaue/dump/expe1//results/900/meta/train/apply-strategy-configs'. 2022-02-16 23:00: 39/59 done
+
+apply-multi-configs.sh: applying configs/models '/home/moreaue/dump/expe1//results/900/meta/train/indiv-strategies.prefix-list' to '/home/moreaue/dump/expe1//train.tsv'; writing results to '/home/moreaue/dump/expe1//results/900/meta/train/apply-strategy-configs'. 2022-02-16 23:00: 39/59 done
+
+apply-multi-configs.sh: applying configs/models '/home/moreaue/dump/expe1//results/900/meta/train/indiv-strategies.prefix-list' to '/home/moreaue/dump/expe1//train.tsv'; writing results to '/home/moreaue/dump/expe1//results/900/meta/train/apply-strategy-configs'. 2022-02-16 23:00: 39/59 done
+
+apply-multi-configs.sh: applying configs/models '/home/moreaue/dump/expe1//results/900/meta/train/indiv-strategies.prefix-list' to '/home/moreaue/dump/expe1//train.tsv'; writing results to '/home/moreaue/dump/expe1//results/900/meta/train/apply-strategy-configs'. 2022-02-16 23:01: 39/59 done
+
+apply-multi-configs.sh: applying configs/models '/home/moreaue/dump/expe1//results/900/meta/train/indiv-strategies.prefix-list' to '/home/moreaue/dump/expe1//train.tsv'; writing results to '/home/moreaue/dump/expe1//results/900/meta/train/apply-strategy-configs'. 2022-02-16 23:01: 39/59 done
+
+apply-multi-configs.sh: applying configs/models '/home/moreaue/dump/expe1//results/900/meta/train/indiv-strategies.prefix-list' to '/home/moreaue/dump/expe1//train.tsv'; writing results to '/home/moreaue/dump/expe1//results/900/meta/train/apply-strategy-configs'. 2022-02-16 23:01: 39/59 done
+
+apply-multi-configs.sh: applying configs/models '/home/moreaue/dump/expe1//results/900/meta/train/indiv-strategies.prefix-list' to '/home/moreaue/dump/expe1//train.tsv'; writing results to '/home/moreaue/dump/expe1//results/900/meta/train/apply-strategy-configs'. 2022-02-16 23:02: 39/59 done
+
+apply-multi-configs.sh: applying configs/models '/home/moreaue/dump/expe1//results/900/meta/train/indiv-strategies.prefix-list' to '/home/moreaue/dump/expe1//train.tsv'; writing results to '/home/moreaue/dump/expe1//results/900/meta/train/apply-strategy-configs'. 2022-02-16 23:02: 39/59 done
+
+apply-multi-configs.sh: applying configs/models '/home/moreaue/dump/expe1//results/900/meta/train/indiv-strategies.prefix-list' to '/home/moreaue/dump/expe1//train.tsv'; writing results to '/home/moreaue/dump/expe1//results/900/meta/train/apply-strategy-configs'. 2022-02-16 23:02: 39/59 done
+
+apply-multi-configs.sh: applying configs/models '/home/moreaue/dump/expe1//results/900/meta/train/indiv-strategies.prefix-list' to '/home/moreaue/dump/expe1//train.tsv'; writing results to '/home/moreaue/dump/expe1//results/900/meta/train/apply-strategy-configs'. 2022-02-16 23:03: 39/59 done
+
+apply-multi-configs.sh: applying configs/models '/home/moreaue/dump/expe1//results/900/meta/train/indiv-strategies.prefix-list' to '/home/moreaue/dump/expe1//train.tsv'; writing results to '/home/moreaue/dump/expe1//results/900/meta/train/apply-strategy-configs'. 2022-02-16 23:03: 39/59 done
+
+apply-multi-configs.sh: applying configs/models '/home/moreaue/dump/expe1//results/900/meta/train/indiv-strategies.prefix-list' to '/home/moreaue/dump/expe1//train.tsv'; writing results to '/home/moreaue/dump/expe1//results/900/meta/train/apply-strategy-configs'. 2022-02-16 23:03: 40/59 done
+
+apply-multi-configs.sh: applying configs/models '/home/moreaue/dump/expe1//results/900/meta/train/indiv-strategies.prefix-list' to '/home/moreaue/dump/expe1//train.tsv'; writing results to '/home/moreaue/dump/expe1//results/900/meta/train/apply-strategy-configs'. 2022-02-16 23:04: 40/59 done
+
+apply-multi-configs.sh: applying configs/models '/home/moreaue/dump/expe1//results/900/meta/train/indiv-strategies.prefix-list' to '/home/moreaue/dump/expe1//train.tsv'; writing results to '/home/moreaue/dump/expe1//results/900/meta/train/apply-strategy-configs'. 2022-02-16 23:04: 41/59 done
+
+apply-multi-configs.sh: applying configs/models '/home/moreaue/dump/expe1//results/900/meta/train/indiv-strategies.prefix-list' to '/home/moreaue/dump/expe1//train.tsv'; writing results to '/home/moreaue/dump/expe1//results/900/meta/train/apply-strategy-configs'. 2022-02-16 23:04: 43/59 done
+
+apply-multi-configs.sh: applying configs/models '/home/moreaue/dump/expe1//results/900/meta/train/indiv-strategies.prefix-list' to '/home/moreaue/dump/expe1//train.tsv'; writing results to '/home/moreaue/dump/expe1//results/900/meta/train/apply-strategy-configs'. 2022-02-16 23:05: 43/59 done
+
+apply-multi-configs.sh: applying configs/models '/home/moreaue/dump/expe1//results/900/meta/train/indiv-strategies.prefix-list' to '/home/moreaue/dump/expe1//train.tsv'; writing results to '/home/moreaue/dump/expe1//results/900/meta/train/apply-strategy-configs'. 2022-02-16 23:05: 43/59 done
+
+apply-multi-configs.sh: applying configs/models '/home/moreaue/dump/expe1//results/900/meta/train/indiv-strategies.prefix-list' to '/home/moreaue/dump/expe1//train.tsv'; writing results to '/home/moreaue/dump/expe1//results/900/meta/train/apply-strategy-configs'. 2022-02-16 23:05: 43/59 done
+
+apply-multi-configs.sh: applying configs/models '/home/moreaue/dump/expe1//results/900/meta/train/indiv-strategies.prefix-list' to '/home/moreaue/dump/expe1//train.tsv'; writing results to '/home/moreaue/dump/expe1//results/900/meta/train/apply-strategy-configs'. 2022-02-16 23:06: 43/59 done
+
+apply-multi-configs.sh: applying configs/models '/home/moreaue/dump/expe1//results/900/meta/train/indiv-strategies.prefix-list' to '/home/moreaue/dump/expe1//train.tsv'; writing results to '/home/moreaue/dump/expe1//results/900/meta/train/apply-strategy-configs'. 2022-02-16 23:06: 43/59 done
+
+apply-multi-configs.sh: applying configs/models '/home/moreaue/dump/expe1//results/900/meta/train/indiv-strategies.prefix-list' to '/home/moreaue/dump/expe1//train.tsv'; writing results to '/home/moreaue/dump/expe1//results/900/meta/train/apply-strategy-configs'. 2022-02-16 23:06: 43/59 done
+
+apply-multi-configs.sh: applying configs/models '/home/moreaue/dump/expe1//results/900/meta/train/indiv-strategies.prefix-list' to '/home/moreaue/dump/expe1//train.tsv'; writing results to '/home/moreaue/dump/expe1//results/900/meta/train/apply-strategy-configs'. 2022-02-16 23:07: 44/59 done
+
+apply-multi-configs.sh: applying configs/models '/home/moreaue/dump/expe1//results/900/meta/train/indiv-strategies.prefix-list' to '/home/moreaue/dump/expe1//train.tsv'; writing results to '/home/moreaue/dump/expe1//results/900/meta/train/apply-strategy-configs'. 2022-02-16 23:07: 44/59 done
+
+apply-multi-configs.sh: applying configs/models '/home/moreaue/dump/expe1//results/900/meta/train/indiv-strategies.prefix-list' to '/home/moreaue/dump/expe1//train.tsv'; writing results to '/home/moreaue/dump/expe1//results/900/meta/train/apply-strategy-configs'. 2022-02-16 23:07: 44/59 done
+
+apply-multi-configs.sh: applying configs/models '/home/moreaue/dump/expe1//results/900/meta/train/indiv-strategies.prefix-list' to '/home/moreaue/dump/expe1//train.tsv'; writing results to '/home/moreaue/dump/expe1//results/900/meta/train/apply-strategy-configs'. 2022-02-16 23:08: 44/59 done
+
+apply-multi-configs.sh: applying configs/models '/home/moreaue/dump/expe1//results/900/meta/train/indiv-strategies.prefix-list' to '/home/moreaue/dump/expe1//train.tsv'; writing results to '/home/moreaue/dump/expe1//results/900/meta/train/apply-strategy-configs'. 2022-02-16 23:08: 44/59 done
+
+apply-multi-configs.sh: applying configs/models '/home/moreaue/dump/expe1//results/900/meta/train/indiv-strategies.prefix-list' to '/home/moreaue/dump/expe1//train.tsv'; writing results to '/home/moreaue/dump/expe1//results/900/meta/train/apply-strategy-configs'. 2022-02-16 23:08: 45/59 done
+
+apply-multi-configs.sh: applying configs/models '/home/moreaue/dump/expe1//results/900/meta/train/indiv-strategies.prefix-list' to '/home/moreaue/dump/expe1//train.tsv'; writing results to '/home/moreaue/dump/expe1//results/900/meta/train/apply-strategy-configs'. 2022-02-16 23:09: 45/59 done
+
+apply-multi-configs.sh: applying configs/models '/home/moreaue/dump/expe1//results/900/meta/train/indiv-strategies.prefix-list' to '/home/moreaue/dump/expe1//train.tsv'; writing results to '/home/moreaue/dump/expe1//results/900/meta/train/apply-strategy-configs'. 2022-02-16 23:09: 45/59 done
+
+apply-multi-configs.sh: applying configs/models '/home/moreaue/dump/expe1//results/900/meta/train/indiv-strategies.prefix-list' to '/home/moreaue/dump/expe1//train.tsv'; writing results to '/home/moreaue/dump/expe1//results/900/meta/train/apply-strategy-configs'. 2022-02-16 23:09: 45/59 done
+
+apply-multi-configs.sh: applying configs/models '/home/moreaue/dump/expe1//results/900/meta/train/indiv-strategies.prefix-list' to '/home/moreaue/dump/expe1//train.tsv'; writing results to '/home/moreaue/dump/expe1//results/900/meta/train/apply-strategy-configs'. 2022-02-16 23:10: 45/59 done
+
+apply-multi-configs.sh: applying configs/models '/home/moreaue/dump/expe1//results/900/meta/train/indiv-strategies.prefix-list' to '/home/moreaue/dump/expe1//train.tsv'; writing results to '/home/moreaue/dump/expe1//results/900/meta/train/apply-strategy-configs'. 2022-02-16 23:10: 46/59 done
+
+apply-multi-configs.sh: applying configs/models '/home/moreaue/dump/expe1//results/900/meta/train/indiv-strategies.prefix-list' to '/home/moreaue/dump/expe1//train.tsv'; writing results to '/home/moreaue/dump/expe1//results/900/meta/train/apply-strategy-configs'. 2022-02-16 23:10: 48/59 done
+
+apply-multi-configs.sh: applying configs/models '/home/moreaue/dump/expe1//results/900/meta/train/indiv-strategies.prefix-list' to '/home/moreaue/dump/expe1//train.tsv'; writing results to '/home/moreaue/dump/expe1//results/900/meta/train/apply-strategy-configs'. 2022-02-16 23:11: 48/59 done
+
+apply-multi-configs.sh: applying configs/models '/home/moreaue/dump/expe1//results/900/meta/train/indiv-strategies.prefix-list' to '/home/moreaue/dump/expe1//train.tsv'; writing results to '/home/moreaue/dump/expe1//results/900/meta/train/apply-strategy-configs'. 2022-02-16 23:11: 48/59 done
+
+apply-multi-configs.sh: applying configs/models '/home/moreaue/dump/expe1//results/900/meta/train/indiv-strategies.prefix-list' to '/home/moreaue/dump/expe1//train.tsv'; writing results to '/home/moreaue/dump/expe1//results/900/meta/train/apply-strategy-configs'. 2022-02-16 23:11: 48/59 done
+
+apply-multi-configs.sh: applying configs/models '/home/moreaue/dump/expe1//results/900/meta/train/indiv-strategies.prefix-list' to '/home/moreaue/dump/expe1//train.tsv'; writing results to '/home/moreaue/dump/expe1//results/900/meta/train/apply-strategy-configs'. 2022-02-16 23:12: 49/59 done
+
+apply-multi-configs.sh: applying configs/models '/home/moreaue/dump/expe1//results/900/meta/train/indiv-strategies.prefix-list' to '/home/moreaue/dump/expe1//train.tsv'; writing results to '/home/moreaue/dump/expe1//results/900/meta/train/apply-strategy-configs'. 2022-02-16 23:12: 51/59 done
+
+apply-multi-configs.sh: applying configs/models '/home/moreaue/dump/expe1//results/900/meta/train/indiv-strategies.prefix-list' to '/home/moreaue/dump/expe1//train.tsv'; writing results to '/home/moreaue/dump/expe1//results/900/meta/train/apply-strategy-configs'. 2022-02-16 23:12: 53/59 done
+
+apply-multi-configs.sh: applying configs/models '/home/moreaue/dump/expe1//results/900/meta/train/indiv-strategies.prefix-list' to '/home/moreaue/dump/expe1//train.tsv'; writing results to '/home/moreaue/dump/expe1//results/900/meta/train/apply-strategy-configs'. 2022-02-16 23:13: 54/59 done
+
+apply-multi-configs.sh: applying configs/models '/home/moreaue/dump/expe1//results/900/meta/train/indiv-strategies.prefix-list' to '/home/moreaue/dump/expe1//train.tsv'; writing results to '/home/moreaue/dump/expe1//results/900/meta/train/apply-strategy-configs'. 2022-02-16 23:13: 54/59 done
+
+apply-multi-configs.sh: applying configs/models '/home/moreaue/dump/expe1//results/900/meta/train/indiv-strategies.prefix-list' to '/home/moreaue/dump/expe1//train.tsv'; writing results to '/home/moreaue/dump/expe1//results/900/meta/train/apply-strategy-configs'. 2022-02-16 23:13: 55/59 done
+
+apply-multi-configs.sh: applying configs/models '/home/moreaue/dump/expe1//results/900/meta/train/indiv-strategies.prefix-list' to '/home/moreaue/dump/expe1//train.tsv'; writing results to '/home/moreaue/dump/expe1//results/900/meta/train/apply-strategy-configs'. 2022-02-16 23:14: 57/59 done
+
+apply-multi-configs.sh: applying configs/models '/home/moreaue/dump/expe1//results/900/meta/train/indiv-strategies.prefix-list' to '/home/moreaue/dump/expe1//train.tsv'; writing results to '/home/moreaue/dump/expe1//results/900/meta/train/apply-strategy-configs'. 2022-02-16 23:14: 57/59 done
+
+apply-multi-configs.sh: applying configs/models '/home/moreaue/dump/expe1//results/900/meta/train/indiv-strategies.prefix-list' to '/home/moreaue/dump/expe1//train.tsv'; writing results to '/home/moreaue/dump/expe1//results/900/meta/train/apply-strategy-configs'. 2022-02-16 23:14: 57/59 done
+
+apply-multi-configs.sh: applying configs/models '/home/moreaue/dump/expe1//results/900/meta/train/indiv-strategies.prefix-list' to '/home/moreaue/dump/expe1//train.tsv'; writing results to '/home/moreaue/dump/expe1//results/900/meta/train/apply-strategy-configs'. 2022-02-16 23:15: 57/59 done
+
+apply-multi-configs.sh: applying configs/models '/home/moreaue/dump/expe1//results/900/meta/train/indiv-strategies.prefix-list' to '/home/moreaue/dump/expe1//train.tsv'; writing results to '/home/moreaue/dump/expe1//results/900/meta/train/apply-strategy-configs'. 2022-02-16 23:15: 58/59 done
+
+apply-multi-configs.sh: applying configs/models '/home/moreaue/dump/expe1//results/900/meta/train/indiv-strategies.prefix-list' to '/home/moreaue/dump/expe1//train.tsv'; writing results to '/home/moreaue/dump/expe1//results/900/meta/train/apply-strategy-configs'. 2022-02-16 23:15: 58/59 done
+
+apply-multi-configs.sh: applying configs/models '/home/moreaue/dump/expe1//results/900/meta/train/indiv-strategies.prefix-list' to '/home/moreaue/dump/expe1//train.tsv'; writing results to '/home/moreaue/dump/expe1//results/900/meta/train/apply-strategy-configs'. 2022-02-16 23:16: 58/59 done
+
+apply-multi-configs.sh: done.
+apply-multi-configs.sh: applying configs/models '/home/moreaue/dump/expe1//results/900/meta/train/meta-config.prefix-list' to '/home/moreaue/dump/expe1//train.tsv'; writing results to '/home/moreaue/dump/expe1//results/900/meta/train'.
+apply-multi-configs.sh: applying configs/models '/home/moreaue/dump/expe1//results/900/meta/train/meta-config.prefix-list' to '/home/moreaue/dump/expe1//train.tsv'; writing results to '/home/moreaue/dump/expe1//results/900/meta/train'. 2022-02-16 23:16: 0/1 done
+
+apply-multi-configs.sh: applying configs/models '/home/moreaue/dump/expe1//results/900/meta/train/meta-config.prefix-list' to '/home/moreaue/dump/expe1//train.tsv'; writing results to '/home/moreaue/dump/expe1//results/900/meta/train'. 2022-02-16 23:16: 0/1 done
+
+apply-multi-configs.sh: done.
+test-meta-model.sh: done.
