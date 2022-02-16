@@ -1,0 +1,2 @@
+apply-config.sh: applying config '/tmp/expe2/3/process/selected-meta-configs/fold.1.0038' to cases './results/3/meta/train/only-cases.tmp.R5K6iOE2'; results written to './results/3/meta/train/fold.1.0038'
+apply-config.sh: done.
