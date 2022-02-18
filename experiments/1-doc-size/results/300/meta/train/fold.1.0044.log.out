@@ -1,2 +1,2 @@
-apply-config.sh: applying config '/tmp/300/process/selected-meta-configs/fold.1.0044' to cases '/home/moreaue/dump/expe1//results/300/meta/train/only-cases.tmp.Jj5g1TJq'; results written to '/home/moreaue/dump/expe1//results/300/meta/train/fold.1.0044'
+apply-config.sh: applying config '/tmp/300/process/selected-meta-configs/fold.1.0044' to cases '/home/moreaue/dump/expe1//results/300/meta/train/only-cases.tmp.1m6CK0eo'; results written to '/home/moreaue/dump/expe1//results/300/meta/train/fold.1.0044'
 apply-config.sh: done.
