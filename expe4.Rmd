@@ -1,7 +1,7 @@
 ---
-title: "Experiment 2: size of a group of documents by the same author"
+title: "Experiment 4: author diversity in the training set"
 author: "Erwan Moreau"
-date: "2/9/2022"
+date: "2/16/2022"
 output: html_document
 ---
 
@@ -33,23 +33,21 @@ The `.Rmd` source document can be configured by modifying the following lines:
 ```{r myoptions}
 packages.path <- 'packages'
 Sys.setenv(CLG_AUTHORSHIP_PACKAGES_PATH = packages.path)
-work.dir <- 'experiments/2-doc-groups-by-case'
-variable.name <- 'Documents by group'
+work.dir <- 'experiments/4-author-diversity'
+variable.name <- 'Number of authors in the training set'
 Sys.setenv(EXPE_WORK_DIR = work.dir)
 Sys.setenv(COPY_EXPE1_DATA_DIR = 'experiments/1-doc-size/100')
-group.sizes <- '1 2 3 4 5'
-Sys.setenv(GROUP_SIZES = group.sizes)
-any.group.size <- strsplit(group.sizes, ' ',fixed=TRUE)[[1]][1]
+training.cases <- '2 3 4 5 6 7 8 9 10 11 12'
+Sys.setenv(TRAINING_CASES = training.cases)
+any.training.cases <- strsplit(training.cases, ' ',fixed=TRUE)[[1]][1]
 set.seed(2022)
 ```
 
-When reproducing the below experiments manually, one should initialize the environment variables, for instance:
-
 ```
 export CLG_AUTHORSHIP_PACKAGES_PATH=packages
-export EXPE_WORK_DIR=experiments/2-doc-groups-by-case
+export EXPE_WORK_DIR=experiments/4-author-diversity
 export COPY_EXPE1_DATA_DIR=experiments/1-doc-size/100
-export GROUP_SIZES='1 2 3 4 5'
+export TRAINING_CASES='2 3 4 5 6 7 8 9 10 11 12'
 ```
 
 
@@ -67,7 +65,7 @@ if [ ! -d "$COPY_EXPE1_DATA_DIR" ]; then
 fi
 if [ ! -d "$EXPE_WORK_DIR" ]; then 
   mkdir "$EXPE_WORK_DIR"
-  for SIZE in $GROUP_SIZES; do
+  for SIZE in $TRAINING_CASES; do
      mkdir "$EXPE_WORK_DIR/$SIZE"
      cp -R "$COPY_EXPE1_DATA_DIR"/process "$COPY_EXPE1_DATA_DIR"/data "$COPY_EXPE1_DATA_DIR"/impostors "$EXPE_WORK_DIR/$SIZE"
      rm -f "$EXPE_WORK_DIR/$SIZE/data/truth.txt"
@@ -79,16 +77,18 @@ fi
 ## Training and test cases
 
 ```{r generate.cases1}
-d <- readDataDir(paste(work.dir,any.group.size,'data',sep='/'))
+d <- readDataDir(paste(work.dir,any.training.cases,'data',sep='/'))
 dataSplitByAuthor <- splitAuthors(d)
 ```
 
 ```{r generate.cases2}
-for (size.str in strsplit(group.sizes, ' ',fixed=TRUE)[[1]]) {
+full <- buildFullDataset(dataSplitByAuthor, 100, 100)
+l<-restrictTrainingSetDiversity(full)
+for (size.str in strsplit(training.cases, ' ',fixed=TRUE)[[1]]) {
   size <- as.numeric(size.str)
-  full <- buildFullDatasetWithGroups(dataSplitByAuthor, 100, 100,group1.sizes=size, group2.sizes=1)
-  fwrite(full, paste(work.dir,size.str,'full-dataset.tsv',sep='/'), sep='\t')
-  saveDatasetInCasesFormat(full,dir=paste(work.dir,as.character(size),sep='/'))
+  d <- l[[size]]
+  fwrite(d, paste(work.dir,size.str,'full-dataset.tsv',sep='/'), sep='\t')
+  saveDatasetInCasesFormat(d,dir=paste(work.dir,as.character(size),sep='/'))
 }
 ```
 
@@ -96,7 +96,7 @@ for (size.str in strsplit(group.sizes, ' ',fixed=TRUE)[[1]]) {
 
 ```{bash truth.files}
 source session-setup.sh
-for SIZE in $GROUP_SIZES; do
+for SIZE in $TRAINING_CASES; do
   echo "$SIZE: truth file"
   cat "$EXPE_WORK_DIR/$SIZE/train.tsv" > "$EXPE_WORK_DIR/$SIZE/data/truth.txt"
 done
@@ -158,7 +158,7 @@ g3
 
 ```{r save.graphs}
 g<-plot_grid(g1,g2,g3,labels=NULL,ncol=3)
-ggsave('graphs-expe2.pdf',g,width=30,height=8,unit='cm')
+ggsave('graphs-expe4.pdf',g,width=30,height=8,unit='cm')
 ```
 
 

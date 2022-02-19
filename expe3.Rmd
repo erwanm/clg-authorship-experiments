@@ -10,6 +10,21 @@ knitr::opts_chunk$set(echo = TRUE)
 source('experiments.R')
 ```
 
+### Links
+
+This document is part of the "CLG Authorship Experiments" repository:
+
+- [Github repository](https://github.com/erwanm/clg-authorship-experiments)
+- User guide:
+    - [User guide part 1](user-guide-part1.html)
+    - [User guide part 2](user-guide-part2.html)
+- Experiments:
+    - [Experiment 1: size of documents](expe1.html)
+    - [Experiment 2: size of a group of documents by the same author](expe2.html)
+    - [Experiment 3: number of training cases](expe3.html)
+    - [Experiment 4: author diversity in the training set](expe4.html)
+    
+    
 ### Options
 
 The `.Rmd` source document can be configured by modifying the following lines:
@@ -19,12 +34,21 @@ packages.path <- 'packages'
 Sys.setenv(CLG_AUTHORSHIP_PACKAGES_PATH = packages.path)
 work.dir <- 'experiments/3-training-data-size'
 Sys.setenv(EXPE_WORK_DIR = work.dir)
+variable.name <- 'Training data size'
 Sys.setenv(COPY_EXPE1_DATA_DIR = 'experiments/1-doc-size/100')
 training.cases <- '100 200 300 400 500 600 700 800 900 1000'
 Sys.setenv(TRAINING_CASES = training.cases)
 any.training.cases <- strsplit(training.cases, ' ',fixed=TRUE)[[1]][1]
 set.seed(2022)
 ```
+
+```
+export CLG_AUTHORSHIP_PACKAGES_PATH=packages
+export EXPE_WORK_DIR=experiments/3-training-data-size
+export COPY_EXPE1_DATA_DIR=experiments/1-doc-size/100
+export TRAINING_CASES='100 200 300 400 500 600 700 800 900 1000'
+```
+
 
 
 # Data generation
@@ -78,11 +102,61 @@ done
 
 # Running the training processes
 
-For every size `N` the training process is run as follows: 
+The script `./run.sh` performs the full training process for one single "size" (variable value). It's a simple script which prepares the data and then starts the training process,  as described in the [user guide (part 2)](user-guide-part2.html). It is used as follows:
 
 ```
-source session-setup.sh
-prepare-input-data.sh -l english -i "$EXPE_WORK_DIR/$SIZE/impostors" "$EXPE_WORK_DIR/$SIZE/data" "$EXPE_WORK_DIR/$SIZE/process"
-task-distrib-daemon.sh  -s 30s -p 1 -v -q 10 "$TASKS_DIR" $NCORES >"$EXPE_WORK_DIR/$SIZE/task-daemon.log" &
-train-top-level.sh -r -P "$TASKS_DIR/mytasks" -o  '-c -s' "$EXPE_WORK_DIR/$SIZE/process"
+./run.sh $EXPE_WORK_DIR $SIZE $TASKS_DIR $NCORES
 ```
+
+- Naturally the training process must be run for every value `$SIZE`. 
+- **Caution: A single process takes between 1 and 3 days using 40 cores.**
+
+# Evaluating
+
+The script `./evaluate-all.sh` evaluates:
+
+- for every "size" (variables values),
+- the top model (according to the training) for every of the four "model types" (basic, GI, univ, meta),
+- on both the training and test set,
+- and calculates the "author seen/unseen" performance values.
+
+It is used as follows:
+
+```
+./evaluate-all.sh $EXPE_WORK_DIR $NCORES $TASKS_DIR
+```
+
+* The evaluation process is also resource-intensive, it takes up to 3 hours with 40 cores, depending on the number of values.
+* The process creates the directory `$EXPE_WORK_DIR/results` which contains the detailed output for every evaluated model. 
+    * The main output is contained in `$EXPE_WORK_DIR/results/results.tsv`.
+
+
+# Analysis
+
+
+```{r loading}
+d<-readExperimentResults(work.dir)
+```
+
+```{r graph1}
+g1 <- perfByModelType(d,x.label=variable.name)
+g1
+```
+
+
+```{r graph2}
+g2 <- comparePerfsByEvalOn(d,diff.seen=FALSE,x.label=variable.name)
+g2
+```
+
+```{r graph3}
+g3 <- comparePerfsByEvalOn(d,diff.seen=TRUE,x.label=variable.name)
+g3
+```
+
+```{r save.graphs}
+g<-plot_grid(g1,g2,g3,labels=NULL,ncol=3)
+ggsave('graphs-expe3.pdf',g,width=30,height=8,unit='cm')
+```
+
+
