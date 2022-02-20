@@ -4,6 +4,7 @@
 library(data.table)
 library(ggplot2)
 library(plyr)
+library(cowplot)
 
 # fixing random state (comment this line for real randomness)
 # set.seed(2022)
@@ -293,6 +294,79 @@ buildFullDatasetWithGroups <- function(dataSplitByAuthor, nbCasesTrain, nbCasesT
 ##### RESULTS AND ANALYSIS
 
 
-#  d2<-fread('experiments/2-doc-groups-by-case/results/results.tsv')
-# ggplot(d2[selected.by.training==TRUE,], aes(variable,perf.auc,colour=evaluated.on))+geom_point()+geom_line()+ylim(c(0,1))
+# 
 
+readExperimentResults <- function(expe.dir, perf.col='perf.final') {
+  d<-fread(paste(expe.dir, 'results/results.tsv', sep='/'))
+  p <- d[,..perf.col]
+  d[,perf := p] 
+  d
+}
+
+default.font.size <- 14
+default.legend.font.size <- 9
+default.legend.title.font.size <- 10
+
+comparePerfsByEvalOn <- function(resultsDT,diff.seen=FALSE, by.model.type=FALSE, y.range=c(0,1),font.size=default.font.size,x.label='variable',y.label='performance',legend.pos=c(.5,.1),legend.font.size=default.legend.font.size,legend.title.font.size=default.legend.title.font.size) {
+  d <- resultsDT[selected.by.training==TRUE,]
+  if (diff.seen) {
+    d <- d[evaluated.on=='test.seen' | evaluated.on=='test.unseen',]
+  } else {
+    d <- d[evaluated.on=='test' | evaluated.on=='train',]
+  }
+  ggplot(d, aes(variable,perf,colour=evaluated.on))+geom_point()+geom_line(alpha=.7)+ylim(y.range)+ geom_smooth(method = "lm",linetype='dashed', alpha=.25)+
+    theme(text=element_text(size=font.size),
+                legend.text=element_text(size=legend.font.size), 
+                legend.position = legend.pos, 
+                legend.title=element_text(size=legend.title.font.size),
+          legend.direction="horizontal")+
+    xlab(x.label)+ylab(y.label)
+}
+
+perfByModelType <- function(resultsDT, y.range=c(0,1),x.range=NA,font.size=default.font.size,x.label='variable',y.label='performance',legend.pos=c(.5,.1),legend.font.size=default.legend.font.size,legend.title.font.size=default.legend.title.font.size) {
+  d <- resultsDT[evaluated.on=='test',]
+  g<-ggplot(d, aes(variable,perf,colour=model.type))+geom_point(size=3)+geom_line()+ylim(y.range)+
+       geom_point(data=d[selected.by.training==TRUE,],aes(variable,perf),shape=22,size=5, stroke = 1,colour = "black")+
+       theme(text=element_text(size=font.size),
+            legend.text=element_text(size=legend.font.size), 
+            legend.position = legend.pos, 
+            legend.title=element_text(size=legend.title.font.size),
+            legend.direction="horizontal")+
+       xlab(x.label)+ylab(y.label)
+  if (!is.na(x.range)) {
+    g <- g + xlim(x.range)
+  }
+  g
+}
+
+# call: statsByModelType(list(d1,d2,d3,d4))
+statsByModelType <- function(dtList) {
+  for (i in 1:length(dtList)) {
+    dtList[[i]][,expe.id:=i]
+  }
+  r<-rbindlist(dtList)
+  r<-r[evaluated.on=='test',]
+  setkey(r,expe.id,variable)
+  r[,is.best:=(perf==max(perf,na.rm=TRUE)),by=key(r)]
+  best <-r[is.best==TRUE,]
+  best.count <- best[,nrow(.SD),by=model.type]
+  setnames(best.count,'V1', 'times.best')
+  best.count[,prop.best := times.best/nrow(best)]
+  
+  selected <- r[selected.by.training==TRUE,]
+  selected.count <- selected[,nrow(.SD),by=model.type]
+  setnames(selected.count,'V1', 'times.selected')
+  selected.count[,prop.selected := times.selected/nrow(selected)]
+  res1 <- merge(best.count,selected.count)
+
+  both <- r[is.best & selected.by.training,]
+  both.count <- both[,nrow(.SD),by=model.type]
+  setnames(both.count,'V1','times.selected.and.best')
+  total.both <- sum(both.count[,times.selected.and.best])
+  print(paste('Best model is the one selected by training: ',total.both,'/',nrow(selected),'(',total.both/nrow(selected)*100,'%)'))
+  
+  res2 <- merge(res1, both.count)
+  res2[,prob.best.given.selected := times.selected.and.best / times.selected]
+  res2
+
+}
