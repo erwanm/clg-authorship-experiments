@@ -352,7 +352,7 @@ statsByModelType <- function(dtList) {
   best.count <- best[,nrow(.SD),by=model.type]
   setnames(best.count,'V1', 'times.best')
   best.count[,prop.best := times.best/nrow(best)]
-  
+
   selected <- r[selected.by.training==TRUE,]
   selected.count <- selected[,nrow(.SD),by=model.type]
   setnames(selected.count,'V1', 'times.selected')
@@ -365,8 +365,13 @@ statsByModelType <- function(dtList) {
   total.both <- sum(both.count[,times.selected.and.best])
   print(paste('Best model is the one selected by training: ',total.both,'/',nrow(selected),'(',total.both/nrow(selected)*100,'%)'))
   
-  res2 <- merge(res1, both.count)
+  res2 <- merge(res1, both.count,all.x=TRUE)
+  res2[is.na(times.selected.and.best),times.selected.and.best:=0]
   res2[,prob.best.given.selected := times.selected.and.best / times.selected]
   res2
 
+}
+
+refCase <- function(d1, d2, d3, d4) {
+  rbind(d1[variable==100,], d2[variable==1,], d3[variable==100,], d4[variable==12,])
 }

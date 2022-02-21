@@ -31,6 +31,7 @@ This document is part of the "CLG Authorship Experiments" repository:
 The `.Rmd` source document can be configured by modifying the following lines:
 
 ```{r myoptions}
+analyze.results <- TRUE
 packages.path <- 'packages'
 Sys.setenv(CLG_AUTHORSHIP_PACKAGES_PATH = packages.path)
 work.dir <- 'experiments/1-doc-size'
@@ -141,27 +142,27 @@ It is used as follows:
 # Analysis
 
 
-```{r loading}
+```{r loading,eval=analyze.results}
 d<-readExperimentResults(work.dir)
 ```
 
-```{r graph1}
+```{r graph1,eval=analyze.results}
 g1 <- perfByModelType(d,x.label=variable.name)
 g1
 ```
 
 
-```{r graph2}
+```{r graph2,eval=analyze.results}
 g2 <- comparePerfsByEvalOn(d,diff.seen=FALSE,x.label=variable.name)
 g2
 ```
 
-```{r graph3}
+```{r graph3,eval=analyze.results}
 g3 <- comparePerfsByEvalOn(d,diff.seen=TRUE,x.label=variable.name)
 g3
 ```
 
-```{r save.graphs}
+```{r save.graphs,eval=analyze.results}
 g<-plot_grid(g1,g2,g3,labels=NULL,ncol=3)
 ggsave('graphs-expe1.pdf',g,width=30,height=8,unit='cm')
 ```
@@ -170,28 +171,28 @@ Below the same graphs are split by size for the sake of readability.
 
 ## Size below 200 by steps of 20
 
-```{r loadingA}
+```{r loadingA,eval=analyze.results}
 d<-readExperimentResults(work.dir)
 d <- d[variable<=200,]
 ```
 
-```{r graph1A}
+```{r graph1A,eval=analyze.results}
 g1 <- perfByModelType(d,x.label=variable.name)
 g1
 ```
 
 
-```{r graph2A}
+```{r graph2A,eval=analyze.results}
 g2 <- comparePerfsByEvalOn(d,diff.seen=FALSE,x.label=variable.name)
 g2
 ```
 
-```{r graph3A}
+```{r graph3A,eval=analyze.results}
 g3 <- comparePerfsByEvalOn(d,diff.seen=TRUE,x.label=variable.name)
 g3
 ```
 
-```{r save.graphsA}
+```{r save.graphsA,eval=analyze.results}
 g<-plot_grid(g1,g2,g3,labels=NULL,ncol=3)
 ggsave('graphs-expe1A.pdf',g,width=30,height=8,unit='cm')
 ```
@@ -199,28 +200,28 @@ ggsave('graphs-expe1A.pdf',g,width=30,height=8,unit='cm')
 
 ## Size between 100 and 1000 by steps of 100
 
-```{r loadingB}
+```{r loadingB,eval=analyze.results}
 d<-readExperimentResults(work.dir)
 d <- d[variable>=200 | variable ==100,]
 ```
 
-```{r graph1B}
+```{r graph1B,eval=analyze.results}
 g1 <- perfByModelType(d,x.label=variable.name)
 g1
 ```
 
 
-```{r graph2B}
+```{r graph2B,eval=analyze.results}
 g2 <- comparePerfsByEvalOn(d,diff.seen=FALSE,x.label=variable.name)
 g2
 ```
 
-```{r graph3B}
+```{r graph3B,eval=analyze.results}
 g3 <- comparePerfsByEvalOn(d,diff.seen=TRUE,x.label=variable.name)
 g3
 ```
 
-```{r save.graphsB}
+```{r save.graphsB,eval=analyze.results}
 g<-plot_grid(g1,g2,g3,labels=NULL,ncol=3)
 ggsave('graphs-expe1B.pdf',g,width=30,height=8,unit='cm')
 ```
