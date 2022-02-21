@@ -1,982 +1,874 @@
-SUMMARY 22.02.19 18:12: 0 tasks waiting, 0 tasks running, 0 tasks done.
+SUMMARY 22.02.21 14:34: 0 tasks waiting, 0 tasks running, 0 tasks done.
         no task running currently.
         Recently achieved tasks:
-SUMMARY 22.02.19 18:13: 53 tasks waiting, 40 tasks running, 13 tasks done.
-          Oldest task running, started 00:00:21 ago: evaltask.fold.1.GI.0045.BS0zUrSDW
-          Newest task running started 00:00:00 ago: evaltask.fold.1.GI.0016.gZWBuU3g8
+SUMMARY 22.02.21 14:35: 70 tasks waiting, 40 tasks running, 0 tasks done.
+          Oldest task running, started 00:00:22 ago: evaltask.fold.1.basic.0002.O7izRYtZs
+          Newest task running started 00:00:21 ago: evaltask.fold.1.GI.0012.WNDbnePsg
         Recently achieved tasks:
-          evaltask.fold.1.basic.0011.1ViElfgx6 (done 00:00:06 ago)
-          evaltask.fold.1.basic.0041.jdNzZIU36 (done 00:00:06 ago)
-          evaltask.fold.1.basic.0046.iK52ph6aY (done 00:00:06 ago)
-          evaltask.fold.1.basic.0021.BMUnZF0d0 (done 00:00:06 ago)
-          evaltask.fold.1.basic.0038.1hXkBdWUJ (done 00:00:06 ago)
-          evaltask.fold.1.basic.0050.i0shZlaSm (done 00:00:06 ago)
-          evaltask.fold.1.basic.0049.JdN95vWx1 (done 00:00:06 ago)
-          evaltask.fold.1.basic.0009.5rEANdCdI (done 00:00:06 ago)
-          evaltask.fold.1.basic.0015.z0IcOSVVX (done 00:00:06 ago)
-          evaltask.fold.1.basic.0037.8QWWCDXiL (done 00:00:06 ago)
-SUMMARY 22.02.19 18:13: 40 tasks waiting, 40 tasks running, 26 tasks done.
-          Oldest task running, started 00:01:02 ago: evaltask.fold.1.GI.0045.BS0zUrSDW
-          Newest task running started 00:00:20 ago: evaltask.fold.1.univ.0003.cVBrLC1Eg
+SUMMARY 22.02.21 14:35: 37 tasks waiting, 40 tasks running, 33 tasks done.
+          Oldest task running, started 00:01:02 ago: evaltask.fold.1.GI.0007.0tKCqLnK9
+          Newest task running started 00:00:20 ago: evaltask.fold.1.GI.0022.UdWUa1oKN
         Recently achieved tasks:
-          evaltask.fold.1.basic.0041.cWP61DrMB (done 00:00:31 ago)
-          evaltask.fold.1.basic.0012.Di3EuFYDi (done 00:00:32 ago)
-          evaltask.fold.1.basic.0038.zSfAsgyzQ (done 00:00:32 ago)
-          evaltask.fold.1.basic.0009.abE8Bo7eR (done 00:00:33 ago)
-          evaltask.fold.1.basic.0046.VLGy8h1WW (done 00:00:33 ago)
-          evaltask.fold.1.basic.0037.CmuOiKv1w (done 00:00:33 ago)
-          evaltask.fold.1.basic.0021.xTmf9r7ZG (done 00:00:34 ago)
-          evaltask.fold.1.basic.0049.2xYjOX1zm (done 00:00:34 ago)
-          evaltask.fold.1.basic.0050.3OMRZQ5Hm (done 00:00:34 ago)
-          evaltask.fold.1.basic.0015.ZC7arzSid (done 00:00:34 ago)
-SUMMARY 22.02.19 18:14: 40 tasks waiting, 40 tasks running, 27 tasks done.
-          Oldest task running, started 00:01:44 ago: evaltask.fold.1.GI.0045.BS0zUrSDW
-          Newest task running started 00:00:00 ago: evaltask.fold.1.GI.0033.xttaj6z6Q
+          evaltask.fold.1.basic.0033.jodhWTziw (done 00:00:25 ago)
+          evaltask.fold.1.basic.0015.Tp9oqj2Cm (done 00:00:26 ago)
+          evaltask.fold.1.basic.0032.pRhwMGlca (done 00:00:26 ago)
+          evaltask.fold.1.basic.0003.XWLMy7xid (done 00:00:26 ago)
+          evaltask.fold.1.basic.0009.HAga9OEIC (done 00:00:26 ago)
+          evaltask.fold.1.basic.0006.PDrhHnssX (done 00:00:26 ago)
+          evaltask.fold.1.basic.0027.AqAgheIN1 (done 00:00:26 ago)
+          evaltask.fold.1.basic.0002.jWCfHA8bl (done 00:00:26 ago)
+          evaltask.fold.1.basic.0008.WvNMweIae (done 00:00:26 ago)
+          evaltask.fold.1.basic.0022.hlPwYnxO5 (done 00:00:26 ago)
+SUMMARY 22.02.21 14:36: 30 tasks waiting, 40 tasks running, 40 tasks done.
+          Oldest task running, started 00:01:43 ago: evaltask.fold.1.GI.0007.0tKCqLnK9
+          Newest task running started 00:00:21 ago: evaltask.fold.1.GI.0035.wETmjyoeY
         Recently achieved tasks:
-          evaltask.fold.1.univ.0037.s80qK7a6A (done 00:00:18 ago)
-          evaltask.fold.1.basic.0041.cWP61DrMB (done 00:01:13 ago)
-          evaltask.fold.1.basic.0012.Di3EuFYDi (done 00:01:14 ago)
-          evaltask.fold.1.basic.0038.zSfAsgyzQ (done 00:01:14 ago)
-          evaltask.fold.1.basic.0009.abE8Bo7eR (done 00:01:14 ago)
-          evaltask.fold.1.basic.0046.VLGy8h1WW (done 00:01:14 ago)
-          evaltask.fold.1.basic.0037.CmuOiKv1w (done 00:01:14 ago)
-          evaltask.fold.1.basic.0021.xTmf9r7ZG (done 00:01:15 ago)
-          evaltask.fold.1.basic.0049.2xYjOX1zm (done 00:01:15 ago)
-          evaltask.fold.1.basic.0050.3OMRZQ5Hm (done 00:01:15 ago)
-SUMMARY 22.02.19 18:15: 40 tasks waiting, 40 tasks running, 27 tasks done.
-          Oldest task running, started 00:02:24 ago: evaltask.fold.1.GI.0045.BS0zUrSDW
-          Newest task running started 00:00:41 ago: evaltask.fold.1.GI.0033.xttaj6z6Q
+          evaltask.fold.1.basic.0045.SbUuO7nT0 (done 00:00:31 ago)
+          evaltask.fold.1.basic.0047.FOUSI327i (done 00:00:33 ago)
+          evaltask.fold.1.basic.0041.8DYICpYxK (done 00:00:34 ago)
+          evaltask.fold.1.basic.0037.w099sUa9w (done 00:00:34 ago)
+          evaltask.fold.1.basic.0044.7WLENCkoV (done 00:00:36 ago)
+          evaltask.fold.1.basic.0034.AcL9cgsJf (done 00:00:37 ago)
+          evaltask.fold.1.basic.0035.ixrAVjO4Q (done 00:00:37 ago)
+          evaltask.fold.1.basic.0033.jodhWTziw (done 00:01:07 ago)
+          evaltask.fold.1.basic.0015.Tp9oqj2Cm (done 00:01:08 ago)
+          evaltask.fold.1.basic.0032.pRhwMGlca (done 00:01:08 ago)
+SUMMARY 22.02.21 14:37: 26 tasks waiting, 40 tasks running, 45 tasks done.
+          Oldest task running, started 00:02:24 ago: evaltask.fold.1.GI.0007.oYGp7fjkx
+          Newest task running started 00:00:00 ago: evaltask.fold.1.univ.0026.BXE8CfZmX
         Recently achieved tasks:
-          evaltask.fold.1.univ.0037.s80qK7a6A (done 00:00:59 ago)
-          evaltask.fold.1.basic.0041.cWP61DrMB (done 00:01:54 ago)
-          evaltask.fold.1.basic.0012.Di3EuFYDi (done 00:01:55 ago)
-          evaltask.fold.1.basic.0038.zSfAsgyzQ (done 00:01:55 ago)
-          evaltask.fold.1.basic.0009.abE8Bo7eR (done 00:01:55 ago)
-          evaltask.fold.1.basic.0046.VLGy8h1WW (done 00:01:55 ago)
-          evaltask.fold.1.basic.0037.CmuOiKv1w (done 00:01:55 ago)
-          evaltask.fold.1.basic.0021.xTmf9r7ZG (done 00:01:56 ago)
-          evaltask.fold.1.basic.0049.2xYjOX1zm (done 00:01:56 ago)
-          evaltask.fold.1.basic.0050.3OMRZQ5Hm (done 00:01:56 ago)
-SUMMARY 22.02.19 18:15: 31 tasks waiting, 40 tasks running, 36 tasks done.
-          Oldest task running, started 00:03:06 ago: evaltask.fold.1.GI.0045.BS0zUrSDW
-          Newest task running started 00:00:00 ago: evaltask.fold.1.univ.0014.4DfVdyIOg
+          evaltask.fold.1.GI.0004.UF0a7qvUN (done 00:00:12 ago)
+          evaltask.fold.1.univ.0004.AaSZTUCd9 (done 00:00:14 ago)
+          evaltask.fold.1.univ.0002.WrQ5xZDzQ (done 00:00:25 ago)
+          evaltask.fold.1.GI.0007.0tKCqLnK9 (done 00:00:27 ago)
+          evaltask.fold.1.GI.0012.WNDbnePsg (done 00:00:31 ago)
+          evaltask.fold.1.basic.0045.SbUuO7nT0 (done 00:01:13 ago)
+          evaltask.fold.1.basic.0047.FOUSI327i (done 00:01:15 ago)
+          evaltask.fold.1.basic.0041.8DYICpYxK (done 00:01:16 ago)
+          evaltask.fold.1.basic.0037.w099sUa9w (done 00:01:16 ago)
+          evaltask.fold.1.basic.0044.7WLENCkoV (done 00:01:17 ago)
+SUMMARY 22.02.21 14:37: 18 tasks waiting, 40 tasks running, 53 tasks done.
+          Oldest task running, started 00:03:05 ago: evaltask.fold.1.GI.0007.oYGp7fjkx
+          Newest task running started 00:00:00 ago: evaltask.fold.1.univ.0004.ZjR4wTXks
         Recently achieved tasks:
-          evaltask.fold.1.GI.0035.DCnohpySe (done 00:00:01 ago)
-          evaltask.fold.1.GI.0010.Kg4fRktRj (done 00:00:02 ago)
-          evaltask.fold.1.GI.0004.0xC07Wz8J (done 00:00:04 ago)
-          evaltask.fold.1.GI.0026.PMtLYuD2T (done 00:00:07 ago)
-          evaltask.fold.1.GI.0033.NCQsfyl7r (done 00:00:08 ago)
-          evaltask.fold.1.GI.0003.zXEkaR62F (done 00:00:10 ago)
-          evaltask.fold.1.GI.0014.tKlU5Xs09 (done 00:00:11 ago)
-          evaltask.fold.1.univ.0003.cVBrLC1Eg (done 00:00:14 ago)
-          evaltask.fold.1.GI.0022.ZhxKu4w9V (done 00:00:33 ago)
-          evaltask.fold.1.univ.0037.s80qK7a6A (done 00:01:40 ago)
-SUMMARY 22.02.19 18:16: 26 tasks waiting, 40 tasks running, 42 tasks done.
-          Oldest task running, started 00:03:46 ago: evaltask.fold.1.GI.0045.sn4InHjiF
-          Newest task running started 00:00:00 ago: evaltask.fold.1.univ.0024.eyPRkRocQ
+          evaltask.fold.1.univ.0011.MweelRTpa (done 00:00:02 ago)
+          evaltask.fold.1.GI.0011.g0oUVbYSX (done 00:00:05 ago)
+          evaltask.fold.1.GI.0009.fukkPZHzS (done 00:00:07 ago)
+          evaltask.fold.1.univ.0007.EM6dYEe9K (done 00:00:09 ago)
+          evaltask.fold.1.univ.0014.vq9e4IS6Y (done 00:00:10 ago)
+          evaltask.fold.1.univ.0008.1DNQ3HQR1 (done 00:00:12 ago)
+          evaltask.fold.1.GI.0050.KMnh6v2qN (done 00:00:13 ago)
+          evaltask.fold.1.univ.0003.tiEmMbEeV (done 00:00:29 ago)
+          evaltask.fold.1.GI.0004.UF0a7qvUN (done 00:00:53 ago)
+          evaltask.fold.1.univ.0004.AaSZTUCd9 (done 00:00:55 ago)
+SUMMARY 22.02.21 14:38: 9 tasks waiting, 39 tasks running, 63 tasks done.
+          Oldest task running, started 00:03:46 ago: evaltask.fold.1.GI.0007.oYGp7fjkx
+          Newest task running started 00:00:00 ago: evaltask.fold.1.univ.0024.dUIkB2Sqb
         Recently achieved tasks:
-          evaltask.fold.1.GI.0043.VtodbjTtB (done 00:00:09 ago)
-          evaltask.fold.1.GI.0025.9lrPvXczm (done 00:00:14 ago)
-          evaltask.fold.1.univ.0001.y6Li7kSkb (done 00:00:19 ago)
-          evaltask.fold.1.GI.0037.607xw444I (done 00:00:24 ago)
-          evaltask.fold.1.GI.0049.AencAa6hq (done 00:00:27 ago)
-          evaltask.fold.1.GI.0045.BS0zUrSDW (done 00:00:29 ago)
-          evaltask.fold.1.GI.0035.DCnohpySe (done 00:00:42 ago)
-          evaltask.fold.1.GI.0010.Kg4fRktRj (done 00:00:43 ago)
-          evaltask.fold.1.GI.0004.0xC07Wz8J (done 00:00:45 ago)
-          evaltask.fold.1.GI.0026.PMtLYuD2T (done 00:00:48 ago)
-SUMMARY 22.02.19 18:17: 24 tasks waiting, 40 tasks running, 44 tasks done.
-          Oldest task running, started 00:04:27 ago: evaltask.fold.1.GI.0045.sn4InHjiF
-          Newest task running started 00:00:20 ago: evaltask.fold.1.univ.0025.wGl82PmuA
+          evaltask.fold.1.univ.0026.BXE8CfZmX (done 00:00:00 ago)
+          evaltask.fold.1.univ.0024.rqtNVhsbk (done 00:00:02 ago)
+          evaltask.fold.1.GI.0022.Xa2lE0k66 (done 00:00:03 ago)
+          evaltask.fold.1.GI.0018.77wJbMBXz (done 00:00:13 ago)
+          evaltask.fold.1.GI.0024.yYPIPV2Wi (done 00:00:14 ago)
+          evaltask.fold.1.GI.0047.P0Wj0fwZT (done 00:00:16 ago)
+          evaltask.fold.1.univ.0015.VHIK1v0Mq (done 00:00:27 ago)
+          evaltask.fold.1.GI.0028.6Wk8Vbr1B (done 00:00:34 ago)
+          evaltask.fold.1.GI.0035.tcpb8r1Pl (done 00:00:40 ago)
+          evaltask.fold.1.GI.0001.1FpFb7CgK (done 00:00:41 ago)
+SUMMARY 22.02.21 14:39: 4 tasks waiting, 40 tasks running, 67 tasks done.
+          Oldest task running, started 00:04:26 ago: evaltask.fold.1.GI.0007.oYGp7fjkx
+          Newest task running started 00:00:00 ago: evaltask.fold.1.univ.0041.jm5zjJVuE
         Recently achieved tasks:
-          evaltask.fold.1.GI.0048.r2G3tDeqJ (done 00:00:30 ago)
-          evaltask.fold.1.GI.0045.2ihB7QJni (done 00:00:32 ago)
-          evaltask.fold.1.GI.0043.VtodbjTtB (done 00:00:51 ago)
-          evaltask.fold.1.GI.0025.9lrPvXczm (done 00:00:56 ago)
-          evaltask.fold.1.univ.0001.y6Li7kSkb (done 00:01:01 ago)
-          evaltask.fold.1.GI.0037.607xw444I (done 00:01:06 ago)
-          evaltask.fold.1.GI.0049.AencAa6hq (done 00:01:09 ago)
-          evaltask.fold.1.GI.0045.BS0zUrSDW (done 00:01:11 ago)
-          evaltask.fold.1.GI.0035.DCnohpySe (done 00:01:23 ago)
-          evaltask.fold.1.GI.0010.Kg4fRktRj (done 00:01:24 ago)
-SUMMARY 22.02.19 18:17: 23 tasks waiting, 40 tasks running, 45 tasks done.
-          Oldest task running, started 00:05:09 ago: evaltask.fold.1.GI.0045.sn4InHjiF
-          Newest task running started 00:00:21 ago: evaltask.fold.1.univ.0003.UDPZIOwEQ
+          evaltask.fold.1.univ.0041.JVBBg6d3r (done 00:00:03 ago)
+          evaltask.fold.1.univ.0031.uhIRSDIBZ (done 00:00:04 ago)
+          evaltask.fold.1.GI.0031.vHsScynir (done 00:00:18 ago)
+          evaltask.fold.1.GI.0017.XtWMmmPDf (done 00:00:22 ago)
+          evaltask.fold.1.univ.0026.BXE8CfZmX (done 00:00:40 ago)
+          evaltask.fold.1.univ.0024.rqtNVhsbk (done 00:00:42 ago)
+          evaltask.fold.1.GI.0022.Xa2lE0k66 (done 00:00:43 ago)
+          evaltask.fold.1.GI.0018.77wJbMBXz (done 00:00:53 ago)
+          evaltask.fold.1.GI.0024.yYPIPV2Wi (done 00:00:55 ago)
+          evaltask.fold.1.GI.0047.P0Wj0fwZT (done 00:00:57 ago)
+SUMMARY 22.02.21 14:39: 0 tasks waiting, 40 tasks running, 71 tasks done.
+          Oldest task running, started 00:05:07 ago: evaltask.fold.1.GI.0007.oYGp7fjkx
+          Newest task running started 00:00:00 ago: evaltask.fold.1.strategy-as-meta.GI.0007.IWsp4GhDk
         Recently achieved tasks:
-          evaltask.fold.1.univ.0007.xrYqv1N2b (done 00:00:22 ago)
-          evaltask.fold.1.GI.0048.r2G3tDeqJ (done 00:01:12 ago)
-          evaltask.fold.1.GI.0045.2ihB7QJni (done 00:01:14 ago)
-          evaltask.fold.1.GI.0043.VtodbjTtB (done 00:01:32 ago)
-          evaltask.fold.1.GI.0025.9lrPvXczm (done 00:01:37 ago)
-          evaltask.fold.1.univ.0001.y6Li7kSkb (done 00:01:42 ago)
-          evaltask.fold.1.GI.0037.607xw444I (done 00:01:47 ago)
-          evaltask.fold.1.GI.0049.AencAa6hq (done 00:01:50 ago)
-          evaltask.fold.1.GI.0045.BS0zUrSDW (done 00:01:52 ago)
-          evaltask.fold.1.GI.0035.DCnohpySe (done 00:02:05 ago)
-SUMMARY 22.02.19 18:18: 15 tasks waiting, 40 tasks running, 53 tasks done.
-          Oldest task running, started 00:05:50 ago: evaltask.fold.1.GI.0045.sn4InHjiF
-          Newest task running started 00:00:00 ago: evaltask.fold.1.univ.0010.0r9Babo72
+          evaltask.fold.1.univ.0046.GNwGzlk2f (done 00:00:03 ago)
+          evaltask.fold.1.univ.0043.TINKDy8go (done 00:00:17 ago)
+          evaltask.fold.1.univ.0037.MZjQ6RYF4 (done 00:00:28 ago)
+          evaltask.fold.1.univ.0038.8vJ7P3iAM (done 00:00:38 ago)
+          evaltask.fold.1.univ.0041.JVBBg6d3r (done 00:00:44 ago)
+          evaltask.fold.1.univ.0031.uhIRSDIBZ (done 00:00:45 ago)
+          evaltask.fold.1.GI.0031.vHsScynir (done 00:00:59 ago)
+          evaltask.fold.1.GI.0017.XtWMmmPDf (done 00:01:03 ago)
+          evaltask.fold.1.univ.0026.BXE8CfZmX (done 00:01:21 ago)
+          evaltask.fold.1.univ.0024.rqtNVhsbk (done 00:01:23 ago)
+SUMMARY 22.02.21 14:40: 0 tasks waiting, 36 tasks running, 75 tasks done.
+          Oldest task running, started 00:05:47 ago: evaltask.fold.1.GI.0007.oYGp7fjkx
+          Newest task running started 00:00:40 ago: evaltask.fold.1.univ.0048.MzZiDfchk
         Recently achieved tasks:
-          evaltask.fold.1.GI.0005.iq1d1Yg8b (done 00:00:02 ago)
-          evaltask.fold.1.GI.0012.XRlI72L1z (done 00:00:05 ago)
-          evaltask.fold.1.univ.0024.eyPRkRocQ (done 00:00:10 ago)
-          evaltask.fold.1.univ.0010.vzgG59nF3 (done 00:00:11 ago)
-          evaltask.fold.1.univ.0008.6DVlbxurg (done 00:00:12 ago)
-          evaltask.fold.1.univ.0014.4DfVdyIOg (done 00:00:20 ago)
-          evaltask.fold.1.univ.0006.yXPlqxCra (done 00:00:26 ago)
-          evaltask.fold.1.univ.0015.H9Bq5wKck (done 00:00:37 ago)
-          evaltask.fold.1.univ.0007.xrYqv1N2b (done 00:01:03 ago)
-          evaltask.fold.1.GI.0048.r2G3tDeqJ (done 00:01:53 ago)
-SUMMARY 22.02.19 18:19: 9 tasks waiting, 40 tasks running, 59 tasks done.
-          Oldest task running, started 00:06:31 ago: evaltask.fold.1.GI.0045.sn4InHjiF
-          Newest task running started 00:00:01 ago: evaltask.fold.1.univ.0024.2urISX9Ax
+          evaltask.fold.1.GI.0021.kyXskWC4c (done 00:00:05 ago)
+          evaltask.fold.1.GI.0045.tt3ZqXPHT (done 00:00:20 ago)
+          evaltask.fold.1.univ.0048.Rr6FS91ak (done 00:00:36 ago)
+          evaltask.fold.1.strategy-as-meta.GI.0007.IWsp4GhDk (done 00:00:39 ago)
+          evaltask.fold.1.univ.0046.GNwGzlk2f (done 00:00:43 ago)
+          evaltask.fold.1.univ.0043.TINKDy8go (done 00:00:57 ago)
+          evaltask.fold.1.univ.0037.MZjQ6RYF4 (done 00:01:08 ago)
+          evaltask.fold.1.univ.0038.8vJ7P3iAM (done 00:01:18 ago)
+          evaltask.fold.1.univ.0041.JVBBg6d3r (done 00:01:24 ago)
+          evaltask.fold.1.univ.0031.uhIRSDIBZ (done 00:01:25 ago)
+SUMMARY 22.02.21 14:41: 0 tasks waiting, 36 tasks running, 75 tasks done.
+          Oldest task running, started 00:06:28 ago: evaltask.fold.1.GI.0007.oYGp7fjkx
+          Newest task running started 00:01:21 ago: evaltask.fold.1.univ.0048.MzZiDfchk
         Recently achieved tasks:
-          evaltask.fold.1.GI.0044.LTmSuXrQw (done 00:00:06 ago)
-          evaltask.fold.1.GI.0028.WHjFZqRaV (done 00:00:14 ago)
-          evaltask.fold.1.GI.0020.ELyOqYwcZ (done 00:00:16 ago)
-          evaltask.fold.1.univ.0023.VWCDr89g8 (done 00:00:26 ago)
-          evaltask.fold.1.GI.0016.hF4bD34Y4 (done 00:00:34 ago)
-          evaltask.fold.1.univ.0025.wGl82PmuA (done 00:00:36 ago)
-          evaltask.fold.1.GI.0005.iq1d1Yg8b (done 00:00:43 ago)
-          evaltask.fold.1.GI.0012.XRlI72L1z (done 00:00:46 ago)
-          evaltask.fold.1.univ.0024.eyPRkRocQ (done 00:00:51 ago)
-          evaltask.fold.1.univ.0010.vzgG59nF3 (done 00:00:52 ago)
-SUMMARY 22.02.19 18:19: 8 tasks waiting, 40 tasks running, 60 tasks done.
-          Oldest task running, started 00:07:11 ago: evaltask.fold.1.GI.0045.sn4InHjiF
-          Newest task running started 00:00:20 ago: evaltask.fold.1.univ.0025.rysBVs7eB
+          evaltask.fold.1.GI.0021.kyXskWC4c (done 00:00:46 ago)
+          evaltask.fold.1.GI.0045.tt3ZqXPHT (done 00:01:01 ago)
+          evaltask.fold.1.univ.0048.Rr6FS91ak (done 00:01:17 ago)
+          evaltask.fold.1.strategy-as-meta.GI.0007.IWsp4GhDk (done 00:01:20 ago)
+          evaltask.fold.1.univ.0046.GNwGzlk2f (done 00:01:24 ago)
+          evaltask.fold.1.univ.0043.TINKDy8go (done 00:01:38 ago)
+          evaltask.fold.1.univ.0037.MZjQ6RYF4 (done 00:01:49 ago)
+          evaltask.fold.1.univ.0038.8vJ7P3iAM (done 00:01:59 ago)
+          evaltask.fold.1.univ.0041.JVBBg6d3r (done 00:02:05 ago)
+          evaltask.fold.1.univ.0031.uhIRSDIBZ (done 00:02:06 ago)
+SUMMARY 22.02.21 14:42: 0 tasks waiting, 35 tasks running, 77 tasks done.
+          Oldest task running, started 00:07:18 ago: evaltask.fold.1.GI.0007.oYGp7fjkx
+          Newest task running started 00:02:11 ago: evaltask.fold.1.univ.0048.MzZiDfchk
         Recently achieved tasks:
-          evaltask.fold.1.GI.0024.b20CsaiL2 (done 00:00:40 ago)
-          evaltask.fold.1.GI.0044.LTmSuXrQw (done 00:00:46 ago)
-          evaltask.fold.1.GI.0028.WHjFZqRaV (done 00:00:54 ago)
-          evaltask.fold.1.GI.0020.ELyOqYwcZ (done 00:00:56 ago)
-          evaltask.fold.1.univ.0023.VWCDr89g8 (done 00:01:06 ago)
-          evaltask.fold.1.GI.0016.hF4bD34Y4 (done 00:01:14 ago)
-          evaltask.fold.1.univ.0025.wGl82PmuA (done 00:01:16 ago)
-          evaltask.fold.1.GI.0005.iq1d1Yg8b (done 00:01:23 ago)
-          evaltask.fold.1.GI.0012.XRlI72L1z (done 00:01:26 ago)
-          evaltask.fold.1.univ.0024.eyPRkRocQ (done 00:01:31 ago)
-SUMMARY 22.02.19 18:20: 8 tasks waiting, 40 tasks running, 60 tasks done.
-          Oldest task running, started 00:07:52 ago: evaltask.fold.1.GI.0045.sn4InHjiF
-          Newest task running started 00:01:01 ago: evaltask.fold.1.univ.0025.rysBVs7eB
+          evaltask.fold.1.0027.EQvq1Mhfc (done 00:00:20 ago)
+          evaltask.fold.1.GI.0020.0fuyb5pZr (done 00:00:47 ago)
+          evaltask.fold.1.GI.0021.kyXskWC4c (done 00:01:36 ago)
+          evaltask.fold.1.GI.0045.tt3ZqXPHT (done 00:01:51 ago)
+          evaltask.fold.1.univ.0048.Rr6FS91ak (done 00:02:07 ago)
+          evaltask.fold.1.strategy-as-meta.GI.0007.IWsp4GhDk (done 00:02:10 ago)
+          evaltask.fold.1.univ.0046.GNwGzlk2f (done 00:02:14 ago)
+          evaltask.fold.1.univ.0043.TINKDy8go (done 00:02:28 ago)
+          evaltask.fold.1.univ.0037.MZjQ6RYF4 (done 00:02:39 ago)
+          evaltask.fold.1.univ.0038.8vJ7P3iAM (done 00:02:49 ago)
+SUMMARY 22.02.21 14:42: 0 tasks waiting, 35 tasks running, 77 tasks done.
+          Oldest task running, started 00:07:58 ago: evaltask.fold.1.GI.0007.oYGp7fjkx
+          Newest task running started 00:02:51 ago: evaltask.fold.1.univ.0048.MzZiDfchk
         Recently achieved tasks:
-          evaltask.fold.1.GI.0024.b20CsaiL2 (done 00:01:21 ago)
-          evaltask.fold.1.GI.0044.LTmSuXrQw (done 00:01:27 ago)
-          evaltask.fold.1.GI.0028.WHjFZqRaV (done 00:01:35 ago)
-          evaltask.fold.1.GI.0020.ELyOqYwcZ (done 00:01:37 ago)
-          evaltask.fold.1.univ.0023.VWCDr89g8 (done 00:01:47 ago)
-          evaltask.fold.1.GI.0016.hF4bD34Y4 (done 00:01:55 ago)
-          evaltask.fold.1.univ.0025.wGl82PmuA (done 00:01:57 ago)
-          evaltask.fold.1.GI.0005.iq1d1Yg8b (done 00:02:04 ago)
-          evaltask.fold.1.GI.0012.XRlI72L1z (done 00:02:07 ago)
-          evaltask.fold.1.univ.0024.eyPRkRocQ (done 00:02:12 ago)
-SUMMARY 22.02.19 18:21: 2 tasks waiting, 40 tasks running, 66 tasks done.
-          Oldest task running, started 00:08:33 ago: evaltask.fold.1.GI.0045.sn4InHjiF
-          Newest task running started 00:00:00 ago: evaltask.fold.1.univ.0050.WAVZl2QC7
+          evaltask.fold.1.0027.EQvq1Mhfc (done 00:01:00 ago)
+          evaltask.fold.1.GI.0020.0fuyb5pZr (done 00:01:27 ago)
+          evaltask.fold.1.GI.0021.kyXskWC4c (done 00:02:16 ago)
+          evaltask.fold.1.GI.0045.tt3ZqXPHT (done 00:02:31 ago)
+          evaltask.fold.1.univ.0048.Rr6FS91ak (done 00:02:47 ago)
+          evaltask.fold.1.strategy-as-meta.GI.0007.IWsp4GhDk (done 00:02:50 ago)
+          evaltask.fold.1.univ.0046.GNwGzlk2f (done 00:02:54 ago)
+          evaltask.fold.1.univ.0043.TINKDy8go (done 00:03:08 ago)
+          evaltask.fold.1.univ.0037.MZjQ6RYF4 (done 00:03:19 ago)
+          evaltask.fold.1.univ.0038.8vJ7P3iAM (done 00:03:29 ago)
+SUMMARY 22.02.21 14:43: 0 tasks waiting, 35 tasks running, 77 tasks done.
+          Oldest task running, started 00:08:38 ago: evaltask.fold.1.GI.0007.oYGp7fjkx
+          Newest task running started 00:03:31 ago: evaltask.fold.1.univ.0048.MzZiDfchk
         Recently achieved tasks:
-          evaltask.fold.1.univ.0036.ILSHA1D3n (done 00:00:08 ago)
-          evaltask.fold.1.univ.0041.pKacEDKrq (done 00:00:12 ago)
-          evaltask.fold.1.univ.0049.sJtfkK2dc (done 00:00:13 ago)
-          evaltask.fold.1.univ.0030.1RWtt0zL6 (done 00:00:15 ago)
-          evaltask.fold.1.univ.0050.GJX8FegFo (done 00:00:20 ago)
-          evaltask.fold.1.univ.0028.6OwDRk6zB (done 00:00:39 ago)
-          evaltask.fold.1.GI.0024.b20CsaiL2 (done 00:02:02 ago)
-          evaltask.fold.1.GI.0044.LTmSuXrQw (done 00:02:08 ago)
-          evaltask.fold.1.GI.0028.WHjFZqRaV (done 00:02:16 ago)
-          evaltask.fold.1.GI.0020.ELyOqYwcZ (done 00:02:18 ago)
-SUMMARY 22.02.19 18:22: 3 tasks waiting, 40 tasks running, 66 tasks done.
-          Oldest task running, started 00:09:14 ago: evaltask.fold.1.GI.0045.sn4InHjiF
-          Newest task running started 00:00:41 ago: evaltask.fold.1.univ.0050.WAVZl2QC7
+          evaltask.fold.1.0027.EQvq1Mhfc (done 00:01:40 ago)
+          evaltask.fold.1.GI.0020.0fuyb5pZr (done 00:02:07 ago)
+          evaltask.fold.1.GI.0021.kyXskWC4c (done 00:02:56 ago)
+          evaltask.fold.1.GI.0045.tt3ZqXPHT (done 00:03:11 ago)
+          evaltask.fold.1.univ.0048.Rr6FS91ak (done 00:03:27 ago)
+          evaltask.fold.1.strategy-as-meta.GI.0007.IWsp4GhDk (done 00:03:30 ago)
+          evaltask.fold.1.univ.0046.GNwGzlk2f (done 00:03:34 ago)
+          evaltask.fold.1.univ.0043.TINKDy8go (done 00:03:48 ago)
+          evaltask.fold.1.univ.0037.MZjQ6RYF4 (done 00:03:59 ago)
+          evaltask.fold.1.univ.0038.8vJ7P3iAM (done 00:04:09 ago)
+SUMMARY 22.02.21 14:44: 0 tasks waiting, 35 tasks running, 77 tasks done.
+          Oldest task running, started 00:09:18 ago: evaltask.fold.1.GI.0007.oYGp7fjkx
+          Newest task running started 00:04:11 ago: evaltask.fold.1.univ.0048.MzZiDfchk
         Recently achieved tasks:
-          evaltask.fold.1.univ.0036.ILSHA1D3n (done 00:00:49 ago)
-          evaltask.fold.1.univ.0041.pKacEDKrq (done 00:00:53 ago)
-          evaltask.fold.1.univ.0049.sJtfkK2dc (done 00:00:54 ago)
-          evaltask.fold.1.univ.0030.1RWtt0zL6 (done 00:00:56 ago)
-          evaltask.fold.1.univ.0050.GJX8FegFo (done 00:01:01 ago)
-          evaltask.fold.1.univ.0028.6OwDRk6zB (done 00:01:20 ago)
-          evaltask.fold.1.GI.0024.b20CsaiL2 (done 00:02:43 ago)
-          evaltask.fold.1.GI.0044.LTmSuXrQw (done 00:02:50 ago)
-          evaltask.fold.1.GI.0028.WHjFZqRaV (done 00:02:58 ago)
-          evaltask.fold.1.GI.0020.ELyOqYwcZ (done 00:03:00 ago)
-SUMMARY 22.02.19 18:22: 3 tasks waiting, 40 tasks running, 66 tasks done.
-          Oldest task running, started 00:09:56 ago: evaltask.fold.1.GI.0045.sn4InHjiF
-          Newest task running started 00:01:23 ago: evaltask.fold.1.univ.0050.WAVZl2QC7
+          evaltask.fold.1.0027.EQvq1Mhfc (done 00:02:20 ago)
+          evaltask.fold.1.GI.0020.0fuyb5pZr (done 00:02:47 ago)
+          evaltask.fold.1.GI.0021.kyXskWC4c (done 00:03:36 ago)
+          evaltask.fold.1.GI.0045.tt3ZqXPHT (done 00:03:51 ago)
+          evaltask.fold.1.univ.0048.Rr6FS91ak (done 00:04:07 ago)
+          evaltask.fold.1.strategy-as-meta.GI.0007.IWsp4GhDk (done 00:04:10 ago)
+          evaltask.fold.1.univ.0046.GNwGzlk2f (done 00:04:14 ago)
+          evaltask.fold.1.univ.0043.TINKDy8go (done 00:04:28 ago)
+          evaltask.fold.1.univ.0037.MZjQ6RYF4 (done 00:04:39 ago)
+          evaltask.fold.1.univ.0038.8vJ7P3iAM (done 00:04:49 ago)
+SUMMARY 22.02.21 14:44: 0 tasks waiting, 35 tasks running, 77 tasks done.
+          Oldest task running, started 00:09:59 ago: evaltask.fold.1.GI.0007.oYGp7fjkx
+          Newest task running started 00:04:52 ago: evaltask.fold.1.univ.0048.MzZiDfchk
         Recently achieved tasks:
-          evaltask.fold.1.univ.0036.ILSHA1D3n (done 00:01:31 ago)
-          evaltask.fold.1.univ.0041.pKacEDKrq (done 00:01:35 ago)
-          evaltask.fold.1.univ.0049.sJtfkK2dc (done 00:01:36 ago)
-          evaltask.fold.1.univ.0030.1RWtt0zL6 (done 00:01:38 ago)
-          evaltask.fold.1.univ.0050.GJX8FegFo (done 00:01:43 ago)
-          evaltask.fold.1.univ.0028.6OwDRk6zB (done 00:02:02 ago)
-          evaltask.fold.1.GI.0024.b20CsaiL2 (done 00:03:25 ago)
-          evaltask.fold.1.GI.0044.LTmSuXrQw (done 00:03:31 ago)
-          evaltask.fold.1.GI.0028.WHjFZqRaV (done 00:03:40 ago)
-          evaltask.fold.1.GI.0020.ELyOqYwcZ (done 00:03:42 ago)
-SUMMARY 22.02.19 18:23: 3 tasks waiting, 40 tasks running, 66 tasks done.
-          Oldest task running, started 00:10:37 ago: evaltask.fold.1.GI.0045.sn4InHjiF
-          Newest task running started 00:02:04 ago: evaltask.fold.1.univ.0050.WAVZl2QC7
+          evaltask.fold.1.0027.EQvq1Mhfc (done 00:03:01 ago)
+          evaltask.fold.1.GI.0020.0fuyb5pZr (done 00:03:28 ago)
+          evaltask.fold.1.GI.0021.kyXskWC4c (done 00:04:17 ago)
+          evaltask.fold.1.GI.0045.tt3ZqXPHT (done 00:04:32 ago)
+          evaltask.fold.1.univ.0048.Rr6FS91ak (done 00:04:48 ago)
+          evaltask.fold.1.strategy-as-meta.GI.0007.IWsp4GhDk (done 00:04:51 ago)
+          evaltask.fold.1.univ.0046.GNwGzlk2f (done 00:04:55 ago)
+          evaltask.fold.1.univ.0043.TINKDy8go (done 00:05:09 ago)
+          evaltask.fold.1.univ.0037.MZjQ6RYF4 (done 00:05:20 ago)
+          evaltask.fold.1.univ.0038.8vJ7P3iAM (done 00:05:30 ago)
+SUMMARY 22.02.21 14:45: 0 tasks waiting, 35 tasks running, 77 tasks done.
+          Oldest task running, started 00:10:39 ago: evaltask.fold.1.GI.0007.oYGp7fjkx
+          Newest task running started 00:05:32 ago: evaltask.fold.1.univ.0048.MzZiDfchk
         Recently achieved tasks:
-          evaltask.fold.1.univ.0036.ILSHA1D3n (done 00:02:13 ago)
-          evaltask.fold.1.univ.0041.pKacEDKrq (done 00:02:17 ago)
-          evaltask.fold.1.univ.0049.sJtfkK2dc (done 00:02:18 ago)
-          evaltask.fold.1.univ.0030.1RWtt0zL6 (done 00:02:20 ago)
-          evaltask.fold.1.univ.0050.GJX8FegFo (done 00:02:25 ago)
-          evaltask.fold.1.univ.0028.6OwDRk6zB (done 00:02:44 ago)
-          evaltask.fold.1.GI.0024.b20CsaiL2 (done 00:04:07 ago)
-          evaltask.fold.1.GI.0044.LTmSuXrQw (done 00:04:13 ago)
-          evaltask.fold.1.GI.0028.WHjFZqRaV (done 00:04:21 ago)
-          evaltask.fold.1.GI.0020.ELyOqYwcZ (done 00:04:23 ago)
-SUMMARY 22.02.19 18:24: 3 tasks waiting, 40 tasks running, 66 tasks done.
-          Oldest task running, started 00:11:18 ago: evaltask.fold.1.GI.0045.sn4InHjiF
-          Newest task running started 00:02:46 ago: evaltask.fold.1.univ.0050.WAVZl2QC7
+          evaltask.fold.1.0027.EQvq1Mhfc (done 00:03:41 ago)
+          evaltask.fold.1.GI.0020.0fuyb5pZr (done 00:04:08 ago)
+          evaltask.fold.1.GI.0021.kyXskWC4c (done 00:04:57 ago)
+          evaltask.fold.1.GI.0045.tt3ZqXPHT (done 00:05:12 ago)
+          evaltask.fold.1.univ.0048.Rr6FS91ak (done 00:05:28 ago)
+          evaltask.fold.1.strategy-as-meta.GI.0007.IWsp4GhDk (done 00:05:31 ago)
+          evaltask.fold.1.univ.0046.GNwGzlk2f (done 00:05:35 ago)
+          evaltask.fold.1.univ.0043.TINKDy8go (done 00:05:49 ago)
+          evaltask.fold.1.univ.0037.MZjQ6RYF4 (done 00:06:00 ago)
+          evaltask.fold.1.univ.0038.8vJ7P3iAM (done 00:06:10 ago)
+SUMMARY 22.02.21 14:46: 0 tasks waiting, 35 tasks running, 77 tasks done.
+          Oldest task running, started 00:11:19 ago: evaltask.fold.1.GI.0007.oYGp7fjkx
+          Newest task running started 00:06:12 ago: evaltask.fold.1.univ.0048.MzZiDfchk
         Recently achieved tasks:
-          evaltask.fold.1.univ.0036.ILSHA1D3n (done 00:02:54 ago)
-          evaltask.fold.1.univ.0041.pKacEDKrq (done 00:02:58 ago)
-          evaltask.fold.1.univ.0049.sJtfkK2dc (done 00:02:59 ago)
-          evaltask.fold.1.univ.0030.1RWtt0zL6 (done 00:03:01 ago)
-          evaltask.fold.1.univ.0050.GJX8FegFo (done 00:03:06 ago)
-          evaltask.fold.1.univ.0028.6OwDRk6zB (done 00:03:25 ago)
-          evaltask.fold.1.GI.0024.b20CsaiL2 (done 00:04:48 ago)
-          evaltask.fold.1.GI.0044.LTmSuXrQw (done 00:04:54 ago)
-          evaltask.fold.1.GI.0028.WHjFZqRaV (done 00:05:02 ago)
-          evaltask.fold.1.GI.0020.ELyOqYwcZ (done 00:05:04 ago)
-SUMMARY 22.02.19 18:24: 3 tasks waiting, 40 tasks running, 66 tasks done.
-          Oldest task running, started 00:12:00 ago: evaltask.fold.1.GI.0045.sn4InHjiF
-          Newest task running started 00:03:27 ago: evaltask.fold.1.univ.0050.WAVZl2QC7
+          evaltask.fold.1.0027.EQvq1Mhfc (done 00:04:21 ago)
+          evaltask.fold.1.GI.0020.0fuyb5pZr (done 00:04:48 ago)
+          evaltask.fold.1.GI.0021.kyXskWC4c (done 00:05:37 ago)
+          evaltask.fold.1.GI.0045.tt3ZqXPHT (done 00:05:52 ago)
+          evaltask.fold.1.univ.0048.Rr6FS91ak (done 00:06:08 ago)
+          evaltask.fold.1.strategy-as-meta.GI.0007.IWsp4GhDk (done 00:06:11 ago)
+          evaltask.fold.1.univ.0046.GNwGzlk2f (done 00:06:15 ago)
+          evaltask.fold.1.univ.0043.TINKDy8go (done 00:06:29 ago)
+          evaltask.fold.1.univ.0037.MZjQ6RYF4 (done 00:06:40 ago)
+          evaltask.fold.1.univ.0038.8vJ7P3iAM (done 00:06:50 ago)
+SUMMARY 22.02.21 14:46: 0 tasks waiting, 35 tasks running, 77 tasks done.
+          Oldest task running, started 00:11:59 ago: evaltask.fold.1.GI.0007.oYGp7fjkx
+          Newest task running started 00:06:52 ago: evaltask.fold.1.univ.0048.MzZiDfchk
         Recently achieved tasks:
-          evaltask.fold.1.univ.0036.ILSHA1D3n (done 00:03:36 ago)
-          evaltask.fold.1.univ.0041.pKacEDKrq (done 00:03:40 ago)
-          evaltask.fold.1.univ.0049.sJtfkK2dc (done 00:03:41 ago)
-          evaltask.fold.1.univ.0030.1RWtt0zL6 (done 00:03:43 ago)
-          evaltask.fold.1.univ.0050.GJX8FegFo (done 00:03:48 ago)
-          evaltask.fold.1.univ.0028.6OwDRk6zB (done 00:04:07 ago)
-          evaltask.fold.1.GI.0024.b20CsaiL2 (done 00:05:30 ago)
-          evaltask.fold.1.GI.0044.LTmSuXrQw (done 00:05:36 ago)
-          evaltask.fold.1.GI.0028.WHjFZqRaV (done 00:05:44 ago)
-          evaltask.fold.1.GI.0020.ELyOqYwcZ (done 00:05:46 ago)
-SUMMARY 22.02.19 18:25: 2 tasks waiting, 40 tasks running, 68 tasks done.
-          Oldest task running, started 00:12:42 ago: evaltask.fold.1.GI.0045.sn4InHjiF
-          Newest task running started 00:00:00 ago: evaltask.fold.1.strategy-as-meta.GI.0045.Or90qqWsV
+          evaltask.fold.1.0027.EQvq1Mhfc (done 00:05:01 ago)
+          evaltask.fold.1.GI.0020.0fuyb5pZr (done 00:05:28 ago)
+          evaltask.fold.1.GI.0021.kyXskWC4c (done 00:06:17 ago)
+          evaltask.fold.1.GI.0045.tt3ZqXPHT (done 00:06:32 ago)
+          evaltask.fold.1.univ.0048.Rr6FS91ak (done 00:06:48 ago)
+          evaltask.fold.1.strategy-as-meta.GI.0007.IWsp4GhDk (done 00:06:51 ago)
+          evaltask.fold.1.univ.0046.GNwGzlk2f (done 00:06:55 ago)
+          evaltask.fold.1.univ.0043.TINKDy8go (done 00:07:09 ago)
+          evaltask.fold.1.univ.0037.MZjQ6RYF4 (done 00:07:20 ago)
+          evaltask.fold.1.univ.0038.8vJ7P3iAM (done 00:07:30 ago)
+SUMMARY 22.02.21 14:47: 0 tasks waiting, 35 tasks running, 77 tasks done.
+          Oldest task running, started 00:12:39 ago: evaltask.fold.1.GI.0007.oYGp7fjkx
+          Newest task running started 00:07:32 ago: evaltask.fold.1.univ.0048.MzZiDfchk
         Recently achieved tasks:
-          evaltask.fold.1.strategy-as-meta.univ.0037.R5TODD3C3 (done 00:00:19 ago)
-          evaltask.fold.1.univ.0037.wBDmUcMD3 (done 00:00:29 ago)
-          evaltask.fold.1.univ.0036.ILSHA1D3n (done 00:04:17 ago)
-          evaltask.fold.1.univ.0041.pKacEDKrq (done 00:04:21 ago)
-          evaltask.fold.1.univ.0049.sJtfkK2dc (done 00:04:22 ago)
-          evaltask.fold.1.univ.0030.1RWtt0zL6 (done 00:04:24 ago)
-          evaltask.fold.1.univ.0050.GJX8FegFo (done 00:04:29 ago)
-          evaltask.fold.1.univ.0028.6OwDRk6zB (done 00:04:48 ago)
-          evaltask.fold.1.GI.0024.b20CsaiL2 (done 00:06:11 ago)
-          evaltask.fold.1.GI.0044.LTmSuXrQw (done 00:06:17 ago)
-SUMMARY 22.02.19 18:26: 0 tasks waiting, 40 tasks running, 70 tasks done.
-          Oldest task running, started 00:13:22 ago: evaltask.fold.1.GI.0045.sn4InHjiF
-          Newest task running started 00:00:00 ago: evaltask.fold.1.strategy-as-meta.univ.0037.AWgbSQrv8
+          evaltask.fold.1.0027.EQvq1Mhfc (done 00:05:41 ago)
+          evaltask.fold.1.GI.0020.0fuyb5pZr (done 00:06:08 ago)
+          evaltask.fold.1.GI.0021.kyXskWC4c (done 00:06:57 ago)
+          evaltask.fold.1.GI.0045.tt3ZqXPHT (done 00:07:12 ago)
+          evaltask.fold.1.univ.0048.Rr6FS91ak (done 00:07:28 ago)
+          evaltask.fold.1.strategy-as-meta.GI.0007.IWsp4GhDk (done 00:07:31 ago)
+          evaltask.fold.1.univ.0046.GNwGzlk2f (done 00:07:35 ago)
+          evaltask.fold.1.univ.0043.TINKDy8go (done 00:07:49 ago)
+          evaltask.fold.1.univ.0037.MZjQ6RYF4 (done 00:08:00 ago)
+          evaltask.fold.1.univ.0038.8vJ7P3iAM (done 00:08:10 ago)
+SUMMARY 22.02.21 14:48: 0 tasks waiting, 33 tasks running, 79 tasks done.
+          Oldest task running, started 00:13:20 ago: evaltask.fold.1.GI.0007.oYGp7fjkx
+          Newest task running started 00:08:13 ago: evaltask.fold.1.univ.0048.MzZiDfchk
         Recently achieved tasks:
-          evaltask.fold.1.0001.Pt8Kzawzh (done 00:00:19 ago)
-          evaltask.fold.1.strategy-as-meta.GI.0045.Or90qqWsV (done 00:00:40 ago)
-          evaltask.fold.1.strategy-as-meta.univ.0037.R5TODD3C3 (done 00:01:00 ago)
-          evaltask.fold.1.univ.0037.wBDmUcMD3 (done 00:01:10 ago)
-          evaltask.fold.1.univ.0036.ILSHA1D3n (done 00:04:58 ago)
-          evaltask.fold.1.univ.0041.pKacEDKrq (done 00:05:02 ago)
-          evaltask.fold.1.univ.0049.sJtfkK2dc (done 00:05:03 ago)
-          evaltask.fold.1.univ.0030.1RWtt0zL6 (done 00:05:05 ago)
-          evaltask.fold.1.univ.0050.GJX8FegFo (done 00:05:10 ago)
-          evaltask.fold.1.univ.0028.6OwDRk6zB (done 00:05:29 ago)
-SUMMARY 22.02.19 18:26: 0 tasks waiting, 39 tasks running, 71 tasks done.
-          Oldest task running, started 00:14:03 ago: evaltask.fold.1.GI.0045.sn4InHjiF
-          Newest task running started 00:05:30 ago: evaltask.fold.1.univ.0050.WAVZl2QC7
+          evaltask.fold.1.univ.0002.EI04RKCHi (done 00:00:22 ago)
+          evaltask.fold.1.univ.0015.wUlejMMjL (done 00:00:28 ago)
+          evaltask.fold.1.0027.EQvq1Mhfc (done 00:06:22 ago)
+          evaltask.fold.1.GI.0020.0fuyb5pZr (done 00:06:49 ago)
+          evaltask.fold.1.GI.0021.kyXskWC4c (done 00:07:38 ago)
+          evaltask.fold.1.GI.0045.tt3ZqXPHT (done 00:07:53 ago)
+          evaltask.fold.1.univ.0048.Rr6FS91ak (done 00:08:09 ago)
+          evaltask.fold.1.strategy-as-meta.GI.0007.IWsp4GhDk (done 00:08:12 ago)
+          evaltask.fold.1.univ.0046.GNwGzlk2f (done 00:08:16 ago)
+          evaltask.fold.1.univ.0043.TINKDy8go (done 00:08:30 ago)
+SUMMARY 22.02.21 14:48: 0 tasks waiting, 32 tasks running, 80 tasks done.
+          Oldest task running, started 00:14:00 ago: evaltask.fold.1.GI.0007.oYGp7fjkx
+          Newest task running started 00:08:53 ago: evaltask.fold.1.univ.0048.MzZiDfchk
         Recently achieved tasks:
-          evaltask.fold.1.strategy-as-meta.univ.0037.AWgbSQrv8 (done 00:00:36 ago)
-          evaltask.fold.1.0001.Pt8Kzawzh (done 00:00:59 ago)
-          evaltask.fold.1.strategy-as-meta.GI.0045.Or90qqWsV (done 00:01:20 ago)
-          evaltask.fold.1.strategy-as-meta.univ.0037.R5TODD3C3 (done 00:01:40 ago)
-          evaltask.fold.1.univ.0037.wBDmUcMD3 (done 00:01:50 ago)
-          evaltask.fold.1.univ.0036.ILSHA1D3n (done 00:05:38 ago)
-          evaltask.fold.1.univ.0041.pKacEDKrq (done 00:05:42 ago)
-          evaltask.fold.1.univ.0049.sJtfkK2dc (done 00:05:43 ago)
-          evaltask.fold.1.univ.0030.1RWtt0zL6 (done 00:05:45 ago)
-          evaltask.fold.1.univ.0050.GJX8FegFo (done 00:05:50 ago)
-SUMMARY 22.02.19 18:27: 0 tasks waiting, 39 tasks running, 71 tasks done.
-          Oldest task running, started 00:14:43 ago: evaltask.fold.1.GI.0045.sn4InHjiF
-          Newest task running started 00:06:10 ago: evaltask.fold.1.univ.0050.WAVZl2QC7
+          evaltask.fold.1.univ.0031.Lnmk4LQog (done 00:00:18 ago)
+          evaltask.fold.1.univ.0002.EI04RKCHi (done 00:01:02 ago)
+          evaltask.fold.1.univ.0015.wUlejMMjL (done 00:01:08 ago)
+          evaltask.fold.1.0027.EQvq1Mhfc (done 00:07:02 ago)
+          evaltask.fold.1.GI.0020.0fuyb5pZr (done 00:07:29 ago)
+          evaltask.fold.1.GI.0021.kyXskWC4c (done 00:08:18 ago)
+          evaltask.fold.1.GI.0045.tt3ZqXPHT (done 00:08:33 ago)
+          evaltask.fold.1.univ.0048.Rr6FS91ak (done 00:08:49 ago)
+          evaltask.fold.1.strategy-as-meta.GI.0007.IWsp4GhDk (done 00:08:52 ago)
+          evaltask.fold.1.univ.0046.GNwGzlk2f (done 00:08:56 ago)
+SUMMARY 22.02.21 14:49: 0 tasks waiting, 28 tasks running, 84 tasks done.
+          Oldest task running, started 00:14:40 ago: evaltask.fold.1.GI.0007.oYGp7fjkx
+          Newest task running started 00:09:33 ago: evaltask.fold.1.univ.0048.MzZiDfchk
         Recently achieved tasks:
-          evaltask.fold.1.strategy-as-meta.univ.0037.AWgbSQrv8 (done 00:01:16 ago)
-          evaltask.fold.1.0001.Pt8Kzawzh (done 00:01:39 ago)
-          evaltask.fold.1.strategy-as-meta.GI.0045.Or90qqWsV (done 00:02:00 ago)
-          evaltask.fold.1.strategy-as-meta.univ.0037.R5TODD3C3 (done 00:02:20 ago)
-          evaltask.fold.1.univ.0037.wBDmUcMD3 (done 00:02:30 ago)
-          evaltask.fold.1.univ.0036.ILSHA1D3n (done 00:06:18 ago)
-          evaltask.fold.1.univ.0041.pKacEDKrq (done 00:06:23 ago)
-          evaltask.fold.1.univ.0049.sJtfkK2dc (done 00:06:24 ago)
-          evaltask.fold.1.univ.0030.1RWtt0zL6 (done 00:06:26 ago)
-          evaltask.fold.1.univ.0050.GJX8FegFo (done 00:06:31 ago)
-SUMMARY 22.02.19 18:28: 0 tasks waiting, 39 tasks running, 71 tasks done.
-          Oldest task running, started 00:15:24 ago: evaltask.fold.1.GI.0045.sn4InHjiF
-          Newest task running started 00:06:51 ago: evaltask.fold.1.univ.0050.WAVZl2QC7
+          evaltask.fold.1.univ.0004.ZjR4wTXks (done 00:00:17 ago)
+          evaltask.fold.1.univ.0026.1UJQEAZyW (done 00:00:23 ago)
+          evaltask.fold.1.univ.0008.CMILBx092 (done 00:00:24 ago)
+          evaltask.fold.1.univ.0041.jm5zjJVuE (done 00:00:28 ago)
+          evaltask.fold.1.univ.0031.Lnmk4LQog (done 00:00:58 ago)
+          evaltask.fold.1.univ.0002.EI04RKCHi (done 00:01:42 ago)
+          evaltask.fold.1.univ.0015.wUlejMMjL (done 00:01:48 ago)
+          evaltask.fold.1.0027.EQvq1Mhfc (done 00:07:42 ago)
+          evaltask.fold.1.GI.0020.0fuyb5pZr (done 00:08:09 ago)
+          evaltask.fold.1.GI.0021.kyXskWC4c (done 00:08:58 ago)
+SUMMARY 22.02.21 14:50: 0 tasks waiting, 24 tasks running, 88 tasks done.
+          Oldest task running, started 00:15:20 ago: evaltask.fold.1.GI.0007.oYGp7fjkx
+          Newest task running started 00:10:33 ago: evaltask.fold.1.univ.0046.SM0IZp26o
         Recently achieved tasks:
-          evaltask.fold.1.strategy-as-meta.univ.0037.AWgbSQrv8 (done 00:01:57 ago)
-          evaltask.fold.1.0001.Pt8Kzawzh (done 00:02:20 ago)
-          evaltask.fold.1.strategy-as-meta.GI.0045.Or90qqWsV (done 00:02:41 ago)
-          evaltask.fold.1.strategy-as-meta.univ.0037.R5TODD3C3 (done 00:03:01 ago)
-          evaltask.fold.1.univ.0037.wBDmUcMD3 (done 00:03:11 ago)
-          evaltask.fold.1.univ.0036.ILSHA1D3n (done 00:06:59 ago)
-          evaltask.fold.1.univ.0041.pKacEDKrq (done 00:07:03 ago)
-          evaltask.fold.1.univ.0049.sJtfkK2dc (done 00:07:04 ago)
-          evaltask.fold.1.univ.0030.1RWtt0zL6 (done 00:07:06 ago)
-          evaltask.fold.1.univ.0050.GJX8FegFo (done 00:07:11 ago)
-SUMMARY 22.02.19 18:28: 0 tasks waiting, 39 tasks running, 71 tasks done.
-          Oldest task running, started 00:16:04 ago: evaltask.fold.1.GI.0045.sn4InHjiF
-          Newest task running started 00:07:31 ago: evaltask.fold.1.univ.0050.WAVZl2QC7
+          evaltask.fold.1.univ.0048.MzZiDfchk (done 00:00:05 ago)
+          evaltask.fold.1.univ.0043.VckmNlrlj (done 00:00:11 ago)
+          evaltask.fold.1.univ.0038.wwBeITDqZ (done 00:00:26 ago)
+          evaltask.fold.1.univ.0014.5WxybzHGU (done 00:00:28 ago)
+          evaltask.fold.1.univ.0004.ZjR4wTXks (done 00:00:57 ago)
+          evaltask.fold.1.univ.0026.1UJQEAZyW (done 00:01:03 ago)
+          evaltask.fold.1.univ.0008.CMILBx092 (done 00:01:04 ago)
+          evaltask.fold.1.univ.0041.jm5zjJVuE (done 00:01:08 ago)
+          evaltask.fold.1.univ.0031.Lnmk4LQog (done 00:01:38 ago)
+          evaltask.fold.1.univ.0002.EI04RKCHi (done 00:02:22 ago)
+SUMMARY 22.02.21 14:50: 0 tasks waiting, 22 tasks running, 90 tasks done.
+          Oldest task running, started 00:16:00 ago: evaltask.fold.1.GI.0007.oYGp7fjkx
+          Newest task running started 00:11:13 ago: evaltask.fold.1.univ.0046.SM0IZp26o
         Recently achieved tasks:
-          evaltask.fold.1.strategy-as-meta.univ.0037.AWgbSQrv8 (done 00:02:37 ago)
-          evaltask.fold.1.0001.Pt8Kzawzh (done 00:03:00 ago)
-          evaltask.fold.1.strategy-as-meta.GI.0045.Or90qqWsV (done 00:03:21 ago)
-          evaltask.fold.1.strategy-as-meta.univ.0037.R5TODD3C3 (done 00:03:41 ago)
-          evaltask.fold.1.univ.0037.wBDmUcMD3 (done 00:03:51 ago)
-          evaltask.fold.1.univ.0036.ILSHA1D3n (done 00:07:39 ago)
-          evaltask.fold.1.univ.0041.pKacEDKrq (done 00:07:43 ago)
-          evaltask.fold.1.univ.0049.sJtfkK2dc (done 00:07:44 ago)
-          evaltask.fold.1.univ.0030.1RWtt0zL6 (done 00:07:46 ago)
-          evaltask.fold.1.univ.0050.GJX8FegFo (done 00:07:51 ago)
-SUMMARY 22.02.19 18:29: 0 tasks waiting, 39 tasks running, 71 tasks done.
-          Oldest task running, started 00:16:44 ago: evaltask.fold.1.GI.0045.sn4InHjiF
-          Newest task running started 00:08:11 ago: evaltask.fold.1.univ.0050.WAVZl2QC7
+          evaltask.fold.1.univ.0011.IkpVjqVH9 (done 00:00:32 ago)
+          evaltask.fold.1.univ.0024.dUIkB2Sqb (done 00:00:35 ago)
+          evaltask.fold.1.univ.0048.MzZiDfchk (done 00:00:45 ago)
+          evaltask.fold.1.univ.0043.VckmNlrlj (done 00:00:51 ago)
+          evaltask.fold.1.univ.0038.wwBeITDqZ (done 00:01:06 ago)
+          evaltask.fold.1.univ.0014.5WxybzHGU (done 00:01:08 ago)
+          evaltask.fold.1.univ.0004.ZjR4wTXks (done 00:01:37 ago)
+          evaltask.fold.1.univ.0026.1UJQEAZyW (done 00:01:43 ago)
+          evaltask.fold.1.univ.0008.CMILBx092 (done 00:01:44 ago)
+          evaltask.fold.1.univ.0041.jm5zjJVuE (done 00:01:48 ago)
+SUMMARY 22.02.21 14:51: 0 tasks waiting, 18 tasks running, 95 tasks done.
+          Oldest task running, started 00:15:59 ago: evaltask.fold.1.GI.0001.Su9RHFovY
+          Newest task running started 00:00:00 ago: evaltask.fold.1.strategy-as-meta.GI.0007.W2jvqie2K
         Recently achieved tasks:
-          evaltask.fold.1.strategy-as-meta.univ.0037.AWgbSQrv8 (done 00:03:17 ago)
-          evaltask.fold.1.0001.Pt8Kzawzh (done 00:03:40 ago)
-          evaltask.fold.1.strategy-as-meta.GI.0045.Or90qqWsV (done 00:04:01 ago)
-          evaltask.fold.1.strategy-as-meta.univ.0037.R5TODD3C3 (done 00:04:21 ago)
-          evaltask.fold.1.univ.0037.wBDmUcMD3 (done 00:04:31 ago)
-          evaltask.fold.1.univ.0036.ILSHA1D3n (done 00:08:19 ago)
-          evaltask.fold.1.univ.0041.pKacEDKrq (done 00:08:23 ago)
-          evaltask.fold.1.univ.0049.sJtfkK2dc (done 00:08:25 ago)
-          evaltask.fold.1.univ.0030.1RWtt0zL6 (done 00:08:27 ago)
-          evaltask.fold.1.univ.0050.GJX8FegFo (done 00:08:32 ago)
-SUMMARY 22.02.19 18:30: 0 tasks waiting, 39 tasks running, 71 tasks done.
-          Oldest task running, started 00:17:25 ago: evaltask.fold.1.GI.0045.sn4InHjiF
-          Newest task running started 00:08:52 ago: evaltask.fold.1.univ.0050.WAVZl2QC7
+          evaltask.fold.1.GI.0012.1GggRHaVY (done 00:00:00 ago)
+          evaltask.fold.1.univ.0003.Eyy0gqcuD (done 00:00:14 ago)
+          evaltask.fold.1.univ.0046.SM0IZp26o (done 00:00:16 ago)
+          evaltask.fold.1.GI.0007.oYGp7fjkx (done 00:00:22 ago)
+          evaltask.fold.1.univ.0037.ciN74wBs4 (done 00:00:36 ago)
+          evaltask.fold.1.univ.0011.IkpVjqVH9 (done 00:01:13 ago)
+          evaltask.fold.1.univ.0024.dUIkB2Sqb (done 00:01:16 ago)
+          evaltask.fold.1.univ.0048.MzZiDfchk (done 00:01:26 ago)
+          evaltask.fold.1.univ.0043.VckmNlrlj (done 00:01:32 ago)
+          evaltask.fold.1.univ.0038.wwBeITDqZ (done 00:01:47 ago)
+SUMMARY 22.02.21 14:52: 0 tasks waiting, 17 tasks running, 96 tasks done.
+          Oldest task running, started 00:16:40 ago: evaltask.fold.1.GI.0001.Su9RHFovY
+          Newest task running started 00:13:56 ago: evaltask.fold.1.univ.0007.zeWofJmry
         Recently achieved tasks:
-          evaltask.fold.1.strategy-as-meta.univ.0037.AWgbSQrv8 (done 00:03:58 ago)
-          evaltask.fold.1.0001.Pt8Kzawzh (done 00:04:21 ago)
-          evaltask.fold.1.strategy-as-meta.GI.0045.Or90qqWsV (done 00:04:42 ago)
-          evaltask.fold.1.strategy-as-meta.univ.0037.R5TODD3C3 (done 00:05:02 ago)
-          evaltask.fold.1.univ.0037.wBDmUcMD3 (done 00:05:12 ago)
-          evaltask.fold.1.univ.0036.ILSHA1D3n (done 00:09:00 ago)
-          evaltask.fold.1.univ.0041.pKacEDKrq (done 00:09:04 ago)
-          evaltask.fold.1.univ.0049.sJtfkK2dc (done 00:09:05 ago)
-          evaltask.fold.1.univ.0030.1RWtt0zL6 (done 00:09:07 ago)
-          evaltask.fold.1.univ.0050.GJX8FegFo (done 00:09:12 ago)
-SUMMARY 22.02.19 18:30: 0 tasks waiting, 39 tasks running, 71 tasks done.
-          Oldest task running, started 00:18:05 ago: evaltask.fold.1.GI.0045.sn4InHjiF
-          Newest task running started 00:09:32 ago: evaltask.fold.1.univ.0050.WAVZl2QC7
+          evaltask.fold.1.strategy-as-meta.GI.0007.W2jvqie2K (done 00:00:38 ago)
+          evaltask.fold.1.GI.0012.1GggRHaVY (done 00:00:41 ago)
+          evaltask.fold.1.univ.0003.Eyy0gqcuD (done 00:00:55 ago)
+          evaltask.fold.1.univ.0046.SM0IZp26o (done 00:00:56 ago)
+          evaltask.fold.1.GI.0007.oYGp7fjkx (done 00:01:02 ago)
+          evaltask.fold.1.univ.0037.ciN74wBs4 (done 00:01:16 ago)
+          evaltask.fold.1.univ.0011.IkpVjqVH9 (done 00:01:53 ago)
+          evaltask.fold.1.univ.0024.dUIkB2Sqb (done 00:01:56 ago)
+          evaltask.fold.1.univ.0048.MzZiDfchk (done 00:02:06 ago)
+          evaltask.fold.1.univ.0043.VckmNlrlj (done 00:02:12 ago)
+SUMMARY 22.02.21 14:52: 0 tasks waiting, 15 tasks running, 98 tasks done.
+          Oldest task running, started 00:17:20 ago: evaltask.fold.1.GI.0001.Su9RHFovY
+          Newest task running started 00:14:36 ago: evaltask.fold.1.univ.0007.zeWofJmry
         Recently achieved tasks:
-          evaltask.fold.1.strategy-as-meta.univ.0037.AWgbSQrv8 (done 00:04:38 ago)
-          evaltask.fold.1.0001.Pt8Kzawzh (done 00:05:01 ago)
-          evaltask.fold.1.strategy-as-meta.GI.0045.Or90qqWsV (done 00:05:22 ago)
-          evaltask.fold.1.strategy-as-meta.univ.0037.R5TODD3C3 (done 00:05:42 ago)
-          evaltask.fold.1.univ.0037.wBDmUcMD3 (done 00:05:52 ago)
-          evaltask.fold.1.univ.0036.ILSHA1D3n (done 00:09:40 ago)
-          evaltask.fold.1.univ.0041.pKacEDKrq (done 00:09:44 ago)
-          evaltask.fold.1.univ.0049.sJtfkK2dc (done 00:09:45 ago)
-          evaltask.fold.1.univ.0030.1RWtt0zL6 (done 00:09:47 ago)
-          evaltask.fold.1.univ.0050.GJX8FegFo (done 00:09:52 ago)
-SUMMARY 22.02.19 18:31: 0 tasks waiting, 38 tasks running, 72 tasks done.
-          Oldest task running, started 00:18:45 ago: evaltask.fold.1.GI.0045.sn4InHjiF
-          Newest task running started 00:10:12 ago: evaltask.fold.1.univ.0050.WAVZl2QC7
+          evaltask.fold.1.GI.0035.wETmjyoeY (done 00:00:13 ago)
+          evaltask.fold.1.GI.0050.luNtMydVy (done 00:00:21 ago)
+          evaltask.fold.1.strategy-as-meta.GI.0007.W2jvqie2K (done 00:01:18 ago)
+          evaltask.fold.1.GI.0012.1GggRHaVY (done 00:01:21 ago)
+          evaltask.fold.1.univ.0003.Eyy0gqcuD (done 00:01:35 ago)
+          evaltask.fold.1.univ.0046.SM0IZp26o (done 00:01:36 ago)
+          evaltask.fold.1.GI.0007.oYGp7fjkx (done 00:01:42 ago)
+          evaltask.fold.1.univ.0037.ciN74wBs4 (done 00:01:56 ago)
+          evaltask.fold.1.univ.0011.IkpVjqVH9 (done 00:02:33 ago)
+          evaltask.fold.1.univ.0024.dUIkB2Sqb (done 00:02:36 ago)
+SUMMARY 22.02.21 14:53: 0 tasks waiting, 12 tasks running, 101 tasks done.
+          Oldest task running, started 00:18:00 ago: evaltask.fold.1.GI.0001.Su9RHFovY
+          Newest task running started 00:16:17 ago: evaltask.fold.1.GI.0047.16yxwPJhe
         Recently achieved tasks:
-          evaltask.fold.1.univ.0007.GyewGt2bC (done 00:00:24 ago)
-          evaltask.fold.1.strategy-as-meta.univ.0037.AWgbSQrv8 (done 00:05:18 ago)
-          evaltask.fold.1.0001.Pt8Kzawzh (done 00:05:41 ago)
-          evaltask.fold.1.strategy-as-meta.GI.0045.Or90qqWsV (done 00:06:02 ago)
-          evaltask.fold.1.strategy-as-meta.univ.0037.R5TODD3C3 (done 00:06:22 ago)
-          evaltask.fold.1.univ.0037.wBDmUcMD3 (done 00:06:32 ago)
-          evaltask.fold.1.univ.0036.ILSHA1D3n (done 00:10:20 ago)
-          evaltask.fold.1.univ.0041.pKacEDKrq (done 00:10:24 ago)
-          evaltask.fold.1.univ.0049.sJtfkK2dc (done 00:10:25 ago)
-          evaltask.fold.1.univ.0030.1RWtt0zL6 (done 00:10:28 ago)
-SUMMARY 22.02.19 18:32: 0 tasks waiting, 38 tasks running, 72 tasks done.
-          Oldest task running, started 00:19:26 ago: evaltask.fold.1.GI.0045.sn4InHjiF
-          Newest task running started 00:10:53 ago: evaltask.fold.1.univ.0050.WAVZl2QC7
+          evaltask.fold.1.GI.0028.Jvl5oyBWa (done 00:00:11 ago)
+          evaltask.fold.1.univ.0007.zeWofJmry (done 00:00:30 ago)
+          evaltask.fold.1.GI.0004.78zFDByUB (done 00:00:32 ago)
+          evaltask.fold.1.GI.0035.wETmjyoeY (done 00:00:53 ago)
+          evaltask.fold.1.GI.0050.luNtMydVy (done 00:01:01 ago)
+          evaltask.fold.1.strategy-as-meta.GI.0007.W2jvqie2K (done 00:01:58 ago)
+          evaltask.fold.1.GI.0012.1GggRHaVY (done 00:02:01 ago)
+          evaltask.fold.1.univ.0003.Eyy0gqcuD (done 00:02:15 ago)
+          evaltask.fold.1.univ.0046.SM0IZp26o (done 00:02:16 ago)
+          evaltask.fold.1.GI.0007.oYGp7fjkx (done 00:02:22 ago)
+SUMMARY 22.02.21 14:54: 0 tasks waiting, 12 tasks running, 101 tasks done.
+          Oldest task running, started 00:18:40 ago: evaltask.fold.1.GI.0001.Su9RHFovY
+          Newest task running started 00:16:57 ago: evaltask.fold.1.GI.0047.16yxwPJhe
         Recently achieved tasks:
-          evaltask.fold.1.univ.0007.GyewGt2bC (done 00:01:05 ago)
-          evaltask.fold.1.strategy-as-meta.univ.0037.AWgbSQrv8 (done 00:05:59 ago)
-          evaltask.fold.1.0001.Pt8Kzawzh (done 00:06:22 ago)
-          evaltask.fold.1.strategy-as-meta.GI.0045.Or90qqWsV (done 00:06:43 ago)
-          evaltask.fold.1.strategy-as-meta.univ.0037.R5TODD3C3 (done 00:07:03 ago)
-          evaltask.fold.1.univ.0037.wBDmUcMD3 (done 00:07:13 ago)
-          evaltask.fold.1.univ.0036.ILSHA1D3n (done 00:11:01 ago)
-          evaltask.fold.1.univ.0041.pKacEDKrq (done 00:11:05 ago)
-          evaltask.fold.1.univ.0049.sJtfkK2dc (done 00:11:06 ago)
-          evaltask.fold.1.univ.0030.1RWtt0zL6 (done 00:11:08 ago)
-SUMMARY 22.02.19 18:32: 0 tasks waiting, 35 tasks running, 75 tasks done.
-          Oldest task running, started 00:20:06 ago: evaltask.fold.1.GI.0045.sn4InHjiF
-          Newest task running started 00:11:33 ago: evaltask.fold.1.univ.0050.WAVZl2QC7
+          evaltask.fold.1.GI.0028.Jvl5oyBWa (done 00:00:51 ago)
+          evaltask.fold.1.univ.0007.zeWofJmry (done 00:01:10 ago)
+          evaltask.fold.1.GI.0004.78zFDByUB (done 00:01:12 ago)
+          evaltask.fold.1.GI.0035.wETmjyoeY (done 00:01:33 ago)
+          evaltask.fold.1.GI.0050.luNtMydVy (done 00:01:41 ago)
+          evaltask.fold.1.strategy-as-meta.GI.0007.W2jvqie2K (done 00:02:38 ago)
+          evaltask.fold.1.GI.0012.1GggRHaVY (done 00:02:41 ago)
+          evaltask.fold.1.univ.0003.Eyy0gqcuD (done 00:02:55 ago)
+          evaltask.fold.1.univ.0046.SM0IZp26o (done 00:02:56 ago)
+          evaltask.fold.1.GI.0007.oYGp7fjkx (done 00:03:02 ago)
+SUMMARY 22.02.21 14:54: 0 tasks waiting, 9 tasks running, 104 tasks done.
+          Oldest task running, started 00:19:20 ago: evaltask.fold.1.GI.0001.Su9RHFovY
+          Newest task running started 00:17:57 ago: evaltask.fold.1.GI.0045.d4WDWZs9E
         Recently achieved tasks:
-          evaltask.fold.1.univ.0003.UDPZIOwEQ (done 00:00:17 ago)
-          evaltask.fold.1.GI.0022.0uo3sam9A (done 00:00:20 ago)
-          evaltask.fold.1.univ.0015.mIisjufZ5 (done 00:00:36 ago)
-          evaltask.fold.1.univ.0007.GyewGt2bC (done 00:01:45 ago)
-          evaltask.fold.1.strategy-as-meta.univ.0037.AWgbSQrv8 (done 00:06:39 ago)
-          evaltask.fold.1.0001.Pt8Kzawzh (done 00:07:02 ago)
-          evaltask.fold.1.strategy-as-meta.GI.0045.Or90qqWsV (done 00:07:23 ago)
-          evaltask.fold.1.strategy-as-meta.univ.0037.R5TODD3C3 (done 00:07:43 ago)
-          evaltask.fold.1.univ.0037.wBDmUcMD3 (done 00:07:53 ago)
-          evaltask.fold.1.univ.0036.ILSHA1D3n (done 00:11:41 ago)
-SUMMARY 22.02.19 18:33: 0 tasks waiting, 32 tasks running, 78 tasks done.
-          Oldest task running, started 00:20:46 ago: evaltask.fold.1.GI.0045.sn4InHjiF
-          Newest task running started 00:12:13 ago: evaltask.fold.1.univ.0050.WAVZl2QC7
+          evaltask.fold.1.GI.0024.88OQU7TuG (done 00:00:08 ago)
+          evaltask.fold.1.GI.0018.8c9BOUJoI (done 00:00:08 ago)
+          evaltask.fold.1.GI.0047.16yxwPJhe (done 00:00:08 ago)
+          evaltask.fold.1.GI.0028.Jvl5oyBWa (done 00:01:31 ago)
+          evaltask.fold.1.univ.0007.zeWofJmry (done 00:01:50 ago)
+          evaltask.fold.1.GI.0004.78zFDByUB (done 00:01:52 ago)
+          evaltask.fold.1.GI.0035.wETmjyoeY (done 00:02:13 ago)
+          evaltask.fold.1.GI.0050.luNtMydVy (done 00:02:21 ago)
+          evaltask.fold.1.strategy-as-meta.GI.0007.W2jvqie2K (done 00:03:18 ago)
+          evaltask.fold.1.GI.0012.1GggRHaVY (done 00:03:21 ago)
+SUMMARY 22.02.21 14:55: 0 tasks waiting, 9 tasks running, 104 tasks done.
+          Oldest task running, started 00:20:00 ago: evaltask.fold.1.GI.0001.Su9RHFovY
+          Newest task running started 00:18:37 ago: evaltask.fold.1.GI.0045.d4WDWZs9E
         Recently achieved tasks:
-          evaltask.fold.1.GI.0026.A5zMrg8eH (done 00:00:03 ago)
-          evaltask.fold.1.univ.0025.rysBVs7eB (done 00:00:33 ago)
-          evaltask.fold.1.univ.0024.2urISX9Ax (done 00:00:34 ago)
-          evaltask.fold.1.univ.0003.UDPZIOwEQ (done 00:00:57 ago)
-          evaltask.fold.1.GI.0022.0uo3sam9A (done 00:01:00 ago)
-          evaltask.fold.1.univ.0015.mIisjufZ5 (done 00:01:16 ago)
-          evaltask.fold.1.univ.0007.GyewGt2bC (done 00:02:25 ago)
-          evaltask.fold.1.strategy-as-meta.univ.0037.AWgbSQrv8 (done 00:07:19 ago)
-          evaltask.fold.1.0001.Pt8Kzawzh (done 00:07:42 ago)
-          evaltask.fold.1.strategy-as-meta.GI.0045.Or90qqWsV (done 00:08:03 ago)
-SUMMARY 22.02.19 18:34: 0 tasks waiting, 31 tasks running, 79 tasks done.
-          Oldest task running, started 00:21:26 ago: evaltask.fold.1.GI.0045.sn4InHjiF
-          Newest task running started 00:12:53 ago: evaltask.fold.1.univ.0050.WAVZl2QC7
+          evaltask.fold.1.GI.0024.88OQU7TuG (done 00:00:48 ago)
+          evaltask.fold.1.GI.0018.8c9BOUJoI (done 00:00:48 ago)
+          evaltask.fold.1.GI.0047.16yxwPJhe (done 00:00:48 ago)
+          evaltask.fold.1.GI.0028.Jvl5oyBWa (done 00:02:11 ago)
+          evaltask.fold.1.univ.0007.zeWofJmry (done 00:02:30 ago)
+          evaltask.fold.1.GI.0004.78zFDByUB (done 00:02:32 ago)
+          evaltask.fold.1.GI.0035.wETmjyoeY (done 00:02:53 ago)
+          evaltask.fold.1.GI.0050.luNtMydVy (done 00:03:01 ago)
+          evaltask.fold.1.strategy-as-meta.GI.0007.W2jvqie2K (done 00:03:58 ago)
+          evaltask.fold.1.GI.0012.1GggRHaVY (done 00:04:01 ago)
+SUMMARY 22.02.21 14:56: 0 tasks waiting, 7 tasks running, 106 tasks done.
+          Oldest task running, started 00:20:41 ago: evaltask.fold.1.GI.0001.Su9RHFovY
+          Newest task running started 00:19:18 ago: evaltask.fold.1.GI.0045.d4WDWZs9E
         Recently achieved tasks:
-          evaltask.fold.1.GI.0033.xttaj6z6Q (done 00:00:04 ago)
-          evaltask.fold.1.GI.0026.A5zMrg8eH (done 00:00:43 ago)
-          evaltask.fold.1.univ.0025.rysBVs7eB (done 00:01:13 ago)
-          evaltask.fold.1.univ.0024.2urISX9Ax (done 00:01:14 ago)
-          evaltask.fold.1.univ.0003.UDPZIOwEQ (done 00:01:37 ago)
-          evaltask.fold.1.GI.0022.0uo3sam9A (done 00:01:40 ago)
-          evaltask.fold.1.univ.0015.mIisjufZ5 (done 00:01:56 ago)
-          evaltask.fold.1.univ.0007.GyewGt2bC (done 00:03:05 ago)
-          evaltask.fold.1.strategy-as-meta.univ.0037.AWgbSQrv8 (done 00:07:59 ago)
-          evaltask.fold.1.0001.Pt8Kzawzh (done 00:08:22 ago)
-SUMMARY 22.02.19 18:34: 0 tasks waiting, 30 tasks running, 80 tasks done.
-          Oldest task running, started 00:22:07 ago: evaltask.fold.1.GI.0045.sn4InHjiF
-          Newest task running started 00:13:34 ago: evaltask.fold.1.univ.0050.WAVZl2QC7
+          evaltask.fold.1.GI.0009.IWtfiAUBr (done 00:00:08 ago)
+          evaltask.fold.1.GI.0022.UdWUa1oKN (done 00:00:23 ago)
+          evaltask.fold.1.GI.0024.88OQU7TuG (done 00:01:29 ago)
+          evaltask.fold.1.GI.0018.8c9BOUJoI (done 00:01:29 ago)
+          evaltask.fold.1.GI.0047.16yxwPJhe (done 00:01:29 ago)
+          evaltask.fold.1.GI.0028.Jvl5oyBWa (done 00:02:52 ago)
+          evaltask.fold.1.univ.0007.zeWofJmry (done 00:03:11 ago)
+          evaltask.fold.1.GI.0004.78zFDByUB (done 00:03:13 ago)
+          evaltask.fold.1.GI.0035.wETmjyoeY (done 00:03:34 ago)
+          evaltask.fold.1.GI.0050.luNtMydVy (done 00:03:42 ago)
+SUMMARY 22.02.21 14:56: 0 tasks waiting, 6 tasks running, 107 tasks done.
+          Oldest task running, started 00:21:21 ago: evaltask.fold.1.GI.0001.Su9RHFovY
+          Newest task running started 00:19:58 ago: evaltask.fold.1.GI.0045.d4WDWZs9E
         Recently achieved tasks:
-          evaltask.fold.1.GI.0014.fjhTd8fVs (done 00:00:14 ago)
-          evaltask.fold.1.GI.0033.xttaj6z6Q (done 00:00:45 ago)
-          evaltask.fold.1.GI.0026.A5zMrg8eH (done 00:01:24 ago)
-          evaltask.fold.1.univ.0025.rysBVs7eB (done 00:01:54 ago)
-          evaltask.fold.1.univ.0024.2urISX9Ax (done 00:01:55 ago)
-          evaltask.fold.1.univ.0003.UDPZIOwEQ (done 00:02:18 ago)
-          evaltask.fold.1.GI.0022.0uo3sam9A (done 00:02:21 ago)
-          evaltask.fold.1.univ.0015.mIisjufZ5 (done 00:02:37 ago)
-          evaltask.fold.1.univ.0007.GyewGt2bC (done 00:03:46 ago)
-          evaltask.fold.1.strategy-as-meta.univ.0037.AWgbSQrv8 (done 00:08:40 ago)
-SUMMARY 22.02.19 18:35: 0 tasks waiting, 27 tasks running, 83 tasks done.
-          Oldest task running, started 00:22:47 ago: evaltask.fold.1.GI.0045.sn4InHjiF
-          Newest task running started 00:14:14 ago: evaltask.fold.1.univ.0050.WAVZl2QC7
+          evaltask.fold.1.GI.0011.u4NJa9lsr (done 00:00:38 ago)
+          evaltask.fold.1.GI.0009.IWtfiAUBr (done 00:00:48 ago)
+          evaltask.fold.1.GI.0022.UdWUa1oKN (done 00:01:03 ago)
+          evaltask.fold.1.GI.0024.88OQU7TuG (done 00:02:09 ago)
+          evaltask.fold.1.GI.0018.8c9BOUJoI (done 00:02:09 ago)
+          evaltask.fold.1.GI.0047.16yxwPJhe (done 00:02:09 ago)
+          evaltask.fold.1.GI.0028.Jvl5oyBWa (done 00:03:32 ago)
+          evaltask.fold.1.univ.0007.zeWofJmry (done 00:03:51 ago)
+          evaltask.fold.1.GI.0004.78zFDByUB (done 00:03:53 ago)
+          evaltask.fold.1.GI.0035.wETmjyoeY (done 00:04:14 ago)
+SUMMARY 22.02.21 14:57: 0 tasks waiting, 3 tasks running, 110 tasks done.
+          Oldest task running, started 00:22:00 ago: evaltask.fold.1.GI.0020.Ib8z9boHW
+          Newest task running started 00:20:38 ago: evaltask.fold.1.GI.0045.d4WDWZs9E
         Recently achieved tasks:
-          evaltask.fold.1.GI.0049.mjZDoJrZV (done 00:00:05 ago)
-          evaltask.fold.1.GI.0025.3BEmHQ6nU (done 00:00:10 ago)
-          evaltask.fold.1.GI.0003.r2XeS8X5T (done 00:00:27 ago)
-          evaltask.fold.1.GI.0014.fjhTd8fVs (done 00:00:54 ago)
-          evaltask.fold.1.GI.0033.xttaj6z6Q (done 00:01:25 ago)
-          evaltask.fold.1.GI.0026.A5zMrg8eH (done 00:02:04 ago)
-          evaltask.fold.1.univ.0025.rysBVs7eB (done 00:02:34 ago)
-          evaltask.fold.1.univ.0024.2urISX9Ax (done 00:02:35 ago)
-          evaltask.fold.1.univ.0003.UDPZIOwEQ (done 00:02:58 ago)
-          evaltask.fold.1.GI.0022.0uo3sam9A (done 00:03:01 ago)
-SUMMARY 22.02.19 18:36: 0 tasks waiting, 21 tasks running, 90 tasks done.
-          Oldest task running, started 00:23:16 ago: evaltask.fold.1.GI.0005.mlmZGJ1jQ
-          Newest task running started 00:00:00 ago: evaltask.fold.1.strategy-as-meta.GI.0045.He0AMy41l
+          evaltask.fold.1.GI.0017.TbfHjLfrp (done 00:00:20 ago)
+          evaltask.fold.1.GI.0031.yBrEXyt6o (done 00:00:34 ago)
+          evaltask.fold.1.GI.0001.Su9RHFovY (done 00:00:35 ago)
+          evaltask.fold.1.GI.0011.u4NJa9lsr (done 00:01:18 ago)
+          evaltask.fold.1.GI.0009.IWtfiAUBr (done 00:01:28 ago)
+          evaltask.fold.1.GI.0022.UdWUa1oKN (done 00:01:43 ago)
+          evaltask.fold.1.GI.0024.88OQU7TuG (done 00:02:49 ago)
+          evaltask.fold.1.GI.0018.8c9BOUJoI (done 00:02:49 ago)
+          evaltask.fold.1.GI.0047.16yxwPJhe (done 00:02:49 ago)
+          evaltask.fold.1.GI.0028.Jvl5oyBWa (done 00:04:12 ago)
+SUMMARY 22.02.21 14:58: 0 tasks waiting, 3 tasks running, 110 tasks done.
+          Oldest task running, started 00:22:40 ago: evaltask.fold.1.GI.0020.Ib8z9boHW
+          Newest task running started 00:21:18 ago: evaltask.fold.1.GI.0045.d4WDWZs9E
         Recently achieved tasks:
-          evaltask.fold.1.GI.0045.sn4InHjiF (done 00:00:18 ago)
-          evaltask.fold.1.GI.0004.HJYLCJA3F (done 00:00:18 ago)
-          evaltask.fold.1.univ.0023.MbYG1s2TF (done 00:00:30 ago)
-          evaltask.fold.1.univ.0050.WAVZl2QC7 (done 00:00:38 ago)
-          evaltask.fold.1.GI.0035.1WDTAgGje (done 00:00:44 ago)
-          evaltask.fold.1.univ.0001.Z51MDGI0V (done 00:00:44 ago)
-          evaltask.fold.1.GI.0010.I4WmqXjar (done 00:00:44 ago)
-          evaltask.fold.1.GI.0049.mjZDoJrZV (done 00:00:55 ago)
-          evaltask.fold.1.GI.0025.3BEmHQ6nU (done 00:01:00 ago)
-          evaltask.fold.1.GI.0003.r2XeS8X5T (done 00:01:17 ago)
-SUMMARY 22.02.19 18:37: 0 tasks waiting, 13 tasks running, 98 tasks done.
-          Oldest task running, started 00:23:56 ago: evaltask.fold.1.GI.0005.mlmZGJ1jQ
-          Newest task running started 00:15:44 ago: evaltask.fold.1.univ.0041.VtpwLiuEX
+          evaltask.fold.1.GI.0017.TbfHjLfrp (done 00:01:00 ago)
+          evaltask.fold.1.GI.0031.yBrEXyt6o (done 00:01:14 ago)
+          evaltask.fold.1.GI.0001.Su9RHFovY (done 00:01:15 ago)
+          evaltask.fold.1.GI.0011.u4NJa9lsr (done 00:01:58 ago)
+          evaltask.fold.1.GI.0009.IWtfiAUBr (done 00:02:08 ago)
+          evaltask.fold.1.GI.0022.UdWUa1oKN (done 00:02:23 ago)
+          evaltask.fold.1.GI.0024.88OQU7TuG (done 00:03:29 ago)
+          evaltask.fold.1.GI.0018.8c9BOUJoI (done 00:03:29 ago)
+          evaltask.fold.1.GI.0047.16yxwPJhe (done 00:03:29 ago)
+          evaltask.fold.1.GI.0028.Jvl5oyBWa (done 00:04:52 ago)
+SUMMARY 22.02.21 14:58: 0 tasks waiting, 3 tasks running, 110 tasks done.
+          Oldest task running, started 00:23:20 ago: evaltask.fold.1.GI.0020.Ib8z9boHW
+          Newest task running started 00:21:58 ago: evaltask.fold.1.GI.0045.d4WDWZs9E
         Recently achieved tasks:
-          evaltask.fold.1.univ.0010.0r9Babo72 (done 00:00:19 ago)
-          evaltask.fold.1.univ.0006.dKR3neJz5 (done 00:00:20 ago)
-          evaltask.fold.1.GI.0043.nM9W5KLMv (done 00:00:22 ago)
-          evaltask.fold.1.univ.0014.vGpwPIoDY (done 00:00:32 ago)
-          evaltask.fold.1.GI.0037.1ugb4Q33F (done 00:00:34 ago)
-          evaltask.fold.1.univ.0049.HbYbo2NH1 (done 00:00:35 ago)
-          evaltask.fold.1.univ.0008.l3CyNloND (done 00:00:36 ago)
-          evaltask.fold.1.strategy-as-meta.GI.0045.He0AMy41l (done 00:00:38 ago)
-          evaltask.fold.1.GI.0045.sn4InHjiF (done 00:00:58 ago)
-          evaltask.fold.1.GI.0004.HJYLCJA3F (done 00:00:58 ago)
-SUMMARY 22.02.19 18:37: 0 tasks waiting, 10 tasks running, 101 tasks done.
-          Oldest task running, started 00:24:36 ago: evaltask.fold.1.GI.0005.mlmZGJ1jQ
-          Newest task running started 00:16:24 ago: evaltask.fold.1.univ.0041.VtpwLiuEX
+          evaltask.fold.1.GI.0017.TbfHjLfrp (done 00:01:40 ago)
+          evaltask.fold.1.GI.0031.yBrEXyt6o (done 00:01:54 ago)
+          evaltask.fold.1.GI.0001.Su9RHFovY (done 00:01:55 ago)
+          evaltask.fold.1.GI.0011.u4NJa9lsr (done 00:02:38 ago)
+          evaltask.fold.1.GI.0009.IWtfiAUBr (done 00:02:48 ago)
+          evaltask.fold.1.GI.0022.UdWUa1oKN (done 00:03:03 ago)
+          evaltask.fold.1.GI.0024.88OQU7TuG (done 00:04:09 ago)
+          evaltask.fold.1.GI.0018.8c9BOUJoI (done 00:04:09 ago)
+          evaltask.fold.1.GI.0047.16yxwPJhe (done 00:04:09 ago)
+          evaltask.fold.1.GI.0028.Jvl5oyBWa (done 00:05:32 ago)
+SUMMARY 22.02.21 14:59: 0 tasks waiting, 3 tasks running, 110 tasks done.
+          Oldest task running, started 00:24:00 ago: evaltask.fold.1.GI.0020.Ib8z9boHW
+          Newest task running started 00:22:38 ago: evaltask.fold.1.GI.0045.d4WDWZs9E
         Recently achieved tasks:
-          evaltask.fold.1.GI.0048.uG5YhOvuN (done 00:00:01 ago)
-          evaltask.fold.1.univ.0028.mwaSjXakn (done 00:00:24 ago)
-          evaltask.fold.1.univ.0030.e4Q4s5JPF (done 00:00:28 ago)
-          evaltask.fold.1.univ.0010.0r9Babo72 (done 00:00:59 ago)
-          evaltask.fold.1.univ.0006.dKR3neJz5 (done 00:01:00 ago)
-          evaltask.fold.1.GI.0043.nM9W5KLMv (done 00:01:02 ago)
-          evaltask.fold.1.univ.0014.vGpwPIoDY (done 00:01:12 ago)
-          evaltask.fold.1.GI.0037.1ugb4Q33F (done 00:01:14 ago)
-          evaltask.fold.1.univ.0049.HbYbo2NH1 (done 00:01:15 ago)
-          evaltask.fold.1.univ.0008.l3CyNloND (done 00:01:16 ago)
-SUMMARY 22.02.19 18:38: 0 tasks waiting, 7 tasks running, 104 tasks done.
-          Oldest task running, started 00:25:16 ago: evaltask.fold.1.GI.0005.mlmZGJ1jQ
-          Newest task running started 00:22:31 ago: evaltask.fold.1.GI.0044.rN4HGdMyv
+          evaltask.fold.1.GI.0017.TbfHjLfrp (done 00:02:20 ago)
+          evaltask.fold.1.GI.0031.yBrEXyt6o (done 00:02:34 ago)
+          evaltask.fold.1.GI.0001.Su9RHFovY (done 00:02:35 ago)
+          evaltask.fold.1.GI.0011.u4NJa9lsr (done 00:03:18 ago)
+          evaltask.fold.1.GI.0009.IWtfiAUBr (done 00:03:28 ago)
+          evaltask.fold.1.GI.0022.UdWUa1oKN (done 00:03:43 ago)
+          evaltask.fold.1.GI.0024.88OQU7TuG (done 00:04:49 ago)
+          evaltask.fold.1.GI.0018.8c9BOUJoI (done 00:04:49 ago)
+          evaltask.fold.1.GI.0047.16yxwPJhe (done 00:04:49 ago)
+          evaltask.fold.1.GI.0028.Jvl5oyBWa (done 00:06:12 ago)
+SUMMARY 22.02.21 15:00: 0 tasks waiting, 3 tasks running, 110 tasks done.
+          Oldest task running, started 00:24:41 ago: evaltask.fold.1.GI.0020.Ib8z9boHW
+          Newest task running started 00:23:19 ago: evaltask.fold.1.GI.0045.d4WDWZs9E
         Recently achieved tasks:
-          evaltask.fold.1.univ.0041.VtpwLiuEX (done 00:00:21 ago)
-          evaltask.fold.1.GI.0045.JxHrx8VBQ (done 00:00:24 ago)
-          evaltask.fold.1.univ.0036.p3JEi50He (done 00:00:27 ago)
-          evaltask.fold.1.GI.0048.uG5YhOvuN (done 00:00:41 ago)
-          evaltask.fold.1.univ.0028.mwaSjXakn (done 00:01:04 ago)
-          evaltask.fold.1.univ.0030.e4Q4s5JPF (done 00:01:08 ago)
-          evaltask.fold.1.univ.0010.0r9Babo72 (done 00:01:39 ago)
-          evaltask.fold.1.univ.0006.dKR3neJz5 (done 00:01:40 ago)
-          evaltask.fold.1.GI.0043.nM9W5KLMv (done 00:01:42 ago)
-          evaltask.fold.1.univ.0014.vGpwPIoDY (done 00:01:52 ago)
-SUMMARY 22.02.19 18:39: 0 tasks waiting, 7 tasks running, 104 tasks done.
-          Oldest task running, started 00:25:57 ago: evaltask.fold.1.GI.0005.mlmZGJ1jQ
-          Newest task running started 00:23:12 ago: evaltask.fold.1.GI.0044.rN4HGdMyv
+          evaltask.fold.1.GI.0017.TbfHjLfrp (done 00:03:01 ago)
+          evaltask.fold.1.GI.0031.yBrEXyt6o (done 00:03:15 ago)
+          evaltask.fold.1.GI.0001.Su9RHFovY (done 00:03:16 ago)
+          evaltask.fold.1.GI.0011.u4NJa9lsr (done 00:03:59 ago)
+          evaltask.fold.1.GI.0009.IWtfiAUBr (done 00:04:09 ago)
+          evaltask.fold.1.GI.0022.UdWUa1oKN (done 00:04:24 ago)
+          evaltask.fold.1.GI.0024.88OQU7TuG (done 00:05:30 ago)
+          evaltask.fold.1.GI.0018.8c9BOUJoI (done 00:05:30 ago)
+          evaltask.fold.1.GI.0047.16yxwPJhe (done 00:05:30 ago)
+          evaltask.fold.1.GI.0028.Jvl5oyBWa (done 00:06:53 ago)
+SUMMARY 22.02.21 15:00: 0 tasks waiting, 3 tasks running, 110 tasks done.
+          Oldest task running, started 00:25:21 ago: evaltask.fold.1.GI.0020.Ib8z9boHW
+          Newest task running started 00:23:59 ago: evaltask.fold.1.GI.0045.d4WDWZs9E
         Recently achieved tasks:
-          evaltask.fold.1.univ.0041.VtpwLiuEX (done 00:01:02 ago)
-          evaltask.fold.1.GI.0045.JxHrx8VBQ (done 00:01:05 ago)
-          evaltask.fold.1.univ.0036.p3JEi50He (done 00:01:08 ago)
-          evaltask.fold.1.GI.0048.uG5YhOvuN (done 00:01:22 ago)
-          evaltask.fold.1.univ.0028.mwaSjXakn (done 00:01:45 ago)
-          evaltask.fold.1.univ.0030.e4Q4s5JPF (done 00:01:49 ago)
-          evaltask.fold.1.univ.0010.0r9Babo72 (done 00:02:20 ago)
-          evaltask.fold.1.univ.0006.dKR3neJz5 (done 00:02:21 ago)
-          evaltask.fold.1.GI.0043.nM9W5KLMv (done 00:02:23 ago)
-          evaltask.fold.1.univ.0014.vGpwPIoDY (done 00:02:33 ago)
-SUMMARY 22.02.19 18:39: 0 tasks waiting, 7 tasks running, 104 tasks done.
-          Oldest task running, started 00:26:37 ago: evaltask.fold.1.GI.0005.mlmZGJ1jQ
-          Newest task running started 00:23:52 ago: evaltask.fold.1.GI.0044.rN4HGdMyv
+          evaltask.fold.1.GI.0017.TbfHjLfrp (done 00:03:41 ago)
+          evaltask.fold.1.GI.0031.yBrEXyt6o (done 00:03:55 ago)
+          evaltask.fold.1.GI.0001.Su9RHFovY (done 00:03:56 ago)
+          evaltask.fold.1.GI.0011.u4NJa9lsr (done 00:04:39 ago)
+          evaltask.fold.1.GI.0009.IWtfiAUBr (done 00:04:49 ago)
+          evaltask.fold.1.GI.0022.UdWUa1oKN (done 00:05:04 ago)
+          evaltask.fold.1.GI.0024.88OQU7TuG (done 00:06:10 ago)
+          evaltask.fold.1.GI.0018.8c9BOUJoI (done 00:06:10 ago)
+          evaltask.fold.1.GI.0047.16yxwPJhe (done 00:06:10 ago)
+          evaltask.fold.1.GI.0028.Jvl5oyBWa (done 00:07:33 ago)
+SUMMARY 22.02.21 15:01: 0 tasks waiting, 3 tasks running, 110 tasks done.
+          Oldest task running, started 00:26:01 ago: evaltask.fold.1.GI.0020.Ib8z9boHW
+          Newest task running started 00:24:39 ago: evaltask.fold.1.GI.0045.d4WDWZs9E
         Recently achieved tasks:
-          evaltask.fold.1.univ.0041.VtpwLiuEX (done 00:01:42 ago)
-          evaltask.fold.1.GI.0045.JxHrx8VBQ (done 00:01:45 ago)
-          evaltask.fold.1.univ.0036.p3JEi50He (done 00:01:48 ago)
-          evaltask.fold.1.GI.0048.uG5YhOvuN (done 00:02:02 ago)
-          evaltask.fold.1.univ.0028.mwaSjXakn (done 00:02:25 ago)
-          evaltask.fold.1.univ.0030.e4Q4s5JPF (done 00:02:29 ago)
-          evaltask.fold.1.univ.0010.0r9Babo72 (done 00:03:00 ago)
-          evaltask.fold.1.univ.0006.dKR3neJz5 (done 00:03:01 ago)
-          evaltask.fold.1.GI.0043.nM9W5KLMv (done 00:03:03 ago)
-          evaltask.fold.1.univ.0014.vGpwPIoDY (done 00:03:13 ago)
-SUMMARY 22.02.19 18:40: 0 tasks waiting, 7 tasks running, 104 tasks done.
-          Oldest task running, started 00:27:17 ago: evaltask.fold.1.GI.0005.mlmZGJ1jQ
-          Newest task running started 00:24:32 ago: evaltask.fold.1.GI.0044.rN4HGdMyv
+          evaltask.fold.1.GI.0017.TbfHjLfrp (done 00:04:21 ago)
+          evaltask.fold.1.GI.0031.yBrEXyt6o (done 00:04:35 ago)
+          evaltask.fold.1.GI.0001.Su9RHFovY (done 00:04:36 ago)
+          evaltask.fold.1.GI.0011.u4NJa9lsr (done 00:05:19 ago)
+          evaltask.fold.1.GI.0009.IWtfiAUBr (done 00:05:29 ago)
+          evaltask.fold.1.GI.0022.UdWUa1oKN (done 00:05:44 ago)
+          evaltask.fold.1.GI.0024.88OQU7TuG (done 00:06:50 ago)
+          evaltask.fold.1.GI.0018.8c9BOUJoI (done 00:06:50 ago)
+          evaltask.fold.1.GI.0047.16yxwPJhe (done 00:06:50 ago)
+          evaltask.fold.1.GI.0028.Jvl5oyBWa (done 00:08:13 ago)
+SUMMARY 22.02.21 15:02: 0 tasks waiting, 3 tasks running, 110 tasks done.
+          Oldest task running, started 00:26:41 ago: evaltask.fold.1.GI.0020.Ib8z9boHW
+          Newest task running started 00:25:19 ago: evaltask.fold.1.GI.0045.d4WDWZs9E
         Recently achieved tasks:
-          evaltask.fold.1.univ.0041.VtpwLiuEX (done 00:02:22 ago)
-          evaltask.fold.1.GI.0045.JxHrx8VBQ (done 00:02:25 ago)
-          evaltask.fold.1.univ.0036.p3JEi50He (done 00:02:28 ago)
-          evaltask.fold.1.GI.0048.uG5YhOvuN (done 00:02:42 ago)
-          evaltask.fold.1.univ.0028.mwaSjXakn (done 00:03:05 ago)
-          evaltask.fold.1.univ.0030.e4Q4s5JPF (done 00:03:09 ago)
-          evaltask.fold.1.univ.0010.0r9Babo72 (done 00:03:40 ago)
-          evaltask.fold.1.univ.0006.dKR3neJz5 (done 00:03:41 ago)
-          evaltask.fold.1.GI.0043.nM9W5KLMv (done 00:03:43 ago)
-          evaltask.fold.1.univ.0014.vGpwPIoDY (done 00:03:53 ago)
-SUMMARY 22.02.19 18:41: 0 tasks waiting, 7 tasks running, 104 tasks done.
-          Oldest task running, started 00:27:57 ago: evaltask.fold.1.GI.0005.mlmZGJ1jQ
-          Newest task running started 00:25:12 ago: evaltask.fold.1.GI.0044.rN4HGdMyv
+          evaltask.fold.1.GI.0017.TbfHjLfrp (done 00:05:01 ago)
+          evaltask.fold.1.GI.0031.yBrEXyt6o (done 00:05:15 ago)
+          evaltask.fold.1.GI.0001.Su9RHFovY (done 00:05:16 ago)
+          evaltask.fold.1.GI.0011.u4NJa9lsr (done 00:05:59 ago)
+          evaltask.fold.1.GI.0009.IWtfiAUBr (done 00:06:09 ago)
+          evaltask.fold.1.GI.0022.UdWUa1oKN (done 00:06:24 ago)
+          evaltask.fold.1.GI.0024.88OQU7TuG (done 00:07:30 ago)
+          evaltask.fold.1.GI.0018.8c9BOUJoI (done 00:07:30 ago)
+          evaltask.fold.1.GI.0047.16yxwPJhe (done 00:07:30 ago)
+          evaltask.fold.1.GI.0028.Jvl5oyBWa (done 00:08:53 ago)
+SUMMARY 22.02.21 15:02: 0 tasks waiting, 2 tasks running, 111 tasks done.
+          Oldest task running, started 00:27:21 ago: evaltask.fold.1.GI.0020.Ib8z9boHW
+          Newest task running started 00:27:21 ago: evaltask.fold.1.GI.0021.j2pcsCHOG
         Recently achieved tasks:
-          evaltask.fold.1.univ.0041.VtpwLiuEX (done 00:03:02 ago)
-          evaltask.fold.1.GI.0045.JxHrx8VBQ (done 00:03:05 ago)
-          evaltask.fold.1.univ.0036.p3JEi50He (done 00:03:08 ago)
-          evaltask.fold.1.GI.0048.uG5YhOvuN (done 00:03:22 ago)
-          evaltask.fold.1.univ.0028.mwaSjXakn (done 00:03:45 ago)
-          evaltask.fold.1.univ.0030.e4Q4s5JPF (done 00:03:49 ago)
-          evaltask.fold.1.univ.0010.0r9Babo72 (done 00:04:20 ago)
-          evaltask.fold.1.univ.0006.dKR3neJz5 (done 00:04:21 ago)
-          evaltask.fold.1.GI.0043.nM9W5KLMv (done 00:04:23 ago)
-          evaltask.fold.1.univ.0014.vGpwPIoDY (done 00:04:33 ago)
-SUMMARY 22.02.19 18:41: 0 tasks waiting, 7 tasks running, 104 tasks done.
-          Oldest task running, started 00:28:37 ago: evaltask.fold.1.GI.0005.mlmZGJ1jQ
-          Newest task running started 00:25:52 ago: evaltask.fold.1.GI.0044.rN4HGdMyv
+          evaltask.fold.1.GI.0045.d4WDWZs9E (done 00:00:16 ago)
+          evaltask.fold.1.GI.0017.TbfHjLfrp (done 00:05:41 ago)
+          evaltask.fold.1.GI.0031.yBrEXyt6o (done 00:05:55 ago)
+          evaltask.fold.1.GI.0001.Su9RHFovY (done 00:05:56 ago)
+          evaltask.fold.1.GI.0011.u4NJa9lsr (done 00:06:39 ago)
+          evaltask.fold.1.GI.0009.IWtfiAUBr (done 00:06:49 ago)
+          evaltask.fold.1.GI.0022.UdWUa1oKN (done 00:07:04 ago)
+          evaltask.fold.1.GI.0024.88OQU7TuG (done 00:08:10 ago)
+          evaltask.fold.1.GI.0018.8c9BOUJoI (done 00:08:10 ago)
+          evaltask.fold.1.GI.0047.16yxwPJhe (done 00:08:10 ago)
+SUMMARY 22.02.21 15:03: 0 tasks waiting, 2 tasks running, 111 tasks done.
+          Oldest task running, started 00:28:01 ago: evaltask.fold.1.GI.0020.Ib8z9boHW
+          Newest task running started 00:28:01 ago: evaltask.fold.1.GI.0021.j2pcsCHOG
         Recently achieved tasks:
-          evaltask.fold.1.univ.0041.VtpwLiuEX (done 00:03:42 ago)
-          evaltask.fold.1.GI.0045.JxHrx8VBQ (done 00:03:45 ago)
-          evaltask.fold.1.univ.0036.p3JEi50He (done 00:03:48 ago)
-          evaltask.fold.1.GI.0048.uG5YhOvuN (done 00:04:02 ago)
-          evaltask.fold.1.univ.0028.mwaSjXakn (done 00:04:25 ago)
-          evaltask.fold.1.univ.0030.e4Q4s5JPF (done 00:04:29 ago)
-          evaltask.fold.1.univ.0010.0r9Babo72 (done 00:05:00 ago)
-          evaltask.fold.1.univ.0006.dKR3neJz5 (done 00:05:01 ago)
-          evaltask.fold.1.GI.0043.nM9W5KLMv (done 00:05:03 ago)
-          evaltask.fold.1.univ.0014.vGpwPIoDY (done 00:05:13 ago)
-SUMMARY 22.02.19 18:42: 0 tasks waiting, 7 tasks running, 104 tasks done.
-          Oldest task running, started 00:29:17 ago: evaltask.fold.1.GI.0005.mlmZGJ1jQ
-          Newest task running started 00:26:32 ago: evaltask.fold.1.GI.0044.rN4HGdMyv
+          evaltask.fold.1.GI.0045.d4WDWZs9E (done 00:00:56 ago)
+          evaltask.fold.1.GI.0017.TbfHjLfrp (done 00:06:21 ago)
+          evaltask.fold.1.GI.0031.yBrEXyt6o (done 00:06:35 ago)
+          evaltask.fold.1.GI.0001.Su9RHFovY (done 00:06:36 ago)
+          evaltask.fold.1.GI.0011.u4NJa9lsr (done 00:07:19 ago)
+          evaltask.fold.1.GI.0009.IWtfiAUBr (done 00:07:29 ago)
+          evaltask.fold.1.GI.0022.UdWUa1oKN (done 00:07:44 ago)
+          evaltask.fold.1.GI.0024.88OQU7TuG (done 00:08:50 ago)
+          evaltask.fold.1.GI.0018.8c9BOUJoI (done 00:08:50 ago)
+          evaltask.fold.1.GI.0047.16yxwPJhe (done 00:08:50 ago)
+SUMMARY 22.02.21 15:04: 0 tasks waiting, 1 tasks running, 112 tasks done.
+          Oldest task running, started 00:28:41 ago: evaltask.fold.1.GI.0020.Ib8z9boHW
+          Newest task running started 00:28:41 ago: evaltask.fold.1.GI.0020.Ib8z9boHW
         Recently achieved tasks:
-          evaltask.fold.1.univ.0041.VtpwLiuEX (done 00:04:22 ago)
-          evaltask.fold.1.GI.0045.JxHrx8VBQ (done 00:04:25 ago)
-          evaltask.fold.1.univ.0036.p3JEi50He (done 00:04:28 ago)
-          evaltask.fold.1.GI.0048.uG5YhOvuN (done 00:04:42 ago)
-          evaltask.fold.1.univ.0028.mwaSjXakn (done 00:05:05 ago)
-          evaltask.fold.1.univ.0030.e4Q4s5JPF (done 00:05:09 ago)
-          evaltask.fold.1.univ.0010.0r9Babo72 (done 00:05:40 ago)
-          evaltask.fold.1.univ.0006.dKR3neJz5 (done 00:05:41 ago)
-          evaltask.fold.1.GI.0043.nM9W5KLMv (done 00:05:43 ago)
-          evaltask.fold.1.univ.0014.vGpwPIoDY (done 00:05:53 ago)
-SUMMARY 22.02.19 18:43: 0 tasks waiting, 7 tasks running, 104 tasks done.
-          Oldest task running, started 00:29:58 ago: evaltask.fold.1.GI.0005.mlmZGJ1jQ
-          Newest task running started 00:27:13 ago: evaltask.fold.1.GI.0044.rN4HGdMyv
+          evaltask.fold.1.GI.0021.j2pcsCHOG (done 00:00:09 ago)
+          evaltask.fold.1.GI.0045.d4WDWZs9E (done 00:01:37 ago)
+          evaltask.fold.1.GI.0017.TbfHjLfrp (done 00:07:02 ago)
+          evaltask.fold.1.GI.0031.yBrEXyt6o (done 00:07:16 ago)
+          evaltask.fold.1.GI.0001.Su9RHFovY (done 00:07:17 ago)
+          evaltask.fold.1.GI.0011.u4NJa9lsr (done 00:08:00 ago)
+          evaltask.fold.1.GI.0009.IWtfiAUBr (done 00:08:10 ago)
+          evaltask.fold.1.GI.0022.UdWUa1oKN (done 00:08:25 ago)
+          evaltask.fold.1.GI.0024.88OQU7TuG (done 00:09:31 ago)
+          evaltask.fold.1.GI.0018.8c9BOUJoI (done 00:09:31 ago)
+SUMMARY 22.02.21 15:04: 0 tasks waiting, 1 tasks running, 112 tasks done.
+          Oldest task running, started 00:29:22 ago: evaltask.fold.1.GI.0020.Ib8z9boHW
+          Newest task running started 00:29:22 ago: evaltask.fold.1.GI.0020.Ib8z9boHW
         Recently achieved tasks:
-          evaltask.fold.1.univ.0041.VtpwLiuEX (done 00:05:03 ago)
-          evaltask.fold.1.GI.0045.JxHrx8VBQ (done 00:05:06 ago)
-          evaltask.fold.1.univ.0036.p3JEi50He (done 00:05:09 ago)
-          evaltask.fold.1.GI.0048.uG5YhOvuN (done 00:05:23 ago)
-          evaltask.fold.1.univ.0028.mwaSjXakn (done 00:05:46 ago)
-          evaltask.fold.1.univ.0030.e4Q4s5JPF (done 00:05:50 ago)
-          evaltask.fold.1.univ.0010.0r9Babo72 (done 00:06:21 ago)
-          evaltask.fold.1.univ.0006.dKR3neJz5 (done 00:06:22 ago)
-          evaltask.fold.1.GI.0043.nM9W5KLMv (done 00:06:24 ago)
-          evaltask.fold.1.univ.0014.vGpwPIoDY (done 00:06:34 ago)
-SUMMARY 22.02.19 18:43: 0 tasks waiting, 7 tasks running, 104 tasks done.
-          Oldest task running, started 00:30:38 ago: evaltask.fold.1.GI.0005.mlmZGJ1jQ
-          Newest task running started 00:27:53 ago: evaltask.fold.1.GI.0044.rN4HGdMyv
+          evaltask.fold.1.GI.0021.j2pcsCHOG (done 00:00:50 ago)
+          evaltask.fold.1.GI.0045.d4WDWZs9E (done 00:02:17 ago)
+          evaltask.fold.1.GI.0017.TbfHjLfrp (done 00:07:42 ago)
+          evaltask.fold.1.GI.0031.yBrEXyt6o (done 00:07:56 ago)
+          evaltask.fold.1.GI.0001.Su9RHFovY (done 00:07:57 ago)
+          evaltask.fold.1.GI.0011.u4NJa9lsr (done 00:08:40 ago)
+          evaltask.fold.1.GI.0009.IWtfiAUBr (done 00:08:50 ago)
+          evaltask.fold.1.GI.0022.UdWUa1oKN (done 00:09:05 ago)
+          evaltask.fold.1.GI.0024.88OQU7TuG (done 00:10:11 ago)
+          evaltask.fold.1.GI.0018.8c9BOUJoI (done 00:10:11 ago)
+SUMMARY 22.02.21 15:05: 0 tasks waiting, 1 tasks running, 112 tasks done.
+          Oldest task running, started 00:30:02 ago: evaltask.fold.1.GI.0020.Ib8z9boHW
+          Newest task running started 00:30:02 ago: evaltask.fold.1.GI.0020.Ib8z9boHW
         Recently achieved tasks:
-          evaltask.fold.1.univ.0041.VtpwLiuEX (done 00:05:43 ago)
-          evaltask.fold.1.GI.0045.JxHrx8VBQ (done 00:05:46 ago)
-          evaltask.fold.1.univ.0036.p3JEi50He (done 00:05:49 ago)
-          evaltask.fold.1.GI.0048.uG5YhOvuN (done 00:06:03 ago)
-          evaltask.fold.1.univ.0028.mwaSjXakn (done 00:06:26 ago)
-          evaltask.fold.1.univ.0030.e4Q4s5JPF (done 00:06:30 ago)
-          evaltask.fold.1.univ.0010.0r9Babo72 (done 00:07:01 ago)
-          evaltask.fold.1.univ.0006.dKR3neJz5 (done 00:07:02 ago)
-          evaltask.fold.1.GI.0043.nM9W5KLMv (done 00:07:04 ago)
-          evaltask.fold.1.univ.0014.vGpwPIoDY (done 00:07:14 ago)
-SUMMARY 22.02.19 18:44: 0 tasks waiting, 7 tasks running, 104 tasks done.
-          Oldest task running, started 00:31:18 ago: evaltask.fold.1.GI.0005.mlmZGJ1jQ
-          Newest task running started 00:28:33 ago: evaltask.fold.1.GI.0044.rN4HGdMyv
+          evaltask.fold.1.GI.0021.j2pcsCHOG (done 00:01:30 ago)
+          evaltask.fold.1.GI.0045.d4WDWZs9E (done 00:02:57 ago)
+          evaltask.fold.1.GI.0017.TbfHjLfrp (done 00:08:22 ago)
+          evaltask.fold.1.GI.0031.yBrEXyt6o (done 00:08:36 ago)
+          evaltask.fold.1.GI.0001.Su9RHFovY (done 00:08:37 ago)
+          evaltask.fold.1.GI.0011.u4NJa9lsr (done 00:09:20 ago)
+          evaltask.fold.1.GI.0009.IWtfiAUBr (done 00:09:30 ago)
+          evaltask.fold.1.GI.0022.UdWUa1oKN (done 00:09:45 ago)
+          evaltask.fold.1.GI.0024.88OQU7TuG (done 00:10:51 ago)
+          evaltask.fold.1.GI.0018.8c9BOUJoI (done 00:10:51 ago)
+SUMMARY 22.02.21 15:06: 0 tasks waiting, 1 tasks running, 112 tasks done.
+          Oldest task running, started 00:30:42 ago: evaltask.fold.1.GI.0020.Ib8z9boHW
+          Newest task running started 00:30:42 ago: evaltask.fold.1.GI.0020.Ib8z9boHW
         Recently achieved tasks:
-          evaltask.fold.1.univ.0041.VtpwLiuEX (done 00:06:23 ago)
-          evaltask.fold.1.GI.0045.JxHrx8VBQ (done 00:06:26 ago)
-          evaltask.fold.1.univ.0036.p3JEi50He (done 00:06:29 ago)
-          evaltask.fold.1.GI.0048.uG5YhOvuN (done 00:06:43 ago)
-          evaltask.fold.1.univ.0028.mwaSjXakn (done 00:07:06 ago)
-          evaltask.fold.1.univ.0030.e4Q4s5JPF (done 00:07:10 ago)
-          evaltask.fold.1.univ.0010.0r9Babo72 (done 00:07:41 ago)
-          evaltask.fold.1.univ.0006.dKR3neJz5 (done 00:07:42 ago)
-          evaltask.fold.1.GI.0043.nM9W5KLMv (done 00:07:44 ago)
-          evaltask.fold.1.univ.0014.vGpwPIoDY (done 00:07:54 ago)
-SUMMARY 22.02.19 18:45: 0 tasks waiting, 7 tasks running, 104 tasks done.
-          Oldest task running, started 00:31:58 ago: evaltask.fold.1.GI.0005.mlmZGJ1jQ
-          Newest task running started 00:29:13 ago: evaltask.fold.1.GI.0044.rN4HGdMyv
+          evaltask.fold.1.GI.0021.j2pcsCHOG (done 00:02:10 ago)
+          evaltask.fold.1.GI.0045.d4WDWZs9E (done 00:03:37 ago)
+          evaltask.fold.1.GI.0017.TbfHjLfrp (done 00:09:02 ago)
+          evaltask.fold.1.GI.0031.yBrEXyt6o (done 00:09:16 ago)
+          evaltask.fold.1.GI.0001.Su9RHFovY (done 00:09:17 ago)
+          evaltask.fold.1.GI.0011.u4NJa9lsr (done 00:10:00 ago)
+          evaltask.fold.1.GI.0009.IWtfiAUBr (done 00:10:10 ago)
+          evaltask.fold.1.GI.0022.UdWUa1oKN (done 00:10:25 ago)
+          evaltask.fold.1.GI.0024.88OQU7TuG (done 00:11:31 ago)
+          evaltask.fold.1.GI.0018.8c9BOUJoI (done 00:11:31 ago)
+SUMMARY 22.02.21 15:06: 0 tasks waiting, 1 tasks running, 112 tasks done.
+          Oldest task running, started 00:31:22 ago: evaltask.fold.1.GI.0020.Ib8z9boHW
+          Newest task running started 00:31:22 ago: evaltask.fold.1.GI.0020.Ib8z9boHW
         Recently achieved tasks:
-          evaltask.fold.1.univ.0041.VtpwLiuEX (done 00:07:03 ago)
-          evaltask.fold.1.GI.0045.JxHrx8VBQ (done 00:07:06 ago)
-          evaltask.fold.1.univ.0036.p3JEi50He (done 00:07:09 ago)
-          evaltask.fold.1.GI.0048.uG5YhOvuN (done 00:07:23 ago)
-          evaltask.fold.1.univ.0028.mwaSjXakn (done 00:07:46 ago)
-          evaltask.fold.1.univ.0030.e4Q4s5JPF (done 00:07:50 ago)
-          evaltask.fold.1.univ.0010.0r9Babo72 (done 00:08:21 ago)
-          evaltask.fold.1.univ.0006.dKR3neJz5 (done 00:08:22 ago)
-          evaltask.fold.1.GI.0043.nM9W5KLMv (done 00:08:24 ago)
-          evaltask.fold.1.univ.0014.vGpwPIoDY (done 00:08:34 ago)
-SUMMARY 22.02.19 18:45: 0 tasks waiting, 7 tasks running, 104 tasks done.
-          Oldest task running, started 00:32:38 ago: evaltask.fold.1.GI.0005.mlmZGJ1jQ
-          Newest task running started 00:29:53 ago: evaltask.fold.1.GI.0044.rN4HGdMyv
+          evaltask.fold.1.GI.0021.j2pcsCHOG (done 00:02:50 ago)
+          evaltask.fold.1.GI.0045.d4WDWZs9E (done 00:04:17 ago)
+          evaltask.fold.1.GI.0017.TbfHjLfrp (done 00:09:42 ago)
+          evaltask.fold.1.GI.0031.yBrEXyt6o (done 00:09:56 ago)
+          evaltask.fold.1.GI.0001.Su9RHFovY (done 00:09:57 ago)
+          evaltask.fold.1.GI.0011.u4NJa9lsr (done 00:10:40 ago)
+          evaltask.fold.1.GI.0009.IWtfiAUBr (done 00:10:50 ago)
+          evaltask.fold.1.GI.0022.UdWUa1oKN (done 00:11:05 ago)
+          evaltask.fold.1.GI.0024.88OQU7TuG (done 00:12:11 ago)
+          evaltask.fold.1.GI.0018.8c9BOUJoI (done 00:12:11 ago)
+SUMMARY 22.02.21 15:07: 0 tasks waiting, 1 tasks running, 113 tasks done.
+          Oldest task running, started 00:00:00 ago: evaltask.fold.1.0027.KGDn1bATW
+          Newest task running started 00:00:00 ago: evaltask.fold.1.0027.KGDn1bATW
         Recently achieved tasks:
-          evaltask.fold.1.univ.0041.VtpwLiuEX (done 00:07:43 ago)
-          evaltask.fold.1.GI.0045.JxHrx8VBQ (done 00:07:46 ago)
-          evaltask.fold.1.univ.0036.p3JEi50He (done 00:07:49 ago)
-          evaltask.fold.1.GI.0048.uG5YhOvuN (done 00:08:03 ago)
-          evaltask.fold.1.univ.0028.mwaSjXakn (done 00:08:26 ago)
-          evaltask.fold.1.univ.0030.e4Q4s5JPF (done 00:08:30 ago)
-          evaltask.fold.1.univ.0010.0r9Babo72 (done 00:09:01 ago)
-          evaltask.fold.1.univ.0006.dKR3neJz5 (done 00:09:02 ago)
-          evaltask.fold.1.GI.0043.nM9W5KLMv (done 00:09:04 ago)
-          evaltask.fold.1.univ.0014.vGpwPIoDY (done 00:09:14 ago)
-SUMMARY 22.02.19 18:46: 0 tasks waiting, 6 tasks running, 105 tasks done.
-          Oldest task running, started 00:33:18 ago: evaltask.fold.1.GI.0012.8nUopt524
-          Newest task running started 00:30:33 ago: evaltask.fold.1.GI.0044.rN4HGdMyv
-        Recently achieved tasks:
-          evaltask.fold.1.GI.0005.mlmZGJ1jQ (done 00:00:05 ago)
-          evaltask.fold.1.univ.0041.VtpwLiuEX (done 00:08:23 ago)
-          evaltask.fold.1.GI.0045.JxHrx8VBQ (done 00:08:26 ago)
-          evaltask.fold.1.univ.0036.p3JEi50He (done 00:08:29 ago)
-          evaltask.fold.1.GI.0048.uG5YhOvuN (done 00:08:43 ago)
-          evaltask.fold.1.univ.0028.mwaSjXakn (done 00:09:06 ago)
-          evaltask.fold.1.univ.0030.e4Q4s5JPF (done 00:09:10 ago)
-          evaltask.fold.1.univ.0010.0r9Babo72 (done 00:09:41 ago)
-          evaltask.fold.1.univ.0006.dKR3neJz5 (done 00:09:42 ago)
-          evaltask.fold.1.GI.0043.nM9W5KLMv (done 00:09:44 ago)
-SUMMARY 22.02.19 18:47: 0 tasks waiting, 6 tasks running, 105 tasks done.
-          Oldest task running, started 00:33:58 ago: evaltask.fold.1.GI.0012.8nUopt524
-          Newest task running started 00:31:14 ago: evaltask.fold.1.GI.0044.rN4HGdMyv
-        Recently achieved tasks:
-          evaltask.fold.1.GI.0005.mlmZGJ1jQ (done 00:00:46 ago)
-          evaltask.fold.1.univ.0041.VtpwLiuEX (done 00:09:04 ago)
-          evaltask.fold.1.GI.0045.JxHrx8VBQ (done 00:09:07 ago)
-          evaltask.fold.1.univ.0036.p3JEi50He (done 00:09:10 ago)
-          evaltask.fold.1.GI.0048.uG5YhOvuN (done 00:09:24 ago)
-          evaltask.fold.1.univ.0028.mwaSjXakn (done 00:09:47 ago)
-          evaltask.fold.1.univ.0030.e4Q4s5JPF (done 00:09:51 ago)
-          evaltask.fold.1.univ.0010.0r9Babo72 (done 00:10:22 ago)
-          evaltask.fold.1.univ.0006.dKR3neJz5 (done 00:10:23 ago)
-          evaltask.fold.1.GI.0043.nM9W5KLMv (done 00:10:25 ago)
-SUMMARY 22.02.19 18:47: 0 tasks waiting, 4 tasks running, 107 tasks done.
-          Oldest task running, started 00:34:39 ago: evaltask.fold.1.GI.0012.8nUopt524
-          Newest task running started 00:34:19 ago: evaltask.fold.1.GI.0024.JGNh9PVRq
-        Recently achieved tasks:
-          evaltask.fold.1.GI.0044.rN4HGdMyv (done 00:00:08 ago)
-          evaltask.fold.1.GI.0028.UvpW1FGC6 (done 00:00:32 ago)
-          evaltask.fold.1.GI.0005.mlmZGJ1jQ (done 00:01:26 ago)
-          evaltask.fold.1.univ.0041.VtpwLiuEX (done 00:09:44 ago)
-          evaltask.fold.1.GI.0045.JxHrx8VBQ (done 00:09:47 ago)
-          evaltask.fold.1.univ.0036.p3JEi50He (done 00:09:50 ago)
-          evaltask.fold.1.GI.0048.uG5YhOvuN (done 00:10:04 ago)
-          evaltask.fold.1.univ.0028.mwaSjXakn (done 00:10:27 ago)
-          evaltask.fold.1.univ.0030.e4Q4s5JPF (done 00:10:31 ago)
-          evaltask.fold.1.univ.0010.0r9Babo72 (done 00:11:02 ago)
-SUMMARY 22.02.19 18:48: 0 tasks waiting, 2 tasks running, 109 tasks done.
-          Oldest task running, started 00:34:59 ago: evaltask.fold.1.GI.0020.HOxxcgZI7
-          Newest task running started 00:34:59 ago: evaltask.fold.1.GI.0024.JGNh9PVRq
-        Recently achieved tasks:
-          evaltask.fold.1.GI.0012.8nUopt524 (done 00:00:18 ago)
-          evaltask.fold.1.GI.0016.gZWBuU3g8 (done 00:00:38 ago)
-          evaltask.fold.1.GI.0044.rN4HGdMyv (done 00:00:48 ago)
-          evaltask.fold.1.GI.0028.UvpW1FGC6 (done 00:01:12 ago)
-          evaltask.fold.1.GI.0005.mlmZGJ1jQ (done 00:02:06 ago)
-          evaltask.fold.1.univ.0041.VtpwLiuEX (done 00:10:24 ago)
-          evaltask.fold.1.GI.0045.JxHrx8VBQ (done 00:10:27 ago)
-          evaltask.fold.1.univ.0036.p3JEi50He (done 00:10:30 ago)
-          evaltask.fold.1.GI.0048.uG5YhOvuN (done 00:10:44 ago)
-          evaltask.fold.1.univ.0028.mwaSjXakn (done 00:11:07 ago)
-SUMMARY 22.02.19 18:49: 0 tasks waiting, 2 tasks running, 109 tasks done.
-          Oldest task running, started 00:35:39 ago: evaltask.fold.1.GI.0020.HOxxcgZI7
-          Newest task running started 00:35:39 ago: evaltask.fold.1.GI.0024.JGNh9PVRq
-        Recently achieved tasks:
-          evaltask.fold.1.GI.0012.8nUopt524 (done 00:00:58 ago)
-          evaltask.fold.1.GI.0016.gZWBuU3g8 (done 00:01:18 ago)
-          evaltask.fold.1.GI.0044.rN4HGdMyv (done 00:01:28 ago)
-          evaltask.fold.1.GI.0028.UvpW1FGC6 (done 00:01:52 ago)
-          evaltask.fold.1.GI.0005.mlmZGJ1jQ (done 00:02:46 ago)
-          evaltask.fold.1.univ.0041.VtpwLiuEX (done 00:11:04 ago)
-          evaltask.fold.1.GI.0045.JxHrx8VBQ (done 00:11:07 ago)
-          evaltask.fold.1.univ.0036.p3JEi50He (done 00:11:10 ago)
-          evaltask.fold.1.GI.0048.uG5YhOvuN (done 00:11:24 ago)
-          evaltask.fold.1.univ.0028.mwaSjXakn (done 00:11:47 ago)
-SUMMARY 22.02.19 18:49: 0 tasks waiting, 1 tasks running, 110 tasks done.
-          Oldest task running, started 00:36:19 ago: evaltask.fold.1.GI.0020.HOxxcgZI7
-          Newest task running started 00:36:19 ago: evaltask.fold.1.GI.0020.HOxxcgZI7
-        Recently achieved tasks:
-          evaltask.fold.1.GI.0024.JGNh9PVRq (done 00:00:10 ago)
-          evaltask.fold.1.GI.0012.8nUopt524 (done 00:01:38 ago)
-          evaltask.fold.1.GI.0016.gZWBuU3g8 (done 00:01:58 ago)
-          evaltask.fold.1.GI.0044.rN4HGdMyv (done 00:02:08 ago)
-          evaltask.fold.1.GI.0028.UvpW1FGC6 (done 00:02:32 ago)
-          evaltask.fold.1.GI.0005.mlmZGJ1jQ (done 00:03:26 ago)
-          evaltask.fold.1.univ.0041.VtpwLiuEX (done 00:11:44 ago)
-          evaltask.fold.1.GI.0045.JxHrx8VBQ (done 00:11:47 ago)
-          evaltask.fold.1.univ.0036.p3JEi50He (done 00:11:50 ago)
-          evaltask.fold.1.GI.0048.uG5YhOvuN (done 00:12:04 ago)
-SUMMARY 22.02.19 18:50: 0 tasks waiting, 1 tasks running, 111 tasks done.
-          Oldest task running, started 00:00:00 ago: evaltask.fold.1.0001.77u76T0Ds
-          Newest task running started 00:00:00 ago: evaltask.fold.1.0001.77u76T0Ds
-        Recently achieved tasks:
-          evaltask.fold.1.GI.0020.HOxxcgZI7 (done 00:00:34 ago)
-          evaltask.fold.1.GI.0024.JGNh9PVRq (done 00:00:50 ago)
-          evaltask.fold.1.GI.0012.8nUopt524 (done 00:02:18 ago)
-          evaltask.fold.1.GI.0016.gZWBuU3g8 (done 00:02:38 ago)
-          evaltask.fold.1.GI.0044.rN4HGdMyv (done 00:02:48 ago)
-          evaltask.fold.1.GI.0028.UvpW1FGC6 (done 00:03:12 ago)
-          evaltask.fold.1.GI.0005.mlmZGJ1jQ (done 00:04:06 ago)
-          evaltask.fold.1.univ.0041.VtpwLiuEX (done 00:12:24 ago)
-          evaltask.fold.1.GI.0045.JxHrx8VBQ (done 00:12:27 ago)
-          evaltask.fold.1.univ.0036.p3JEi50He (done 00:12:30 ago)
-SUMMARY 22.02.19 18:51: 0 tasks waiting, 0 tasks running, 112 tasks done.
+          evaltask.fold.1.GI.0020.Ib8z9boHW (done 00:00:29 ago)
+          evaltask.fold.1.GI.0021.j2pcsCHOG (done 00:03:40 ago)
+          evaltask.fold.1.GI.0045.d4WDWZs9E (done 00:05:07 ago)
+          evaltask.fold.1.GI.0017.TbfHjLfrp (done 00:10:32 ago)
+          evaltask.fold.1.GI.0031.yBrEXyt6o (done 00:10:46 ago)
+          evaltask.fold.1.GI.0001.Su9RHFovY (done 00:10:47 ago)
+          evaltask.fold.1.GI.0011.u4NJa9lsr (done 00:11:30 ago)
+          evaltask.fold.1.GI.0009.IWtfiAUBr (done 00:11:40 ago)
+          evaltask.fold.1.GI.0022.UdWUa1oKN (done 00:11:55 ago)
+          evaltask.fold.1.GI.0024.88OQU7TuG (done 00:13:01 ago)
+SUMMARY 22.02.21 15:08: 0 tasks waiting, 0 tasks running, 114 tasks done.
         no task running currently.
         Recently achieved tasks:
-          evaltask.fold.1.0001.77u76T0Ds (done 00:00:37 ago)
-          evaltask.fold.1.GI.0020.HOxxcgZI7 (done 00:01:14 ago)
-          evaltask.fold.1.GI.0024.JGNh9PVRq (done 00:01:30 ago)
-          evaltask.fold.1.GI.0012.8nUopt524 (done 00:02:59 ago)
-          evaltask.fold.1.GI.0016.gZWBuU3g8 (done 00:03:19 ago)
-          evaltask.fold.1.GI.0044.rN4HGdMyv (done 00:03:29 ago)
-          evaltask.fold.1.GI.0028.UvpW1FGC6 (done 00:03:53 ago)
-          evaltask.fold.1.GI.0005.mlmZGJ1jQ (done 00:04:47 ago)
-          evaltask.fold.1.univ.0041.VtpwLiuEX (done 00:13:05 ago)
-          evaltask.fold.1.GI.0045.JxHrx8VBQ (done 00:13:08 ago)
-SUMMARY 22.02.19 18:51: 0 tasks waiting, 0 tasks running, 112 tasks done.
+          evaltask.fold.1.0027.KGDn1bATW (done 00:00:37 ago)
+          evaltask.fold.1.GI.0020.Ib8z9boHW (done 00:01:09 ago)
+          evaltask.fold.1.GI.0021.j2pcsCHOG (done 00:04:20 ago)
+          evaltask.fold.1.GI.0045.d4WDWZs9E (done 00:05:47 ago)
+          evaltask.fold.1.GI.0017.TbfHjLfrp (done 00:11:12 ago)
+          evaltask.fold.1.GI.0031.yBrEXyt6o (done 00:11:27 ago)
+          evaltask.fold.1.GI.0001.Su9RHFovY (done 00:11:28 ago)
+          evaltask.fold.1.GI.0011.u4NJa9lsr (done 00:12:11 ago)
+          evaltask.fold.1.GI.0009.IWtfiAUBr (done 00:12:21 ago)
+          evaltask.fold.1.GI.0022.UdWUa1oKN (done 00:12:36 ago)
+SUMMARY 22.02.21 15:09: 0 tasks waiting, 0 tasks running, 114 tasks done.
         no task running currently.
         Recently achieved tasks:
-          evaltask.fold.1.0001.77u76T0Ds (done 00:01:18 ago)
-          evaltask.fold.1.GI.0020.HOxxcgZI7 (done 00:01:55 ago)
-          evaltask.fold.1.GI.0024.JGNh9PVRq (done 00:02:11 ago)
-          evaltask.fold.1.GI.0012.8nUopt524 (done 00:03:39 ago)
-          evaltask.fold.1.GI.0016.gZWBuU3g8 (done 00:03:59 ago)
-          evaltask.fold.1.GI.0044.rN4HGdMyv (done 00:04:09 ago)
-          evaltask.fold.1.GI.0028.UvpW1FGC6 (done 00:04:33 ago)
-          evaltask.fold.1.GI.0005.mlmZGJ1jQ (done 00:05:27 ago)
-          evaltask.fold.1.univ.0041.VtpwLiuEX (done 00:13:45 ago)
-          evaltask.fold.1.GI.0045.JxHrx8VBQ (done 00:13:48 ago)
-SUMMARY 22.02.19 18:52: 0 tasks waiting, 0 tasks running, 112 tasks done.
+          evaltask.fold.1.0027.KGDn1bATW (done 00:01:18 ago)
+          evaltask.fold.1.GI.0020.Ib8z9boHW (done 00:01:50 ago)
+          evaltask.fold.1.GI.0021.j2pcsCHOG (done 00:05:01 ago)
+          evaltask.fold.1.GI.0045.d4WDWZs9E (done 00:06:28 ago)
+          evaltask.fold.1.GI.0017.TbfHjLfrp (done 00:11:53 ago)
+          evaltask.fold.1.GI.0031.yBrEXyt6o (done 00:12:07 ago)
+          evaltask.fold.1.GI.0001.Su9RHFovY (done 00:12:08 ago)
+          evaltask.fold.1.GI.0011.u4NJa9lsr (done 00:12:51 ago)
+          evaltask.fold.1.GI.0009.IWtfiAUBr (done 00:13:01 ago)
+          evaltask.fold.1.GI.0022.UdWUa1oKN (done 00:13:16 ago)
+SUMMARY 22.02.21 15:09: 0 tasks waiting, 0 tasks running, 114 tasks done.
         no task running currently.
         Recently achieved tasks:
-          evaltask.fold.1.0001.77u76T0Ds (done 00:01:58 ago)
-          evaltask.fold.1.GI.0020.HOxxcgZI7 (done 00:02:35 ago)
-          evaltask.fold.1.GI.0024.JGNh9PVRq (done 00:02:51 ago)
-          evaltask.fold.1.GI.0012.8nUopt524 (done 00:04:19 ago)
-          evaltask.fold.1.GI.0016.gZWBuU3g8 (done 00:04:39 ago)
-          evaltask.fold.1.GI.0044.rN4HGdMyv (done 00:04:49 ago)
-          evaltask.fold.1.GI.0028.UvpW1FGC6 (done 00:05:13 ago)
-          evaltask.fold.1.GI.0005.mlmZGJ1jQ (done 00:06:07 ago)
-          evaltask.fold.1.univ.0041.VtpwLiuEX (done 00:14:25 ago)
-          evaltask.fold.1.GI.0045.JxHrx8VBQ (done 00:14:28 ago)
-SUMMARY 22.02.19 18:53: 0 tasks waiting, 0 tasks running, 112 tasks done.
+          evaltask.fold.1.0027.KGDn1bATW (done 00:01:58 ago)
+          evaltask.fold.1.GI.0020.Ib8z9boHW (done 00:02:30 ago)
+          evaltask.fold.1.GI.0021.j2pcsCHOG (done 00:05:41 ago)
+          evaltask.fold.1.GI.0045.d4WDWZs9E (done 00:07:08 ago)
+          evaltask.fold.1.GI.0017.TbfHjLfrp (done 00:12:33 ago)
+          evaltask.fold.1.GI.0031.yBrEXyt6o (done 00:12:47 ago)
+          evaltask.fold.1.GI.0001.Su9RHFovY (done 00:12:48 ago)
+          evaltask.fold.1.GI.0011.u4NJa9lsr (done 00:13:31 ago)
+          evaltask.fold.1.GI.0009.IWtfiAUBr (done 00:13:41 ago)
+          evaltask.fold.1.GI.0022.UdWUa1oKN (done 00:13:56 ago)
+SUMMARY 22.02.21 15:10: 0 tasks waiting, 0 tasks running, 114 tasks done.
         no task running currently.
         Recently achieved tasks:
-          evaltask.fold.1.0001.77u76T0Ds (done 00:02:38 ago)
-          evaltask.fold.1.GI.0020.HOxxcgZI7 (done 00:03:15 ago)
-          evaltask.fold.1.GI.0024.JGNh9PVRq (done 00:03:31 ago)
-          evaltask.fold.1.GI.0012.8nUopt524 (done 00:04:59 ago)
-          evaltask.fold.1.GI.0016.gZWBuU3g8 (done 00:05:19 ago)
-          evaltask.fold.1.GI.0044.rN4HGdMyv (done 00:05:29 ago)
-          evaltask.fold.1.GI.0028.UvpW1FGC6 (done 00:05:53 ago)
-          evaltask.fold.1.GI.0005.mlmZGJ1jQ (done 00:06:47 ago)
-          evaltask.fold.1.univ.0041.VtpwLiuEX (done 00:15:05 ago)
-          evaltask.fold.1.GI.0045.JxHrx8VBQ (done 00:15:08 ago)
-SUMMARY 22.02.19 18:53: 0 tasks waiting, 0 tasks running, 112 tasks done.
+          evaltask.fold.1.0027.KGDn1bATW (done 00:02:38 ago)
+          evaltask.fold.1.GI.0020.Ib8z9boHW (done 00:03:10 ago)
+          evaltask.fold.1.GI.0021.j2pcsCHOG (done 00:06:21 ago)
+          evaltask.fold.1.GI.0045.d4WDWZs9E (done 00:07:48 ago)
+          evaltask.fold.1.GI.0017.TbfHjLfrp (done 00:13:13 ago)
+          evaltask.fold.1.GI.0031.yBrEXyt6o (done 00:13:27 ago)
+          evaltask.fold.1.GI.0001.Su9RHFovY (done 00:13:28 ago)
+          evaltask.fold.1.GI.0011.u4NJa9lsr (done 00:14:11 ago)
+          evaltask.fold.1.GI.0009.IWtfiAUBr (done 00:14:21 ago)
+          evaltask.fold.1.GI.0022.UdWUa1oKN (done 00:14:36 ago)
+SUMMARY 22.02.21 15:11: 0 tasks waiting, 0 tasks running, 114 tasks done.
         no task running currently.
         Recently achieved tasks:
-          evaltask.fold.1.0001.77u76T0Ds (done 00:03:18 ago)
-          evaltask.fold.1.GI.0020.HOxxcgZI7 (done 00:03:55 ago)
-          evaltask.fold.1.GI.0024.JGNh9PVRq (done 00:04:11 ago)
-          evaltask.fold.1.GI.0012.8nUopt524 (done 00:05:39 ago)
-          evaltask.fold.1.GI.0016.gZWBuU3g8 (done 00:05:59 ago)
-          evaltask.fold.1.GI.0044.rN4HGdMyv (done 00:06:09 ago)
-          evaltask.fold.1.GI.0028.UvpW1FGC6 (done 00:06:33 ago)
-          evaltask.fold.1.GI.0005.mlmZGJ1jQ (done 00:07:27 ago)
-          evaltask.fold.1.univ.0041.VtpwLiuEX (done 00:15:45 ago)
-          evaltask.fold.1.GI.0045.JxHrx8VBQ (done 00:15:48 ago)
-SUMMARY 22.02.19 18:54: 0 tasks waiting, 0 tasks running, 112 tasks done.
+          evaltask.fold.1.0027.KGDn1bATW (done 00:03:18 ago)
+          evaltask.fold.1.GI.0020.Ib8z9boHW (done 00:03:50 ago)
+          evaltask.fold.1.GI.0021.j2pcsCHOG (done 00:07:01 ago)
+          evaltask.fold.1.GI.0045.d4WDWZs9E (done 00:08:28 ago)
+          evaltask.fold.1.GI.0017.TbfHjLfrp (done 00:13:53 ago)
+          evaltask.fold.1.GI.0031.yBrEXyt6o (done 00:14:07 ago)
+          evaltask.fold.1.GI.0001.Su9RHFovY (done 00:14:08 ago)
+          evaltask.fold.1.GI.0011.u4NJa9lsr (done 00:14:51 ago)
+          evaltask.fold.1.GI.0009.IWtfiAUBr (done 00:15:01 ago)
+          evaltask.fold.1.GI.0022.UdWUa1oKN (done 00:15:16 ago)
+SUMMARY 22.02.21 15:11: 0 tasks waiting, 0 tasks running, 114 tasks done.
         no task running currently.
         Recently achieved tasks:
-          evaltask.fold.1.0001.77u76T0Ds (done 00:03:58 ago)
-          evaltask.fold.1.GI.0020.HOxxcgZI7 (done 00:04:35 ago)
-          evaltask.fold.1.GI.0024.JGNh9PVRq (done 00:04:51 ago)
-          evaltask.fold.1.GI.0012.8nUopt524 (done 00:06:19 ago)
-          evaltask.fold.1.GI.0016.gZWBuU3g8 (done 00:06:39 ago)
-          evaltask.fold.1.GI.0044.rN4HGdMyv (done 00:06:49 ago)
-          evaltask.fold.1.GI.0028.UvpW1FGC6 (done 00:07:13 ago)
-          evaltask.fold.1.GI.0005.mlmZGJ1jQ (done 00:08:07 ago)
-          evaltask.fold.1.univ.0041.VtpwLiuEX (done 00:16:25 ago)
-          evaltask.fold.1.GI.0045.JxHrx8VBQ (done 00:16:28 ago)
-SUMMARY 22.02.19 18:55: 0 tasks waiting, 0 tasks running, 112 tasks done.
+          evaltask.fold.1.0027.KGDn1bATW (done 00:03:58 ago)
+          evaltask.fold.1.GI.0020.Ib8z9boHW (done 00:04:30 ago)
+          evaltask.fold.1.GI.0021.j2pcsCHOG (done 00:07:41 ago)
+          evaltask.fold.1.GI.0045.d4WDWZs9E (done 00:09:08 ago)
+          evaltask.fold.1.GI.0017.TbfHjLfrp (done 00:14:33 ago)
+          evaltask.fold.1.GI.0031.yBrEXyt6o (done 00:14:47 ago)
+          evaltask.fold.1.GI.0001.Su9RHFovY (done 00:14:48 ago)
+          evaltask.fold.1.GI.0011.u4NJa9lsr (done 00:15:31 ago)
+          evaltask.fold.1.GI.0009.IWtfiAUBr (done 00:15:41 ago)
+          evaltask.fold.1.GI.0022.UdWUa1oKN (done 00:15:56 ago)
+SUMMARY 22.02.21 15:12: 0 tasks waiting, 0 tasks running, 114 tasks done.
         no task running currently.
         Recently achieved tasks:
-          evaltask.fold.1.0001.77u76T0Ds (done 00:04:38 ago)
-          evaltask.fold.1.GI.0020.HOxxcgZI7 (done 00:05:15 ago)
-          evaltask.fold.1.GI.0024.JGNh9PVRq (done 00:05:31 ago)
-          evaltask.fold.1.GI.0012.8nUopt524 (done 00:06:59 ago)
-          evaltask.fold.1.GI.0016.gZWBuU3g8 (done 00:07:19 ago)
-          evaltask.fold.1.GI.0044.rN4HGdMyv (done 00:07:29 ago)
-          evaltask.fold.1.GI.0028.UvpW1FGC6 (done 00:07:53 ago)
-          evaltask.fold.1.GI.0005.mlmZGJ1jQ (done 00:08:47 ago)
-          evaltask.fold.1.univ.0041.VtpwLiuEX (done 00:17:05 ago)
-          evaltask.fold.1.GI.0045.JxHrx8VBQ (done 00:17:08 ago)
-SUMMARY 22.02.19 18:55: 0 tasks waiting, 0 tasks running, 112 tasks done.
+          evaltask.fold.1.0027.KGDn1bATW (done 00:04:38 ago)
+          evaltask.fold.1.GI.0020.Ib8z9boHW (done 00:05:10 ago)
+          evaltask.fold.1.GI.0021.j2pcsCHOG (done 00:08:21 ago)
+          evaltask.fold.1.GI.0045.d4WDWZs9E (done 00:09:48 ago)
+          evaltask.fold.1.GI.0017.TbfHjLfrp (done 00:15:13 ago)
+          evaltask.fold.1.GI.0031.yBrEXyt6o (done 00:15:27 ago)
+          evaltask.fold.1.GI.0001.Su9RHFovY (done 00:15:28 ago)
+          evaltask.fold.1.GI.0011.u4NJa9lsr (done 00:16:11 ago)
+          evaltask.fold.1.GI.0009.IWtfiAUBr (done 00:16:21 ago)
+          evaltask.fold.1.GI.0022.UdWUa1oKN (done 00:16:36 ago)
+SUMMARY 22.02.21 15:13: 0 tasks waiting, 0 tasks running, 114 tasks done.
         no task running currently.
         Recently achieved tasks:
-          evaltask.fold.1.0001.77u76T0Ds (done 00:05:18 ago)
-          evaltask.fold.1.GI.0020.HOxxcgZI7 (done 00:05:55 ago)
-          evaltask.fold.1.GI.0024.JGNh9PVRq (done 00:06:11 ago)
-          evaltask.fold.1.GI.0012.8nUopt524 (done 00:07:39 ago)
-          evaltask.fold.1.GI.0016.gZWBuU3g8 (done 00:07:59 ago)
-          evaltask.fold.1.GI.0044.rN4HGdMyv (done 00:08:09 ago)
-          evaltask.fold.1.GI.0028.UvpW1FGC6 (done 00:08:34 ago)
-          evaltask.fold.1.GI.0005.mlmZGJ1jQ (done 00:09:28 ago)
-          evaltask.fold.1.univ.0041.VtpwLiuEX (done 00:17:46 ago)
-          evaltask.fold.1.GI.0045.JxHrx8VBQ (done 00:17:49 ago)
-SUMMARY 22.02.19 18:56: 0 tasks waiting, 0 tasks running, 112 tasks done.
+          evaltask.fold.1.0027.KGDn1bATW (done 00:05:18 ago)
+          evaltask.fold.1.GI.0020.Ib8z9boHW (done 00:05:50 ago)
+          evaltask.fold.1.GI.0021.j2pcsCHOG (done 00:09:01 ago)
+          evaltask.fold.1.GI.0045.d4WDWZs9E (done 00:10:28 ago)
+          evaltask.fold.1.GI.0017.TbfHjLfrp (done 00:15:53 ago)
+          evaltask.fold.1.GI.0031.yBrEXyt6o (done 00:16:07 ago)
+          evaltask.fold.1.GI.0001.Su9RHFovY (done 00:16:08 ago)
+          evaltask.fold.1.GI.0011.u4NJa9lsr (done 00:16:51 ago)
+          evaltask.fold.1.GI.0009.IWtfiAUBr (done 00:17:01 ago)
+          evaltask.fold.1.GI.0022.UdWUa1oKN (done 00:17:16 ago)
+SUMMARY 22.02.21 15:13: 0 tasks waiting, 0 tasks running, 114 tasks done.
         no task running currently.
         Recently achieved tasks:
-          evaltask.fold.1.0001.77u76T0Ds (done 00:05:59 ago)
-          evaltask.fold.1.GI.0020.HOxxcgZI7 (done 00:06:36 ago)
-          evaltask.fold.1.GI.0024.JGNh9PVRq (done 00:06:52 ago)
-          evaltask.fold.1.GI.0012.8nUopt524 (done 00:08:20 ago)
-          evaltask.fold.1.GI.0016.gZWBuU3g8 (done 00:08:40 ago)
-          evaltask.fold.1.GI.0044.rN4HGdMyv (done 00:08:50 ago)
-          evaltask.fold.1.GI.0028.UvpW1FGC6 (done 00:09:14 ago)
-          evaltask.fold.1.GI.0005.mlmZGJ1jQ (done 00:10:08 ago)
-          evaltask.fold.1.univ.0041.VtpwLiuEX (done 00:18:26 ago)
-          evaltask.fold.1.GI.0045.JxHrx8VBQ (done 00:18:29 ago)
-SUMMARY 22.02.19 18:57: 0 tasks waiting, 0 tasks running, 112 tasks done.
+          evaltask.fold.1.0027.KGDn1bATW (done 00:05:59 ago)
+          evaltask.fold.1.GI.0020.Ib8z9boHW (done 00:06:31 ago)
+          evaltask.fold.1.GI.0021.j2pcsCHOG (done 00:09:42 ago)
+          evaltask.fold.1.GI.0045.d4WDWZs9E (done 00:11:09 ago)
+          evaltask.fold.1.GI.0017.TbfHjLfrp (done 00:16:34 ago)
+          evaltask.fold.1.GI.0031.yBrEXyt6o (done 00:16:48 ago)
+          evaltask.fold.1.GI.0001.Su9RHFovY (done 00:16:49 ago)
+          evaltask.fold.1.GI.0011.u4NJa9lsr (done 00:17:32 ago)
+          evaltask.fold.1.GI.0009.IWtfiAUBr (done 00:17:42 ago)
+          evaltask.fold.1.GI.0022.UdWUa1oKN (done 00:17:57 ago)
+SUMMARY 22.02.21 15:14: 0 tasks waiting, 0 tasks running, 114 tasks done.
         no task running currently.
         Recently achieved tasks:
-          evaltask.fold.1.0001.77u76T0Ds (done 00:06:39 ago)
-          evaltask.fold.1.GI.0020.HOxxcgZI7 (done 00:07:16 ago)
-          evaltask.fold.1.GI.0024.JGNh9PVRq (done 00:07:32 ago)
-          evaltask.fold.1.GI.0012.8nUopt524 (done 00:09:00 ago)
-          evaltask.fold.1.GI.0016.gZWBuU3g8 (done 00:09:20 ago)
-          evaltask.fold.1.GI.0044.rN4HGdMyv (done 00:09:30 ago)
-          evaltask.fold.1.GI.0028.UvpW1FGC6 (done 00:09:54 ago)
-          evaltask.fold.1.GI.0005.mlmZGJ1jQ (done 00:10:48 ago)
-          evaltask.fold.1.univ.0041.VtpwLiuEX (done 00:19:06 ago)
-          evaltask.fold.1.GI.0045.JxHrx8VBQ (done 00:19:09 ago)
-SUMMARY 22.02.19 18:57: 0 tasks waiting, 0 tasks running, 112 tasks done.
+          evaltask.fold.1.0027.KGDn1bATW (done 00:06:39 ago)
+          evaltask.fold.1.GI.0020.Ib8z9boHW (done 00:07:11 ago)
+          evaltask.fold.1.GI.0021.j2pcsCHOG (done 00:10:22 ago)
+          evaltask.fold.1.GI.0045.d4WDWZs9E (done 00:11:49 ago)
+          evaltask.fold.1.GI.0017.TbfHjLfrp (done 00:17:14 ago)
+          evaltask.fold.1.GI.0031.yBrEXyt6o (done 00:17:28 ago)
+          evaltask.fold.1.GI.0001.Su9RHFovY (done 00:17:29 ago)
+          evaltask.fold.1.GI.0011.u4NJa9lsr (done 00:18:12 ago)
+          evaltask.fold.1.GI.0009.IWtfiAUBr (done 00:18:22 ago)
+          evaltask.fold.1.GI.0022.UdWUa1oKN (done 00:18:37 ago)
+SUMMARY 22.02.21 15:15: 0 tasks waiting, 0 tasks running, 114 tasks done.
         no task running currently.
         Recently achieved tasks:
-          evaltask.fold.1.0001.77u76T0Ds (done 00:07:19 ago)
-          evaltask.fold.1.GI.0020.HOxxcgZI7 (done 00:07:56 ago)
-          evaltask.fold.1.GI.0024.JGNh9PVRq (done 00:08:12 ago)
-          evaltask.fold.1.GI.0012.8nUopt524 (done 00:09:40 ago)
-          evaltask.fold.1.GI.0016.gZWBuU3g8 (done 00:10:00 ago)
-          evaltask.fold.1.GI.0044.rN4HGdMyv (done 00:10:10 ago)
-          evaltask.fold.1.GI.0028.UvpW1FGC6 (done 00:10:34 ago)
-          evaltask.fold.1.GI.0005.mlmZGJ1jQ (done 00:11:28 ago)
-          evaltask.fold.1.univ.0041.VtpwLiuEX (done 00:19:46 ago)
-          evaltask.fold.1.GI.0045.JxHrx8VBQ (done 00:19:49 ago)
-SUMMARY 22.02.19 18:58: 0 tasks waiting, 0 tasks running, 112 tasks done.
+          evaltask.fold.1.0027.KGDn1bATW (done 00:07:19 ago)
+          evaltask.fold.1.GI.0020.Ib8z9boHW (done 00:07:51 ago)
+          evaltask.fold.1.GI.0021.j2pcsCHOG (done 00:11:02 ago)
+          evaltask.fold.1.GI.0045.d4WDWZs9E (done 00:12:29 ago)
+          evaltask.fold.1.GI.0017.TbfHjLfrp (done 00:17:54 ago)
+          evaltask.fold.1.GI.0031.yBrEXyt6o (done 00:18:08 ago)
+          evaltask.fold.1.GI.0001.Su9RHFovY (done 00:18:09 ago)
+          evaltask.fold.1.GI.0011.u4NJa9lsr (done 00:18:52 ago)
+          evaltask.fold.1.GI.0009.IWtfiAUBr (done 00:19:02 ago)
+          evaltask.fold.1.GI.0022.UdWUa1oKN (done 00:19:17 ago)
+SUMMARY 22.02.21 15:15: 0 tasks waiting, 0 tasks running, 114 tasks done.
         no task running currently.
         Recently achieved tasks:
-          evaltask.fold.1.0001.77u76T0Ds (done 00:07:59 ago)
-          evaltask.fold.1.GI.0020.HOxxcgZI7 (done 00:08:36 ago)
-          evaltask.fold.1.GI.0024.JGNh9PVRq (done 00:08:52 ago)
-          evaltask.fold.1.GI.0012.8nUopt524 (done 00:10:20 ago)
-          evaltask.fold.1.GI.0016.gZWBuU3g8 (done 00:10:40 ago)
-          evaltask.fold.1.GI.0044.rN4HGdMyv (done 00:10:50 ago)
-          evaltask.fold.1.GI.0028.UvpW1FGC6 (done 00:11:14 ago)
-          evaltask.fold.1.GI.0005.mlmZGJ1jQ (done 00:12:08 ago)
-          evaltask.fold.1.univ.0041.VtpwLiuEX (done 00:20:26 ago)
-          evaltask.fold.1.GI.0045.JxHrx8VBQ (done 00:20:29 ago)
-SUMMARY 22.02.19 18:59: 0 tasks waiting, 0 tasks running, 112 tasks done.
+          evaltask.fold.1.0027.KGDn1bATW (done 00:07:59 ago)
+          evaltask.fold.1.GI.0020.Ib8z9boHW (done 00:08:31 ago)
+          evaltask.fold.1.GI.0021.j2pcsCHOG (done 00:11:42 ago)
+          evaltask.fold.1.GI.0045.d4WDWZs9E (done 00:13:09 ago)
+          evaltask.fold.1.GI.0017.TbfHjLfrp (done 00:18:34 ago)
+          evaltask.fold.1.GI.0031.yBrEXyt6o (done 00:18:48 ago)
+          evaltask.fold.1.GI.0001.Su9RHFovY (done 00:18:49 ago)
+          evaltask.fold.1.GI.0011.u4NJa9lsr (done 00:19:32 ago)
+          evaltask.fold.1.GI.0009.IWtfiAUBr (done 00:19:42 ago)
+          evaltask.fold.1.GI.0022.UdWUa1oKN (done 00:19:57 ago)
+SUMMARY 22.02.21 15:16: 0 tasks waiting, 0 tasks running, 114 tasks done.
         no task running currently.
         Recently achieved tasks:
-          evaltask.fold.1.0001.77u76T0Ds (done 00:08:39 ago)
-          evaltask.fold.1.GI.0020.HOxxcgZI7 (done 00:09:16 ago)
-          evaltask.fold.1.GI.0024.JGNh9PVRq (done 00:09:32 ago)
-          evaltask.fold.1.GI.0012.8nUopt524 (done 00:11:00 ago)
-          evaltask.fold.1.GI.0016.gZWBuU3g8 (done 00:11:20 ago)
-          evaltask.fold.1.GI.0044.rN4HGdMyv (done 00:11:30 ago)
-          evaltask.fold.1.GI.0028.UvpW1FGC6 (done 00:11:54 ago)
-          evaltask.fold.1.GI.0005.mlmZGJ1jQ (done 00:12:48 ago)
-          evaltask.fold.1.univ.0041.VtpwLiuEX (done 00:21:06 ago)
-          evaltask.fold.1.GI.0045.JxHrx8VBQ (done 00:21:09 ago)
-SUMMARY 22.02.19 18:59: 0 tasks waiting, 0 tasks running, 112 tasks done.
+          evaltask.fold.1.0027.KGDn1bATW (done 00:08:39 ago)
+          evaltask.fold.1.GI.0020.Ib8z9boHW (done 00:09:11 ago)
+          evaltask.fold.1.GI.0021.j2pcsCHOG (done 00:12:22 ago)
+          evaltask.fold.1.GI.0045.d4WDWZs9E (done 00:13:49 ago)
+          evaltask.fold.1.GI.0017.TbfHjLfrp (done 00:19:14 ago)
+          evaltask.fold.1.GI.0031.yBrEXyt6o (done 00:19:28 ago)
+          evaltask.fold.1.GI.0001.Su9RHFovY (done 00:19:29 ago)
+          evaltask.fold.1.GI.0011.u4NJa9lsr (done 00:20:12 ago)
+          evaltask.fold.1.GI.0009.IWtfiAUBr (done 00:20:22 ago)
+          evaltask.fold.1.GI.0022.UdWUa1oKN (done 00:20:37 ago)
+SUMMARY 22.02.21 15:17: 0 tasks waiting, 0 tasks running, 114 tasks done.
         no task running currently.
         Recently achieved tasks:
-          evaltask.fold.1.0001.77u76T0Ds (done 00:09:19 ago)
-          evaltask.fold.1.GI.0020.HOxxcgZI7 (done 00:09:56 ago)
-          evaltask.fold.1.GI.0024.JGNh9PVRq (done 00:10:12 ago)
-          evaltask.fold.1.GI.0012.8nUopt524 (done 00:11:40 ago)
-          evaltask.fold.1.GI.0016.gZWBuU3g8 (done 00:12:00 ago)
-          evaltask.fold.1.GI.0044.rN4HGdMyv (done 00:12:10 ago)
-          evaltask.fold.1.GI.0028.UvpW1FGC6 (done 00:12:34 ago)
-          evaltask.fold.1.GI.0005.mlmZGJ1jQ (done 00:13:28 ago)
-          evaltask.fold.1.univ.0041.VtpwLiuEX (done 00:21:46 ago)
-          evaltask.fold.1.GI.0045.JxHrx8VBQ (done 00:21:49 ago)
-SUMMARY 22.02.19 19:00: 0 tasks waiting, 0 tasks running, 112 tasks done.
+          evaltask.fold.1.0027.KGDn1bATW (done 00:09:19 ago)
+          evaltask.fold.1.GI.0020.Ib8z9boHW (done 00:09:51 ago)
+          evaltask.fold.1.GI.0021.j2pcsCHOG (done 00:13:02 ago)
+          evaltask.fold.1.GI.0045.d4WDWZs9E (done 00:14:29 ago)
+          evaltask.fold.1.GI.0017.TbfHjLfrp (done 00:19:54 ago)
+          evaltask.fold.1.GI.0031.yBrEXyt6o (done 00:20:08 ago)
+          evaltask.fold.1.GI.0001.Su9RHFovY (done 00:20:09 ago)
+          evaltask.fold.1.GI.0011.u4NJa9lsr (done 00:20:52 ago)
+          evaltask.fold.1.GI.0009.IWtfiAUBr (done 00:21:02 ago)
+          evaltask.fold.1.GI.0022.UdWUa1oKN (done 00:21:17 ago)
+SUMMARY 22.02.21 15:17: 0 tasks waiting, 0 tasks running, 114 tasks done.
         no task running currently.
         Recently achieved tasks:
-          evaltask.fold.1.0001.77u76T0Ds (done 00:09:59 ago)
-          evaltask.fold.1.GI.0020.HOxxcgZI7 (done 00:10:36 ago)
-          evaltask.fold.1.GI.0024.JGNh9PVRq (done 00:10:52 ago)
-          evaltask.fold.1.GI.0012.8nUopt524 (done 00:12:20 ago)
-          evaltask.fold.1.GI.0016.gZWBuU3g8 (done 00:12:40 ago)
-          evaltask.fold.1.GI.0044.rN4HGdMyv (done 00:12:50 ago)
-          evaltask.fold.1.GI.0028.UvpW1FGC6 (done 00:13:14 ago)
-          evaltask.fold.1.GI.0005.mlmZGJ1jQ (done 00:14:08 ago)
-          evaltask.fold.1.univ.0041.VtpwLiuEX (done 00:22:26 ago)
-          evaltask.fold.1.GI.0045.JxHrx8VBQ (done 00:22:30 ago)
+          evaltask.fold.1.0027.KGDn1bATW (done 00:09:59 ago)
+          evaltask.fold.1.GI.0020.Ib8z9boHW (done 00:10:31 ago)
+          evaltask.fold.1.GI.0021.j2pcsCHOG (done 00:13:42 ago)
+          evaltask.fold.1.GI.0045.d4WDWZs9E (done 00:15:09 ago)
+          evaltask.fold.1.GI.0017.TbfHjLfrp (done 00:20:34 ago)
+          evaltask.fold.1.GI.0031.yBrEXyt6o (done 00:20:48 ago)
+          evaltask.fold.1.GI.0001.Su9RHFovY (done 00:20:49 ago)
+          evaltask.fold.1.GI.0011.u4NJa9lsr (done 00:21:32 ago)
+          evaltask.fold.1.GI.0009.IWtfiAUBr (done 00:21:42 ago)
+          evaltask.fold.1.GI.0022.UdWUa1oKN (done 00:21:57 ago)
