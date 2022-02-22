@@ -1,0 +1,23 @@
+---
+title: "CLG Authorship Experiments"
+author: "Erwan Moreau"
+date: "February 2022"
+output: html_document
+---
+
+```{r setup, include=FALSE}
+knitr::opts_chunk$set(echo = TRUE)
+source('experiments.R')
+```
+
+
+- [Github repository](https://github.com/erwanm/clg-authorship-experiments)
+- User guide:
+    - [User guide part 1](user-guide-part1.html)
+    - [User guide part 2](user-guide-part2.html)
+- Experiments:
+    - [Experiment 1: size of documents](expe1.html)
+    - [Experiment 2: size of a group of documents by the same author](expe2.html)
+    - [Experiment 3: number of training cases](expe3.html)
+    - [Experiment 4: author diversity in the training set](expe4.html)
+    
