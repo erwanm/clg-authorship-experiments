@@ -2,7 +2,7 @@
 
 This is the companion code for the paper *"CLG Authorship Analytics: a library for author verification" (link to be added).*
 
-This repository contains:
+[This repository](https://github.com/erwanm/clg-authorship-experiments) contains:
 
 - A *user guide* for the [clg-authorship-analytics](https://github.com/erwanm/clg-authorship-analytics) system:
     - [User guide part 1](https://erwanm.github.io/clg-authorship-experiments/user-guide-part1.html)
