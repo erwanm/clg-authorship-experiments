@@ -1,2 +1,0 @@
-apply-config.sh: applying config '/tmp/expe3/800/process/selected-meta-configs/fold.1.0001' to cases '/home/moreaue/dump/expe3//results/800/meta/test/only-cases.tmp.IY10Hd8d'; results written to '/home/moreaue/dump/expe3//results/800/meta/test/fold.1.0001'
-apply-config.sh: done.

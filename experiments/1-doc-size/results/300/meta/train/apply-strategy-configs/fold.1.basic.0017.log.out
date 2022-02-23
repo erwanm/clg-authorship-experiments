@@ -1,2 +1,0 @@
-apply-config.sh: applying config '/tmp/300/process/selected-meta-configs/fold.1.0044.model/strategy-configs/fold.1.basic.0017' to cases '/home/moreaue/dump/expe1//results/300/meta/train/apply-strategy-configs/only-cases.tmp.zuxJcO66'; results written to '/home/moreaue/dump/expe1//results/300/meta/train/apply-strategy-configs/fold.1.basic.0017'
-apply-config.sh: done.
