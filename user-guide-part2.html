@@ -369,10 +369,38 @@ pre code {
 </div>
 
 
+<div id="links" class="section level3">
+<h3>Links</h3>
+<p>This document is part of the “CLG Authorship Experiments”
+repository:</p>
+<ul>
+<li><a href="https://github.com/erwanm/clg-authorship-experiments">Github
+repository</a></li>
+<li>User guide:
+<ul>
+<li><a href="user-guide-part1.html">User guide part 1</a></li>
+<li><a href="user-guide-part2.html">User guide part 2</a></li>
+</ul></li>
+<li>Experiments:
+<ul>
+<li><a href="expe1.html">Experiment 1: size of documents</a></li>
+<li><a href="expe2.html">Experiment 2: size of a group of documents by
+the same author</a></li>
+<li><a href="expe3.html">Experiment 3: number of training cases</a></li>
+<li><a href="expe4.html">Experiment 4: author diversity in the training
+set</a></li>
+</ul></li>
+</ul>
+</div>
 <div id="overview" class="section level1">
 <h1>Overview</h1>
 <p>This is the second part of the user guide for “CLG authorship
 analytics”. The first part is <a href="user-guide-part1.html">here</a>.</p>
+<p>Note: this guide is organized by order of complexity, from the most
+simple to the most complex kind of process. It is meant to help the
+reader understand what each of the different levels of the process
+actually does. Thus the simplest way to run the full process is
+described at the end of this document.</p>
 <div id="rmd" class="section level2">
 <h2>Rmd</h2>
 <p>This document was generated from an <a href="https://rmarkdown.rstudio.com/">R Markdown</a> source file. The
@@ -397,10 +425,11 @@ Sys.setenv(CLG_AUTHORSHIP_PACKAGES_PATH = packages.path)
 output.dir &lt;- &#39;/tmp/user-guide-part2.output&#39;
 Sys.setenv(OUTPUT_DIR = output.dir)
 delete.previous.output &lt;- TRUE
-snippets.size &lt;- 100
+snippets.size &lt;- 25
 Sys.setenv(SNIPPETS_SIZE = snippets.size)
 Sys.setenv(NCORES = 40)
-Sys.setenv(TASKS_DIR= &#39;/tmp/clg-authorship.tasks&#39;)</code></pre>
+Sys.setenv(TASKS_DIR= &#39;/tmp/clg-authorship.tasks&#39;)
+Sys.setenv(EXPE_WORK_DIR = &#39;experiments/1-doc-size&#39;)</code></pre>
 <ul>
 <li>Note: <code>ncores</code> should be set to represent the number of
 cores available on the machine.</li>
@@ -419,7 +448,7 @@ export OUTPUT_DIR=/tmp/user-guide-part1.output</code></pre>
 <pre class="bash"><code>mkdir &quot;$OUTPUT_DIR&quot;
 mkdir &quot;$TASKS_DIR&quot;</code></pre>
 <pre class="bash"><code>source session-setup.sh
-find data/gb/* data/ia/* -maxdepth 0 -type f | ./create-snippets-dataset.sh $SNIPPETS_SIZE $OUTPUT_DIR/data</code></pre>
+find data/gb/* data/ia/* -maxdepth 0 -type f | grep -v &#39;\.&#39; | ./create-snippets-dataset.sh $SNIPPETS_SIZE $OUTPUT_DIR/data</code></pre>
 </div>
 </div>
 </div>
@@ -487,16 +516,17 @@ for mor details):</p>
 <li>Genetic process parameter</li>
 </ul>
 <p>Examples of multi-config “parts” files are provided in
-<code>configs/multi/</code> These different parts can be combined:</p>
+<code>conf/</code> These different parts can be combined:</p>
 <pre class="bash"><code>source session-setup.sh
 mkdir &quot;$OUTPUT_DIR/gen1&quot;
-generate-multi-conf.sh -d configs/multi/ -c common.simplified.multi-conf.part -g genetic.simplified.multi-conf.part 0 &quot;$OUTPUT_DIR/gen1/0&quot;</code></pre>
+generate-multi-conf.sh -c common.simplified.multi-conf.part -g genetic.simplified.multi-conf.part 0 &quot;$OUTPUT_DIR/gen1/0&quot;</code></pre>
 <pre><code>## generate-multi-conf.sh: Strategy &#39;basic&#39; (no POS)
 ## generate-multi-conf.sh: Strategy &#39;GI&#39; (no POS)
 ## generate-multi-conf.sh: Strategy &#39;univ&#39; (no POS)</code></pre>
 <ul>
-<li>the <code>-d</code> option specifies the directory where the
-configuration “parts” are found.</li>
+<li>By default the configs parts are found in the directory
+<code>./conf</code> . The <code>-d</code> option can be used to specify
+the directory where the configuration “parts” are found.</li>
 <li><code>-c</code> and <code>-g</code> are used to force the use of a
 specific config file for the ‘common’ and ‘genetic’ part instead of the
 default, in this case a simplified variant meant to take less time (see
@@ -533,13 +563,109 @@ echo &quot;$OUTPUT_DIR/gen1/0/multi-conf-files/basic.multi-conf&quot;  | expand-
 <pre><code>## expand-multi-config.pl info: 3840 possible configs</code></pre>
 </div>
 </div>
+<div id="preparing-the-input-data" class="section level2">
+<h2>Preparing the input data</h2>
+<p>In <a href="user-guide-part1.html">part 1</a> we were manually
+“preparing” the input data in the format required by the system. The
+script <code>prepare-input-data.sh</code> can be used to create the
+working directory with all the required parts in a way which makes it
+usable directly by the training scripts:</p>
+<ul>
+<li>Copies the input data (to avoid modifying the input directory)</li>
+<li>Stores the multi-config files</li>
+<li>Calculates the <a href="user-guide-part1.html#stop-words-for-word-observations">“stop
+words”</a> based on the training set documents (unless <code>-r</code>
+is supplied) and stores them where needed
+<ul>
+<li>The “stop words limits” are obtained directly from the required obs
+types, assuming that the “stop word id” is a simple integer.</li>
+</ul></li>
+<li>Prepares all obs types for the input data, including POS if
+required</li>
+<li>The impostors data must be provided:
+<ul>
+<li>either as a “prepared resource” with <code>-r</code></li>
+<li>or as simple files in a directory with <code>-i</code>
+<ul>
+<li>in this case the impostors data is prepared, i.e. the required obs
+types are calculated</li>
+</ul></li>
+</ul></li>
+<li>In any case the impostors pre-similarity values are computed against
+every document in the input data</li>
+<li>The resources options file is generated</li>
+</ul>
+<div id="input-data" class="section level3">
+<h3>Input data</h3>
+<p>Below we prepare some data using a training and test set generated
+for the main experiments proposed in this repository (see <a href="expe1.html">Experiment 1: size of documents</a>).</p>
+<pre class="bash"><code>mkdir &quot;$OUTPUT_DIR&quot;/input-data.gen1 
+cat &quot;$EXPE_WORK_DIR/train.tsv&quot; &gt; &quot;$OUTPUT_DIR/input-data.gen1/truth.txt&quot;
+cat &quot;$EXPE_WORK_DIR/train.tsv&quot; | cut -f 1 | cut -f 1 | tr &#39; :&#39; &#39;\n\n&#39;  | sort -u | while read f; do 
+      cp &quot;$OUTPUT_DIR/data/$f&quot; &quot;$OUTPUT_DIR/input-data.gen1/&quot;
+done
+head -n 50 &quot;$EXPE_WORK_DIR/train.tsv&quot; &gt; &quot;$OUTPUT_DIR/gen1.train-cases.txt&quot;
+tail -n 50 &quot;$EXPE_WORK_DIR/train.tsv&quot; &gt; &quot;$OUTPUT_DIR/gen1.test-cases.txt&quot;</code></pre>
+<ul>
+<li>Note: the script expects a file <code>truth.txt</code> in a
+subdirectory <code>input</code> containing the cases to be used for
+training.</li>
+<li>In this example the training set is split into two parts in order to
+use the second part as validation set (see below).
+<ul>
+<li>The file <code>truth.txt</code> must contain all the cases.</li>
+</ul></li>
+</ul>
+</div>
+<div id="impostors-data" class="section level3">
+<h3>Impostors data</h3>
+<p>For this toy example we also create a small set of impostors in the
+same way as <a href="user-guide-part1.html#preparing-the-impostors">presented in the GI
+method</a>):</p>
+<pre class="bash"><code>source session-setup.sh
+mkdir $OUTPUT_DIR/impostors.gen1
+mkdir $OUTPUT_DIR/impostors.gen1/GI.1.impostors
+n=$(find $OUTPUT_DIR/data/* -maxdepth 0 -type f | wc -l)
+find $OUTPUT_DIR/data/* -maxdepth 0 -type f | random-lines.pl 100 1 $n | while read f; do cp $f $OUTPUT_DIR/impostors.gen1/GI.1.impostors/$(basename &quot;$f&quot;).txt; done</code></pre>
+<ul>
+<li>Note: the name <code>my.impostors</code> is the one used in the
+default GI config file <code>conf/GI.multi-conf.part</code>.</li>
+</ul>
+</div>
+<div id="running-the-preparation-script" class="section level3">
+<h3>Running the preparation script</h3>
+<ul>
+<li>Language: By default a file <code>contents.json</code> is expected
+in the input data dir (PAN input format), and the language is extracted
+from it. Option <code>-l</code> is used as an alternative to the json
+file.</li>
+<li><code>-i</code> specifies where to find the impostors
+dataset(s)</li>
+<li>In this case we only provide the “basic” multi-conf file to the
+script on STDIN. We will show later a more general way.</li>
+</ul>
+<pre class="bash"><code>source session-setup.sh
+echo &quot;$OUTPUT_DIR/gen1/0/multi-conf-files/basic.multi-conf&quot;  | prepare-input-data.sh -l english -i $OUTPUT_DIR/impostors.gen1/ &quot;$OUTPUT_DIR/input-data.gen1&quot; &quot;$OUTPUT_DIR/gen1&quot;</code></pre>
+<pre><code>## prepare-input-data.sh: language is &#39;english&#39;
+## prepare-input-data.sh init: copying input data
+## prepare-input-data.sh: stop words: generating count files, tokens only
+## count-obs-dataset.sh: no TreeTagger tokenization/POS tagging needed
+## count-obs-dataset.sh: generating count files
+## prepare-input-data.sh: input data, generating count files for all obs types
+## count-obs-dataset.sh: no TreeTagger tokenization/POS tagging needed
+## count-obs-dataset.sh: generating count files
+## prepare-input-data.sh: input data, preparing impostors data
+## prepare-input-data.sh: writing resources options file
+## prepare-input-data.sh: done.</code></pre>
+</div>
+</div>
 <div id="genetic-algorithm" class="section level2">
 <h2>Genetic algorithm</h2>
 <div id="configuration" class="section level3">
 <h3>Configuration</h3>
 <p>The genetic process is controlled by the “genetic” part of the
 multi-configuration:</p>
-<pre class="bash"><code>cat configs/multi/genetic.simplified.multi-conf.part</code></pre>
+<pre class="bash"><code>cat conf/genetic.simplified.multi-conf.part</code></pre>
 <pre><code>## # ***************************************************************
 ## # GENETIC LEARNING PARAMETERS
 ## # ***************************************************************
@@ -600,50 +726,11 @@ larger ‘stop criterion window’ in the later stages of the process. This
 multi-steps sequence is managed by <a href="https://erwanm.github.io/clg-authorship-analytics/#Implementation%3A%20train-multi-stages.sh"><code>train-multi-stages.sh</code></a>
 (see also below).</p>
 </div>
-<div id="preparation" class="section level3">
-<h3>Preparation</h3>
-<p>This part is identical to the steps presented in <a href="user-guide-part1.html">part 1</a>.</p>
-<p>The multi-config files above contain some <a href="user-guide-part1.html#stop-words-for-word-observations">“stop-words”
-observation types</a>. For the sake of simplicity we just use the Mark
-Twain books to compute two stop words lists (50 and 200):</p>
-<pre class="bash"><code>source session-setup.sh
-find $OUTPUT_DIR/data/*-mt-* -maxdepth 0 -type f &gt;&quot;$OUTPUT_DIR/mark-twain.list&quot;
-count-obs-dataset.sh -i &quot;$OUTPUT_DIR/mark-twain.list&quot; -o &#39;-g&#39; english WORD.T.lc1.sl0.mf2 2&gt;/dev/null
-sort -r -n +1 -2 &quot;$OUTPUT_DIR/global.observations/WORD.T.lc1.sl0.mf2.count&quot; | cut -f 1 | head -n 50 &gt;&quot;$OUTPUT_DIR/mt-50.stop-list&quot; 
-sort -r -n +1 -2 &quot;$OUTPUT_DIR/global.observations/WORD.T.lc1.sl0.mf2.count&quot; | cut -f 1 | head -n 200 &gt;&quot;$OUTPUT_DIR/mt-200.stop-list&quot; </code></pre>
-<pre><code>## count-obs-dataset.sh: no TreeTagger tokenization/POS tagging needed
-## count-obs-dataset.sh: generating count files</code></pre>
-<p>For this example we also create a small set of impostors in the same
-way as <a href="user-guide-part1.html#preparing-the-impostors">presented
-in the GI method</a>):</p>
-<pre class="bash"><code>source session-setup.sh
-mkdir $OUTPUT_DIR/impostors
-mkdir $OUTPUT_DIR/impostors/GI.1.impostors
-n=$(find data/*/* -maxdepth 0 -type f | wc -l)
-find data/*/* -maxdepth 0 -type f | random-lines.pl 100 1 $n | while read f; do cp $f $OUTPUT_DIR/impostors/GI.1.impostors/$(basename &quot;$f&quot;).txt; done</code></pre>
-<p>A “resources” file is needed, it contains in particular the location
-of the stop words files and the impostors directory:</p>
-<pre class="bash"><code>target=&quot;$OUTPUT_DIR/gen1/resources-options.conf&quot;
-echo &quot;vocabResources=50:$OUTPUT_DIR/mt-50.stop-list;200:$OUTPUT_DIR/mt-200.stop-list&quot; &gt;&quot;$target&quot;
-echo &quot;useCountFiles=1&quot; &gt;&gt;&quot;$target&quot;
-echo &quot;datasetResourcesPath=$OUTPUT_DIR/impostors/GI.1.impostors&quot; &gt;&gt;&quot;$target&quot;</code></pre>
-<p>Finally we create a small input dataset:</p>
-<pre class="bash"><code>mkdir &quot;$OUTPUT_DIR&quot;/gen1/input &quot;$OUTPUT_DIR&quot;/gen1/resources &quot;$OUTPUT_DIR&quot;/gen1/output
-cat data/user-guide.expl1/cases.txt data/user-guide.expl1/test-cases.txt | cut -f 1 | tr &#39; :&#39; &#39;\n\n&#39;  | sort -u | while read f; do cp &quot;$f&quot; &quot;$OUTPUT_DIR/gen1/input&quot;; done
-cat data/user-guide.expl1/cases.txt | sed &#39;s:data/[^/]*/::g&#39; &gt;&quot;$OUTPUT_DIR/gen1/input/truth.txt&quot;
-cat data/user-guide.expl1/test-cases.txt | sed &#39;s:data/[^/]*/::g&#39; &gt;&quot;$OUTPUT_DIR/gen1/test-cases.gold.txt&quot;
-cat &quot;$OUTPUT_DIR/gen1/test-cases.gold.txt&quot; | cut -f 1 &gt;&quot;$OUTPUT_DIR/gen1/test-cases.txt&quot;</code></pre>
-<ul>
-<li>Note: the script expects a file <code>truth.txt</code> in a
-subdirectory <code>input</code> containing the cases to be used for
-training.</li>
-</ul>
-</div>
 <div id="running-the-genetic-process" class="section level3">
 <h3>Running the genetic process</h3>
 <pre class="bash"><code>source session-setup.sh
 task-distrib-daemon.sh  -s 30s -p 1 -v -q 4 &quot;$TASKS_DIR&quot; $NCORES &gt;&quot;$OUTPUT_DIR/gen1.task-daemon.log&quot; &amp;
-echo &quot;$OUTPUT_DIR/gen1/0/multi-conf-files/basic.multi-conf&quot; | train-genetic.sh -P &quot;$TASKS_DIR/mytasks&quot; -o  &#39;-c -s&#39; &quot;$OUTPUT_DIR/gen1&quot; &quot;$OUTPUT_DIR/gen1/input/truth.txt&quot; indivGenetic_1_</code></pre>
+echo &quot;$OUTPUT_DIR/gen1/0/multi-conf-files/basic.multi-conf&quot; | train-genetic.sh -P &quot;$TASKS_DIR/mytasks&quot; -o  &#39;-c -s&#39; &quot;$OUTPUT_DIR/gen1&quot; &quot;$OUTPUT_DIR/gen1.train-cases.txt&quot; indivGenetic_1_</code></pre>
 <pre><code>## train-genetic.sh: reading multi-config files from STDIN
 ## train-genetic.sh: preparing genetic process
 ## train-genetic.sh, gen 0001: generating 40 random config files
@@ -651,34 +738,12 @@ echo &quot;$OUTPUT_DIR/gen1/0/multi-conf-files/basic.multi-conf&quot; | train-ge
 ## train-genetic.sh, gen 0001: evaluating configs; perfCriterion=AUC; nbFolds=2; input data=/tmp/user-guide-part2.output/gen1/input; multi-config list is:
 ## /tmp/user-guide-part2.output/gen1/multi-conf-files/basic.multi-conf
 ## train-generation.sh: generating folds
-## train-generation.sh: evaluating 40 configs using 2 folds cross-validation (10 cases); resume mode=0
-## train-generation.sh: processing configs. (parallelPrefix=&#39;/tmp/clg-authorship.tasks/mytasks.0001&#39;) 2022-02-05 23:10: 0/40 done
+## train-generation.sh: evaluating 40 configs using 2 folds cross-validation (50 cases); resume mode=0
+## train-generation.sh: processing configs. (parallelPrefix=&#39;/tmp/clg-authorship.tasks/mytasks.0001&#39;) 2022-02-24 15:36: 0/40 done
 ## 
-## train-generation.sh: processing configs. (parallelPrefix=&#39;/tmp/clg-authorship.tasks/mytasks.0001&#39;) 2022-02-05 23:10: 0/40 done
+## train-generation.sh: processing configs. (parallelPrefix=&#39;/tmp/clg-authorship.tasks/mytasks.0001&#39;) 2022-02-24 15:37: 0/40 done
 ## 
-## train-generation.sh: processing configs. (parallelPrefix=&#39;/tmp/clg-authorship.tasks/mytasks.0001&#39;) 2022-02-05 23:10: 0/40 done
-## 
-## train-generation.sh: processing configs. (parallelPrefix=&#39;/tmp/clg-authorship.tasks/mytasks.0001&#39;) 2022-02-05 23:11: 1/40 done
-## 
-## train-generation.sh: processing configs. (parallelPrefix=&#39;/tmp/clg-authorship.tasks/mytasks.0001&#39;) 2022-02-05 23:11: 10/40 done
-## 
-## train-generation.sh: processing configs. (parallelPrefix=&#39;/tmp/clg-authorship.tasks/mytasks.0001&#39;) 2022-02-05 23:11: 14/40 done
-## 
-## train-generation.sh: processing configs. (parallelPrefix=&#39;/tmp/clg-authorship.tasks/mytasks.0001&#39;) 2022-02-05 23:12: 14/40 done
-## 
-## train-generation.sh: processing configs. (parallelPrefix=&#39;/tmp/clg-authorship.tasks/mytasks.0001&#39;) 2022-02-05 23:12: 14/40 done
-## 
-## train-generation.sh: processing configs. (parallelPrefix=&#39;/tmp/clg-authorship.tasks/mytasks.0001&#39;) 2022-02-05 23:12: 15/40 done
-## 
-## train-generation.sh: processing configs. (parallelPrefix=&#39;/tmp/clg-authorship.tasks/mytasks.0001&#39;) 2022-02-05 23:13: 22/40 done
-## 
-## train-generation.sh: processing configs. (parallelPrefix=&#39;/tmp/clg-authorship.tasks/mytasks.0001&#39;) 2022-02-05 23:13: 23/40 done
-## 
-## train-generation.sh: processing configs. (parallelPrefix=&#39;/tmp/clg-authorship.tasks/mytasks.0001&#39;) 2022-02-05 23:13: 28/40 done
-## 
-## train-generation.sh: processing configs. (parallelPrefix=&#39;/tmp/clg-authorship.tasks/mytasks.0001&#39;) 2022-02-05 23:14: 39/40 done
-## 
-## train-generation.sh: processing configs. (parallelPrefix=&#39;/tmp/clg-authorship.tasks/mytasks.0001&#39;) 2022-02-05 23:14: 39/40 done
+## train-generation.sh: processing configs. (parallelPrefix=&#39;/tmp/clg-authorship.tasks/mytasks.0001&#39;) 2022-02-24 15:37: 3/40 done
 ## 
 ## train-generation.sh: done.
 ## INFO train-genetic.sh: average perf for the last 3 2-long windows (empty if not enough generations yet): 
@@ -688,15 +753,10 @@ echo &quot;$OUTPUT_DIR/gen1/0/multi-conf-files/basic.multi-conf&quot; | train-ge
 ## train-genetic.sh, gen 0002: evaluating configs; perfCriterion=AUC; nbFolds=2; input data=/tmp/user-guide-part2.output/gen1/input; multi-config list is:
 ## /tmp/user-guide-part2.output/gen1/multi-conf-files/basic.multi-conf
 ## train-generation.sh: generating folds
-## train-generation.sh: evaluating 40 configs using 2 folds cross-validation (10 cases); resume mode=0
-## train-generation.sh: processing configs. (parallelPrefix=&#39;/tmp/clg-authorship.tasks/mytasks.0002&#39;) 2022-02-05 23:14: 0/40 done
+## train-generation.sh: evaluating 40 configs using 2 folds cross-validation (50 cases); resume mode=0
+## train-generation.sh: processing configs. (parallelPrefix=&#39;/tmp/clg-authorship.tasks/mytasks.0002&#39;) 2022-02-24 15:37: 0/40 done
 ## 
-## train-generation.sh: processing configs. (parallelPrefix=&#39;/tmp/clg-authorship.tasks/mytasks.0002&#39;) 2022-02-05 23:15: 0/40 done
-## 
-## train-generation.sh: processing configs. (parallelPrefix=&#39;/tmp/clg-authorship.tasks/mytasks.0002&#39;) 2022-02-05 23:15: 0/40 done
-## 
-## Error: &#39;/tmp/clg-authorship.tasks/mytasks.0002.001.wc51IDFkc.running&#39; does not exist
-## train-generation.sh: processing configs. (parallelPrefix=&#39;/tmp/clg-authorship.tasks/mytasks.0002&#39;) 2022-02-05 23:15: 15/40 done
+## train-generation.sh: processing configs. (parallelPrefix=&#39;/tmp/clg-authorship.tasks/mytasks.0002&#39;) 2022-02-24 15:38: 0/40 done
 ## 
 ## train-generation.sh: done.
 ## INFO train-genetic.sh: average perf for the last 3 2-long windows (empty if not enough generations yet): 
@@ -706,16 +766,10 @@ echo &quot;$OUTPUT_DIR/gen1/0/multi-conf-files/basic.multi-conf&quot; | train-ge
 ## train-genetic.sh, gen 0003: evaluating configs; perfCriterion=AUC; nbFolds=2; input data=/tmp/user-guide-part2.output/gen1/input; multi-config list is:
 ## /tmp/user-guide-part2.output/gen1/multi-conf-files/basic.multi-conf
 ## train-generation.sh: generating folds
-## train-generation.sh: evaluating 40 configs using 2 folds cross-validation (10 cases); resume mode=0
-## train-generation.sh: processing configs. (parallelPrefix=&#39;/tmp/clg-authorship.tasks/mytasks.0003&#39;) 2022-02-05 23:16: 0/40 done
+## train-generation.sh: evaluating 40 configs using 2 folds cross-validation (50 cases); resume mode=0
+## train-generation.sh: processing configs. (parallelPrefix=&#39;/tmp/clg-authorship.tasks/mytasks.0003&#39;) 2022-02-24 15:38: 0/40 done
 ## 
-## train-generation.sh: processing configs. (parallelPrefix=&#39;/tmp/clg-authorship.tasks/mytasks.0003&#39;) 2022-02-05 23:16: 0/40 done
-## 
-## train-generation.sh: processing configs. (parallelPrefix=&#39;/tmp/clg-authorship.tasks/mytasks.0003&#39;) 2022-02-05 23:16: 0/40 done
-## 
-## Error: &#39;/tmp/clg-authorship.tasks/mytasks.0003.019.aEpALULxK.running&#39; does not exist
-## Error: &#39;/tmp/clg-authorship.tasks/mytasks.0003.016.lG1YbiBBJ.running&#39; does not exist
-## train-generation.sh: processing configs. (parallelPrefix=&#39;/tmp/clg-authorship.tasks/mytasks.0003&#39;) 2022-02-05 23:17: 21/40 done
+## train-generation.sh: processing configs. (parallelPrefix=&#39;/tmp/clg-authorship.tasks/mytasks.0003&#39;) 2022-02-24 15:38: 0/40 done
 ## 
 ## train-generation.sh: done.
 ## INFO train-genetic.sh: average perf for the last 3 2-long windows (empty if not enough generations yet): 
@@ -725,17 +779,10 @@ echo &quot;$OUTPUT_DIR/gen1/0/multi-conf-files/basic.multi-conf&quot; | train-ge
 ## train-genetic.sh, gen 0004: evaluating configs; perfCriterion=AUC; nbFolds=2; input data=/tmp/user-guide-part2.output/gen1/input; multi-config list is:
 ## /tmp/user-guide-part2.output/gen1/multi-conf-files/basic.multi-conf
 ## train-generation.sh: generating folds
-## train-generation.sh: evaluating 40 configs using 2 folds cross-validation (10 cases); resume mode=0
-## train-generation.sh: processing configs. (parallelPrefix=&#39;/tmp/clg-authorship.tasks/mytasks.0004&#39;) 2022-02-05 23:17: 0/40 done
+## train-generation.sh: evaluating 40 configs using 2 folds cross-validation (50 cases); resume mode=0
+## train-generation.sh: processing configs. (parallelPrefix=&#39;/tmp/clg-authorship.tasks/mytasks.0004&#39;) 2022-02-24 15:39: 0/40 done
 ## 
-## train-generation.sh: processing configs. (parallelPrefix=&#39;/tmp/clg-authorship.tasks/mytasks.0004&#39;) 2022-02-05 23:17: 0/40 done
-## 
-## train-generation.sh: processing configs. (parallelPrefix=&#39;/tmp/clg-authorship.tasks/mytasks.0004&#39;) 2022-02-05 23:18: 0/40 done
-## 
-## Error: &#39;/tmp/clg-authorship.tasks/mytasks.0004.021.6YhhpaJY2.running&#39; does not exist
-## Error: &#39;/tmp/clg-authorship.tasks/mytasks.0004.018.TVW7JeZGY.running&#39; does not exist
-## Error: &#39;/tmp/clg-authorship.tasks/mytasks.0004.013.wTLen06wq.running&#39; does not exist
-## train-generation.sh: processing configs. (parallelPrefix=&#39;/tmp/clg-authorship.tasks/mytasks.0004&#39;) 2022-02-05 23:18: 39/40 done
+## train-generation.sh: processing configs. (parallelPrefix=&#39;/tmp/clg-authorship.tasks/mytasks.0004&#39;) 2022-02-24 15:39: 0/40 done
 ## 
 ## train-generation.sh: done.
 ## INFO train-genetic.sh: average perf for the last 3 2-long windows (empty if not enough generations yet): 
@@ -745,14 +792,10 @@ echo &quot;$OUTPUT_DIR/gen1/0/multi-conf-files/basic.multi-conf&quot; | train-ge
 ## train-genetic.sh, gen 0005: evaluating configs; perfCriterion=AUC; nbFolds=2; input data=/tmp/user-guide-part2.output/gen1/input; multi-config list is:
 ## /tmp/user-guide-part2.output/gen1/multi-conf-files/basic.multi-conf
 ## train-generation.sh: generating folds
-## train-generation.sh: evaluating 40 configs using 2 folds cross-validation (10 cases); resume mode=0
-## train-generation.sh: processing configs. (parallelPrefix=&#39;/tmp/clg-authorship.tasks/mytasks.0005&#39;) 2022-02-05 23:18: 0/40 done
+## train-generation.sh: evaluating 40 configs using 2 folds cross-validation (50 cases); resume mode=0
+## train-generation.sh: processing configs. (parallelPrefix=&#39;/tmp/clg-authorship.tasks/mytasks.0005&#39;) 2022-02-24 15:39: 0/40 done
 ## 
-## train-generation.sh: processing configs. (parallelPrefix=&#39;/tmp/clg-authorship.tasks/mytasks.0005&#39;) 2022-02-05 23:19: 0/40 done
-## 
-## train-generation.sh: processing configs. (parallelPrefix=&#39;/tmp/clg-authorship.tasks/mytasks.0005&#39;) 2022-02-05 23:19: 0/40 done
-## 
-## train-generation.sh: processing configs. (parallelPrefix=&#39;/tmp/clg-authorship.tasks/mytasks.0005&#39;) 2022-02-05 23:19: 6/40 done
+## train-generation.sh: processing configs. (parallelPrefix=&#39;/tmp/clg-authorship.tasks/mytasks.0005&#39;) 2022-02-24 15:40: 0/40 done
 ## 
 ## train-generation.sh: done.
 ## INFO train-genetic.sh: average perf for the last 3 2-long windows (empty if not enough generations yet): 
@@ -762,79 +805,227 @@ echo &quot;$OUTPUT_DIR/gen1/0/multi-conf-files/basic.multi-conf&quot; | train-ge
 ## train-genetic.sh, gen 0006: evaluating configs; perfCriterion=AUC; nbFolds=2; input data=/tmp/user-guide-part2.output/gen1/input; multi-config list is:
 ## /tmp/user-guide-part2.output/gen1/multi-conf-files/basic.multi-conf
 ## train-generation.sh: generating folds
-## train-generation.sh: evaluating 40 configs using 2 folds cross-validation (10 cases); resume mode=0
-## train-generation.sh: processing configs. (parallelPrefix=&#39;/tmp/clg-authorship.tasks/mytasks.0006&#39;) 2022-02-05 23:20: 0/40 done
+## train-generation.sh: evaluating 40 configs using 2 folds cross-validation (50 cases); resume mode=0
+## train-generation.sh: processing configs. (parallelPrefix=&#39;/tmp/clg-authorship.tasks/mytasks.0006&#39;) 2022-02-24 15:40: 0/40 done
 ## 
-## train-generation.sh: processing configs. (parallelPrefix=&#39;/tmp/clg-authorship.tasks/mytasks.0006&#39;) 2022-02-05 23:20: 0/40 done
-## 
-## train-generation.sh: processing configs. (parallelPrefix=&#39;/tmp/clg-authorship.tasks/mytasks.0006&#39;) 2022-02-05 23:20: 1/40 done
+## train-generation.sh: processing configs. (parallelPrefix=&#39;/tmp/clg-authorship.tasks/mytasks.0006&#39;) 2022-02-24 15:40: 0/40 done
 ## 
 ## train-generation.sh: done.
 ## INFO train-genetic.sh: average perf for the last 3 2-long windows (empty if not enough generations yet): 
 ## first    window  mean
-## /tmp/user-guide-part2.output/gen1/generations/0005/train/configs.results 3   0.9915
-## /tmp/user-guide-part2.output/gen1/generations/0003/train/configs.results 2   0.985
-## /tmp/user-guide-part2.output/gen1/generations/0001/train/configs.results 1   0.888
+## /tmp/user-guide-part2.output/gen1/generations/0005/train/configs.results 3   0.5208233
+## /tmp/user-guide-part2.output/gen1/generations/0003/train/configs.results 2   0.4509614125
+## /tmp/user-guide-part2.output/gen1/generations/0001/train/configs.results 1   0.433924325
 ## train-genetic.sh, gen 0007: generating 40 config files by genetic crossover
 ## expand-multi-config.pl info: 3840 possible configs
 ## train-genetic.sh, gen 0007: evaluating configs; perfCriterion=AUC; nbFolds=2; input data=/tmp/user-guide-part2.output/gen1/input; multi-config list is:
 ## /tmp/user-guide-part2.output/gen1/multi-conf-files/basic.multi-conf
 ## train-generation.sh: generating folds
-## train-generation.sh: evaluating 40 configs using 2 folds cross-validation (10 cases); resume mode=0
-## train-generation.sh: processing configs. (parallelPrefix=&#39;/tmp/clg-authorship.tasks/mytasks.0007&#39;) 2022-02-05 23:21: 0/40 done
+## train-generation.sh: evaluating 40 configs using 2 folds cross-validation (50 cases); resume mode=0
+## train-generation.sh: processing configs. (parallelPrefix=&#39;/tmp/clg-authorship.tasks/mytasks.0007&#39;) 2022-02-24 15:41: 0/40 done
 ## 
-## train-generation.sh: processing configs. (parallelPrefix=&#39;/tmp/clg-authorship.tasks/mytasks.0007&#39;) 2022-02-05 23:21: 0/40 done
+## train-generation.sh: processing configs. (parallelPrefix=&#39;/tmp/clg-authorship.tasks/mytasks.0007&#39;) 2022-02-24 15:41: 0/40 done
 ## 
-## train-generation.sh: processing configs. (parallelPrefix=&#39;/tmp/clg-authorship.tasks/mytasks.0007&#39;) 2022-02-05 23:21: 1/40 done
+## train-generation.sh: processing configs. (parallelPrefix=&#39;/tmp/clg-authorship.tasks/mytasks.0007&#39;) 2022-02-24 15:41: 4/40 done
 ## 
 ## train-generation.sh: done.
 ## INFO train-genetic.sh: average perf for the last 3 2-long windows (empty if not enough generations yet): 
 ## first    window  mean
-## /tmp/user-guide-part2.output/gen1/generations/0006/train/configs.results 3   0.984
-## /tmp/user-guide-part2.output/gen1/generations/0004/train/configs.results 2   0.9875
-## /tmp/user-guide-part2.output/gen1/generations/0002/train/configs.results 1   0.97
+## /tmp/user-guide-part2.output/gen1/generations/0006/train/configs.results 3   0.5206731125
+## /tmp/user-guide-part2.output/gen1/generations/0004/train/configs.results 2   0.5569609125
+## /tmp/user-guide-part2.output/gen1/generations/0002/train/configs.results 1   0.38886225
 ## train-genetic.sh, gen 0008: generating 40 config files by genetic crossover
 ## expand-multi-config.pl info: 3840 possible configs
 ## train-genetic.sh, gen 0008: evaluating configs; perfCriterion=AUC; nbFolds=2; input data=/tmp/user-guide-part2.output/gen1/input; multi-config list is:
 ## /tmp/user-guide-part2.output/gen1/multi-conf-files/basic.multi-conf
 ## train-generation.sh: generating folds
-## train-generation.sh: evaluating 40 configs using 2 folds cross-validation (10 cases); resume mode=0
-## train-generation.sh: processing configs. (parallelPrefix=&#39;/tmp/clg-authorship.tasks/mytasks.0008&#39;) 2022-02-05 23:22: 0/40 done
+## train-generation.sh: evaluating 40 configs using 2 folds cross-validation (50 cases); resume mode=0
+## train-generation.sh: processing configs. (parallelPrefix=&#39;/tmp/clg-authorship.tasks/mytasks.0008&#39;) 2022-02-24 15:42: 0/40 done
 ## 
-## train-generation.sh: processing configs. (parallelPrefix=&#39;/tmp/clg-authorship.tasks/mytasks.0008&#39;) 2022-02-05 23:22: 0/40 done
+## train-generation.sh: processing configs. (parallelPrefix=&#39;/tmp/clg-authorship.tasks/mytasks.0008&#39;) 2022-02-24 15:42: 0/40 done
 ## 
-## train-generation.sh: processing configs. (parallelPrefix=&#39;/tmp/clg-authorship.tasks/mytasks.0008&#39;) 2022-02-05 23:22: 0/40 done
-## 
-## train-generation.sh: processing configs. (parallelPrefix=&#39;/tmp/clg-authorship.tasks/mytasks.0008&#39;) 2022-02-05 23:23: 16/40 done
+## train-generation.sh: processing configs. (parallelPrefix=&#39;/tmp/clg-authorship.tasks/mytasks.0008&#39;) 2022-02-24 15:42: 0/40 done
 ## 
 ## train-generation.sh: done.
 ## INFO train-genetic.sh: average perf for the last 3 2-long windows (empty if not enough generations yet): 
 ## first    window  mean
-## /tmp/user-guide-part2.output/gen1/generations/0007/train/configs.results 3   0.97075
-## /tmp/user-guide-part2.output/gen1/generations/0005/train/configs.results 2   0.9915
-## /tmp/user-guide-part2.output/gen1/generations/0003/train/configs.results 1   0.985
+## /tmp/user-guide-part2.output/gen1/generations/0007/train/configs.results 3   0.613641775
+## /tmp/user-guide-part2.output/gen1/generations/0005/train/configs.results 2   0.5208233
+## /tmp/user-guide-part2.output/gen1/generations/0003/train/configs.results 1   0.4509614125
 ## train-genetic.sh, gen 0009: generating 40 config files by genetic crossover
 ## expand-multi-config.pl info: 3840 possible configs
 ## train-genetic.sh, gen 0009: evaluating configs; perfCriterion=AUC; nbFolds=2; input data=/tmp/user-guide-part2.output/gen1/input; multi-config list is:
 ## /tmp/user-guide-part2.output/gen1/multi-conf-files/basic.multi-conf
 ## train-generation.sh: generating folds
-## train-generation.sh: evaluating 40 configs using 2 folds cross-validation (10 cases); resume mode=0
-## train-generation.sh: processing configs. (parallelPrefix=&#39;/tmp/clg-authorship.tasks/mytasks.0009&#39;) 2022-02-05 23:23: 0/40 done
+## train-generation.sh: evaluating 40 configs using 2 folds cross-validation (50 cases); resume mode=0
+## train-generation.sh: processing configs. (parallelPrefix=&#39;/tmp/clg-authorship.tasks/mytasks.0009&#39;) 2022-02-24 15:43: 0/40 done
 ## 
-## train-generation.sh: processing configs. (parallelPrefix=&#39;/tmp/clg-authorship.tasks/mytasks.0009&#39;) 2022-02-05 23:23: 0/40 done
+## train-generation.sh: processing configs. (parallelPrefix=&#39;/tmp/clg-authorship.tasks/mytasks.0009&#39;) 2022-02-24 15:43: 0/40 done
 ## 
-## train-generation.sh: processing configs. (parallelPrefix=&#39;/tmp/clg-authorship.tasks/mytasks.0009&#39;) 2022-02-05 23:24: 0/40 done
-## 
-## train-generation.sh: processing configs. (parallelPrefix=&#39;/tmp/clg-authorship.tasks/mytasks.0009&#39;) 2022-02-05 23:24: 36/40 done
+## train-generation.sh: processing configs. (parallelPrefix=&#39;/tmp/clg-authorship.tasks/mytasks.0009&#39;) 2022-02-24 15:43: 0/40 done
 ## 
 ## train-generation.sh: done.
 ## INFO train-genetic.sh: average perf for the last 3 2-long windows (empty if not enough generations yet): 
 ## first    window  mean
-## /tmp/user-guide-part2.output/gen1/generations/0008/train/configs.results 3   0.97175
-## /tmp/user-guide-part2.output/gen1/generations/0006/train/configs.results 2   0.984
-## /tmp/user-guide-part2.output/gen1/generations/0004/train/configs.results 1   0.9875
+## /tmp/user-guide-part2.output/gen1/generations/0008/train/configs.results 3   0.577053325
+## /tmp/user-guide-part2.output/gen1/generations/0006/train/configs.results 2   0.5206731125
+## /tmp/user-guide-part2.output/gen1/generations/0004/train/configs.results 1   0.5569609125
+## train-genetic.sh, gen 0010: generating 40 config files by genetic crossover
+## expand-multi-config.pl info: 3840 possible configs
+## train-genetic.sh, gen 0010: evaluating configs; perfCriterion=AUC; nbFolds=2; input data=/tmp/user-guide-part2.output/gen1/input; multi-config list is:
+## /tmp/user-guide-part2.output/gen1/multi-conf-files/basic.multi-conf
+## train-generation.sh: generating folds
+## train-generation.sh: evaluating 40 configs using 2 folds cross-validation (50 cases); resume mode=0
+## train-generation.sh: processing configs. (parallelPrefix=&#39;/tmp/clg-authorship.tasks/mytasks.0010&#39;) 2022-02-24 15:44: 0/40 done
+## 
+## train-generation.sh: processing configs. (parallelPrefix=&#39;/tmp/clg-authorship.tasks/mytasks.0010&#39;) 2022-02-24 15:44: 0/40 done
+## 
+## train-generation.sh: processing configs. (parallelPrefix=&#39;/tmp/clg-authorship.tasks/mytasks.0010&#39;) 2022-02-24 15:44: 0/40 done
+## 
+## train-generation.sh: done.
+## INFO train-genetic.sh: average perf for the last 3 2-long windows (empty if not enough generations yet): 
+## first    window  mean
+## /tmp/user-guide-part2.output/gen1/generations/0009/train/configs.results 3   0.53317315
+## /tmp/user-guide-part2.output/gen1/generations/0007/train/configs.results 2   0.613641775
+## /tmp/user-guide-part2.output/gen1/generations/0005/train/configs.results 1   0.5208233
+## train-genetic.sh, gen 0011: generating 40 config files by genetic crossover
+## expand-multi-config.pl info: 3840 possible configs
+## train-genetic.sh, gen 0011: evaluating configs; perfCriterion=AUC; nbFolds=2; input data=/tmp/user-guide-part2.output/gen1/input; multi-config list is:
+## /tmp/user-guide-part2.output/gen1/multi-conf-files/basic.multi-conf
+## train-generation.sh: generating folds
+## train-generation.sh: evaluating 40 configs using 2 folds cross-validation (50 cases); resume mode=0
+## train-generation.sh: processing configs. (parallelPrefix=&#39;/tmp/clg-authorship.tasks/mytasks.0011&#39;) 2022-02-24 15:45: 0/40 done
+## 
+## train-generation.sh: processing configs. (parallelPrefix=&#39;/tmp/clg-authorship.tasks/mytasks.0011&#39;) 2022-02-24 15:45: 0/40 done
+## 
+## train-generation.sh: processing configs. (parallelPrefix=&#39;/tmp/clg-authorship.tasks/mytasks.0011&#39;) 2022-02-24 15:45: 0/40 done
+## 
+## train-generation.sh: done.
+## INFO train-genetic.sh: average perf for the last 3 2-long windows (empty if not enough generations yet): 
+## first    window  mean
+## /tmp/user-guide-part2.output/gen1/generations/0010/train/configs.results 3   0.6193809875
+## /tmp/user-guide-part2.output/gen1/generations/0008/train/configs.results 2   0.577053325
+## /tmp/user-guide-part2.output/gen1/generations/0006/train/configs.results 1   0.5206731125
+## train-genetic.sh, gen 0012: generating 40 config files by genetic crossover
+## expand-multi-config.pl info: 3840 possible configs
+## train-genetic.sh, gen 0012: evaluating configs; perfCriterion=AUC; nbFolds=2; input data=/tmp/user-guide-part2.output/gen1/input; multi-config list is:
+## /tmp/user-guide-part2.output/gen1/multi-conf-files/basic.multi-conf
+## train-generation.sh: generating folds
+## train-generation.sh: evaluating 40 configs using 2 folds cross-validation (50 cases); resume mode=0
+## train-generation.sh: processing configs. (parallelPrefix=&#39;/tmp/clg-authorship.tasks/mytasks.0012&#39;) 2022-02-24 15:46: 0/40 done
+## 
+## train-generation.sh: processing configs. (parallelPrefix=&#39;/tmp/clg-authorship.tasks/mytasks.0012&#39;) 2022-02-24 15:46: 0/40 done
+## 
+## train-generation.sh: processing configs. (parallelPrefix=&#39;/tmp/clg-authorship.tasks/mytasks.0012&#39;) 2022-02-24 15:46: 0/40 done
+## 
+## train-generation.sh: done.
+## INFO train-genetic.sh: average perf for the last 3 2-long windows (empty if not enough generations yet): 
+## first    window  mean
+## /tmp/user-guide-part2.output/gen1/generations/0011/train/configs.results 3   0.6800179375
+## /tmp/user-guide-part2.output/gen1/generations/0009/train/configs.results 2   0.53317315
+## /tmp/user-guide-part2.output/gen1/generations/0007/train/configs.results 1   0.613641775
+## train-genetic.sh, gen 0013: generating 40 config files by genetic crossover
+## expand-multi-config.pl info: 3840 possible configs
+## train-genetic.sh, gen 0013: evaluating configs; perfCriterion=AUC; nbFolds=2; input data=/tmp/user-guide-part2.output/gen1/input; multi-config list is:
+## /tmp/user-guide-part2.output/gen1/multi-conf-files/basic.multi-conf
+## train-generation.sh: generating folds
+## train-generation.sh: evaluating 40 configs using 2 folds cross-validation (50 cases); resume mode=0
+## train-generation.sh: processing configs. (parallelPrefix=&#39;/tmp/clg-authorship.tasks/mytasks.0013&#39;) 2022-02-24 15:47: 0/40 done
+## 
+## train-generation.sh: processing configs. (parallelPrefix=&#39;/tmp/clg-authorship.tasks/mytasks.0013&#39;) 2022-02-24 15:47: 0/40 done
+## 
+## train-generation.sh: processing configs. (parallelPrefix=&#39;/tmp/clg-authorship.tasks/mytasks.0013&#39;) 2022-02-24 15:47: 0/40 done
+## 
+## train-generation.sh: done.
+## INFO train-genetic.sh: average perf for the last 3 2-long windows (empty if not enough generations yet): 
+## first    window  mean
+## /tmp/user-guide-part2.output/gen1/generations/0012/train/configs.results 3   0.6690905125
+## /tmp/user-guide-part2.output/gen1/generations/0010/train/configs.results 2   0.6193809875
+## /tmp/user-guide-part2.output/gen1/generations/0008/train/configs.results 1   0.577053325
+## train-genetic.sh, gen 0014: generating 40 config files by genetic crossover
+## expand-multi-config.pl info: 3840 possible configs
+## train-genetic.sh, gen 0014: evaluating configs; perfCriterion=AUC; nbFolds=2; input data=/tmp/user-guide-part2.output/gen1/input; multi-config list is:
+## /tmp/user-guide-part2.output/gen1/multi-conf-files/basic.multi-conf
+## train-generation.sh: generating folds
+## train-generation.sh: evaluating 40 configs using 2 folds cross-validation (50 cases); resume mode=0
+## train-generation.sh: processing configs. (parallelPrefix=&#39;/tmp/clg-authorship.tasks/mytasks.0014&#39;) 2022-02-24 15:48: 0/40 done
+## 
+## train-generation.sh: processing configs. (parallelPrefix=&#39;/tmp/clg-authorship.tasks/mytasks.0014&#39;) 2022-02-24 15:48: 0/40 done
+## 
+## train-generation.sh: processing configs. (parallelPrefix=&#39;/tmp/clg-authorship.tasks/mytasks.0014&#39;) 2022-02-24 15:48: 0/40 done
+## 
+## train-generation.sh: done.
+## INFO train-genetic.sh: average perf for the last 3 2-long windows (empty if not enough generations yet): 
+## first    window  mean
+## /tmp/user-guide-part2.output/gen1/generations/0013/train/configs.results 3   0.6878405625
+## /tmp/user-guide-part2.output/gen1/generations/0011/train/configs.results 2   0.6800179375
+## /tmp/user-guide-part2.output/gen1/generations/0009/train/configs.results 1   0.53317315
+## train-genetic.sh, gen 0015: generating 40 config files by genetic crossover
+## expand-multi-config.pl info: 3840 possible configs
+## train-genetic.sh, gen 0015: evaluating configs; perfCriterion=AUC; nbFolds=2; input data=/tmp/user-guide-part2.output/gen1/input; multi-config list is:
+## /tmp/user-guide-part2.output/gen1/multi-conf-files/basic.multi-conf
+## train-generation.sh: generating folds
+## train-generation.sh: evaluating 40 configs using 2 folds cross-validation (50 cases); resume mode=0
+## train-generation.sh: processing configs. (parallelPrefix=&#39;/tmp/clg-authorship.tasks/mytasks.0015&#39;) 2022-02-24 15:49: 0/40 done
+## 
+## train-generation.sh: processing configs. (parallelPrefix=&#39;/tmp/clg-authorship.tasks/mytasks.0015&#39;) 2022-02-24 15:49: 0/40 done
+## 
+## train-generation.sh: done.
+## INFO train-genetic.sh: average perf for the last 3 2-long windows (empty if not enough generations yet): 
+## first    window  mean
+## /tmp/user-guide-part2.output/gen1/generations/0014/train/configs.results 3   0.72270625
+## /tmp/user-guide-part2.output/gen1/generations/0012/train/configs.results 2   0.6690905125
+## /tmp/user-guide-part2.output/gen1/generations/0010/train/configs.results 1   0.6193809875
+## train-genetic.sh, gen 0016: generating 40 config files by genetic crossover
+## expand-multi-config.pl info: 3840 possible configs
+## train-genetic.sh, gen 0016: evaluating configs; perfCriterion=AUC; nbFolds=2; input data=/tmp/user-guide-part2.output/gen1/input; multi-config list is:
+## /tmp/user-guide-part2.output/gen1/multi-conf-files/basic.multi-conf
+## train-generation.sh: generating folds
+## train-generation.sh: evaluating 40 configs using 2 folds cross-validation (50 cases); resume mode=0
+## train-generation.sh: processing configs. (parallelPrefix=&#39;/tmp/clg-authorship.tasks/mytasks.0016&#39;) 2022-02-24 15:49: 0/40 done
+## 
+## train-generation.sh: processing configs. (parallelPrefix=&#39;/tmp/clg-authorship.tasks/mytasks.0016&#39;) 2022-02-24 15:50: 0/40 done
+## 
+## train-generation.sh: done.
+## INFO train-genetic.sh: average perf for the last 3 2-long windows (empty if not enough generations yet): 
+## first    window  mean
+## /tmp/user-guide-part2.output/gen1/generations/0015/train/configs.results 3   0.6810396375
+## /tmp/user-guide-part2.output/gen1/generations/0013/train/configs.results 2   0.6878405625
+## /tmp/user-guide-part2.output/gen1/generations/0011/train/configs.results 1   0.6800179375
+## train-genetic.sh, gen 0017: generating 40 config files by genetic crossover
+## expand-multi-config.pl info: 3840 possible configs
+## train-genetic.sh, gen 0017: evaluating configs; perfCriterion=AUC; nbFolds=2; input data=/tmp/user-guide-part2.output/gen1/input; multi-config list is:
+## /tmp/user-guide-part2.output/gen1/multi-conf-files/basic.multi-conf
+## train-generation.sh: generating folds
+## train-generation.sh: evaluating 40 configs using 2 folds cross-validation (50 cases); resume mode=0
+## train-generation.sh: processing configs. (parallelPrefix=&#39;/tmp/clg-authorship.tasks/mytasks.0017&#39;) 2022-02-24 15:50: 0/40 done
+## 
+## train-generation.sh: processing configs. (parallelPrefix=&#39;/tmp/clg-authorship.tasks/mytasks.0017&#39;) 2022-02-24 15:50: 0/40 done
+## 
+## train-generation.sh: done.
+## INFO train-genetic.sh: average perf for the last 3 2-long windows (empty if not enough generations yet): 
+## first    window  mean
+## /tmp/user-guide-part2.output/gen1/generations/0016/train/configs.results 3   0.655969725
+## /tmp/user-guide-part2.output/gen1/generations/0014/train/configs.results 2   0.72270625
+## /tmp/user-guide-part2.output/gen1/generations/0012/train/configs.results 1   0.6690905125
+## train-genetic.sh, gen 0018: generating 40 config files by genetic crossover
+## expand-multi-config.pl info: 3840 possible configs
+## train-genetic.sh, gen 0018: evaluating configs; perfCriterion=AUC; nbFolds=2; input data=/tmp/user-guide-part2.output/gen1/input; multi-config list is:
+## /tmp/user-guide-part2.output/gen1/multi-conf-files/basic.multi-conf
+## train-generation.sh: generating folds
+## train-generation.sh: evaluating 40 configs using 2 folds cross-validation (50 cases); resume mode=0
+## train-generation.sh: processing configs. (parallelPrefix=&#39;/tmp/clg-authorship.tasks/mytasks.0018&#39;) 2022-02-24 15:51: 0/40 done
+## 
+## train-generation.sh: processing configs. (parallelPrefix=&#39;/tmp/clg-authorship.tasks/mytasks.0018&#39;) 2022-02-24 15:51: 0/40 done
+## 
+## train-generation.sh: done.
+## INFO train-genetic.sh: average perf for the last 3 2-long windows (empty if not enough generations yet): 
+## first    window  mean
+## /tmp/user-guide-part2.output/gen1/generations/0017/train/configs.results 3   0.6001906
+## /tmp/user-guide-part2.output/gen1/generations/0015/train/configs.results 2   0.6810396375
+## /tmp/user-guide-part2.output/gen1/generations/0013/train/configs.results 1   0.6878405625
 ## train-genetic.sh: genetic loop done, extracting 100 best configs (removing duplicates)
-## train-genetic.sh: returning 100 best configs (removed 194 duplicates)
+## train-genetic.sh: returning 100 best configs (removed 314 duplicates)
 ## train-genetic.sh: renaming best configs
 ## train-genetic.sh: done.</code></pre>
 <ul>
@@ -893,26 +1084,25 @@ scores.</li>
 previous training and apply the final stage. Note that the id provided
 as last parameter contains only the prefix <code>indivGenetic</code>
 since it’s not about a specific stage anymore.</p>
-<pre class="bash"><code>source session-setup.sh
+<pre class="bash"><code>#source session-setup.sh
 task-distrib-daemon.sh  -s 30s -p 1 -v -q 4 &quot;$TASKS_DIR&quot; $NCORES &gt;&quot;$OUTPUT_DIR/gen1.task-daemon.log&quot; &amp;
-train-multi-stages.sh -P &quot;$TASKS_DIR/mytasks&quot; -o  &#39;-c -s&#39; &quot;$OUTPUT_DIR/gen1&quot; &quot;$OUTPUT_DIR/gen1/input/truth.txt&quot; &quot;$OUTPUT_DIR/gen1/0/multi-conf-files/basic.multi-conf&quot; indivGenetic</code></pre>
+train-multi-stages.sh -r -P &quot;$TASKS_DIR/mytasks&quot; -o  &#39;-c -s&#39; &quot;$OUTPUT_DIR/gen1&quot; &quot;$OUTPUT_DIR/gen1.train-cases.txt&quot; &quot;$OUTPUT_DIR/gen1/0/multi-conf-files/basic.multi-conf&quot; indivGenetic</code></pre>
 <pre><code>## train-multi-stages.sh: stagesIds = indivGenetic_1 ; config file=/tmp/user-guide-part2.output/gen1/0/multi-conf-files/basic.multi-conf
 ## train-multi-stages.sh: *** starting genetic stage indivGenetic_1 ***
 ## train-genetic.sh: reading multi-config files from STDIN
 ## train-genetic.sh: preparing genetic process
+## train-genetic.sh: resuming genetic process at generation 0001 in &#39;/tmp/user-guide-part2.output/gen1/indivGenetic_1/generations/0001&#39;
 ## train-genetic.sh, gen 0001: generating 40 random config files
 ## expand-multi-config.pl info: 3840 possible configs
 ## train-genetic.sh, gen 0001: evaluating configs; perfCriterion=AUC; nbFolds=2; input data=/tmp/user-guide-part2.output/gen1/indivGenetic_1/input; multi-config list is:
 ## /tmp/user-guide-part2.output/gen1/indivGenetic_1/multi-conf-files/basic.multi-conf
 ## train-generation.sh: generating folds
-## train-generation.sh: evaluating 40 configs using 2 folds cross-validation (10 cases); resume mode=0
-## train-generation.sh: processing configs. (parallelPrefix=&#39;/tmp/clg-authorship.tasks/mytasks.indivGenetic_1.0001&#39;) 2022-02-05 23:26: 0/40 done
+## train-generation.sh: evaluating 40 configs using 2 folds cross-validation (50 cases); resume mode=1
+## train-generation.sh: processing configs. (parallelPrefix=&#39;/tmp/clg-authorship.tasks/mytasks.indivGenetic_1.0001&#39;) 2022-02-24 15:54: 0/40 done
 ## 
-## train-generation.sh: processing configs. (parallelPrefix=&#39;/tmp/clg-authorship.tasks/mytasks.indivGenetic_1.0001&#39;) 2022-02-05 23:27: 0/40 done
+## train-generation.sh: processing configs. (parallelPrefix=&#39;/tmp/clg-authorship.tasks/mytasks.indivGenetic_1.0001&#39;) 2022-02-24 15:54: 0/40 done
 ## 
-## train-generation.sh: processing configs. (parallelPrefix=&#39;/tmp/clg-authorship.tasks/mytasks.indivGenetic_1.0001&#39;) 2022-02-05 23:27: 0/40 done
-## 
-## train-generation.sh: processing configs. (parallelPrefix=&#39;/tmp/clg-authorship.tasks/mytasks.indivGenetic_1.0001&#39;) 2022-02-05 23:27: 8/40 done
+## train-generation.sh: processing configs. (parallelPrefix=&#39;/tmp/clg-authorship.tasks/mytasks.indivGenetic_1.0001&#39;) 2022-02-24 15:54: 0/40 done
 ## 
 ## train-generation.sh: done.
 ## INFO train-genetic.sh: average perf for the last 3 2-long windows (empty if not enough generations yet): 
@@ -922,14 +1112,11 @@ train-multi-stages.sh -P &quot;$TASKS_DIR/mytasks&quot; -o  &#39;-c -s&#39; &quo
 ## train-genetic.sh, gen 0002: evaluating configs; perfCriterion=AUC; nbFolds=2; input data=/tmp/user-guide-part2.output/gen1/indivGenetic_1/input; multi-config list is:
 ## /tmp/user-guide-part2.output/gen1/indivGenetic_1/multi-conf-files/basic.multi-conf
 ## train-generation.sh: generating folds
-## train-generation.sh: evaluating 40 configs using 2 folds cross-validation (10 cases); resume mode=0
-## train-generation.sh: processing configs. (parallelPrefix=&#39;/tmp/clg-authorship.tasks/mytasks.indivGenetic_1.0002&#39;) 2022-02-05 23:28: 0/40 done
+## train-generation.sh: evaluating 40 configs using 2 folds cross-validation (50 cases); resume mode=1
+## train-generation.sh: processing configs. (parallelPrefix=&#39;/tmp/clg-authorship.tasks/mytasks.indivGenetic_1.0002&#39;) 2022-02-24 15:55: 0/40 done
 ## 
-## train-generation.sh: processing configs. (parallelPrefix=&#39;/tmp/clg-authorship.tasks/mytasks.indivGenetic_1.0002&#39;) 2022-02-05 23:28: 0/40 done
+## train-generation.sh: processing configs. (parallelPrefix=&#39;/tmp/clg-authorship.tasks/mytasks.indivGenetic_1.0002&#39;) 2022-02-24 15:55: 0/40 done
 ## 
-## train-generation.sh: processing configs. (parallelPrefix=&#39;/tmp/clg-authorship.tasks/mytasks.indivGenetic_1.0002&#39;) 2022-02-05 23:28: 2/40 done
-## 
-## Error: &#39;/tmp/clg-authorship.tasks/mytasks.indivGenetic_1.0002.036.eQeHruzGe.running&#39; does not exist
 ## train-generation.sh: done.
 ## INFO train-genetic.sh: average perf for the last 3 2-long windows (empty if not enough generations yet): 
 ## 
@@ -938,14 +1125,10 @@ train-multi-stages.sh -P &quot;$TASKS_DIR/mytasks&quot; -o  &#39;-c -s&#39; &quo
 ## train-genetic.sh, gen 0003: evaluating configs; perfCriterion=AUC; nbFolds=2; input data=/tmp/user-guide-part2.output/gen1/indivGenetic_1/input; multi-config list is:
 ## /tmp/user-guide-part2.output/gen1/indivGenetic_1/multi-conf-files/basic.multi-conf
 ## train-generation.sh: generating folds
-## train-generation.sh: evaluating 40 configs using 2 folds cross-validation (10 cases); resume mode=0
-## train-generation.sh: processing configs. (parallelPrefix=&#39;/tmp/clg-authorship.tasks/mytasks.indivGenetic_1.0003&#39;) 2022-02-05 23:29: 0/40 done
+## train-generation.sh: evaluating 40 configs using 2 folds cross-validation (50 cases); resume mode=1
+## train-generation.sh: processing configs. (parallelPrefix=&#39;/tmp/clg-authorship.tasks/mytasks.indivGenetic_1.0003&#39;) 2022-02-24 15:55: 0/40 done
 ## 
-## train-generation.sh: processing configs. (parallelPrefix=&#39;/tmp/clg-authorship.tasks/mytasks.indivGenetic_1.0003&#39;) 2022-02-05 23:29: 0/40 done
-## 
-## train-generation.sh: processing configs. (parallelPrefix=&#39;/tmp/clg-authorship.tasks/mytasks.indivGenetic_1.0003&#39;) 2022-02-05 23:29: 0/40 done
-## 
-## train-generation.sh: processing configs. (parallelPrefix=&#39;/tmp/clg-authorship.tasks/mytasks.indivGenetic_1.0003&#39;) 2022-02-05 23:30: 36/40 done
+## train-generation.sh: processing configs. (parallelPrefix=&#39;/tmp/clg-authorship.tasks/mytasks.indivGenetic_1.0003&#39;) 2022-02-24 15:56: 0/40 done
 ## 
 ## train-generation.sh: done.
 ## INFO train-genetic.sh: average perf for the last 3 2-long windows (empty if not enough generations yet): 
@@ -955,14 +1138,10 @@ train-multi-stages.sh -P &quot;$TASKS_DIR/mytasks&quot; -o  &#39;-c -s&#39; &quo
 ## train-genetic.sh, gen 0004: evaluating configs; perfCriterion=AUC; nbFolds=2; input data=/tmp/user-guide-part2.output/gen1/indivGenetic_1/input; multi-config list is:
 ## /tmp/user-guide-part2.output/gen1/indivGenetic_1/multi-conf-files/basic.multi-conf
 ## train-generation.sh: generating folds
-## train-generation.sh: evaluating 40 configs using 2 folds cross-validation (10 cases); resume mode=0
-## train-generation.sh: processing configs. (parallelPrefix=&#39;/tmp/clg-authorship.tasks/mytasks.indivGenetic_1.0004&#39;) 2022-02-05 23:30: 0/40 done
+## train-generation.sh: evaluating 40 configs using 2 folds cross-validation (50 cases); resume mode=1
+## train-generation.sh: processing configs. (parallelPrefix=&#39;/tmp/clg-authorship.tasks/mytasks.indivGenetic_1.0004&#39;) 2022-02-24 15:56: 0/40 done
 ## 
-## train-generation.sh: processing configs. (parallelPrefix=&#39;/tmp/clg-authorship.tasks/mytasks.indivGenetic_1.0004&#39;) 2022-02-05 23:30: 0/40 done
-## 
-## train-generation.sh: processing configs. (parallelPrefix=&#39;/tmp/clg-authorship.tasks/mytasks.indivGenetic_1.0004&#39;) 2022-02-05 23:31: 0/40 done
-## 
-## train-generation.sh: processing configs. (parallelPrefix=&#39;/tmp/clg-authorship.tasks/mytasks.indivGenetic_1.0004&#39;) 2022-02-05 23:31: 2/40 done
+## train-generation.sh: processing configs. (parallelPrefix=&#39;/tmp/clg-authorship.tasks/mytasks.indivGenetic_1.0004&#39;) 2022-02-24 15:56: 0/40 done
 ## 
 ## train-generation.sh: done.
 ## INFO train-genetic.sh: average perf for the last 3 2-long windows (empty if not enough generations yet): 
@@ -972,14 +1151,10 @@ train-multi-stages.sh -P &quot;$TASKS_DIR/mytasks&quot; -o  &#39;-c -s&#39; &quo
 ## train-genetic.sh, gen 0005: evaluating configs; perfCriterion=AUC; nbFolds=2; input data=/tmp/user-guide-part2.output/gen1/indivGenetic_1/input; multi-config list is:
 ## /tmp/user-guide-part2.output/gen1/indivGenetic_1/multi-conf-files/basic.multi-conf
 ## train-generation.sh: generating folds
-## train-generation.sh: evaluating 40 configs using 2 folds cross-validation (10 cases); resume mode=0
-## train-generation.sh: processing configs. (parallelPrefix=&#39;/tmp/clg-authorship.tasks/mytasks.indivGenetic_1.0005&#39;) 2022-02-05 23:31: 0/40 done
+## train-generation.sh: evaluating 40 configs using 2 folds cross-validation (50 cases); resume mode=1
+## train-generation.sh: processing configs. (parallelPrefix=&#39;/tmp/clg-authorship.tasks/mytasks.indivGenetic_1.0005&#39;) 2022-02-24 15:57: 0/40 done
 ## 
-## train-generation.sh: processing configs. (parallelPrefix=&#39;/tmp/clg-authorship.tasks/mytasks.indivGenetic_1.0005&#39;) 2022-02-05 23:32: 0/40 done
-## 
-## train-generation.sh: processing configs. (parallelPrefix=&#39;/tmp/clg-authorship.tasks/mytasks.indivGenetic_1.0005&#39;) 2022-02-05 23:32: 0/40 done
-## 
-## train-generation.sh: processing configs. (parallelPrefix=&#39;/tmp/clg-authorship.tasks/mytasks.indivGenetic_1.0005&#39;) 2022-02-05 23:32: 23/40 done
+## train-generation.sh: processing configs. (parallelPrefix=&#39;/tmp/clg-authorship.tasks/mytasks.indivGenetic_1.0005&#39;) 2022-02-24 15:57: 0/40 done
 ## 
 ## train-generation.sh: done.
 ## INFO train-genetic.sh: average perf for the last 3 2-long windows (empty if not enough generations yet): 
@@ -989,341 +1164,381 @@ train-multi-stages.sh -P &quot;$TASKS_DIR/mytasks&quot; -o  &#39;-c -s&#39; &quo
 ## train-genetic.sh, gen 0006: evaluating configs; perfCriterion=AUC; nbFolds=2; input data=/tmp/user-guide-part2.output/gen1/indivGenetic_1/input; multi-config list is:
 ## /tmp/user-guide-part2.output/gen1/indivGenetic_1/multi-conf-files/basic.multi-conf
 ## train-generation.sh: generating folds
-## train-generation.sh: evaluating 40 configs using 2 folds cross-validation (10 cases); resume mode=0
-## train-generation.sh: processing configs. (parallelPrefix=&#39;/tmp/clg-authorship.tasks/mytasks.indivGenetic_1.0006&#39;) 2022-02-05 23:33: 0/40 done
+## train-generation.sh: evaluating 40 configs using 2 folds cross-validation (50 cases); resume mode=1
+## train-generation.sh: processing configs. (parallelPrefix=&#39;/tmp/clg-authorship.tasks/mytasks.indivGenetic_1.0006&#39;) 2022-02-24 15:57: 0/40 done
 ## 
-## train-generation.sh: processing configs. (parallelPrefix=&#39;/tmp/clg-authorship.tasks/mytasks.indivGenetic_1.0006&#39;) 2022-02-05 23:33: 0/40 done
+## train-generation.sh: processing configs. (parallelPrefix=&#39;/tmp/clg-authorship.tasks/mytasks.indivGenetic_1.0006&#39;) 2022-02-24 15:58: 0/40 done
 ## 
-## train-generation.sh: processing configs. (parallelPrefix=&#39;/tmp/clg-authorship.tasks/mytasks.indivGenetic_1.0006&#39;) 2022-02-05 23:33: 0/40 done
-## 
-## train-generation.sh: processing configs. (parallelPrefix=&#39;/tmp/clg-authorship.tasks/mytasks.indivGenetic_1.0006&#39;) 2022-02-05 23:34: 5/40 done
+## train-generation.sh: processing configs. (parallelPrefix=&#39;/tmp/clg-authorship.tasks/mytasks.indivGenetic_1.0006&#39;) 2022-02-24 15:58: 32/40 done
 ## 
 ## train-generation.sh: done.
 ## INFO train-genetic.sh: average perf for the last 3 2-long windows (empty if not enough generations yet): 
 ## first    window  mean
-## /tmp/user-guide-part2.output/gen1/indivGenetic_1/generations/0005/train/configs.results  3   0.98725
-## /tmp/user-guide-part2.output/gen1/indivGenetic_1/generations/0003/train/configs.results  2   0.988
-## /tmp/user-guide-part2.output/gen1/indivGenetic_1/generations/0001/train/configs.results  1   0.947
+## /tmp/user-guide-part2.output/gen1/indivGenetic_1/generations/0005/train/configs.results  3   0.589412875
+## /tmp/user-guide-part2.output/gen1/indivGenetic_1/generations/0003/train/configs.results  2   0.569150575
+## /tmp/user-guide-part2.output/gen1/indivGenetic_1/generations/0001/train/configs.results  1   0.5243489625
 ## train-genetic.sh, gen 0007: generating 40 config files by genetic crossover
 ## expand-multi-config.pl info: 3840 possible configs
 ## train-genetic.sh, gen 0007: evaluating configs; perfCriterion=AUC; nbFolds=2; input data=/tmp/user-guide-part2.output/gen1/indivGenetic_1/input; multi-config list is:
 ## /tmp/user-guide-part2.output/gen1/indivGenetic_1/multi-conf-files/basic.multi-conf
 ## train-generation.sh: generating folds
-## train-generation.sh: evaluating 40 configs using 2 folds cross-validation (10 cases); resume mode=0
-## train-generation.sh: processing configs. (parallelPrefix=&#39;/tmp/clg-authorship.tasks/mytasks.indivGenetic_1.0007&#39;) 2022-02-05 23:34: 0/40 done
+## train-generation.sh: evaluating 40 configs using 2 folds cross-validation (50 cases); resume mode=1
+## train-generation.sh: processing configs. (parallelPrefix=&#39;/tmp/clg-authorship.tasks/mytasks.indivGenetic_1.0007&#39;) 2022-02-24 15:58: 0/40 done
 ## 
-## train-generation.sh: processing configs. (parallelPrefix=&#39;/tmp/clg-authorship.tasks/mytasks.indivGenetic_1.0007&#39;) 2022-02-05 23:34: 0/40 done
+## train-generation.sh: processing configs. (parallelPrefix=&#39;/tmp/clg-authorship.tasks/mytasks.indivGenetic_1.0007&#39;) 2022-02-24 15:59: 0/40 done
 ## 
-## train-generation.sh: processing configs. (parallelPrefix=&#39;/tmp/clg-authorship.tasks/mytasks.indivGenetic_1.0007&#39;) 2022-02-05 23:35: 1/40 done
-## 
-## train-generation.sh: processing configs. (parallelPrefix=&#39;/tmp/clg-authorship.tasks/mytasks.indivGenetic_1.0007&#39;) 2022-02-05 23:35: 38/40 done
+## train-generation.sh: processing configs. (parallelPrefix=&#39;/tmp/clg-authorship.tasks/mytasks.indivGenetic_1.0007&#39;) 2022-02-24 15:59: 0/40 done
 ## 
 ## train-generation.sh: done.
 ## INFO train-genetic.sh: average perf for the last 3 2-long windows (empty if not enough generations yet): 
 ## first    window  mean
-## /tmp/user-guide-part2.output/gen1/indivGenetic_1/generations/0006/train/configs.results  3   0.991
-## /tmp/user-guide-part2.output/gen1/indivGenetic_1/generations/0004/train/configs.results  2   0.98825
-## /tmp/user-guide-part2.output/gen1/indivGenetic_1/generations/0002/train/configs.results  1   0.979
+## /tmp/user-guide-part2.output/gen1/indivGenetic_1/generations/0006/train/configs.results  3   0.6637621
+## /tmp/user-guide-part2.output/gen1/indivGenetic_1/generations/0004/train/configs.results  2   0.54818695
+## /tmp/user-guide-part2.output/gen1/indivGenetic_1/generations/0002/train/configs.results  1   0.5276642375
 ## train-genetic.sh, gen 0008: generating 40 config files by genetic crossover
 ## expand-multi-config.pl info: 3840 possible configs
 ## train-genetic.sh, gen 0008: evaluating configs; perfCriterion=AUC; nbFolds=2; input data=/tmp/user-guide-part2.output/gen1/indivGenetic_1/input; multi-config list is:
 ## /tmp/user-guide-part2.output/gen1/indivGenetic_1/multi-conf-files/basic.multi-conf
 ## train-generation.sh: generating folds
-## train-generation.sh: evaluating 40 configs using 2 folds cross-validation (10 cases); resume mode=0
-## train-generation.sh: processing configs. (parallelPrefix=&#39;/tmp/clg-authorship.tasks/mytasks.indivGenetic_1.0008&#39;) 2022-02-05 23:35: 0/40 done
+## train-generation.sh: evaluating 40 configs using 2 folds cross-validation (50 cases); resume mode=1
+## train-generation.sh: processing configs. (parallelPrefix=&#39;/tmp/clg-authorship.tasks/mytasks.indivGenetic_1.0008&#39;) 2022-02-24 15:59: 0/40 done
 ## 
-## train-generation.sh: processing configs. (parallelPrefix=&#39;/tmp/clg-authorship.tasks/mytasks.indivGenetic_1.0008&#39;) 2022-02-05 23:36: 0/40 done
+## train-generation.sh: processing configs. (parallelPrefix=&#39;/tmp/clg-authorship.tasks/mytasks.indivGenetic_1.0008&#39;) 2022-02-24 16:00: 0/40 done
 ## 
-## train-generation.sh: processing configs. (parallelPrefix=&#39;/tmp/clg-authorship.tasks/mytasks.indivGenetic_1.0008&#39;) 2022-02-05 23:36: 0/40 done
-## 
-## train-generation.sh: processing configs. (parallelPrefix=&#39;/tmp/clg-authorship.tasks/mytasks.indivGenetic_1.0008&#39;) 2022-02-05 23:36: 12/40 done
+## train-generation.sh: processing configs. (parallelPrefix=&#39;/tmp/clg-authorship.tasks/mytasks.indivGenetic_1.0008&#39;) 2022-02-24 16:00: 0/40 done
 ## 
 ## train-generation.sh: done.
 ## INFO train-genetic.sh: average perf for the last 3 2-long windows (empty if not enough generations yet): 
 ## first    window  mean
-## /tmp/user-guide-part2.output/gen1/indivGenetic_1/generations/0007/train/configs.results  3   0.9925
-## /tmp/user-guide-part2.output/gen1/indivGenetic_1/generations/0005/train/configs.results  2   0.98725
-## /tmp/user-guide-part2.output/gen1/indivGenetic_1/generations/0003/train/configs.results  1   0.988
+## /tmp/user-guide-part2.output/gen1/indivGenetic_1/generations/0007/train/configs.results  3   0.6098258
+## /tmp/user-guide-part2.output/gen1/indivGenetic_1/generations/0005/train/configs.results  2   0.589412875
+## /tmp/user-guide-part2.output/gen1/indivGenetic_1/generations/0003/train/configs.results  1   0.569150575
 ## train-genetic.sh, gen 0009: generating 40 config files by genetic crossover
 ## expand-multi-config.pl info: 3840 possible configs
 ## train-genetic.sh, gen 0009: evaluating configs; perfCriterion=AUC; nbFolds=2; input data=/tmp/user-guide-part2.output/gen1/indivGenetic_1/input; multi-config list is:
 ## /tmp/user-guide-part2.output/gen1/indivGenetic_1/multi-conf-files/basic.multi-conf
 ## train-generation.sh: generating folds
-## train-generation.sh: evaluating 40 configs using 2 folds cross-validation (10 cases); resume mode=0
-## train-generation.sh: processing configs. (parallelPrefix=&#39;/tmp/clg-authorship.tasks/mytasks.indivGenetic_1.0009&#39;) 2022-02-05 23:37: 0/40 done
+## train-generation.sh: evaluating 40 configs using 2 folds cross-validation (50 cases); resume mode=1
+## train-generation.sh: processing configs. (parallelPrefix=&#39;/tmp/clg-authorship.tasks/mytasks.indivGenetic_1.0009&#39;) 2022-02-24 16:00: 0/40 done
 ## 
-## train-generation.sh: processing configs. (parallelPrefix=&#39;/tmp/clg-authorship.tasks/mytasks.indivGenetic_1.0009&#39;) 2022-02-05 23:37: 0/40 done
+## train-generation.sh: processing configs. (parallelPrefix=&#39;/tmp/clg-authorship.tasks/mytasks.indivGenetic_1.0009&#39;) 2022-02-24 16:01: 0/40 done
 ## 
-## train-generation.sh: processing configs. (parallelPrefix=&#39;/tmp/clg-authorship.tasks/mytasks.indivGenetic_1.0009&#39;) 2022-02-05 23:37: 1/40 done
+## train-generation.sh: processing configs. (parallelPrefix=&#39;/tmp/clg-authorship.tasks/mytasks.indivGenetic_1.0009&#39;) 2022-02-24 16:01: 0/40 done
 ## 
 ## train-generation.sh: done.
 ## INFO train-genetic.sh: average perf for the last 3 2-long windows (empty if not enough generations yet): 
 ## first    window  mean
-## /tmp/user-guide-part2.output/gen1/indivGenetic_1/generations/0008/train/configs.results  3   0.9935
-## /tmp/user-guide-part2.output/gen1/indivGenetic_1/generations/0006/train/configs.results  2   0.991
-## /tmp/user-guide-part2.output/gen1/indivGenetic_1/generations/0004/train/configs.results  1   0.98825
+## /tmp/user-guide-part2.output/gen1/indivGenetic_1/generations/0008/train/configs.results  3   0.607211325
+## /tmp/user-guide-part2.output/gen1/indivGenetic_1/generations/0006/train/configs.results  2   0.6637621
+## /tmp/user-guide-part2.output/gen1/indivGenetic_1/generations/0004/train/configs.results  1   0.54818695
 ## train-genetic.sh, gen 0010: generating 40 config files by genetic crossover
 ## expand-multi-config.pl info: 3840 possible configs
 ## train-genetic.sh, gen 0010: evaluating configs; perfCriterion=AUC; nbFolds=2; input data=/tmp/user-guide-part2.output/gen1/indivGenetic_1/input; multi-config list is:
 ## /tmp/user-guide-part2.output/gen1/indivGenetic_1/multi-conf-files/basic.multi-conf
 ## train-generation.sh: generating folds
-## train-generation.sh: evaluating 40 configs using 2 folds cross-validation (10 cases); resume mode=0
-## train-generation.sh: processing configs. (parallelPrefix=&#39;/tmp/clg-authorship.tasks/mytasks.indivGenetic_1.0010&#39;) 2022-02-05 23:38: 0/40 done
+## train-generation.sh: evaluating 40 configs using 2 folds cross-validation (50 cases); resume mode=1
+## train-generation.sh: processing configs. (parallelPrefix=&#39;/tmp/clg-authorship.tasks/mytasks.indivGenetic_1.0010&#39;) 2022-02-24 16:01: 0/40 done
 ## 
-## train-generation.sh: processing configs. (parallelPrefix=&#39;/tmp/clg-authorship.tasks/mytasks.indivGenetic_1.0010&#39;) 2022-02-05 23:38: 0/40 done
+## train-generation.sh: processing configs. (parallelPrefix=&#39;/tmp/clg-authorship.tasks/mytasks.indivGenetic_1.0010&#39;) 2022-02-24 16:02: 0/40 done
 ## 
-## train-generation.sh: processing configs. (parallelPrefix=&#39;/tmp/clg-authorship.tasks/mytasks.indivGenetic_1.0010&#39;) 2022-02-05 23:39: 0/40 done
+## train-generation.sh: processing configs. (parallelPrefix=&#39;/tmp/clg-authorship.tasks/mytasks.indivGenetic_1.0010&#39;) 2022-02-24 16:02: 0/40 done
 ## 
-## Error: &#39;/tmp/clg-authorship.tasks/mytasks.indivGenetic_1.0010.016.BGyi9APzR.running&#39; does not exist
-## Error: &#39;/tmp/clg-authorship.tasks/mytasks.indivGenetic_1.0010.012.0MlkaU5jK.running&#39; does not exist
-## Error: &#39;/tmp/clg-authorship.tasks/mytasks.indivGenetic_1.0010.010.uhwmBzorJ.running&#39; does not exist
 ## train-generation.sh: done.
 ## INFO train-genetic.sh: average perf for the last 3 2-long windows (empty if not enough generations yet): 
 ## first    window  mean
-## /tmp/user-guide-part2.output/gen1/indivGenetic_1/generations/0009/train/configs.results  3   0.9875
-## /tmp/user-guide-part2.output/gen1/indivGenetic_1/generations/0007/train/configs.results  2   0.9925
-## /tmp/user-guide-part2.output/gen1/indivGenetic_1/generations/0005/train/configs.results  1   0.98725
+## /tmp/user-guide-part2.output/gen1/indivGenetic_1/generations/0009/train/configs.results  3   0.663931975
+## /tmp/user-guide-part2.output/gen1/indivGenetic_1/generations/0007/train/configs.results  2   0.6098258
+## /tmp/user-guide-part2.output/gen1/indivGenetic_1/generations/0005/train/configs.results  1   0.589412875
 ## train-genetic.sh, gen 0011: generating 40 config files by genetic crossover
 ## expand-multi-config.pl info: 3840 possible configs
 ## train-genetic.sh, gen 0011: evaluating configs; perfCriterion=AUC; nbFolds=2; input data=/tmp/user-guide-part2.output/gen1/indivGenetic_1/input; multi-config list is:
 ## /tmp/user-guide-part2.output/gen1/indivGenetic_1/multi-conf-files/basic.multi-conf
 ## train-generation.sh: generating folds
-## train-generation.sh: evaluating 40 configs using 2 folds cross-validation (10 cases); resume mode=0
-## train-generation.sh: processing configs. (parallelPrefix=&#39;/tmp/clg-authorship.tasks/mytasks.indivGenetic_1.0011&#39;) 2022-02-05 23:39: 0/40 done
+## train-generation.sh: evaluating 40 configs using 2 folds cross-validation (50 cases); resume mode=1
+## train-generation.sh: processing configs. (parallelPrefix=&#39;/tmp/clg-authorship.tasks/mytasks.indivGenetic_1.0011&#39;) 2022-02-24 16:02: 0/40 done
 ## 
-## train-generation.sh: processing configs. (parallelPrefix=&#39;/tmp/clg-authorship.tasks/mytasks.indivGenetic_1.0011&#39;) 2022-02-05 23:39: 0/40 done
+## train-generation.sh: processing configs. (parallelPrefix=&#39;/tmp/clg-authorship.tasks/mytasks.indivGenetic_1.0011&#39;) 2022-02-24 16:03: 0/40 done
 ## 
-## train-generation.sh: processing configs. (parallelPrefix=&#39;/tmp/clg-authorship.tasks/mytasks.indivGenetic_1.0011&#39;) 2022-02-05 23:40: 0/40 done
-## 
-## train-generation.sh: processing configs. (parallelPrefix=&#39;/tmp/clg-authorship.tasks/mytasks.indivGenetic_1.0011&#39;) 2022-02-05 23:40: 31/40 done
+## train-generation.sh: processing configs. (parallelPrefix=&#39;/tmp/clg-authorship.tasks/mytasks.indivGenetic_1.0011&#39;) 2022-02-24 16:03: 0/40 done
 ## 
 ## train-generation.sh: done.
 ## INFO train-genetic.sh: average perf for the last 3 2-long windows (empty if not enough generations yet): 
 ## first    window  mean
-## /tmp/user-guide-part2.output/gen1/indivGenetic_1/generations/0010/train/configs.results  3   0.982
-## /tmp/user-guide-part2.output/gen1/indivGenetic_1/generations/0008/train/configs.results  2   0.9935
-## /tmp/user-guide-part2.output/gen1/indivGenetic_1/generations/0006/train/configs.results  1   0.991
-## train-genetic.sh, gen 0012: generating 40 config files by genetic crossover
-## expand-multi-config.pl info: 3840 possible configs
-## train-genetic.sh, gen 0012: evaluating configs; perfCriterion=AUC; nbFolds=2; input data=/tmp/user-guide-part2.output/gen1/indivGenetic_1/input; multi-config list is:
-## /tmp/user-guide-part2.output/gen1/indivGenetic_1/multi-conf-files/basic.multi-conf
-## train-generation.sh: generating folds
-## train-generation.sh: evaluating 40 configs using 2 folds cross-validation (10 cases); resume mode=0
-## train-generation.sh: processing configs. (parallelPrefix=&#39;/tmp/clg-authorship.tasks/mytasks.indivGenetic_1.0012&#39;) 2022-02-05 23:40: 0/40 done
-## 
-## train-generation.sh: processing configs. (parallelPrefix=&#39;/tmp/clg-authorship.tasks/mytasks.indivGenetic_1.0012&#39;) 2022-02-05 23:41: 0/40 done
-## 
-## train-generation.sh: processing configs. (parallelPrefix=&#39;/tmp/clg-authorship.tasks/mytasks.indivGenetic_1.0012&#39;) 2022-02-05 23:41: 0/40 done
-## 
-## Error: &#39;/tmp/clg-authorship.tasks/mytasks.indivGenetic_1.0012.034.jQe83bJB9.running&#39; does not exist
-## Error: &#39;/tmp/clg-authorship.tasks/mytasks.indivGenetic_1.0012.032.3iorVt0wo.running&#39; does not exist
-## train-generation.sh: done.
-## INFO train-genetic.sh: average perf for the last 3 2-long windows (empty if not enough generations yet): 
-## first    window  mean
-## /tmp/user-guide-part2.output/gen1/indivGenetic_1/generations/0011/train/configs.results  3   0.9825
-## /tmp/user-guide-part2.output/gen1/indivGenetic_1/generations/0009/train/configs.results  2   0.9875
-## /tmp/user-guide-part2.output/gen1/indivGenetic_1/generations/0007/train/configs.results  1   0.9925
+## /tmp/user-guide-part2.output/gen1/indivGenetic_1/generations/0010/train/configs.results  3   0.643419225
+## /tmp/user-guide-part2.output/gen1/indivGenetic_1/generations/0008/train/configs.results  2   0.607211325
+## /tmp/user-guide-part2.output/gen1/indivGenetic_1/generations/0006/train/configs.results  1   0.6637621
 ## train-genetic.sh: genetic loop done, extracting 100 best configs (removing duplicates)
-## train-genetic.sh: returning 100 best configs (removed 289 duplicates)
+## train-genetic.sh: returning 100 best configs (removed 253 duplicates)
 ## train-genetic.sh: renaming best configs
 ## train-genetic.sh: done.
-## train-multi-stages.sh: calling &#39;train-multi-runs.sh  -o &quot;-c -s&quot; -x 5 -f 2 -P &quot;/tmp/clg-authorship.tasks/mytasks.runs&quot; &quot;/tmp/user-guide-part2.output/gen1&quot; &quot;/tmp/user-guide-part2.output/gen1/input/truth.txt&quot; &quot;/tmp/user-guide-part2.output/gen1/indivGenetic_1/best-configs.res&quot;&#39;
-## train-multi-runs.sh: nbFolds=2; nbRuns=5; resume mode=0
+## train-multi-stages.sh: calling &#39;train-multi-runs.sh  -r -o &quot;-c -s&quot; -x 5 -f 2 -P &quot;/tmp/clg-authorship.tasks/mytasks.runs&quot; &quot;/tmp/user-guide-part2.output/gen1&quot; &quot;/tmp/user-guide-part2.output/gen1.train-cases.txt&quot; &quot;/tmp/user-guide-part2.output/gen1/indivGenetic_1/best-configs.res&quot;&#39;
+## train-multi-runs.sh: nbFolds=2; nbRuns=5; resume mode=1
 ## train-multi-runs.sh, run 0001: evaluating configs; nbFolds=2; 
 ## train-generation.sh: generating folds
-## train-generation.sh: evaluating 100 configs using 2 folds cross-validation (10 cases); resume mode=1
-## train-generation.sh: processing configs. (parallelPrefix=&#39;/tmp/clg-authorship.tasks/mytasks.runs.0001&#39;) 2022-02-05 23:42: 0/100 done
+## train-generation.sh: evaluating 100 configs using 2 folds cross-validation (50 cases); resume mode=1
+## train-generation.sh: processing configs. (parallelPrefix=&#39;/tmp/clg-authorship.tasks/mytasks.runs.0001&#39;) 2022-02-24 16:04: 0/100 done
 ## 
-## train-generation.sh: processing configs. (parallelPrefix=&#39;/tmp/clg-authorship.tasks/mytasks.runs.0001&#39;) 2022-02-05 23:42: 0/100 done
+## train-generation.sh: processing configs. (parallelPrefix=&#39;/tmp/clg-authorship.tasks/mytasks.runs.0001&#39;) 2022-02-24 16:04: 0/100 done
 ## 
-## train-generation.sh: processing configs. (parallelPrefix=&#39;/tmp/clg-authorship.tasks/mytasks.runs.0001&#39;) 2022-02-05 23:42: 0/100 done
+## train-generation.sh: processing configs. (parallelPrefix=&#39;/tmp/clg-authorship.tasks/mytasks.runs.0001&#39;) 2022-02-24 16:04: 0/100 done
 ## 
-## train-generation.sh: processing configs. (parallelPrefix=&#39;/tmp/clg-authorship.tasks/mytasks.runs.0001&#39;) 2022-02-05 23:42: 0/100 done
+## train-generation.sh: processing configs. (parallelPrefix=&#39;/tmp/clg-authorship.tasks/mytasks.runs.0001&#39;) 2022-02-24 16:04: 0/100 done
 ## 
-## train-generation.sh: processing configs. (parallelPrefix=&#39;/tmp/clg-authorship.tasks/mytasks.runs.0001&#39;) 2022-02-05 23:42: 0/100 done
+## train-generation.sh: processing configs. (parallelPrefix=&#39;/tmp/clg-authorship.tasks/mytasks.runs.0001&#39;) 2022-02-24 16:04: 40/100 done
 ## 
-## train-generation.sh: processing configs. (parallelPrefix=&#39;/tmp/clg-authorship.tasks/mytasks.runs.0001&#39;) 2022-02-05 23:42: 0/100 done
+## train-generation.sh: processing configs. (parallelPrefix=&#39;/tmp/clg-authorship.tasks/mytasks.runs.0001&#39;) 2022-02-24 16:04: 40/100 done
 ## 
-## train-generation.sh: processing configs. (parallelPrefix=&#39;/tmp/clg-authorship.tasks/mytasks.runs.0001&#39;) 2022-02-05 23:43: 16/100 done
+## train-generation.sh: processing configs. (parallelPrefix=&#39;/tmp/clg-authorship.tasks/mytasks.runs.0001&#39;) 2022-02-24 16:05: 40/100 done
 ## 
-## Error: &#39;/tmp/clg-authorship.tasks/mytasks.runs.0001.0023.X1RJ8cGEJ.running&#39; does not exist
-## train-generation.sh: processing configs. (parallelPrefix=&#39;/tmp/clg-authorship.tasks/mytasks.runs.0001&#39;) 2022-02-05 23:43: 23/100 done
+## train-generation.sh: processing configs. (parallelPrefix=&#39;/tmp/clg-authorship.tasks/mytasks.runs.0001&#39;) 2022-02-24 16:05: 68/100 done
 ## 
-## train-generation.sh: processing configs. (parallelPrefix=&#39;/tmp/clg-authorship.tasks/mytasks.runs.0001&#39;) 2022-02-05 23:43: 40/100 done
+## train-generation.sh: processing configs. (parallelPrefix=&#39;/tmp/clg-authorship.tasks/mytasks.runs.0001&#39;) 2022-02-24 16:05: 80/100 done
 ## 
-## train-generation.sh: processing configs. (parallelPrefix=&#39;/tmp/clg-authorship.tasks/mytasks.runs.0001&#39;) 2022-02-05 23:43: 47/100 done
-## 
-## Error: &#39;/tmp/clg-authorship.tasks/mytasks.runs.0001.0053.JamnzFZis.running&#39; does not exist
-## train-generation.sh: processing configs. (parallelPrefix=&#39;/tmp/clg-authorship.tasks/mytasks.runs.0001&#39;) 2022-02-05 23:43: 57/100 done
-## 
-## train-generation.sh: processing configs. (parallelPrefix=&#39;/tmp/clg-authorship.tasks/mytasks.runs.0001&#39;) 2022-02-05 23:43: 57/100 done
-## 
-## train-generation.sh: processing configs. (parallelPrefix=&#39;/tmp/clg-authorship.tasks/mytasks.runs.0001&#39;) 2022-02-05 23:44: 61/100 done
-## 
-## train-generation.sh: processing configs. (parallelPrefix=&#39;/tmp/clg-authorship.tasks/mytasks.runs.0001&#39;) 2022-02-05 23:44: 82/100 done
-## 
-## train-generation.sh: processing configs. (parallelPrefix=&#39;/tmp/clg-authorship.tasks/mytasks.runs.0001&#39;) 2022-02-05 23:44: 92/100 done
-## 
-## train-generation.sh: processing configs. (parallelPrefix=&#39;/tmp/clg-authorship.tasks/mytasks.runs.0001&#39;) 2022-02-05 23:44: 99/100 done
+## train-generation.sh: processing configs. (parallelPrefix=&#39;/tmp/clg-authorship.tasks/mytasks.runs.0001&#39;) 2022-02-24 16:05: 80/100 done
 ## 
 ## train-generation.sh: done.
 ## train-multi-runs.sh, run 0002: evaluating configs; nbFolds=2; 
 ## train-generation.sh: generating folds
-## train-generation.sh: evaluating 100 configs using 2 folds cross-validation (10 cases); resume mode=1
-## train-generation.sh: processing configs. (parallelPrefix=&#39;/tmp/clg-authorship.tasks/mytasks.runs.0002&#39;) 2022-02-05 23:44: 0/100 done
+## train-generation.sh: evaluating 100 configs using 2 folds cross-validation (50 cases); resume mode=1
+## train-generation.sh: processing configs. (parallelPrefix=&#39;/tmp/clg-authorship.tasks/mytasks.runs.0002&#39;) 2022-02-24 16:05: 0/100 done
 ## 
-## train-generation.sh: processing configs. (parallelPrefix=&#39;/tmp/clg-authorship.tasks/mytasks.runs.0002&#39;) 2022-02-05 23:44: 0/100 done
+## train-generation.sh: processing configs. (parallelPrefix=&#39;/tmp/clg-authorship.tasks/mytasks.runs.0002&#39;) 2022-02-24 16:05: 0/100 done
 ## 
-## train-generation.sh: processing configs. (parallelPrefix=&#39;/tmp/clg-authorship.tasks/mytasks.runs.0002&#39;) 2022-02-05 23:45: 0/100 done
+## train-generation.sh: processing configs. (parallelPrefix=&#39;/tmp/clg-authorship.tasks/mytasks.runs.0002&#39;) 2022-02-24 16:06: 0/100 done
 ## 
-## train-generation.sh: processing configs. (parallelPrefix=&#39;/tmp/clg-authorship.tasks/mytasks.runs.0002&#39;) 2022-02-05 23:45: 0/100 done
+## train-generation.sh: processing configs. (parallelPrefix=&#39;/tmp/clg-authorship.tasks/mytasks.runs.0002&#39;) 2022-02-24 16:06: 0/100 done
 ## 
-## train-generation.sh: processing configs. (parallelPrefix=&#39;/tmp/clg-authorship.tasks/mytasks.runs.0002&#39;) 2022-02-05 23:45: 0/100 done
+## train-generation.sh: processing configs. (parallelPrefix=&#39;/tmp/clg-authorship.tasks/mytasks.runs.0002&#39;) 2022-02-24 16:06: 0/100 done
 ## 
-## train-generation.sh: processing configs. (parallelPrefix=&#39;/tmp/clg-authorship.tasks/mytasks.runs.0002&#39;) 2022-02-05 23:45: 0/100 done
+## train-generation.sh: processing configs. (parallelPrefix=&#39;/tmp/clg-authorship.tasks/mytasks.runs.0002&#39;) 2022-02-24 16:06: 40/100 done
 ## 
-## train-generation.sh: processing configs. (parallelPrefix=&#39;/tmp/clg-authorship.tasks/mytasks.runs.0002&#39;) 2022-02-05 23:45: 18/100 done
+## train-generation.sh: processing configs. (parallelPrefix=&#39;/tmp/clg-authorship.tasks/mytasks.runs.0002&#39;) 2022-02-24 16:06: 40/100 done
 ## 
-## Error: &#39;/tmp/clg-authorship.tasks/mytasks.runs.0002.0023.qjBojTMK6.running&#39; does not exist
-## Error: &#39;/tmp/clg-authorship.tasks/mytasks.runs.0002.0016.HBnZwJSIC.running&#39; does not exist
-## train-generation.sh: processing configs. (parallelPrefix=&#39;/tmp/clg-authorship.tasks/mytasks.runs.0002&#39;) 2022-02-05 23:45: 25/100 done
+## train-generation.sh: processing configs. (parallelPrefix=&#39;/tmp/clg-authorship.tasks/mytasks.runs.0002&#39;) 2022-02-24 16:06: 40/100 done
 ## 
-## train-generation.sh: processing configs. (parallelPrefix=&#39;/tmp/clg-authorship.tasks/mytasks.runs.0002&#39;) 2022-02-05 23:46: 40/100 done
+## train-generation.sh: processing configs. (parallelPrefix=&#39;/tmp/clg-authorship.tasks/mytasks.runs.0002&#39;) 2022-02-24 16:07: 80/100 done
 ## 
-## train-generation.sh: processing configs. (parallelPrefix=&#39;/tmp/clg-authorship.tasks/mytasks.runs.0002&#39;) 2022-02-05 23:46: 51/100 done
-## 
-## train-generation.sh: processing configs. (parallelPrefix=&#39;/tmp/clg-authorship.tasks/mytasks.runs.0002&#39;) 2022-02-05 23:46: 57/100 done
-## 
-## train-generation.sh: processing configs. (parallelPrefix=&#39;/tmp/clg-authorship.tasks/mytasks.runs.0002&#39;) 2022-02-05 23:46: 57/100 done
-## 
-## train-generation.sh: processing configs. (parallelPrefix=&#39;/tmp/clg-authorship.tasks/mytasks.runs.0002&#39;) 2022-02-05 23:46: 62/100 done
-## 
-## train-generation.sh: processing configs. (parallelPrefix=&#39;/tmp/clg-authorship.tasks/mytasks.runs.0002&#39;) 2022-02-05 23:46: 83/100 done
-## 
-## train-generation.sh: processing configs. (parallelPrefix=&#39;/tmp/clg-authorship.tasks/mytasks.runs.0002&#39;) 2022-02-05 23:47: 93/100 done
+## train-generation.sh: processing configs. (parallelPrefix=&#39;/tmp/clg-authorship.tasks/mytasks.runs.0002&#39;) 2022-02-24 16:07: 80/100 done
 ## 
 ## train-generation.sh: done.
 ## train-multi-runs.sh, run 0003: evaluating configs; nbFolds=2; 
 ## train-generation.sh: generating folds
-## train-generation.sh: evaluating 100 configs using 2 folds cross-validation (10 cases); resume mode=1
-## train-generation.sh: processing configs. (parallelPrefix=&#39;/tmp/clg-authorship.tasks/mytasks.runs.0003&#39;) 2022-02-05 23:47: 0/100 done
+## train-generation.sh: evaluating 100 configs using 2 folds cross-validation (50 cases); resume mode=1
+## train-generation.sh: processing configs. (parallelPrefix=&#39;/tmp/clg-authorship.tasks/mytasks.runs.0003&#39;) 2022-02-24 16:07: 0/100 done
 ## 
-## train-generation.sh: processing configs. (parallelPrefix=&#39;/tmp/clg-authorship.tasks/mytasks.runs.0003&#39;) 2022-02-05 23:47: 0/100 done
+## train-generation.sh: processing configs. (parallelPrefix=&#39;/tmp/clg-authorship.tasks/mytasks.runs.0003&#39;) 2022-02-24 16:07: 0/100 done
 ## 
-## train-generation.sh: processing configs. (parallelPrefix=&#39;/tmp/clg-authorship.tasks/mytasks.runs.0003&#39;) 2022-02-05 23:47: 0/100 done
+## train-generation.sh: processing configs. (parallelPrefix=&#39;/tmp/clg-authorship.tasks/mytasks.runs.0003&#39;) 2022-02-24 16:07: 0/100 done
 ## 
-## train-generation.sh: processing configs. (parallelPrefix=&#39;/tmp/clg-authorship.tasks/mytasks.runs.0003&#39;) 2022-02-05 23:47: 0/100 done
+## train-generation.sh: processing configs. (parallelPrefix=&#39;/tmp/clg-authorship.tasks/mytasks.runs.0003&#39;) 2022-02-24 16:07: 0/100 done
 ## 
-## train-generation.sh: processing configs. (parallelPrefix=&#39;/tmp/clg-authorship.tasks/mytasks.runs.0003&#39;) 2022-02-05 23:47: 0/100 done
+## train-generation.sh: processing configs. (parallelPrefix=&#39;/tmp/clg-authorship.tasks/mytasks.runs.0003&#39;) 2022-02-24 16:08: 40/100 done
 ## 
-## Error: &#39;/tmp/clg-authorship.tasks/mytasks.runs.0003.0023.e9Q2HwOQg.running&#39; does not exist
-## Error: &#39;/tmp/clg-authorship.tasks/mytasks.runs.0003.0016.YdeXclMZb.running&#39; does not exist
-## train-generation.sh: processing configs. (parallelPrefix=&#39;/tmp/clg-authorship.tasks/mytasks.runs.0003&#39;) 2022-02-05 23:48: 19/100 done
+## train-generation.sh: processing configs. (parallelPrefix=&#39;/tmp/clg-authorship.tasks/mytasks.runs.0003&#39;) 2022-02-24 16:08: 40/100 done
 ## 
-## train-generation.sh: processing configs. (parallelPrefix=&#39;/tmp/clg-authorship.tasks/mytasks.runs.0003&#39;) 2022-02-05 23:48: 26/100 done
+## train-generation.sh: processing configs. (parallelPrefix=&#39;/tmp/clg-authorship.tasks/mytasks.runs.0003&#39;) 2022-02-24 16:08: 40/100 done
 ## 
-## train-generation.sh: processing configs. (parallelPrefix=&#39;/tmp/clg-authorship.tasks/mytasks.runs.0003&#39;) 2022-02-05 23:48: 40/100 done
+## train-generation.sh: processing configs. (parallelPrefix=&#39;/tmp/clg-authorship.tasks/mytasks.runs.0003&#39;) 2022-02-24 16:08: 80/100 done
 ## 
-## train-generation.sh: processing configs. (parallelPrefix=&#39;/tmp/clg-authorship.tasks/mytasks.runs.0003&#39;) 2022-02-05 23:48: 53/100 done
+## train-generation.sh: processing configs. (parallelPrefix=&#39;/tmp/clg-authorship.tasks/mytasks.runs.0003&#39;) 2022-02-24 16:08: 80/100 done
 ## 
-## Error: &#39;/tmp/clg-authorship.tasks/mytasks.runs.0003.0043.G0XBbgDhN.running&#39; does not exist
-## train-generation.sh: processing configs. (parallelPrefix=&#39;/tmp/clg-authorship.tasks/mytasks.runs.0003&#39;) 2022-02-05 23:48: 56/100 done
-## 
-## train-generation.sh: processing configs. (parallelPrefix=&#39;/tmp/clg-authorship.tasks/mytasks.runs.0003&#39;) 2022-02-05 23:48: 56/100 done
-## 
-## train-generation.sh: processing configs. (parallelPrefix=&#39;/tmp/clg-authorship.tasks/mytasks.runs.0003&#39;) 2022-02-05 23:49: 63/100 done
-## 
-## Error: &#39;/tmp/clg-authorship.tasks/mytasks.runs.0003.0066.T5Ka8Pj1X.running&#39; does not exist
-## Error: &#39;/tmp/clg-authorship.tasks/mytasks.runs.0003.0065.IInZWjx2k.running&#39; does not exist
-## train-generation.sh: processing configs. (parallelPrefix=&#39;/tmp/clg-authorship.tasks/mytasks.runs.0003&#39;) 2022-02-05 23:49: 82/100 done
-## 
-## train-generation.sh: processing configs. (parallelPrefix=&#39;/tmp/clg-authorship.tasks/mytasks.runs.0003&#39;) 2022-02-05 23:49: 93/100 done
+## train-generation.sh: processing configs. (parallelPrefix=&#39;/tmp/clg-authorship.tasks/mytasks.runs.0003&#39;) 2022-02-24 16:08: 80/100 done
 ## 
 ## train-generation.sh: done.
 ## train-multi-runs.sh, run 0004: evaluating configs; nbFolds=2; 
 ## train-generation.sh: generating folds
-## train-generation.sh: evaluating 100 configs using 2 folds cross-validation (10 cases); resume mode=1
-## train-generation.sh: processing configs. (parallelPrefix=&#39;/tmp/clg-authorship.tasks/mytasks.runs.0004&#39;) 2022-02-05 23:49: 0/100 done
+## train-generation.sh: evaluating 100 configs using 2 folds cross-validation (50 cases); resume mode=1
+## train-generation.sh: processing configs. (parallelPrefix=&#39;/tmp/clg-authorship.tasks/mytasks.runs.0004&#39;) 2022-02-24 16:09: 0/100 done
 ## 
-## train-generation.sh: processing configs. (parallelPrefix=&#39;/tmp/clg-authorship.tasks/mytasks.runs.0004&#39;) 2022-02-05 23:49: 0/100 done
+## train-generation.sh: processing configs. (parallelPrefix=&#39;/tmp/clg-authorship.tasks/mytasks.runs.0004&#39;) 2022-02-24 16:09: 0/100 done
 ## 
-## train-generation.sh: processing configs. (parallelPrefix=&#39;/tmp/clg-authorship.tasks/mytasks.runs.0004&#39;) 2022-02-05 23:49: 0/100 done
+## train-generation.sh: processing configs. (parallelPrefix=&#39;/tmp/clg-authorship.tasks/mytasks.runs.0004&#39;) 2022-02-24 16:09: 0/100 done
 ## 
-## train-generation.sh: processing configs. (parallelPrefix=&#39;/tmp/clg-authorship.tasks/mytasks.runs.0004&#39;) 2022-02-05 23:50: 0/100 done
+## train-generation.sh: processing configs. (parallelPrefix=&#39;/tmp/clg-authorship.tasks/mytasks.runs.0004&#39;) 2022-02-24 16:09: 0/100 done
 ## 
-## train-generation.sh: processing configs. (parallelPrefix=&#39;/tmp/clg-authorship.tasks/mytasks.runs.0004&#39;) 2022-02-05 23:50: 0/100 done
+## train-generation.sh: processing configs. (parallelPrefix=&#39;/tmp/clg-authorship.tasks/mytasks.runs.0004&#39;) 2022-02-24 16:09: 7/100 done
 ## 
-## Error: &#39;/tmp/clg-authorship.tasks/mytasks.runs.0004.0016.En8D7Zxf8.running&#39; does not exist
-## train-generation.sh: processing configs. (parallelPrefix=&#39;/tmp/clg-authorship.tasks/mytasks.runs.0004&#39;) 2022-02-05 23:50: 19/100 done
+## train-generation.sh: processing configs. (parallelPrefix=&#39;/tmp/clg-authorship.tasks/mytasks.runs.0004&#39;) 2022-02-24 16:10: 40/100 done
 ## 
-## train-generation.sh: processing configs. (parallelPrefix=&#39;/tmp/clg-authorship.tasks/mytasks.runs.0004&#39;) 2022-02-05 23:50: 30/100 done
+## train-generation.sh: processing configs. (parallelPrefix=&#39;/tmp/clg-authorship.tasks/mytasks.runs.0004&#39;) 2022-02-24 16:10: 40/100 done
 ## 
-## train-generation.sh: processing configs. (parallelPrefix=&#39;/tmp/clg-authorship.tasks/mytasks.runs.0004&#39;) 2022-02-05 23:50: 41/100 done
+## train-generation.sh: processing configs. (parallelPrefix=&#39;/tmp/clg-authorship.tasks/mytasks.runs.0004&#39;) 2022-02-24 16:10: 40/100 done
 ## 
-## train-generation.sh: processing configs. (parallelPrefix=&#39;/tmp/clg-authorship.tasks/mytasks.runs.0004&#39;) 2022-02-05 23:50: 54/100 done
+## train-generation.sh: processing configs. (parallelPrefix=&#39;/tmp/clg-authorship.tasks/mytasks.runs.0004&#39;) 2022-02-24 16:10: 80/100 done
 ## 
-## train-generation.sh: processing configs. (parallelPrefix=&#39;/tmp/clg-authorship.tasks/mytasks.runs.0004&#39;) 2022-02-05 23:51: 57/100 done
-## 
-## train-generation.sh: processing configs. (parallelPrefix=&#39;/tmp/clg-authorship.tasks/mytasks.runs.0004&#39;) 2022-02-05 23:51: 57/100 done
-## 
-## train-generation.sh: processing configs. (parallelPrefix=&#39;/tmp/clg-authorship.tasks/mytasks.runs.0004&#39;) 2022-02-05 23:51: 68/100 done
-## 
-## train-generation.sh: processing configs. (parallelPrefix=&#39;/tmp/clg-authorship.tasks/mytasks.runs.0004&#39;) 2022-02-05 23:51: 86/100 done
-## 
-## train-generation.sh: processing configs. (parallelPrefix=&#39;/tmp/clg-authorship.tasks/mytasks.runs.0004&#39;) 2022-02-05 23:51: 94/100 done
+## train-generation.sh: processing configs. (parallelPrefix=&#39;/tmp/clg-authorship.tasks/mytasks.runs.0004&#39;) 2022-02-24 16:10: 80/100 done
 ## 
 ## train-generation.sh: done.
 ## train-multi-runs.sh, run 0005: evaluating configs; nbFolds=2; 
 ## train-generation.sh: generating folds
-## train-generation.sh: evaluating 100 configs using 2 folds cross-validation (10 cases); resume mode=1
-## train-generation.sh: processing configs. (parallelPrefix=&#39;/tmp/clg-authorship.tasks/mytasks.runs.0005&#39;) 2022-02-05 23:51: 0/100 done
+## train-generation.sh: evaluating 100 configs using 2 folds cross-validation (50 cases); resume mode=1
+## train-generation.sh: processing configs. (parallelPrefix=&#39;/tmp/clg-authorship.tasks/mytasks.runs.0005&#39;) 2022-02-24 16:10: 0/100 done
 ## 
-## train-generation.sh: processing configs. (parallelPrefix=&#39;/tmp/clg-authorship.tasks/mytasks.runs.0005&#39;) 2022-02-05 23:52: 0/100 done
+## train-generation.sh: processing configs. (parallelPrefix=&#39;/tmp/clg-authorship.tasks/mytasks.runs.0005&#39;) 2022-02-24 16:11: 0/100 done
 ## 
-## train-generation.sh: processing configs. (parallelPrefix=&#39;/tmp/clg-authorship.tasks/mytasks.runs.0005&#39;) 2022-02-05 23:52: 0/100 done
+## train-generation.sh: processing configs. (parallelPrefix=&#39;/tmp/clg-authorship.tasks/mytasks.runs.0005&#39;) 2022-02-24 16:11: 0/100 done
 ## 
-## train-generation.sh: processing configs. (parallelPrefix=&#39;/tmp/clg-authorship.tasks/mytasks.runs.0005&#39;) 2022-02-05 23:52: 0/100 done
+## train-generation.sh: processing configs. (parallelPrefix=&#39;/tmp/clg-authorship.tasks/mytasks.runs.0005&#39;) 2022-02-24 16:11: 0/100 done
 ## 
-## train-generation.sh: processing configs. (parallelPrefix=&#39;/tmp/clg-authorship.tasks/mytasks.runs.0005&#39;) 2022-02-05 23:52: 0/100 done
+## train-generation.sh: processing configs. (parallelPrefix=&#39;/tmp/clg-authorship.tasks/mytasks.runs.0005&#39;) 2022-02-24 16:11: 40/100 done
 ## 
-## Error: &#39;/tmp/clg-authorship.tasks/mytasks.runs.0005.0016.ir3T3taTl.running&#39; does not exist
-## train-generation.sh: processing configs. (parallelPrefix=&#39;/tmp/clg-authorship.tasks/mytasks.runs.0005&#39;) 2022-02-05 23:52: 22/100 done
+## train-generation.sh: processing configs. (parallelPrefix=&#39;/tmp/clg-authorship.tasks/mytasks.runs.0005&#39;) 2022-02-24 16:11: 40/100 done
 ## 
-## train-generation.sh: processing configs. (parallelPrefix=&#39;/tmp/clg-authorship.tasks/mytasks.runs.0005&#39;) 2022-02-05 23:52: 33/100 done
+## train-generation.sh: processing configs. (parallelPrefix=&#39;/tmp/clg-authorship.tasks/mytasks.runs.0005&#39;) 2022-02-24 16:11: 40/100 done
 ## 
-## train-generation.sh: processing configs. (parallelPrefix=&#39;/tmp/clg-authorship.tasks/mytasks.runs.0005&#39;) 2022-02-05 23:53: 43/100 done
+## train-generation.sh: processing configs. (parallelPrefix=&#39;/tmp/clg-authorship.tasks/mytasks.runs.0005&#39;) 2022-02-24 16:12: 80/100 done
 ## 
-## Error: &#39;/tmp/clg-authorship.tasks/mytasks.runs.0005.0057.vDOIRGeDH.running&#39; does not exist
-## Error: &#39;/tmp/clg-authorship.tasks/mytasks.runs.0005.0043.VI4hLS67k.running&#39; does not exist
-## train-generation.sh: processing configs. (parallelPrefix=&#39;/tmp/clg-authorship.tasks/mytasks.runs.0005&#39;) 2022-02-05 23:53: 56/100 done
-## 
-## train-generation.sh: processing configs. (parallelPrefix=&#39;/tmp/clg-authorship.tasks/mytasks.runs.0005&#39;) 2022-02-05 23:53: 57/100 done
-## 
-## train-generation.sh: processing configs. (parallelPrefix=&#39;/tmp/clg-authorship.tasks/mytasks.runs.0005&#39;) 2022-02-05 23:53: 57/100 done
-## 
-## train-generation.sh: processing configs. (parallelPrefix=&#39;/tmp/clg-authorship.tasks/mytasks.runs.0005&#39;) 2022-02-05 23:53: 71/100 done
-## 
-## Error: &#39;/tmp/clg-authorship.tasks/mytasks.runs.0005.0066.fvvCKvp3C.running&#39; does not exist
-## Error: &#39;/tmp/clg-authorship.tasks/mytasks.runs.0005.0065.bBWZhAy2s.running&#39; does not exist
-## train-generation.sh: processing configs. (parallelPrefix=&#39;/tmp/clg-authorship.tasks/mytasks.runs.0005&#39;) 2022-02-05 23:53: 88/100 done
-## 
-## train-generation.sh: processing configs. (parallelPrefix=&#39;/tmp/clg-authorship.tasks/mytasks.runs.0005&#39;) 2022-02-05 23:54: 94/100 done
+## train-generation.sh: processing configs. (parallelPrefix=&#39;/tmp/clg-authorship.tasks/mytasks.runs.0005&#39;) 2022-02-24 16:12: 80/100 done
 ## 
 ## train-generation.sh: done.
 ## train-multi-runs.sh: main loop done, extracting stats
 ## train-multi-stages.sh: re-training selected configs using all cases AND re-cross-validating to obtain unbiased predictions
 ## train-multi-stages.sh: generating folds for CV (unbiased predictions)
-## train-multi-stages.sh: retraining selected configs. 2022-02-05 23:54: 50/100 done
+## train-multi-stages.sh: retraining selected configs. 2022-02-24 16:12: 50/100 done
 ## 
-## train-multi-stages.sh: retraining selected configs. 2022-02-05 23:55: 50/100 done
-## 
-## train-multi-stages.sh: retraining selected configs. 2022-02-05 23:56: 67/100 done
-## 
-## Error: &#39;/tmp/clg-authorship.tasks/mytasks.final-train.cv.0021.G252Pmo0d.running&#39; does not exist
-## train-multi-stages.sh: retraining selected configs. 2022-02-05 23:57: 86/100 done
+## train-multi-stages.sh: retraining selected configs. 2022-02-24 16:13: 70/100 done
 ## 
 ## train-multi-stages.sh: done.</code></pre>
 </div>
+</div>
+</div>
+<div id="meta-classifier-stacked-generalization" class="section level1">
+<h1>Meta-classifier (stacked generalization)</h1>
+<p>We have seen above that the genetic process can return a set of N
+best performing configurations. Additionally different strategies can be
+trained, every strategy returning its N best configurations. These
+individual configs can be considered as individual learners and combined
+in a meta-classifier which leverages their diversity to predict the
+final results (hopefully more accurately that any individual
+learner).</p>
+<p>The training of the meta-model is done with the same genetic
+algorithm as used above, where the parameters to optimize are now the
+subset of individual configs/models and possibly some additional
+parameters for the meta-model. Since the set of possible individual
+models is fixed, the predictions that they return are precomputed in
+order to avoid repeatedly computing them during the genetic training.
+Note that this makes this genetic learning stage much faster than the
+previous one, but it may in some cases cause a bias due to the
+randomness of some of the methods (since the individual learners are
+treated as deterministic at this stage).</p>
+<div id="train-outercv-1fold.sh" class="section level3">
+<h3><code>train-outerCV-1fold.sh</code></h3>
+<p>The meta-training is performed by
+<code>train-outerCV-1fold.sh</code>, which takes as input a training set
+and a test set. The script uses them in a quite complex way explained
+below:</p>
+<ul>
+<li>The training set (called “strategy training set” later) is first
+used to perform the genetic training presented above by calling
+<code>train-multi-stages.sh</code> <em>for every strategy</em>.</li>
+<li>The N best configs for every strategy are obtained from the stage
+above. These configs are applied to both the training and test set
+instances (with <code>apply-multi-configs.sh</code>).</li>
+<li>The test set is then randomly split into two subsets:
+<ul>
+<li>meta-training set</li>
+<li>meta validation set (or meta-test set)</li>
+</ul></li>
+<li>The meta-training set is used to perform the genetic training of the
+meta-model, calling <code>train-multi-stages.sh</code> again (only
+once).</li>
+<li>The N best configurations obtained from the meta-training are
+applied to all the instances: strategy training set, meta-training set
+and validation set. These top configurations are also “packaged” in a
+sub directory <code>refactored-strategy-configs</code> in order to be
+easily usable for application later.</li>
+<li>Bagging (<a href="https://en.wikipedia.org/wiki/Bootstrap_aggregating">bootstrap
+aggregating</a>) is applied on the meta validation set (fresh instances)
+in order to select the final top N meta-configs. This step can be used
+to analyze the variance of the meta-configs.</li>
+</ul>
+<p>For the sake of simplicity and computation speed, in the example
+below we remove the <code>GI</code> and <code>univ</code> strategies
+before running the process, resulting in the meta-classifier using only
+the <code>basic</code> strategy. This is of course not necessary nor
+recommended in real applications.</p>
+<pre class="bash"><code>cp conf/meta-template.simplified.multi-conf &quot;$OUTPUT_DIR/gen1/meta-template.multi-conf&quot;
+# below removing univ and GI strategies to make the process faster
+rm -f &quot;$OUTPUT_DIR/gen1/0/multi-conf-files/GI.multi-conf&quot; &quot;$OUTPUT_DIR/gen1/0/multi-conf-files/univ.multi-conf&quot;</code></pre>
+<pre class="bash"><code>source session-setup.sh
+task-distrib-daemon.sh  -s 30s -p 1 -v -q 4 &quot;$TASKS_DIR&quot; $NCORES &gt;&quot;$OUTPUT_DIR/gen1.task-daemon.log&quot; &amp;
+train-outerCV-1fold.sh -r -P &quot;$TASKS_DIR/mytasks&quot; -o  &#39;-c -s&#39; &quot;$OUTPUT_DIR/gen1&quot; &quot;$OUTPUT_DIR/gen1.train-cases.txt&quot; &quot;$OUTPUT_DIR/gen1.test-cases.txt&quot; &quot;$OUTPUT_DIR/gen1/0/multi-conf-files&quot; &gt;~/rmd2.out 2&gt;~/rmd2.err</code></pre>
+<pre><code>## Error: &#39;/tmp/clg-authorship.tasks/mytasks.basic.final-train.cv.0014.YJ2lp1uT7.running&#39; does not exist
+## Error: &#39;/tmp/clg-authorship.tasks/mytasks.basic.final-train.cv.0009.IXkYVqYXh.running&#39; does not exist
+## Error: &#39;/tmp/clg-authorship.tasks/mytasks.basic.final-train.cv.0007.Eyt0ahnGE.running&#39; does not exist
+## Error: &#39;/tmp/clg-authorship.tasks/mytasks.basic.final-train.cv.0006.2rBgxsW92.running&#39; does not exist
+## Error: &#39;/tmp/clg-authorship.tasks/mytasks.basic.final-train.cv.0004.anof24hih.running&#39; does not exist
+## Error: &#39;/tmp/clg-authorship.tasks/mytasks.basic.final-train.cv.0003.6tElIFbR6.running&#39; does not exist
+## Error: &#39;/tmp/clg-authorship.tasks/mytasks.basic.final-train.cv.0001.cvzaeQzI9.running&#39; does not exist
+## Error: &#39;/tmp/clg-authorship.tasks/mytasks.meta.runs.0001.0005.oyziM8eIa.running&#39; does not exist
+## Error: &#39;/tmp/clg-authorship.tasks/mytasks.meta.runs.0001.0011.N5dOFjZtB.running&#39; does not exist
+## Error: &#39;/tmp/clg-authorship.tasks/mytasks.meta.runs.0001.0010.3n7BtDzCe.running&#39; does not exist
+## Error: &#39;/tmp/clg-authorship.tasks/mytasks.meta.runs.0001.0009.OvmiZJWty.running&#39; does not exist
+## Error: &#39;/tmp/clg-authorship.tasks/mytasks.meta.runs.0001.0008.uiuKRjXoq.running&#39; does not exist
+## Error: &#39;/tmp/clg-authorship.tasks/mytasks.meta.runs.0001.0007.lGe6QqMBa.running&#39; does not exist
+## date: /tmp/clg-authorship.tasks/mytasks.meta.runs.0002.0006.OKLMWyMc5.running: No such file or directory
+## /home/moreaue/projects/erw-bash-commons/bin/task-distrib-daemon.sh: line 125: 1645721841 -  : syntax error: operand expected (error token is &quot;-  &quot;)
+## Error: &#39;/tmp/clg-authorship.tasks/mytasks.meta.runs.0002.0013.u4dXs3hQp.running&#39; does not exist
+## Error: &#39;/tmp/clg-authorship.tasks/mytasks.meta.runs.0002.0012.ij6WkOET8.running&#39; does not exist
+## Error: &#39;/tmp/clg-authorship.tasks/mytasks.meta.runs.0002.0011.8my5YW16Z.running&#39; does not exist
+## Error: &#39;/tmp/clg-authorship.tasks/mytasks.meta.runs.0002.0010.XDrT7OQpd.running&#39; does not exist
+## Error: &#39;/tmp/clg-authorship.tasks/mytasks.meta.runs.0002.0009.HnE3uA5KS.running&#39; does not exist
+## Error: &#39;/tmp/clg-authorship.tasks/mytasks.meta.runs.0002.0008.WA1TI2Zai.running&#39; does not exist
+## Error: &#39;/tmp/clg-authorship.tasks/mytasks.meta.runs.0002.0007.CUCm6ZNaP.running&#39; does not exist
+## Error: &#39;/tmp/clg-authorship.tasks/mytasks.meta.runs.0003.0013.nJfJYQOid.running&#39; does not exist
+## Error: &#39;/tmp/clg-authorship.tasks/mytasks.meta.runs.0003.0012.P59CRDib6.running&#39; does not exist
+## Error: &#39;/tmp/clg-authorship.tasks/mytasks.meta.runs.0003.0011.MUxWLiJf1.running&#39; does not exist
+## Error: &#39;/tmp/clg-authorship.tasks/mytasks.meta.runs.0003.0010.0BSSmRLiQ.running&#39; does not exist
+## Error: &#39;/tmp/clg-authorship.tasks/mytasks.meta.runs.0003.0009.sZn2yNNhT.running&#39; does not exist
+## Error: &#39;/tmp/clg-authorship.tasks/mytasks.meta.runs.0003.0008.rcIHPjXNp.running&#39; does not exist
+## date: /tmp/clg-authorship.tasks/mytasks.0010.BOs8JDh6p.running: No such file or directory
+## /home/moreaue/projects/erw-bash-commons/bin/task-distrib-daemon.sh: line 125: 1645722029 -  : syntax error: operand expected (error token is &quot;-  &quot;)
+## Error: &#39;/tmp/clg-authorship.tasks/mytasks.0013.9TKGYRrwt.running&#39; does not exist
+## Error: &#39;/tmp/clg-authorship.tasks/mytasks.0012.gZI1FxfWH.running&#39; does not exist
+## Error: &#39;/tmp/clg-authorship.tasks/mytasks.0011.U7O74wV5K.running&#39; does not exist
+## Error: &#39;/tmp/clg-authorship.tasks/mytasks.0009.BM0XEUkyJ.running&#39; does not exist
+## Error: &#39;/tmp/clg-authorship.tasks/mytasks.0012.MwlsK2nft.running&#39; does not exist
+## Error: &#39;/tmp/clg-authorship.tasks/mytasks.0011.eakB6ElMN.running&#39; does not exist
+## Error: &#39;/tmp/clg-authorship.tasks/mytasks.0010.UcVlR6gTV.running&#39; does not exist
+## Error: &#39;/tmp/clg-authorship.tasks/mytasks.strategy-as-meta.basic.0031.A9DI1jekJ.running&#39; does not exist
+## Error: &#39;/tmp/clg-authorship.tasks/mytasks.strategy-as-meta.basic.0033.OjGH8dEIE.running&#39; does not exist
+## Error: &#39;/tmp/clg-authorship.tasks/mytasks.0013.xsifTtTrX.running&#39; does not exist
+## Error: &#39;/tmp/clg-authorship.tasks/mytasks.strategy-as-meta.basic.0031.7wPRdghVA.running&#39; does not exist
+## Error: &#39;/tmp/clg-authorship.tasks/mytasks.strategy-as-meta.basic.0033.ILZOIIDCM.running&#39; does not exist
+## Error: &#39;/tmp/clg-authorship.tasks/mytasks.strategy-as-meta.basic.0032.tPmBS30pc.running&#39; does not exist
+## Error: &#39;/tmp/clg-authorship.tasks/mytasks.0013.I3zMqstMf.running&#39; does not exist
+## Error: &#39;/tmp/clg-authorship.tasks/mytasks.strategy-as-meta.basic.0034.iqIlb6G3u.running&#39; does not exist
+## Error: &#39;/tmp/clg-authorship.tasks/mytasks.strategy-as-meta.basic.0033.TTnaAFtxb.running&#39; does not exist
+## Error: &#39;/tmp/clg-authorship.tasks/mytasks.0011.72GwAyIyd.running&#39; does not exist
+## Error: &#39;/tmp/clg-authorship.tasks/mytasks.0013.mww00Rct3.running&#39; does not exist
+## Error: &#39;/tmp/clg-authorship.tasks/mytasks.strategy-as-meta.basic.0034.r69iewBHd.running&#39; does not exist
+## Error: &#39;/tmp/clg-authorship.tasks/mytasks.strategy-as-meta.basic.0033.i9pMkzOQw.running&#39; does not exist
+## Error: &#39;/tmp/clg-authorship.tasks/mytasks.0011.Hu1qaQx6T.running&#39; does not exist
+## Error: &#39;/tmp/clg-authorship.tasks/mytasks.0013.3SBBkzwWu.running&#39; does not exist
+## Error: &#39;/tmp/clg-authorship.tasks/mytasks.strategy-as-meta.basic.0034.3UwWwjuyP.running&#39; does not exist
+## Error: &#39;/tmp/clg-authorship.tasks/mytasks.strategy-as-meta.basic.0033.YWOmRv8cT.running&#39; does not exist
+## Error: &#39;/tmp/clg-authorship.tasks/mytasks.0014.4Q1gpSXre.running&#39; does not exist
+## Error: &#39;/tmp/clg-authorship.tasks/mytasks.0013.RSULjMWfZ.running&#39; does not exist
+## Error: &#39;/tmp/clg-authorship.tasks/mytasks.strategy-as-meta.basic.0034.nXkwjASmO.running&#39; does not exist
+## Error: &#39;/tmp/clg-authorship.tasks/mytasks.strategy-as-meta.basic.0033.bdF2yYUTv.running&#39; does not exist
+## Error: &#39;/tmp/clg-authorship.tasks/mytasks.0014.mha3TMbEb.running&#39; does not exist
+## Error: &#39;/tmp/clg-authorship.tasks/mytasks.0013.gsh6ZaLSx.running&#39; does not exist
+## Error: &#39;/tmp/clg-authorship.tasks/mytasks.strategy-as-meta.basic.0034.KVA4BKtfS.running&#39; does not exist
+## Error: &#39;/tmp/clg-authorship.tasks/mytasks.strategy-as-meta.basic.0033.MQZwOk7vA.running&#39; does not exist
+## Error: &#39;/tmp/clg-authorship.tasks/mytasks.0014.7s5FQPoYA.running&#39; does not exist
+## Error: &#39;/tmp/clg-authorship.tasks/mytasks.0013.ATCnNVYr7.running&#39; does not exist
+## Error: &#39;/tmp/clg-authorship.tasks/mytasks.strategy-as-meta.basic.0034.cgG5jxkVA.running&#39; does not exist
+## Error: &#39;/tmp/clg-authorship.tasks/mytasks.strategy-as-meta.basic.0033.xOurxZUgN.running&#39; does not exist
+## Error: &#39;/tmp/clg-authorship.tasks/mytasks.0014.tZuB1x5Lh.running&#39; does not exist
+## Error: &#39;/tmp/clg-authorship.tasks/mytasks.0013.uTY64JIMk.running&#39; does not exist
+## Error: &#39;/tmp/clg-authorship.tasks/mytasks.strategy-as-meta.basic.0034.TjPJH2Udh.running&#39; does not exist
+## Error: &#39;/tmp/clg-authorship.tasks/mytasks.0014.p6ZurBCiT.running&#39; does not exist
+## Error: &#39;/tmp/clg-authorship.tasks/mytasks.0013.t5bxv2igX.running&#39; does not exist
+## date: /tmp/clg-authorship.tasks/mytasks.strategy-as-meta.basic.0032.EdaS7oqeG.running: No such file or directory
+## /home/moreaue/projects/erw-bash-commons/bin/task-distrib-daemon.sh: line 125: 1645722662 -  : syntax error: operand expected (error token is &quot;-  &quot;)
+## Error: &#39;/tmp/clg-authorship.tasks/mytasks.strategy-as-meta.basic.0034.f2sDJnmVX.running&#39; does not exist
+## Error: &#39;/tmp/clg-authorship.tasks/mytasks.0014.3xtOihHrq.running&#39; does not exist
+## Error: &#39;/tmp/clg-authorship.tasks/mytasks.0013.SwHuZC7xv.running&#39; does not exist</code></pre>
 </div>
 </div>
 
