@@ -85,7 +85,7 @@ We use the training set generated for the main experiments (see [Experiment 1: s
 ```{bash full.prepa1}
 mkdir "$OUTPUT_DIR"/input-data.full
 cat "$EXPE_WORK_DIR/train.tsv" > "$OUTPUT_DIR/input-data.full/truth.txt"
-cat "$EXPE_WORK_DIR/train.tsv"  cut -f 1 | tr ' :' '\n\n'  | sort -u | while read f; do
+cat "$EXPE_WORK_DIR/train.tsv"  | cut -f 1 | tr ' :' '\n\n'  | sort -u | while read f; do
       cp "$OUTPUT_DIR/data/$f" "$OUTPUT_DIR/input-data.full/"
 done
 ```
