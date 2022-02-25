@@ -328,3 +328,169 @@ task-distrib-daemon.sh  -s 30s -p 1 -v -q 4 "$TASKS_DIR" $NCORES >"$OUTPUT_DIR/g
 train-outerCV-1fold.sh -r -P "$TASKS_DIR/mytasks" -o  '-c -s' "$OUTPUT_DIR/gen1" "$OUTPUT_DIR/gen1.train-cases.txt" "$OUTPUT_DIR/gen1.test-cases.txt" "$OUTPUT_DIR/gen1/0/multi-conf-files"
 ```
 
+
+
+# Full example
+
+This part shows the full process of training a meta-model with several strategies, albeit with simplified parameters. This experiment is self-contained, i.e. it doesn't rely on any part executed previously. See above for the detailed explanations.
+
+## Preparing the input data
+
+### Input data
+
+We use the training set generated for the main experiments (see [Experiment 1: size of documents](expe1.html)).
+
+```{bash full.prepa1}
+mkdir "$OUTPUT_DIR"/input-data.full
+cat "$EXPE_WORK_DIR/train.tsv" > "$OUTPUT_DIR/input-data.full/truth.txt"
+cat "$EXPE_WORK_DIR/train.tsv"  | cut -f 1 | tr ' :' '\n\n'  | sort -u | while read f; do
+      cp "$OUTPUT_DIR/data/$f" "$OUTPUT_DIR/input-data.full/"
+done
+```
+
+## Impostors data
+
+We build a small impostors dataset (same way as above):
+
+```{bash full.prepa2}
+source session-setup.sh
+mkdir $OUTPUT_DIR/impostors.full
+mkdir $OUTPUT_DIR/impostors.full/my.impostors
+n=$(find $OUTPUT_DIR/data/* -maxdepth 0 -type f | wc -l)
+find $OUTPUT_DIR/data/* -maxdepth 0 -type f | random-lines.pl 100 1 $n | while read f; do cp $f $OUTPUT_DIR/impostors.full/my.impostors/$(basename "$f").txt; done
+```
+
+- Note: the name `my.impostors` is the one used in the default GI config file `conf/GI.multi-conf.part`.
+
+### Multi-conf files
+
+For this example we create some simplified multi-conf files which are slightly more advanced than in the previous example:
+
+- The three strategies are included.
+- Observation types with stop word and POS tags are used.
+
+**Important:** The "meta" config file must also be copied in the target directory under the name `meta-template.multi-conf`, as shown below.
+
+```{bash full.multi2}
+source session-setup.sh
+mkdir "$OUTPUT_DIR/full"
+generate-multi-conf.sh -c common.simplified2.multi-conf.part -g genetic.simplified.multi-conf.part 1 "$OUTPUT_DIR/full"
+cat conf/meta-template.simplified.multi-conf > "$OUTPUT_DIR/full/meta-template.multi-conf"
+```
+
+
+
+### Running the preparation script
+
+
+```{bash full.prepare.input}
+source session-setup.sh
+prepare-input-data.sh -l english -i $OUTPUT_DIR/impostors.full/ "$OUTPUT_DIR/input-data.full" "$OUTPUT_DIR/full"
+```
+
+
+## Running the full training process with `train-top-level.sh`
+
+
+Compared to `train-outerCV-1fold.sh`, The script `train-top-level.sh` can be used to run an additional level of cross-validation... although it does not actually perform a proper cross-validation:
+
+- The training data is split randomly into two subsets  and B. `train-outerCV-1fold.sh` is called twice: 
+     - With A as strategy training set and  as meta-training set + validation set, 
+     - With B as strategy training set and A as meta-training set + validation set.
+- After extracting/copying the best models (config and possibly Weka model) from both folds, the final bagging stage is performed on the whole training data. 
+- The best models are sorted by their performance (depending on the selection method given as parameter, either on the validation set (meta-test set), full training set, or average of both) and written to a file named `best.results`, in which lines follow the format: `<Perf full training set> <Perf meta test set> <Average both>`.
+
+This "top-level" stage can be useful to manually assess the effect of randomness on the results (to some extent). However the double genetic process is unlikely to return the exact same configurations in the two runs, so it is impossible in general to calculate the average performance of a particular configuration across the runs. 
+
+The script receives only the previously initialized working directory, which contains the training data and multi-configuration files. 
+
+```{bash full.run}
+source session-setup.sh
+task-distrib-daemon.sh  -s 30s -p 1 -v -q 10 "$TASKS_DIR" $NCORES >"$OUTPUT_DIR/full.task-daemon.log" &
+train-top-level.sh -r -P "$TASKS_DIR/mytasks" -o  '-c -s' "$OUTPUT_DIR/full"
+```
+
+
+## Extracting the best model 
+
+At the end of the training process, the identifiers for the top N models/configurations (N=100 with the default parameters) found by the training process are written to the file `best.results` in the output directory. The models are ordered by decreasing performance on the validation set (meta test set; this depends on the parameters), thus showing the top model on the first line.
+
+* The three performance values available for every model in `best.results` are: 
+    * performance on the validation set (meta test set)
+    * performance on the full training set
+    * average of the two above values
+* Additional performance statistics are available for the top models in `bagging-meta-test-fold-all.stats`, which contains four values for every model: 
+    * mean 
+    * median 
+    * standard deviation 
+    * mean minus std. dev.
+
+
+```{bash}
+head "$OUTPUT_DIR/full/best.results" 
+```
+
+The actual models corresponding to these identifiers are stored in the subdirectory `selected-meta-configs/`. The id contained in `best.results` actually corresponds to the full pathname prefix, so that:
+
+* `<prefix>.conf` is the configuration file for the model
+* `<prefix>.model` is the directory containing the model.
+
+If provided with such a patname prefix, the system can apply the corresponding model. Of course the path needs to exist and contain the model.
+
+
+## Testing with fresh instances
+
+
+
+### Preparing the test instances
+
+When testing with fresh instances, the corresponding documents must have been "prepared" (their observation files computed, etc.) before applying the model per se. Of course this is not necessary if the documents in the test set have been prepared previously, together with the training documents (see above).
+
+We use the test set generated for the main experiments (see [Experiment 1: size of documents](expe1.html)). Here we just copy the test files:
+
+```{bash test.prepa1}
+mkdir "$OUTPUT_DIR"/test-data.full
+cat "$EXPE_WORK_DIR/test.tsv" > "$OUTPUT_DIR/test-data.full/truth.txt"
+cat "$EXPE_WORK_DIR/test.tsv" | cut -f 1 | tr ' :' '\n\n'  | sort -u | while read f; do
+      cp "$OUTPUT_DIR/data/$f" "$OUTPUT_DIR/test-data.full/"
+done
+```
+
+Then we call the script `prepare-input-data.sh` on the directory containing the test documents:
+
+```{bash test.prepare.input}
+source session-setup.sh
+ls $OUTPUT_DIR/full/multi-conf-files/*multi-conf | prepare-input-data.sh -l english -r $OUTPUT_DIR/full/resources "$OUTPUT_DIR/test-data.full" "$OUTPUT_DIR/full.test"
+```
+
+- It's important to use the same impostors documents and list of stop words as for the training set. This is why the `-r` option allows to provide an exsting "resources" directory.
+- Note: it's also possible to add the documents to the directory used for training.
+
+
+
+### Applying the model to the test instances
+
+Below the best model found by the training stage is extracted, then the id (path prefix) is passed to the script `test-meta-model.sh`:
+
+
+```{bash test.run}
+source session-setup.sh
+bestModel=$(head -n 1 "$OUTPUT_DIR/full/best.results" | cut -f 1)
+echo "Model id: $bestModel"
+task-distrib-daemon.sh  -s 30s -p 1 -v -q 4 "$TASKS_DIR" $NCORES >"$OUTPUT_DIR/test.task-daemon.log" &
+test-meta-model.sh -p  -P "$TASKS_DIR/mytasks" "$bestModel" "$EXPE_WORK_DIR/test.tsv" "$OUTPUT_DIR/full.test" "$OUTPUT_DIR/full.test.results" 
+```
+
+- The `-p` option requires computing performance. The script can also be used to only predict the answers for unlabelled cases.
+
+
+- The output directory contains:
+    - a file `$bestModel.answers` with the predicted probability for every case in the test set
+    - a file `$bestModel.perf` with the test set performance if `-p` was used.
+
+Performance on the test set:
+
+```{bash test.perf}
+cat "$OUTPUT_DIR/full.test.results"/*.perf
+```
+
