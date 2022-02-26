@@ -58,6 +58,7 @@ snippets.size <- 25
 Sys.setenv(SNIPPETS_SIZE = snippets.size)
 Sys.setenv(NCORES = 40)
 Sys.setenv(TASKS_DIR= '/tmp/clg-authorship.tasks')
+Sys.setenv(EXPE_WORK_DIR = 'experiments/1-doc-size')
 ```
 
 * Note: `ncores` should be set to represent the number of cores available on the machine.
@@ -133,6 +134,7 @@ mkdir "$OUTPUT_DIR/gen1"
 generate-multi-conf.sh -c common.simplified.multi-conf.part -g genetic.simplified.multi-conf.part 0 "$OUTPUT_DIR/gen1/0"
 ```
 
+
 - By default the configs parts are found in the directory `./conf` . The `-d` option can be used to specify the directory where the configuration "parts" are found. 
 - `-c` and  `-g` are used to force the use of a specific config file for the 'common' and 'genetic' part instead of the default, in this case a simplified variant meant to take less time  (see also [below](#genetic-algorithm) about the genetic process configuration). 
 - The first mandatory argument is 0 for ignoring observation types involving POS tags, 1 otherwise.
@@ -152,6 +154,79 @@ source session-setup.sh
 targetdir="$OUTPUT_DIR/example-50-configs"
 mkdir "$targetdir"
 echo "$OUTPUT_DIR/gen1/0/multi-conf-files/basic.multi-conf"  | expand-multi-config.pl -r 50 "$targetdir/"
+```
+
+
+## Preparing the input data
+
+
+
+In [part 1](user-guide-part1.html) we were manually "preparing" the input data in the format required by the system.
+The script `prepare-input-data.sh` can be used to create the working directory with all the required parts in a way which makes it usable directly by the training scripts: 
+
+* Copies the input data (to avoid modifying the input directory)
+* Stores the multi-config files
+* Calculates the ["stop words"](user-guide-part1.html#stop-words-for-word-observations) based on the training set documents (unless `-r` is supplied) and stores them where needed
+    * The "stop words limits" are obtained directly from the required obs types, assuming that the "stop word id" is a simple integer.
+* Prepares all obs types for the input data, including POS if required
+* The impostors data must be provided:
+    * either as a "prepared resource" with `-r`
+    * or as simple files in a directory with `-i`
+        * in this case the impostors data is prepared, i.e. the required obs types are calculated
+* In any case the impostors pre-similarity values are computed against every document in the input data
+* The resources options file is generated
+
+
+
+
+### Input data
+
+Below we prepare some data using a training and test set generated for the main experiments proposed in this repository (see [Experiment 1: size of documents](expe1.html)).
+
+```{bash gen.init}
+mkdir "$OUTPUT_DIR"/input-data.gen1 
+cat "$EXPE_WORK_DIR/train.tsv" > "$OUTPUT_DIR/input-data.gen1/truth.txt"
+cat "$EXPE_WORK_DIR/train.tsv" | cut -f 1 | tr ' :' '\n\n'  | sort -u | while read f; do 
+      cp "$OUTPUT_DIR/data/$f" "$OUTPUT_DIR/input-data.gen1/"
+done
+head -n 50 "$EXPE_WORK_DIR/train.tsv" > "$OUTPUT_DIR/gen1.train-cases.txt"
+tail -n 50 "$EXPE_WORK_DIR/train.tsv" > "$OUTPUT_DIR/gen1.test-cases.txt"
+```
+
+- Note: the script expects a file `truth.txt` in a subdirectory `input` containing the cases to be used for training.
+- In this example the training set is split into two parts in order to use the second part as validation set (see below).
+    - The file `truth.txt` must contain all the cases.
+
+
+### Impostors data
+
+
+For this toy example we also create a small set of impostors in the same way as [presented in the GI method](user-guide-part1.html#preparing-the-impostors)):
+
+
+```{bash gen.prep2}
+source session-setup.sh
+mkdir $OUTPUT_DIR/impostors.gen1
+mkdir $OUTPUT_DIR/impostors.gen1/GI.1.impostors
+n=$(find $OUTPUT_DIR/data/* -maxdepth 0 -type f | wc -l)
+find $OUTPUT_DIR/data/* -maxdepth 0 -type f | random-lines.pl 100 1 $n | while read f; do cp $f $OUTPUT_DIR/impostors.gen1/GI.1.impostors/$(basename "$f").txt; done
+```
+
+
+- Note: the name `my.impostors` is the one used in the default GI config file `conf/GI.multi-conf.part`.
+
+
+
+### Running the preparation script
+
+
+- Language: By default a file `contents.json` is expected in the input data dir (PAN input format), and the language is extracted from it. Option `-l` is used as an alternative to the json file.
+- `-i` specifies where to find the impostors dataset(s)
+- In this case we only provide the "basic" multi-conf file to the script on STDIN. We will show later a more general way.
+
+```{bash prepare.input}
+source session-setup.sh
+echo "$OUTPUT_DIR/gen1/0/multi-conf-files/basic.multi-conf"  | prepare-input-data.sh -l english -i $OUTPUT_DIR/impostors.gen1/ "$OUTPUT_DIR/input-data.gen1" "$OUTPUT_DIR/gen1"
 ```
 
 
@@ -180,52 +255,6 @@ cat conf/genetic.simplified.multi-conf.part
 The full genetic process may involve a sequence of several steps, each identified with a prefix (e.g. `indivGenetic_`) and followed by an integer or `final` for the last step. This allows progressively refining the evaluation of the configs, for instance by using a higher $k$ or larger 'stop criterion window' in the later stages of the process. This multi-steps sequence is managed by [`train-multi-stages.sh`](https://erwanm.github.io/clg-authorship-analytics/#Implementation%3A%20train-multi-stages.sh) (see also below).
 
 
-### Preparation
-
-This part is identical to the steps presented in [part 1](user-guide-part1.html).
-
-The multi-config files above contain some ["stop-words" observation types](user-guide-part1.html#stop-words-for-word-observations). For the sake of simplicity we just use the Mark Twain books to compute two stop words lists (50 and 200):
-
-
-```{bash gen.prep1}
-source session-setup.sh
-find $OUTPUT_DIR/data/*-mt-* -maxdepth 0 -type f >"$OUTPUT_DIR/mark-twain.list"
-count-obs-dataset.sh -i "$OUTPUT_DIR/mark-twain.list" -o '-g' english WORD.T.lc1.sl0.mf2 2>/dev/null
-sort -r -n +1 -2 "$OUTPUT_DIR/global.observations/WORD.T.lc1.sl0.mf2.count" | cut -f 1 | head -n 50 >"$OUTPUT_DIR/mt-50.stop-list" 
-sort -r -n +1 -2 "$OUTPUT_DIR/global.observations/WORD.T.lc1.sl0.mf2.count" | cut -f 1 | head -n 200 >"$OUTPUT_DIR/mt-200.stop-list" 
-```
-
-For this example we also create a small set of impostors in the same way as [presented in the GI method](user-guide-part1.html#preparing-the-impostors)):
-
-
-```{bash gen.prep2}
-source session-setup.sh
-mkdir $OUTPUT_DIR/impostors
-mkdir $OUTPUT_DIR/impostors/GI.1.impostors
-n=$(find $OUTPUT_DIR/data/* -maxdepth 0 -type f | wc -l)
-find $OUTPUT_DIR/data/* -maxdepth 0 -type f | random-lines.pl 100 1 $n | while read f; do cp $f $OUTPUT_DIR/impostors/GI.1.impostors/$(basename "$f").txt; done
-```
-
-A "resources" file is needed, it contains in particular the location of the stop words files and the impostors directory:
-
-```{bash gen.prep3}
-target="$OUTPUT_DIR/gen1/resources-options.conf"
-echo "vocabResources=50:$OUTPUT_DIR/mt-50.stop-list;200:$OUTPUT_DIR/mt-200.stop-list" >"$target"
-echo "useCountFiles=1" >>"$target"
-echo "datasetResourcesPath=$OUTPUT_DIR/impostors/GI.1.impostors" >>"$target"
-```
-
-Finally we create a small input dataset:
-
-```{bash gen.init}
-mkdir "$OUTPUT_DIR"/gen1/input "$OUTPUT_DIR"/gen1/resources
-cat data/user-guide.expl1/cases.txt data/user-guide.expl1/test-cases.txt | cut -f 1  | sed "s:data/gb:$OUTPUT_DIR/data:g" |  tr ' :' '\n\n'  | sort -u | while read f; do cp "$f" "$OUTPUT_DIR/gen1/input"; done
-cat data/user-guide.expl1/cases.txt | sed 's:data/[^/]*/::g' >"$OUTPUT_DIR/gen1/input/truth.txt"
-cat data/user-guide.expl1/test-cases.txt | sed 's:data/[^/]*/::g' >"$OUTPUT_DIR/gen1/test-cases.gold.txt"
-cat "$OUTPUT_DIR/gen1/test-cases.gold.txt" | cut -f 1 >"$OUTPUT_DIR/gen1/test-cases.txt"
-```
-
-- Note: the script expects a file `truth.txt` in a subdirectory `input` containing the cases to be used for training.
 
 ### Running the genetic process
 
@@ -233,7 +262,7 @@ cat "$OUTPUT_DIR/gen1/test-cases.gold.txt" | cut -f 1 >"$OUTPUT_DIR/gen1/test-ca
 ```{bash gen.go}
 source session-setup.sh
 task-distrib-daemon.sh  -s 30s -p 1 -v -q 4 "$TASKS_DIR" $NCORES >"$OUTPUT_DIR/gen1.task-daemon.log" &
-echo "$OUTPUT_DIR/gen1/0/multi-conf-files/basic.multi-conf" | train-genetic.sh -P "$TASKS_DIR/mytasks" -o  '-c -s' "$OUTPUT_DIR/gen1" "$OUTPUT_DIR/gen1/input/truth.txt" indivGenetic_1_
+echo "$OUTPUT_DIR/gen1/0/multi-conf-files/basic.multi-conf" | train-genetic.sh -P "$TASKS_DIR/mytasks" -o  '-c -s' "$OUTPUT_DIR/gen1" "$OUTPUT_DIR/gen1.train-cases.txt" indivGenetic_1_
 ```
 
 - The above process takes around 10 to 20 mn with 40 cores.
@@ -259,9 +288,9 @@ As mentioned [above](#configuration), there can be several steps of genetic trai
 In the following code we use the `-r` option to resume the previous training and apply the final stage. Note that the id  provided as last parameter contains only the prefix `indivGenetic` since it's not about a specific stage anymore. 
 
 ```{bash gen.multi}
-source session-setup.sh
+#source session-setup.sh
 task-distrib-daemon.sh  -s 30s -p 1 -v -q 4 "$TASKS_DIR" $NCORES >"$OUTPUT_DIR/gen1.task-daemon.log" &
-train-multi-stages.sh -r -P "$TASKS_DIR/mytasks" -o  '-c -s' "$OUTPUT_DIR/gen1" "$OUTPUT_DIR/gen1/input/truth.txt" "$OUTPUT_DIR/gen1/0/multi-conf-files/basic.multi-conf" indivGenetic
+train-multi-stages.sh -r -P "$TASKS_DIR/mytasks" -o  '-c -s' "$OUTPUT_DIR/gen1" "$OUTPUT_DIR/gen1.train-cases.txt" "$OUTPUT_DIR/gen1/0/multi-conf-files/basic.multi-conf" indivGenetic
 ```
 
 # Meta-classifier (stacked generalization)
@@ -283,11 +312,6 @@ The meta-training is performed by `train-outerCV-1fold.sh`, which takes as input
 - The N best configurations obtained from the meta-training are applied to all the instances: strategy training set, meta-training set and validation set. These top configurations are also "packaged" in a sub directory `refactored-strategy-configs` in order to be easily usable for application later.
 - Bagging ([bootstrap aggregating](https://en.wikipedia.org/wiki/Bootstrap_aggregating)) is applied on the meta validation set (fresh instances) in order to select the final top N meta-configs. This step can be used to analyze the variance of the meta-configs.
 
-The test set used by the script must be a subset of the full training set, more precisely a subset of the list of cases contained in `$OUTPUT_DIR/gen1/input/truth.txt`. We simulate this in the example below by concatenating the test cases to the file `truth.txt` below:
-
-```{bash gen.meta.init1}
-cat "$OUTPUT_DIR/gen1/test-cases.gold.txt" >>"$OUTPUT_DIR/gen1/input/truth.txt"
-```
 
 For the sake of simplicity and computation speed, in the example below we remove the `GI` and `univ` strategies before running the process, resulting in the meta-classifier using only the `basic` strategy. This is of course not necessary nor recommended in real applications. 
 
@@ -301,7 +325,172 @@ rm -f "$OUTPUT_DIR/gen1/0/multi-conf-files/GI.multi-conf" "$OUTPUT_DIR/gen1/0/mu
 ```{bash gen.meta}
 source session-setup.sh
 task-distrib-daemon.sh  -s 30s -p 1 -v -q 4 "$TASKS_DIR" $NCORES >"$OUTPUT_DIR/gen1.task-daemon.log" &
-train-outerCV-1fold.sh -r -P "$TASKS_DIR/mytasks" -o  '-c -s' "$OUTPUT_DIR/gen1" "$OUTPUT_DIR/gen1/input/truth.txt" "$OUTPUT_DIR/gen1/test-cases.gold.txt" "$OUTPUT_DIR/gen1/0/multi-conf-files"
+train-outerCV-1fold.sh -r -P "$TASKS_DIR/mytasks" -o  '-c -s' "$OUTPUT_DIR/gen1" "$OUTPUT_DIR/gen1.train-cases.txt" "$OUTPUT_DIR/gen1.test-cases.txt" "$OUTPUT_DIR/gen1/0/multi-conf-files"
 ```
 
+
+
+# Full example
+
+This part shows the full process of training a meta-model with several strategies, albeit with simplified parameters. This experiment is self-contained, i.e. it doesn't rely on any part executed previously. See above for the detailed explanations.
+
+## Preparing the input data
+
+### Input data
+
+We use the training set generated for the main experiments (see [Experiment 1: size of documents](expe1.html)).
+
+```{bash full.prepa1}
+mkdir "$OUTPUT_DIR"/input-data.full
+cat "$EXPE_WORK_DIR/train.tsv" > "$OUTPUT_DIR/input-data.full/truth.txt"
+cat "$EXPE_WORK_DIR/train.tsv"  | cut -f 1 | tr ' :' '\n\n'  | sort -u | while read f; do
+      cp "$OUTPUT_DIR/data/$f" "$OUTPUT_DIR/input-data.full/"
+done
+```
+
+## Impostors data
+
+We build a small impostors dataset (same way as above):
+
+```{bash full.prepa2}
+source session-setup.sh
+mkdir $OUTPUT_DIR/impostors.full
+mkdir $OUTPUT_DIR/impostors.full/my.impostors
+n=$(find $OUTPUT_DIR/data/* -maxdepth 0 -type f | wc -l)
+find $OUTPUT_DIR/data/* -maxdepth 0 -type f | random-lines.pl 100 1 $n | while read f; do cp $f $OUTPUT_DIR/impostors.full/my.impostors/$(basename "$f").txt; done
+```
+
+- Note: the name `my.impostors` is the one used in the default GI config file `conf/GI.multi-conf.part`.
+
+### Multi-conf files
+
+For this example we create some simplified multi-conf files which are slightly more advanced than in the previous example:
+
+- The three strategies are included.
+- Observation types with stop word and POS tags are used.
+
+**Important:** The "meta" config file must also be copied in the target directory under the name `meta-template.multi-conf`, as shown below.
+
+```{bash full.multi2}
+source session-setup.sh
+mkdir "$OUTPUT_DIR/full"
+generate-multi-conf.sh -c common.simplified2.multi-conf.part -g genetic.simplified.multi-conf.part 1 "$OUTPUT_DIR/full"
+cat conf/meta-template.simplified.multi-conf > "$OUTPUT_DIR/full/meta-template.multi-conf"
+```
+
+
+
+### Running the preparation script
+
+
+```{bash full.prepare.input}
+source session-setup.sh
+prepare-input-data.sh -l english -i $OUTPUT_DIR/impostors.full/ "$OUTPUT_DIR/input-data.full" "$OUTPUT_DIR/full"
+```
+
+
+## Running the full training process with `train-top-level.sh`
+
+
+Compared to `train-outerCV-1fold.sh`, The script `train-top-level.sh` can be used to run an additional level of cross-validation... although it does not actually perform a proper cross-validation:
+
+- The training data is split randomly into two subsets  and B. `train-outerCV-1fold.sh` is called twice: 
+     - With A as strategy training set and  as meta-training set + validation set, 
+     - With B as strategy training set and A as meta-training set + validation set.
+- After extracting/copying the best models (config and possibly Weka model) from both folds, the final bagging stage is performed on the whole training data. 
+- The best models are sorted by their performance (depending on the selection method given as parameter, either on the validation set (meta-test set), full training set, or average of both) and written to a file named `best.results`, in which lines follow the format: `<Perf full training set> <Perf meta test set> <Average both>`.
+
+This "top-level" stage can be useful to manually assess the effect of randomness on the results (to some extent). However the double genetic process is unlikely to return the exact same configurations in the two runs, so it is impossible in general to calculate the average performance of a particular configuration across the runs. 
+
+The script receives only the previously initialized working directory, which contains the training data and multi-configuration files. 
+
+```{bash full.run}
+source session-setup.sh
+task-distrib-daemon.sh  -s 30s -p 1 -v -q 10 "$TASKS_DIR" $NCORES >"$OUTPUT_DIR/full.task-daemon.log" &
+train-top-level.sh -r -P "$TASKS_DIR/mytasks" -o  '-c -s' "$OUTPUT_DIR/full"
+```
+
+
+## Extracting the best model 
+
+At the end of the training process, the identifiers for the top N models/configurations (N=100 with the default parameters) found by the training process are written to the file `best.results` in the output directory. The models are ordered by decreasing performance on the validation set (meta test set; this depends on the parameters), thus showing the top model on the first line.
+
+* The three performance values available for every model in `best.results` are: 
+    * performance on the validation set (meta test set)
+    * performance on the full training set
+    * average of the two above values
+* Additional performance statistics are available for the top models in `bagging-meta-test-fold-all.stats`, which contains four values for every model: 
+    * mean 
+    * median 
+    * standard deviation 
+    * mean minus std. dev.
+
+
+```{bash}
+head "$OUTPUT_DIR/full/best.results" 
+```
+
+The actual models corresponding to these identifiers are stored in the subdirectory `selected-meta-configs/`. The id contained in `best.results` actually corresponds to the full pathname prefix, so that:
+
+* `<prefix>.conf` is the configuration file for the model
+* `<prefix>.model` is the directory containing the model.
+
+If provided with such a patname prefix, the system can apply the corresponding model. Of course the path needs to exist and contain the model.
+
+
+## Testing with fresh instances
+
+
+
+### Preparing the test instances
+
+When testing with fresh instances, the corresponding documents must have been "prepared" (their observation files computed, etc.) before applying the model per se. Of course this is not necessary if the documents in the test set have been prepared previously, together with the training documents (see above).
+
+We use the test set generated for the main experiments (see [Experiment 1: size of documents](expe1.html)). Here we just copy the test files:
+
+```{bash test.prepa1}
+mkdir "$OUTPUT_DIR"/test-data.full
+cat "$EXPE_WORK_DIR/test.tsv" > "$OUTPUT_DIR/test-data.full/truth.txt"
+cat "$EXPE_WORK_DIR/test.tsv" | cut -f 1 | tr ' :' '\n\n'  | sort -u | while read f; do
+      cp "$OUTPUT_DIR/data/$f" "$OUTPUT_DIR/test-data.full/"
+done
+```
+
+Then we call the script `prepare-input-data.sh` on the directory containing the test documents:
+
+```{bash test.prepare.input}
+source session-setup.sh
+ls $OUTPUT_DIR/full/multi-conf-files/*multi-conf | prepare-input-data.sh -l english -r $OUTPUT_DIR/full/resources "$OUTPUT_DIR/test-data.full" "$OUTPUT_DIR/full.test"
+```
+
+- It's important to use the same impostors documents and list of stop words as for the training set. This is why the `-r` option allows to provide an exsting "resources" directory.
+- Note: it's also possible to add the documents to the directory used for training.
+
+
+
+### Applying the model to the test instances
+
+Below the best model found by the training stage is extracted, then the id (path prefix) is passed to the script `test-meta-model.sh`:
+
+
+```{bash test.run}
+source session-setup.sh
+bestModel=$(head -n 1 "$OUTPUT_DIR/full/best.results" | cut -f 1)
+echo "Model id: $bestModel"
+task-distrib-daemon.sh  -s 30s -p 1 -v -q 4 "$TASKS_DIR" $NCORES >"$OUTPUT_DIR/test.task-daemon.log" &
+test-meta-model.sh -p  -P "$TASKS_DIR/mytasks" "$bestModel" "$EXPE_WORK_DIR/test.tsv" "$OUTPUT_DIR/full.test" "$OUTPUT_DIR/full.test.results" 
+```
+
+- The `-p` option requires computing performance. The script can also be used to only predict the answers for unlabelled cases.
+
+
+- The output directory contains:
+    - a file `$bestModel.answers` with the predicted probability for every case in the test set
+    - a file `$bestModel.perf` with the test set performance if `-p` was used.
+
+Performance on the test set:
+
+```{bash test.perf}
+cat "$OUTPUT_DIR/full.test.results"/*.perf
+```
 
