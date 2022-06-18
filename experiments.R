@@ -5,6 +5,8 @@ library(data.table)
 library(ggplot2)
 library(plyr)
 library(cowplot)
+library('RJSONIO')
+
 
 # fixing random state (comment this line for real randomness)
 # set.seed(2022)
@@ -375,3 +377,38 @@ statsByModelType <- function(dtList) {
 refCase <- function(d1, d2, d3, d4) {
   rbind(d1[variable==100,], d2[variable==1,], d3[variable==100,], d4[variable==12,])
 }
+
+
+# example:
+# full <- buildFullDataset(dataSplitByAuthor, 100, 100)
+# full$id <- 1:nrow(full)
+# dataset <- full[train.or.test=='train',]
+writeDatasetToJSON <- function(dataset, outputprefix, variable, expeDir) {
+  truth.json<-ddply(dataset, 'id', function(x) {
+    gsub('\n',' ',toJSON(
+      list(id=as.character(x$id),same=x$same.author, author= I(list(x$author.x,x$author.y)))
+      ,.escapeEscapes = FALSE)
+      , fixed = TRUE)
+  })
+  writeLines(truth.json$V1, paste0(outputprefix,'-truth.jsonl'))
+  pairs.json <- ddply(dataset, 'id', function(x) {
+    path1 <- paste(expeDir, variable, 'data',x$filename.x, sep='/')
+    path2 <- paste(expeDir, variable, 'data',x$filename.y, sep='/')
+    text1 <- readTextDoc(path1)
+    text2 <- readTextDoc(path2)
+    gsub('\n',' ',toJSON(
+      list(id=as.character(x$id),fandoms=I(list("NA","NA")), pair= I(list(text1, text2)))
+      ,.escapeEscapes = FALSE)
+      , fixed = TRUE)
+  })
+  writeLines(pairs.json$V1, paste0(outputprefix,'.jsonl'))
+  
+}
+
+readTextDoc <- function(filename, concatenateAsOneString=TRUE) {
+ t <- readLines(filename) 
+ if (concatenateAsOneString) {
+  t<- paste0(t, collapse=' ') 
+ }
+}
+
