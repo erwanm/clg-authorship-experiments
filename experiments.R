@@ -379,14 +379,18 @@ refCase <- function(d1, d2, d3, d4) {
 }
 
 
-# example:
-# full <- buildFullDataset(dataSplitByAuthor, 100, 100)
-# full$id <- 1:nrow(full)
-# dataset <- full[train.or.test=='train',]
+convertFullToJSON <- function(fullDataFile, outputprefix, variable, expeDir) {
+  full <- fread(fullDataFile)
+  full$id <- 1:nrow(full)
+  trainset <- full[train.or.test=='train',]
+  testset <- full[train.or.test=='test',]
+  writeDatasetToJSON(trainset,paste0(outputprefix,'.train'), variable, expeDir)
+}
+
 writeDatasetToJSON <- function(dataset, outputprefix, variable, expeDir) {
   truth.json<-ddply(dataset, 'id', function(x) {
     gsub('\n',' ',toJSON(
-      list(id=as.character(x$id),same=x$same.author, author= I(list(x$author.x,x$author.y)))
+      list(id=as.character(x$id),same=x$same.author, authors= I(list(x$author.x,x$author.y)))
       ,.escapeEscapes = FALSE)
       , fixed = TRUE)
   })
