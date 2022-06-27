@@ -379,13 +379,47 @@ refCase <- function(d1, d2, d3, d4) {
 }
 
 
+convertFullExperimentsToJSON <- function(inputDir, outputDir) {
+  dir.create(outputDir, showWarnings = FALSE)
+  
+  print('expe 1')
+  outDir <- paste(outputDir,'1-doc-size',sep='/')
+  dir.create(outDir, showWarnings = FALSE)
+  inputExpeDir <- paste(inputDir,'1-doc-size',sep='/')
+  full <- paste(inputExpeDir,'full-dataset.tsv',sep='/')
+  for (N in c(seq(from=20,to=200,by=20),seq(from=100,to=1000,by=100))) {
+    convertFullToJSON(full, paste0(outDir,'/',as.character(N)), N, inputExpeDir)
+  }
+  
+  print('expe 3')
+  outDir <- paste(outputDir,'3-training-data-size',sep='/')
+  dir.create(outDir, showWarnings = FALSE)
+  inputExpeDir <- paste(inputDir,'3-training-data-size',sep='/')
+  for (N in seq(from=100,to=1000,by=100)) {
+    full <- paste(inputExpeDir,as.character(N),'full-dataset.tsv',sep='/')
+    convertFullToJSON(full, paste0(outDir,'/',as.character(N)), N, inputExpeDir)
+  }
+  
+  print('expe 4')
+  outDir <- paste(outputDir,'4-author-diversity',sep='/')
+  dir.create(outDir, showWarnings = FALSE)
+  inputExpeDir <- paste(inputDir,'4-author-diversity',sep='/')
+  for (N in 2:12) {
+    full <- paste(inputExpeDir,as.character(N),'full-dataset.tsv',sep='/')
+    convertFullToJSON(full, paste0(outDir,'/',as.character(N)), N, inputExpeDir)
+  }
+  
+}
+
+
 convertFullToJSON <- function(fullDataFile, outputprefix, variable, expeDir) {
   full <- fread(fullDataFile)
   full$id <- 1:nrow(full)
   trainset <- full[train.or.test=='train',]
   testset <- full[train.or.test=='test',]
   writeDatasetToJSON(trainset,paste0(outputprefix,'.train'), variable, expeDir)
-}
+  writeDatasetToJSON(testset,paste0(outputprefix,'.test'), variable, expeDir)
+  }
 
 writeDatasetToJSON <- function(dataset, outputprefix, variable, expeDir) {
   truth.json<-ddply(dataset, 'id', function(x) {
