@@ -416,10 +416,10 @@ convertFullToJSON <- function(fullDataFile, outputprefix, variable, expeDir) {
   full <- fread(fullDataFile)
   full$id <- 1:nrow(full)
   trainset <- full[train.or.test=='train',]
-  testset <- full[train.or.test=='test',]
   writeDatasetToJSON(trainset,paste0(outputprefix,'.train'), variable, expeDir)
+  testset <- full[train.or.test=='test',]
   writeDatasetToJSON(testset,paste0(outputprefix,'.test'), variable, expeDir)
-  }
+}
 
 writeDatasetToJSON <- function(dataset, outputprefix, variable, expeDir) {
   truth.json<-ddply(dataset, 'id', function(x) {
