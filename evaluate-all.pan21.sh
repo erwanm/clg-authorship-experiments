@@ -128,10 +128,10 @@ for sizeDir in "$outputDir"/*; do
 	if [ -f "$EXPE_WORK_DIR/full-dataset.tsv" ] && [ -f "$EXPE_WORK_DIR/train.tsv" ] && [ -f "$EXPE_WORK_DIR/test.tsv" ]; then
 	    datasetsDir="$EXPE_WORK_DIR"
 	else
-	    if [ -f "$sizeDir/full-dataset.tsv" ] &&[ -f "$sizeDir/train.tsv" ] && [ -f "$sizeDir/test.tsv" ]; then
-		datasetsDir="$sizeDir"
+	    if [ -f "$EXPE_WORK_DIR/$size/full-dataset.tsv" ] &&[ -f "$EXPE_WORK_DIR/$size/train.tsv" ] && [ -f "$EXPE_WORK_DIR/$size/test.tsv" ]; then
+		datasetsDir="$EXPE_WORK_DIR/$size"
 	    else
-		echo "Error: full-dataset.tsv and/or train.tsv and/or test.tsv not found in $EXPE_WORK_DIR nor $sizeDir" 1>&2
+		echo "Error: full-dataset.tsv and/or train.tsv and/or test.tsv not found in $EXPE_WORK_DIR nor $EXPE_WORK_DIR/$size" 1>&2
 		exit 2
 	    fi
 	fi
