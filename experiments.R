@@ -450,3 +450,14 @@ readTextDoc <- function(filename, concatenateAsOneString=TRUE) {
  }
 }
 
+redoGraphs <- function(expeDir, variable.name,expeNo) {
+  d<-readExperimentResults(expeDir)
+  g1 <- perfByModelType(d,x.label=variable.name)
+  d2 <-d[model.type!='PAN21.regular' & model.type!='PAN21.special',]
+  g2 <- comparePerfsByEvalOn(d2,diff.seen=FALSE,x.label=variable.name)
+  g3 <- comparePerfsByEvalOn(d2,diff.seen=TRUE,x.label=variable.name)
+  g<-plot_grid(g1,g2,g3,labels=NULL,ncol=3)
+  ggsave(paste0('graphs-expe1',as.character(expeNo),'.pdf'),g,width=30,height=8,unit='cm')
+  
+}
+
