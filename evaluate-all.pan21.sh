@@ -5,7 +5,7 @@ source pan-utils.sh
 
 progName=$(basename "$BASH_SOURCE")
 
-
+SCORE_COL_NO=4
 
 
 if [ $# -ne 2 ]; then
@@ -83,7 +83,7 @@ function runEval {
 	echo "Error: '$f' does not exist" 1>&2
 	exit 1
     fi
-    cut -f 2 "$f" > "$outputDir"/col_answers.tmp
+    cut -f $SCORE_COL_NO "$f" > "$outputDir"/col_answers.tmp
     cut -f 1 "$goldFile" | paste - "$outputDir"/col_answers.tmp > "$outputDir/$modelType.answers"
     rm -f "$outputDir"/col_answers.tmp
     scoreAUC=$(auc.pl -p 6  "$goldFile" "$outputDir/$modelType.answers")
@@ -95,7 +95,7 @@ function runEval {
     fi
     echo -e "$scoreFinal\t$scoreAUC\t$scoreC1" > "$outputDir/$modelType.perf"
 
-    perf=$(cat "$outputDir/$modelType.perf")
+   perf=$(cat "$outputDir/$modelType.perf")
     echo -e "$size\t$thisModelSelected\t$modelType\t$trainTest\t$perf" >"$outputDir/results.tsv"
     if [ "$trainOrTest" == "test" ] && [ -f "$seenUnseenDir/seen.cases" ] && [ -f "$seenUnseenDir/unseen.cases" ]; then
 	n=$(ls "$outputDir"/*.answers 2>/dev/null | wc -l)

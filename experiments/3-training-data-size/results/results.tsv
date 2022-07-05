@@ -18,7 +18,7 @@ variable	selected.by.training	model.type	evaluated.on	perf.final	perf.auc	perf.a
 1000	FALSE	PAN21.special	test	0.310692	0.609200	0.510000
 1000	FALSE	PAN21.special	test.seen	0.246903	0.691327	0.357143
 1000	FALSE	PAN21.special	test.unseen	0.347963	0.560606	0.620690
-1000	FALSE	PAN21.special	train	0.295545	0.598270	0.494000
+1000	FALSE	PAN21.special	train	0.295544	0.598268	0.494000
 1000	FALSE	univ	test	0.342160	0.611000	0.560000
 1000	FALSE	univ	test.seen	0.356232	0.650510	0.547619
 1000	FALSE	univ	test.unseen	0.364584	0.640783	0.568966
@@ -186,7 +186,7 @@ variable	selected.by.training	model.type	evaluated.on	perf.final	perf.auc	perf.a
 700	FALSE	PAN21.special	test	0.345156	0.704400	0.490000
 700	FALSE	PAN21.special	test.seen	0.145833	0.812500	0.179487
 700	FALSE	PAN21.special	test.unseen	0.454569	0.660207	0.688525
-700	FALSE	PAN21.special	train	0.292173	0.574498	0.508571
+700	FALSE	PAN21.special	train	0.292175	0.574502	0.508571
 700	FALSE	univ	test	0.260160	0.542000	0.480000
 700	FALSE	univ	test.seen	0.395834	0.593750	0.666667
 700	FALSE	univ	test.unseen	0.147478	0.408915	0.360656
