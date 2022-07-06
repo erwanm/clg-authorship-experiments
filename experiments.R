@@ -452,12 +452,24 @@ readTextDoc <- function(filename, concatenateAsOneString=TRUE) {
 
 redoGraphs <- function(expeDir, variable.name,expeNo) {
   d<-readExperimentResults(expeDir)
+  if (expeNo == 1) {
+    d1 <- d[variable %in% c(20,40,60,80,100,120,140,160,180,200),]
+    d2 <- d[variable %in% c(100,200,300,400,500,600,700,800,900,1000),]
+    redoGraphsSub(d1, variable.name, 'graphs-expe1A.pdf')
+    redoGraphsSub(d2, variable.name, 'graphs-expe1B.pdf')
+  } else {
+    redoGraphsSub(d, variable.name, paste0('graphs-expe',as.character(expeNo),'.pdf'))
+  }
+}
+
+redoGraphsSub <- function(d, variable.name,file) {
   g1 <- perfByModelType(d,x.label=variable.name)
   d2 <-d[model.type!='PAN21.regular' & model.type!='PAN21.special',]
   g2 <- comparePerfsByEvalOn(d2,diff.seen=FALSE,x.label=variable.name)
   g3 <- comparePerfsByEvalOn(d2,diff.seen=TRUE,x.label=variable.name)
   g<-plot_grid(g1,g2,g3,labels=NULL,ncol=3)
-  ggsave(paste0('graphs-expe',as.character(expeNo),'.pdf'),g,width=30,height=8,unit='cm')
-  
+  ggsave(file,g,width=30,height=8,unit='cm')  
 }
+
+
 
