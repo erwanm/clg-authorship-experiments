@@ -452,8 +452,8 @@ readTextDoc <- function(filename, concatenateAsOneString=TRUE) {
 
 redoGraphs <- function(expeDir, variable.name,expeNo) {
   d<-readExperimentResults(expeDir)
-  d[model.type=='PAN21.regular',] <- 'AH' 
-  d[model.type=='PAN21.special',] <- 'AH.pan21'
+  d[model.type=='PAN21.regular',]$model.type <- 'AH' 
+  d[model.type=='PAN21.special',]$model.type <- 'AH.pan21'
   if (expeNo == 1) {
     d1 <- d[variable %in% c(20,40,60,80,100,120,140,160,180,200),]
     d2 <- d[variable %in% c(100,200,300,400,500,600,700,800,900,1000),]
