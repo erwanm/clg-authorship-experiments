@@ -473,5 +473,21 @@ redoGraphsSub <- function(d, variable.name,file) {
   ggsave(file,g,width=30,height=8,unit='cm')  
 }
 
+globalPerfBySystem <- function(df) {
+  df0 <- df[complete.cases(df),]
+  df0 <- df0[evaluated.on=='test',mean(perf.final),by=model.type]
+  df0[order(-V1),]
+}
 
-
+globalPerfWilcox <- function(df) {
+  df0 <- df[complete.cases(df),]
+  df0 <- df0[evaluated.on=='test',mean(perf.final),by=model.type]
+  systems <- unique(df0[model.type,])
+  ldply(systems, function(sys1) {
+    ldply(systems, function(sys2) {
+      if (sys1<sys2) {
+        wilcox.test()
+      }
+    })
+  })
+}
