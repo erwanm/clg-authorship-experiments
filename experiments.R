@@ -306,8 +306,8 @@ readExperimentResults <- function(expe.dir, perf.col='perf.final') {
 }
 
 default.font.size <- 14
-default.legend.font.size <- 9
-default.legend.title.font.size <- 10
+default.legend.font.size <-11
+default.legend.title.font.size <- 12
 
 comparePerfsByEvalOn <- function(resultsDT,diff.seen=FALSE, by.model.type=FALSE, y.range=c(0,1),font.size=default.font.size,x.label='variable',y.label='performance',legend.pos=c(.5,.1),legend.font.size=default.legend.font.size,legend.title.font.size=default.legend.title.font.size) {
   d <- resultsDT[selected.by.training==TRUE,]
@@ -325,14 +325,15 @@ comparePerfsByEvalOn <- function(resultsDT,diff.seen=FALSE, by.model.type=FALSE,
     xlab(x.label)+ylab(y.label)
 }
 
-perfByModelType <- function(resultsDT, y.range=c(0,1),x.range=NA,font.size=default.font.size,x.label='variable',y.label='performance',legend.pos=c(.5,.1),legend.font.size=default.legend.font.size,legend.title.font.size=default.legend.title.font.size) {
+perfByModelType <- function(resultsDT, y.range=c(0,1),x.range=NA,font.size=default.font.size,x.label='variable',y.label='performance',legend.pos=c(.5,.85),legend.font.size=default.legend.font.size,legend.title.font.size=default.legend.title.font.size) {
   d <- resultsDT[evaluated.on=='test',]
   g<-ggplot(d, aes(variable,perf,colour=model.type))+geom_point(size=3)+geom_line()+ylim(y.range)+
        geom_point(data=d[selected.by.training==TRUE,],aes(variable,perf),shape=22,size=5, stroke = 1,colour = "black")+
        theme(text=element_text(size=font.size),
             legend.text=element_text(size=legend.font.size), 
             legend.position = legend.pos, 
-            legend.title=element_text(size=legend.title.font.size),
+            legend.title = element_blank(),
+#            legend.title=element_text(size=legend.title.font.size),
             legend.direction="horizontal")+
        xlab(x.label)+ylab(y.label)
   if (!is.na(x.range)) {
@@ -466,7 +467,7 @@ redoGraphs <- function(expeDir, variable.name,expeNo) {
 
 redoGraphsSub <- function(d, variable.name,file) {
   g1 <- perfByModelType(d,x.label=variable.name)
-  d2 <-d[model.type!='PAN21.regular' & model.type!='PAN21.special',]
+  d2 <-d[model.type!='AH' & model.type!='AH.pan21',]
   g2 <- comparePerfsByEvalOn(d2,diff.seen=FALSE,x.label=variable.name)
   g3 <- comparePerfsByEvalOn(d2,diff.seen=TRUE,x.label=variable.name)
   g<-plot_grid(g1,g2,g3,labels=NULL,ncol=3)
