@@ -480,15 +480,25 @@ globalPerfBySystem <- function(df) {
   df0[order(-V1),]
 }
 
-globalPerfWilcox <- function(df) {
+
+# assuming only cols perf, modelType + idCols
+globalPerfWilcox <- function(df,idCols=c('variable'),colPerf='perf.final') {
   df0 <- df[complete.cases(df),]
-  df0 <- df0[evaluated.on=='test',mean(perf.final),by=model.type]
-  systems <- unique(df0[model.type,])
-  ldply(systems, function(sys1) {
+  df0 <- df0[evaluated.on=='test',]
+  cols <- c('model.type',idCols,colPerf)
+  df0 <- df0[,..cols]
+  systems <- unique(df0[,model.type,])
+  r<-ldply(systems, function(sys1) {
     ldply(systems, function(sys2) {
-      if (sys1<sys2) {
-        wilcox.test()
+      if (sys1!=sys2) {
+        merged <- merge(df0[model.type==sys1,],df0[model.type==sys2,],by=idCols)
+        res<-wilcox.test(merged[,perf.final.x],merged[,perf.final.y], paired=TRUE,alternative='less')
+        data.frame(sys1=sys1,sys2=sys2,wilcox.p=res$p.value)
       }
     })
   })
+  r$signif <- ifelse(r$wilcox.p<.05,"*","")
+  r$signif <- ifelse(r$wilcox.p<.01,"**",r$signif)
+  r$signif <- ifelse(r$wilcox.p<.005,"***",r$signif)
+  r
 }
